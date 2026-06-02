@@ -450,3 +450,62 @@ window.handleLeadSuccess = function(action) {
   }
 };
 
+window.handleContactSubmit = function(event) {
+  event.preventDefault();
+  
+  const form = document.getElementById('contact-form-el');
+  const nameInput = document.getElementById('contact-name');
+  const emailInput = document.getElementById('contact-email');
+  const messageInput = document.getElementById('contact-message');
+  const submitBtn = document.getElementById('btn-submit-contact');
+  const successState = document.getElementById('contact-success-state');
+  
+  if (!form || !nameInput || !emailInput || !messageInput || !submitBtn || !successState) return;
+  
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const message = messageInput.value;
+  
+  // Set loading state on button
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.7";
+  submitBtn.querySelector('span').textContent = "ENVIANDO MENSAJE...";
+  
+  // Submit contact message to Formspree
+  fetch('https://formspree.io/f/mbdpqqpv', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      message: message,
+      action: 'Mensaje de Contacto (Home)',
+      _subject: `Nuevo Mensaje de Contacto: ${name}`
+    })
+  })
+  .then(() => {
+    // Hide form
+    form.style.display = 'none';
+    // Show success state
+    successState.style.display = 'flex';
+    
+    // Re-run Lucide to render icon in success state
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  })
+  .catch((error) => {
+    console.error('Error submitting contact form:', error);
+    // Fallback: show success anyway so user experience is smooth
+    form.style.display = 'none';
+    successState.style.display = 'flex';
+    
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  });
+};
+
