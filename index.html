@@ -340,7 +340,7 @@
             <span>Comprar Masterclass Pro</span>
             <i data-lucide="shopping-cart"></i>
           </a>
-          <a href="vision-trading/template_leccion.html" class="btn-pkg-secondary" target="_blank">
+          <a href="javascript:void(0)" onclick="openLeadModal('simulator')" class="btn-pkg-secondary">
             <span>Probar Simulador Gratis</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
@@ -380,7 +380,7 @@
             <span>Acceder al Sistema Completo</span>
             <i data-lucide="book-open"></i>
           </a>
-          <a href="capital-invisible/index.html" class="btn-pkg-secondary" target="_blank">
+          <a href="javascript:void(0)" onclick="openLeadModal('chapter1')" class="btn-pkg-secondary">
             <span>Descargar Capítulo 1 Gratis</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
@@ -567,6 +567,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lead Capture Modal (Unified Funnel) -->
+  <div class="lead-modal" id="lead-capture-modal" onclick="closeLeadModal()">
+    <div class="lead-modal-content" onclick="event.stopPropagation()">
+      <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Cerrar modal">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="lead-modal-icon">AS</div>
+      <h3 class="lead-modal-title" id="lead-modal-title">Desbloquear Acceso</h3>
+      <p class="lead-modal-desc" id="lead-modal-desc">
+        Introduce tu correo electrónico privado para acceder de inmediato y registrar tu progreso.
+      </p>
+      
+      <form id="lead-capture-form" onsubmit="handleLeadSubmit(event)">
+        <div class="input-group-lead">
+          <input type="email" id="lead-email" placeholder="Tu correo electrónico privado..." required>
+        </div>
+        <button type="submit" id="btn-submit-lead-funnel" class="btn-lead-submit">
+          <span>Desbloquear Acceso Instantáneo</span>
+          <i data-lucide="unlock"></i>
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Main JavaScript File -->
   <script src="landing.js"></script>

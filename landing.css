@@ -1606,3 +1606,194 @@ body {
   box-shadow: 0 10px 25px rgba(223, 183, 80, 0.1);
 }
 
+/* Lead Capture Modal Funnel Styles */
+.lead-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lead-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lead-modal-content {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 480px;
+  padding: 40px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lead-modal.active .lead-modal-content {
+  transform: scale(1);
+}
+
+/* Specific theme glows for content focus */
+.lead-modal-content.glow-cyan {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15);
+}
+
+.lead-modal-content.glow-gold {
+  border-color: rgba(223, 183, 80, 0.4);
+  box-shadow: 0 20px 50px rgba(223, 183, 80, 0.15);
+}
+
+.lead-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  transition: var(--transition-smooth);
+}
+
+.lead-modal-close:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.lead-modal-close i {
+  width: 20px;
+  height: 20px;
+}
+
+.lead-modal-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--bg-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 0 20px rgba(223, 183, 80, 0.3);
+}
+
+.lead-modal-content.glow-cyan .lead-modal-icon {
+  background: var(--cyan-gradient);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.lead-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.lead-modal-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.input-group-lead {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group-lead input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.lead-modal-content.glow-cyan .input-group-lead input:focus {
+  border-color: var(--cyan-primary);
+  background: rgba(6, 182, 212, 0.02);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+}
+
+.lead-modal-content.glow-gold .input-group-lead input:focus {
+  border-color: var(--gold-primary);
+  background: rgba(223, 183, 80, 0.02);
+  box-shadow: 0 0 10px rgba(223, 183, 80, 0.1);
+}
+
+.btn-lead-submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.lead-modal-content.glow-cyan .btn-lead-submit {
+  background: var(--cyan-gradient);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.25);
+}
+
+.lead-modal-content.glow-cyan .btn-lead-submit:hover {
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+  transform: translateY(-1px);
+}
+
+.lead-modal-content.glow-gold .btn-lead-submit {
+  background: var(--gold-gradient);
+  color: var(--bg-black);
+  box-shadow: 0 4px 15px rgba(223, 183, 80, 0.25);
+}
+
+.lead-modal-content.glow-gold .btn-lead-submit:hover {
+  box-shadow: 0 6px 20px rgba(223, 183, 80, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-lead-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-lead-submit i {
+  width: 16px;
+  height: 16px;
+}
+
+

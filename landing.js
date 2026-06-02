@@ -326,3 +326,104 @@ function initSmoothScroll() {
     });
   });
 }
+
+/**
+ * Unified Lead Capture Modal Funnel Logic
+ */
+window.activeLeadAction = null;
+
+window.openLeadModal = function(action) {
+  // Check if subscriber email is already saved
+  const savedEmail = localStorage.getItem('capital_invisible_subscriber');
+  if (savedEmail) {
+    // Skip modal and go straight to success
+    window.handleLeadSuccess(action);
+    return;
+  }
+
+  window.activeLeadAction = action;
+  const modal = document.getElementById('lead-capture-modal');
+  const modalContent = modal.querySelector('.lead-modal-content');
+  const titleEl = document.getElementById('lead-modal-title');
+  const descEl = document.getElementById('lead-modal-desc');
+  const submitBtn = document.getElementById('btn-submit-lead-funnel');
+  const form = document.getElementById('lead-capture-form');
+  const emailInput = document.getElementById('lead-email');
+
+  // Reset form and button
+  form.reset();
+  submitBtn.disabled = false;
+  submitBtn.style.opacity = "";
+  submitBtn.querySelector('span').textContent = "Desbloquear Acceso Instantáneo";
+  submitBtn.querySelector('i').setAttribute('data-lucide', 'unlock');
+
+  // Customize layout depending on action
+  if (action === 'simulator') {
+    modalContent.className = 'lead-modal-content glow-cyan';
+    titleEl.textContent = 'Desbloquear Simulador Gratis';
+    descEl.textContent = 'Introduce tu correo electrónico privado para acceder de inmediato al simulador interactivo de futuros Nasdaq y S&P 500.';
+    submitBtn.querySelector('span').textContent = "Acceder al Simulador Gratis";
+  } else if (action === 'chapter1') {
+    modalContent.className = 'lead-modal-content glow-gold';
+    titleEl.textContent = 'Descargar Capítulo 1 Gratis';
+    descEl.textContent = 'Introduce tu correo electrónico privado para iniciar la descarga del Capítulo 1 del Manifiesto "Comprar, Pedir Prestado, Morir".';
+    submitBtn.querySelector('span').textContent = "Descargar Capítulo 1 Gratis";
+  }
+
+  // Open modal
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Re-run Lucide Icons to render icon inside modal
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+};
+
+window.closeLeadModal = function() {
+  const modal = document.getElementById('lead-capture-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
+
+window.handleLeadSubmit = function(event) {
+  event.preventDefault();
+  
+  const emailInput = document.getElementById('lead-email');
+  const submitBtn = document.getElementById('btn-submit-lead-funnel');
+  
+  if (!emailInput || !emailInput.value) return;
+  const email = emailInput.value;
+
+  // Set loading state on button
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.7";
+  submitBtn.querySelector('span').textContent = "PROCESANDO ACCESO...";
+  
+  // Save email to LocalStorage (aligns with book landing page script)
+  localStorage.setItem('capital_invisible_subscriber', email);
+
+  // Simulate network request premium feeling (1.2 seconds)
+  setTimeout(() => {
+    window.closeLeadModal();
+    window.handleLeadSuccess(window.activeLeadAction);
+  }, 1200);
+};
+
+window.handleLeadSuccess = function(action) {
+  if (action === 'simulator') {
+    // Open simulator in new tab
+    window.open('vision-trading/template_leccion.html', '_blank');
+  } else if (action === 'chapter1') {
+    // Trigger download of local PDF
+    const link = document.createElement('a');
+    link.href = 'capital-invisible/PRUEBA_LIBRO_FINAL_MAQUETADO.pdf';
+    link.download = 'Capital_Invisible_Capitulo_1.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
