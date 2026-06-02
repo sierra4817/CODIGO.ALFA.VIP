@@ -405,11 +405,29 @@ window.handleLeadSubmit = function(event) {
   // Save email to LocalStorage (aligns with book landing page script)
   localStorage.setItem('capital_invisible_subscriber', email);
 
-  // Simulate network request premium feeling (1.2 seconds)
-  setTimeout(() => {
+  // Submit email to Formspree
+  fetch('https://formspree.io/f/mbdpqqpv', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      action: window.activeLeadAction === 'simulator' ? 'Simulador gratis (Home)' : 'Descarga Capítulo 1 (Home)',
+      _subject: `Nuevo Lead Ecosistema AS: ${email}`
+    })
+  })
+  .then(() => {
     window.closeLeadModal();
     window.handleLeadSuccess(window.activeLeadAction);
-  }, 1200);
+  })
+  .catch((error) => {
+    console.error('Error registering lead on Formspree:', error);
+    // Fallback: grant access anyway to prevent user blocking
+    window.closeLeadModal();
+    window.handleLeadSuccess(window.activeLeadAction);
+  });
 };
 
 window.handleLeadSuccess = function(action) {

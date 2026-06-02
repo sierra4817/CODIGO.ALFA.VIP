@@ -22,31 +22,30 @@ function handleSubscription(event) {
 
   // 1. Guard check
   if (!emailInput.value) return;
+  const email = emailInput.value;
 
   // 2. Button Loading State
   submitBtn.disabled = true;
-  const originalBtnText = submitBtn.innerHTML;
   submitBtn.innerHTML = "PROCESANDO ACCESO...";
   submitBtn.style.letterSpacing = "0.3em";
   submitBtn.style.opacity = "0.7";
 
-  // Simulate network request for premium feeling (1.5 seconds delay)
-  setTimeout(() => {
-    // 3. Hide lead-form with animation
+  // Function to show success UI and persist local subscriber state
+  const showSuccessUI = () => {
     form.style.transition = "opacity 0.4s ease";
     form.style.opacity = "0";
     
     setTimeout(() => {
       form.style.display = "none";
       
-      // 4. Reveal success state containing the download link
+      // Reveal success state containing the download link
       successState.style.display = "flex";
       
-      // 5. Illuminate and Reveal the complete System (Phase 2 Conversion)
+      // Illuminate and Reveal the complete System (Phase 2 Conversion)
       systemSection.classList.remove('initially-hidden');
       systemSection.classList.add('revealed');
       
-      // 6. Smooth Scroll to the Upsell / Product card after a short moment
+      // Smooth Scroll to the Upsell / Product card after a short moment
       setTimeout(() => {
         systemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         
@@ -65,14 +64,35 @@ function handleSubscription(event) {
       
     }, 400);
 
-    // Save mock subscriber email in localStorage just to persist status locally
+    // Save subscriber email in localStorage
     try {
-      localStorage.setItem('capital_invisible_subscriber', emailInput.value);
+      localStorage.setItem('capital_invisible_subscriber', email);
     } catch (e) {
       console.warn("Storage not available:", e);
     }
+  };
 
-  }, 1500);
+  // Submit email to Formspree
+  fetch('https://formspree.io/f/mbdpqqpv', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      action: 'Descarga Capítulo 1 (Página Libro)',
+      _subject: `Nuevo Lead Capital Invisible: ${email}`
+    })
+  })
+  .then(() => {
+    showSuccessUI();
+  })
+  .catch((error) => {
+    console.error('Error registering lead on Formspree:', error);
+    // Fallback: grant access anyway
+    showSuccessUI();
+  });
 }
 
 /**
