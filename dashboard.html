@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecosistema Financiero AS | Albert Sierra</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div style="text-align: center; margin-top: 30px;">
+    <a href="TU_LINK_DE_PAGO_STRIPE_AQUI" 
+       style="background: linear-gradient(135deg, #D4AF37, #AA7C11); 
+              color: #0B0F19; 
+              padding: 15px 40px; 
+              text-decoration: none; 
+              font-weight: bold; 
+              border-radius: 50px; 
+              font-family: 'Inter', sans-serif; 
+              text-transform: uppercase; 
+              letter-spacing: 1px; 
+              box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+              transition: transform 0.2s ease;">
+       Acceder a la Masterclass
+    </a>
+</div>
+
+  <!-- Background Animated Elements -->
+  <div class="bg-blur-glow cyan-glow"></div>
+  <div class="bg-blur-glow gold-glow"></div>
+  <div class="bg-grid"></div>
+
+  <div class="portal-wrapper">
+    <!-- Header / Navbar -->
+    <header class="main-navbar">
+      <a href="index.html" class="brand-container" style="text-decoration: none;">
+        <div class="logo-symbol">AS</div>
+        <div class="brand-text">
+          <span class="brand-title">ECOSISTEMA AS</span>
+          <span class="brand-subtitle">Albert Sierra</span>
+        </div>
+      </a>
+      
+      <div class="nav-right">
+        <div class="profile-handle">
+          <i data-lucide="instagram" style="width: 14px; height: 14px;"></i>
+          <span>@vision.trader7</span>
+        </div>
+        <div class="status-badge">
+          <span class="dot-active"></span>
+          <span>Nube Activa</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="portal-main">
+      <!-- Welcome Hero Section -->
+      <section class="hero-section">
+        <h1 class="hero-greeting" id="hero-greeting">Cargando...</h1>
+        <p class="hero-tagline">
+          Bienvenido al centro neurálgico de tu ecosistema patrimonial y operativo en la nube. Gestiona tus plataformas de especulación y tus activos digitales desde un solo panel de control.
+        </p>
+      </section>
+
+      <!-- Grid Layout: Sidebar Stats & Main Cards -->
+      <div class="dashboard-grid">
+        
+        <!-- MAIN PRODUCTS COLUMN -->
+        <div class="products-column">
+          <!-- Card 1: Visión Trading Pro -->
+          <div class="app-card trading-card animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="card-glow"></div>
+            <div class="app-card-header">
+              <div class="app-icon trading-icon">
+                <svg width="24" height="24" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="10" width="6" height="15" rx="1" fill="#06b6d4"/>
+                  <line x1="11" y1="4" x2="11" y2="30" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="17" y="6" width="6" height="20" rx="1" fill="#3b82f6"/>
+                  <line x1="20" y1="2" x2="20" y2="32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="26" y="14" width="6" height="12" rx="1" fill="#ef4444"/>
+                  <line x1="29" y1="8" x2="29" y2="28" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="app-badge tag-cyan">ESPECULACIÓN TÉCNICA</div>
+            </div>
+            
+            <div class="app-card-body">
+              <h2 class="app-title">Visión Trading Pro</h2>
+              <p class="app-description">
+                Plataforma interactiva para la maestría técnica y mental en futuros. Curso estructurado de 70 días con mentalidad estoica, simulador gráfico de velas en tiempo real y calculadora avanzada de apalancamiento.
+              </p>
+              
+              <!-- LocalStorage dynamic progress bar -->
+              <div class="progress-container">
+                <div class="progress-info">
+                  <span class="progress-label">Progreso del Curso</span>
+                  <span class="progress-val" id="course-pct-label">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="course-pct-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="app-card-footer" style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="vision-trading/template_leccion.html" target="_blank" class="btn btn-cyan">
+                <span>Acceder a la Plataforma</span>
+                <i data-lucide="arrow-up-right" style="width: 16px; height: 16px;"></i>
+              </a>
+              <!-- REEMPLAZAR CON TU ENLACE DE PAGO DE STRIPE PARA LA MASTERCLASS -->
+              <a href="https://buy.stripe.com/mock_masterclass_pro" target="_blank" class="btn btn-pago-dorado">
+                <i data-lucide="credit-card" style="width: 16.5px; height: 16.5px;"></i>
+                <span>Comprar Masterclass ($299)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Capital Invisible -->
+          <div class="app-card manifesto-card animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="card-glow"></div>
+            <div class="app-card-header">
+              <div class="app-icon manifesto-icon">†</div>
+              <div class="app-badge tag-gold">SOBERANÍA FINANCIERA</div>
+            </div>
+            
+            <div class="app-card-body">
+              <h2 class="app-title">Capital Invisible</h2>
+              <p class="app-description">
+                El sistema de elusión legal y protección patrimonial definitivo. Descarga el Capítulo 1 del Manifiesto y accede a la compra de la obra completa *"Comprar, Pedir Prestado, Morir"*.
+              </p>
+              
+              <div class="manifesto-status-box" id="manifesto-status-box">
+                <i data-lucide="unlock" class="status-icon unlocked" style="display: none;"></i>
+                <i data-lucide="lock" class="status-icon locked"></i>
+                <span class="status-text" id="manifesto-status-text">Contenido Reservado (Requiere Correo)</span>
+              </div>
+            </div>
+            
+            <div class="app-card-footer" style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="capital-invisible/index.html" target="_blank" class="btn btn-gold">
+                <span>Abrir la Landing Page</span>
+                <i data-lucide="arrow-up-right" style="width: 16px; height: 16px;"></i>
+              </a>
+              <!-- REEMPLAZAR CON TU ENLACE DE PAGO DE STRIPE PARA EL LIBRO -->
+              <a href="https://buy.stripe.com/mock_capital_invisible" target="_blank" class="btn btn-pago-dorado">
+                <i data-lucide="credit-card" style="width: 16.5px; height: 16.5px;"></i>
+                <span>Comprar Libro ($49)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS & CALCULATOR COLUMN (SIDEBAR) -->
+        <aside class="sidebar-column animate-slide-up" style="animation-delay: 0.3s;">
+          <!-- Card: Resumen de Estadísticas -->
+          <div class="glass-panel stats-panel">
+            <h3 class="panel-title">
+              <i data-lucide="layout-dashboard"></i>
+              Resumen Operativo
+            </h3>
+            
+            <div class="stat-rows-container">
+              <div class="stat-row">
+                <span class="stat-label">Balance Sim.</span>
+                <span class="stat-val highlight-gold" id="stat-balance">$10,000.00</span>
+              </div>
+              
+              <div class="stat-row">
+                <span class="stat-label">Lecciones Completadas</span>
+                <span class="stat-val" id="stat-completed-days">0 / 70</span>
+              </div>
+              
+              <div class="stat-row">
+                <span class="stat-label">Desafíos Bitácora</span>
+                <span class="stat-val" id="stat-challenges">0</span>
+              </div>
+
+              <div class="stat-row">
+                <span class="stat-label">Acceso al Manifiesto</span>
+                <span class="stat-val" id="stat-manifesto">Bloqueado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Calculadora Rápida de Riesgo (Widget) -->
+          <div class="glass-panel calculator-panel">
+            <h3 class="panel-title">
+              <i data-lucide="calculator" class="icon-accent"></i>
+              Calculadora Rápida
+            </h3>
+            
+            <form id="quick-calc-form" onsubmit="event.preventDefault();">
+              <div class="quick-input-group">
+                <label class="calc-label" for="qc-capital">Capital de Cuenta ($)</label>
+                <input type="number" id="qc-capital" value="10000" min="100" class="calc-input">
+              </div>
+
+              <div class="quick-input-group">
+                <label class="calc-label" for="qc-risk-pct">Riesgo (%)</label>
+                <input type="number" id="qc-risk-pct" value="1" min="0.1" max="10" step="0.1" class="calc-input">
+              </div>
+
+              <div class="quick-input-group">
+                <label class="calc-label" for="qc-asset">Activo</label>
+                <select id="qc-asset" class="calc-select">
+                  <option value="ES" selected>ES (S&P 500 Mini) - $50/pt</option>
+                  <option value="MES">MES (S&P 500 Micro) - $5/pt</option>
+                  <option value="NQ">NQ (Nasdaq Mini) - $20/pt</option>
+                  <option value="MNQ">MNQ (Nasdaq Micro) - $2/pt</option>
+                </select>
+              </div>
+
+              <div class="quick-input-group">
+                <label class="calc-label" for="qc-sl-pts">Distancia SL (Puntos)</label>
+                <input type="number" id="qc-sl-pts" value="15" min="0.25" step="0.25" class="calc-input">
+              </div>
+
+              <div class="calc-results-widget">
+                <div class="qc-res-row">
+                  <span class="qc-res-label">Pérdida Máxima:</span>
+                  <span class="qc-res-val alert-red" id="qc-res-loss">$100.00</span>
+                </div>
+                <div class="qc-res-row">
+                  <span class="qc-res-label">Contratos Óptimos:</span>
+                  <span class="qc-res-val highlight-blue" id="qc-res-contracts">0.13 Contratos</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+      <div class="footer-links">
+        <a href="https://tiktok.com/@vision.trader7" target="_blank" rel="noopener noreferrer" class="social-link">
+          <i data-lucide="video"></i> TikTok
+        </a>
+        <a href="https://payhip.com/CapitalInvisible" target="_blank" rel="noopener noreferrer" class="social-link">
+          <i data-lucide="shopping-bag"></i> Payhip
+        </a>
+      </div>
+      <div class="copyright">
+        © 2026 Ecosistema AS • Diseñado con Maestría y Autocontrol
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

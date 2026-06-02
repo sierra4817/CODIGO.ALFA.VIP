@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS Académico - Visión Trading Pro</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <!-- Google Fonts for Luxury Brand style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Course Data Database -->
+  <script src="cursos_data.js"></script>
+</head>
+<body style="background-color: #000000; color: #f3f4f6; font-family: 'Inter', sans-serif;">
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">
+        <svg width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="10" width="6" height="15" rx="1" fill="#10b981"/>
+          <line x1="11" y1="4" x2="11" y2="30" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+          <rect x="17" y="6" width="6" height="20" rx="1" fill="#3b82f6"/>
+          <line x1="20" y1="2" x2="20" y2="32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+          <rect x="26" y="14" width="6" height="12" rx="1" fill="#ef4444"/>
+          <line x1="29" y1="8" x2="29" y2="28" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span>VISIÓN</span>
+        <span class="logo-sub">TRADING PRO</span>
+      </div>
+    </div>
+
+    <!-- Navigation settings and voice narrator button -->
+    <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; margin-right: 12px;">
+      <a href="../dashboard.html" class="indicator-toggle" style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: #00d2ff; text-decoration: none; cursor: pointer; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; transition: 0.2s ease;">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Dashboard
+      </a>
+      <button id="btn-audio-settings" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-family: var(--font-sans);">
+        <i data-lucide="settings" style="width: 16px; height: 16px; color: #d4af37;"></i> Config. Voz
+      </button>
+      <button id="btn-audio-narrate" class="btn-oro-liquido" style="padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+        <i data-lucide="volume-2" style="width: 16px; height: 16px;"></i> <span>Narrar Lección</span>
+      </button>
+    </div>
+
+    <!-- Profile card -->
+    <div class="user-profile">
+      <div class="user-info">
+        <span class="user-name">Albert</span>
+        <span class="user-handle">@vision.trader7</span>
+      </div>
+      <img src="logo-transp.png" onerror="this.src='LOGO.jpg';" alt="Albert Profile" class="user-avatar">
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation for 10 Pilares -->
+    <aside style="background: rgba(10, 10, 10, 0.85); border-right: 1px solid var(--border-color); padding: 20px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; height: 100vh; position: sticky; top: 0; min-width: 280px; max-width: 320px;">
+      <div class="progress-widget" style="flex-shrink: 0;">
+        <div class="progress-header">
+          <span class="progress-title">Progreso Académico</span>
+          <span id="progress-text" class="progress-percentage">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <ul class="menu-list" id="sidebar-pillars-menu" style="display: flex; flex-direction: column; gap: 6px;">
+        <!-- Dynamically rendered by JavaScript -->
+      </ul>
+
+      <!-- Card: Resumen de Estadísticas -->
+      <div class="glass-panel stats-panel" style="margin-top: 15px; flex-shrink: 0;">
+        <h3 class="panel-title" style="margin-top: 0;">
+          <i data-lucide="layout-dashboard"></i>
+          Resumen Operativo
+        </h3>
+        
+        <div class="stat-rows-container">
+          <div class="stat-row">
+            <span class="stat-label">Balance Sim.</span>
+            <span class="stat-val highlight-gold" id="stat-balance">$10,000.00</span>
+          </div>
+          
+          <div class="stat-row">
+            <span class="stat-label">Lecciones Completadas</span>
+            <span class="stat-val" id="stat-completed-days">0 / 70</span>
+          </div>
+          
+          <div class="stat-row">
+            <span class="stat-label">Desafíos Bitácora</span>
+            <span class="stat-val" id="stat-challenges">0</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">Acceso al Manifiesto</span>
+            <span class="stat-val" id="stat-manifesto" style="font-weight: 700;">Bloqueado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Calculadora de Riesgo Completa (Widget Sidebar) -->
+      <div class="glass-panel calculator-panel" style="flex-shrink: 0; margin-bottom: 20px;">
+        <h3 class="panel-title" style="margin-top: 0; color: #d4af37; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 12px; font-size: 0.95rem;">
+          <i data-lucide="calculator" class="icon-accent" style="color: #d4af37;"></i>
+          Calculadora de Riesgo
+        </h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="quick-input-group">
+            <label class="calc-label" for="calc-capital">Capital de Cuenta ($)</label>
+            <input type="number" id="calc-capital" value="10000" min="100" class="calc-input">
+          </div>
+
+          <div class="quick-input-group">
+            <label class="calc-label" for="calc-risk-pct">Riesgo (%)</label>
+            <input type="number" id="calc-risk-pct" value="1" min="0.1" max="10" step="0.1" class="calc-input">
+          </div>
+
+          <div class="quick-input-group">
+            <label class="calc-label" for="calc-asset">Activo</label>
+            <select id="calc-asset" class="calc-select" style="width: 100%; padding: 6px; background: #000; color: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.8rem;">
+              <option value="ES" selected>E-mini S&P 500 (ES)</option>
+              <option value="MES">Micro E-mini S&P 500 (MES)</option>
+              <option value="NQ">E-mini Nasdaq 100 (NQ)</option>
+              <option value="MNQ">Micro E-mini Nasdaq 100 (MNQ)</option>
+              <option value="CL">WTI Crude Oil (CL)</option>
+              <option value="MCL">Micro Crude Oil (MCL)</option>
+            </select>
+          </div>
+
+          <div class="quick-input-group">
+            <label class="calc-label" for="calc-sl-ticks">Stop Loss (Puntos)</label>
+            <input type="number" id="calc-sl-ticks" value="15" min="0.25" step="0.25" class="calc-input">
+          </div>
+
+          <div class="calc-results-widget" style="margin-top: 10px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 6px;">
+            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span class="qc-res-label" style="color: var(--text-secondary);">Riesgo Máximo:</span>
+              <span class="qc-res-val alert-red" id="res-risk-money" style="color: #ef4444; font-weight: bold;">$100.00</span>
+            </div>
+            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span class="qc-res-label" style="color: var(--text-secondary);">Valor Punto:</span>
+              <span class="qc-res-val" id="res-point-value" style="color: var(--text-primary); font-family: var(--font-mono);">$50.00</span>
+            </div>
+            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span class="qc-res-label" style="color: var(--text-secondary);">Riesgo 1 Contrato:</span>
+              <span class="qc-res-val" id="res-sl-value-1contract" style="color: var(--text-primary); font-family: var(--font-mono);">$750.00</span>
+            </div>
+            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 2px;">
+              <span class="qc-res-label" style="color: var(--text-secondary); font-weight: bold;">Contratos Óptimos:</span>
+              <span class="qc-res-val highlight-gold" id="res-contracts" style="color: #d4af37; font-weight: bold;">0.13 Contratos</span>
+            </div>
+          </div>
+
+          <div id="res-warning-msg" style="font-size: 0.7rem; line-height: 1.3; color: var(--text-secondary); background: rgba(245, 158, 11, 0.05); border-left: 2px solid #f59e0b; padding: 6px; border-radius: 2px; margin-top: 6px;">
+            Cargando recomendaciones...
+          </div>
+
+          <button id="btn-export-plan" class="btn-oro-borde" style="margin-top: 8px; width: 100%; height: 32px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; padding: 0;">
+            <i data-lucide="file-text" style="width: 12px; height: 12px;"></i> Exportar Plan de Trading
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main style="background-color: #000000; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px;">
+      
+      <!-- Lesson Card -->
+      <div class="card" id="lesson-card-container" style="background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 28px;">
+        <span id="lesson-module-tag" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; color: var(--text-secondary); text-transform: uppercase;">Módulo 1</span>
+        <h1 id="lesson-title" style="font-family: 'Playfair Display', serif; color: #d4af37; font-size: 2rem; margin-top: 8px; margin-bottom: 24px; font-weight: 700;">Cargando lección...</h1>
+        
+        <!-- Interactive Technical SVG Graphic Support -->
+        <div id="graphic-wrapper" style="margin-bottom: 24px;">
+          <div class="canvas-container" style="background: #080a0f; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; padding: 16px; display: flex; justify-content: center; align-items: center; min-height: 320px;">
+            <svg id="academic-svg-canvas" viewBox="0 0 500 220" style="width: 100%; max-width: 720px; height: auto; display: block;">
+              <!-- Drawn dynamically by JS -->
+            </svg>
+          </div>
+        </div>
+
+        <!-- Technical Content Rich Text -->
+        <div class="lesson-body" id="lesson-body-content" style="line-height: 1.7; font-size: 0.95rem; color: #d1d5db; display: flex; flex-direction: column; gap: 16px;">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Mentalidad Estoica Card -->
+      <div class="card" id="mindset-card-container" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(10, 10, 10, 0.8) 100%); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: var(--radius-lg); padding: 24px;">
+        <h3 style="font-family: var(--font-sans); color: #d4af37; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="shield" style="width: 16px; height: 16px;"></i> Mentalidad Operativa (Foco Estoico)
+        </h3>
+        <p id="lesson-mindset-text" style="font-style: italic; color: #e5e7eb; font-size: 0.95rem; line-height: 1.6; padding-left: 12px; border-left: 2px solid #d4af37;">
+          <!-- Loaded dynamically -->
+        </p>
+      </div>
+
+      <!-- Challenge / Bitácora Input Area -->
+      <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px;">
+        <h3 style="font-family: var(--font-sans); color: #00ffff; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="book-open"></i> Desafío Práctico de Bitácora
+        </h3>
+        <p id="lesson-challenge-desc" style="color: #9ca3af; font-size: 0.9rem; margin-bottom: 16px;">
+          <!-- Loaded dynamically -->
+        </p>
+        <textarea id="challenge-response-input" placeholder="Escribe aquí tu análisis, observaciones técnicas o compromiso de mentalidad..." style="width: 100%; height: 100px; background: rgba(5, 5, 5, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #f3f4f6; padding: 12px; font-family: inherit; font-size: 0.9rem; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='rgba(0, 255, 255, 0.5)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+        <button id="btn-save-challenge" class="btn-oro-liquido" style="padding: 10px 18px; border-radius: var(--radius-sm); margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+          <i data-lucide="save" style="width: 15px; height: 15px;"></i> Guardar en Bitácora
+        </button>
+      </div>
+
+      <!-- Quiz Card (Displayed on Exam Days: 7, 14, 21, 28, 35, 42, 49, 56, 63, 70) -->
+      <div class="card" id="exam-quiz-card" style="background: rgba(13, 10, 6, 0.85); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: var(--radius-lg); padding: 28px; display: none;">
+        <h3 style="color: #d4af37; font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="award"></i> Evaluación Semanal de Módulo
+        </h3>
+        <div id="quiz-question-container">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; gap: 16px; margin-bottom: 40px;">
+        <button id="btn-prev-lesson" class="btn-oro-borde" style="width: auto; min-width: 160px; padding: 12px 24px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem;">
+          <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> Lección Anterior
+        </button>
+        <button id="btn-next-lesson" class="btn-oro-liquido" style="width: auto; min-width: 220px; padding: 12px 30px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+          <span>Siguiente Lección</span> <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+
+
+
+      <!-- SIMULATOR SECTION -->
+      <section id="simulator" class="lesson-tool-section" style="margin-top: 20px;">
+        <div class="simulator-layout">
+          
+          <div class="chart-section">
+            <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 0;">
+              <div class="chart-header">
+                <div class="active-asset-info">
+                  <select id="sim-asset-select" class="asset-badge" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); outline: none; cursor: pointer;">
+                    <option value="ES" selected>E-mini S&P 500 (ES)</option>
+                    <option value="NQ">E-mini Nasdaq 100 (NQ)</option>
+                  </select>
+                  <span id="sim-current-price" class="asset-price bullish">4850.50</span>
+                </div>
+
+                <!-- Toggle between Simulated Trading and Real TradingView Live Charts -->
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="chart-view-toggle" style="display: flex; gap: 4px; background: rgba(36, 47, 61, 0.4); padding: 4px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <button id="btn-chart-sim" class="indicator-toggle active" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
+                      Simulador Pro
+                    </button>
+                    <button id="btn-chart-tv" class="indicator-toggle" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
+                      TradingView Real
+                    </button>
+                  </div>
+                  <button id="btn-toggle-size" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; padding: 6px 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-family: var(--font-sans); transition: all 0.2s ease;">
+                    <i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #00ffff;"></i> <span>Agrandar</span>
+                  </button>
+                </div>
+
+                <div class="chart-controls" id="sim-chart-controls">
+                  <button id="toggle-ema" class="indicator-toggle active">
+                    <i data-lucide="line-chart"></i> EMA 200
+                  </button>
+                  <button id="toggle-rsi" class="indicator-toggle active">
+                    <i data-lucide="percent"></i> RSI 14
+                  </button>
+                  
+                  <div class="sim-speed-control" style="margin-top: 0; padding: 4px 10px;">
+                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-right: 8px;">Velocidad:</span>
+                    <select id="sim-speed" style="background: transparent; color: var(--text-primary); border: none; font-family: var(--font-mono); font-size: 0.8rem; cursor: pointer; outline: none;">
+                      <option value="1">1x</option>
+                      <option value="2">2x</option>
+                      <option value="5">5x</option>
+                      <option value="10">10x</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulator Pro Canvas container -->
+            <div class="canvas-container" id="sim-canvas-container" style="background: #080a0f; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; padding: 10px; min-height: 500px;">
+              <canvas id="chartCanvas" class="main-chart-canvas" style="display: block; width: 100%; height: 500px;"></canvas>
+              <canvas id="rsiCanvas" class="rsi-chart-canvas" style="display: block; width: 100%; height: 120px; margin-top: 10px;"></canvas>
+            </div>
+
+            <!-- TradingView Live widget container -->
+            <div class="tradingview-container" id="sim-tv-container" style="display: none; height: 500px; min-height: 480px; max-height: 800px; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: #131722; width: 100%;">
+              <div id="tradingview_chart" style="height: 100%; width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- Trade Operations Panel -->
+          <div class="control-panel">
+            <div class="balance-widget" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md);">
+              <h3 class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0; font-size: 1.05rem; color: #d4af37;">
+                <i data-lucide="wallet"></i> Mi Cuenta Sim
+              </h3>
+              <div class="balance-row" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span class="balance-label">Balance:</span>
+                <span id="sim-balance" class="balance-val">$10,000.00</span>
+              </div>
+              <div class="balance-row" style="display: flex; justify-content: space-between; margin-top: 6px;">
+                <span class="balance-label">P&L Operación:</span>
+                <span id="sim-pnl" class="balance-val">$0.00</span>
+              </div>
+              <div class="balance-row" style="display: flex; justify-content: space-between; margin-top: 6px;">
+                <span class="balance-label">Margen Utilizado:</span>
+                <span id="sim-margin" class="balance-val">$0.00</span>
+              </div>
+            </div>
+
+            <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0;">
+              <h3 class="card-title" style="font-size: 1.05rem; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
+                <i data-lucide="settings"></i> Configuración Orden
+              </h3>
+              
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Apalancamiento</label>
+                <select id="sim-leverage" class="form-control" style="padding: 8px 10px; font-size: 0.85rem; background: #000; color: #fff; border: 1px solid var(--border-color);">
+                  <option value="10">10x (Bajo riesgo)</option>
+                  <option value="20" selected>20x (Estándar)</option>
+                  <option value="50">50x (Alto apalancamiento)</option>
+                  <option value="100">100x (Extremo - Margen bajo)</option>
+                </select>
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Contratos</label>
+                <input type="number" id="sim-contracts" class="form-control" value="1" min="1" max="100" style="padding: 8px 10px; font-size: 0.85rem; background: #000; color: #fff; border: 1px solid var(--border-color);">
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Distancia SL (Puntos)</label>
+                <input type="number" id="sim-sl-dist" class="form-control" value="15" min="2" style="padding: 8px 10px; font-size: 0.85rem; background: #000; color: #fff; border: 1px solid var(--border-color);">
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Distancia TP (Puntos)</label>
+                <input type="number" id="sim-tp-dist" class="form-control" value="30" min="2" style="padding: 8px 10px; font-size: 0.85rem; background: #000; color: #fff; border: 1px solid var(--border-color);">
+              </div>
+
+              <div class="order-actions" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <button id="btn-buy" class="order-btn order-btn-buy" style="background: #10b981; color: white; border: none; padding: 10px; border-radius: var(--radius-sm); font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center;">
+                  <span>COMPRAR (Largo)</span>
+                  <span class="order-btn-sub" style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">Al Mercado</span>
+                </button>
+                <button id="btn-sell" class="order-btn order-btn-sell" style="background: #ef4444; color: white; border: none; padding: 10px; border-radius: var(--radius-sm); font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center;">
+                  <span>VENDER (Corto)</span>
+                  <span class="order-btn-sub" style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">Al Mercado</span>
+                </button>
+              </div>
+
+              <!-- Live Position Display -->
+              <div id="sim-active-position" style="display: none; margin-top: 15px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); padding: 12px; border-radius: var(--radius-sm);">
+                <div class="position-card">
+                  <div class="position-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span id="pos-type-badge" class="position-badge long" style="background: #10b981; color: white; padding: 2px 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: bold;">Largo 1 MES</span>
+                    <button id="btn-close-position" class="btn-oro-borde" style="padding: 2px 8px; font-size: 0.75rem; height: 24px;">Cerrar</button>
+                  </div>
+                  <div style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 4px; color: var(--text-secondary);">
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Precio Entrada:</span>
+                      <span id="pos-entry-price" style="font-family: var(--font-mono); color: var(--text-primary);">4850.25</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Stop Loss:</span>
+                      <span id="pos-sl-price" style="font-family: var(--font-mono); color: var(--color-bear);">4835.25</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Take Profit:</span>
+                      <span id="pos-tp-price" style="font-family: var(--font-mono); color: var(--color-bull);">4880.25</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strategy Help Card in Simulator -->
+            <div class="card" style="background: rgba(16, 185, 129, 0.03); border: 1px solid rgba(16, 185, 129, 0.1); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0;">
+              <h4 style="font-size: 0.85rem; color: #10b981; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="help-circle"></i> Guía Estrategia Visión
+              </h4>
+              <p style="font-size: 0.75rem; color: #9ca3af; line-height: 1.4;">
+                1. <strong>Identifica Tendencia:</strong> Vela sobre la línea azul (EMA 200) = Tendencia Alcista. Vela bajo la línea azul = Tendencia Bajista.<br><br>
+                2. <strong>Confirma Impulso (RSI):</strong> RSI cruza sobre 50 en tendencia alcista = Compra. RSI cruza bajo 50 en tendencia bajista = Venta.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // 10 Pilares configuration
+    const pilares = window.courseModules || [
+      { id: 1, name: "Pilar 1: Mentalidad Ganadora", icon: "brain" },
+      { id: 2, name: "Pilar 2: Gestión y Disciplina", icon: "shield-check" },
+      { id: 3, name: "Pilar 3: Estrategia de Alta Probabilidad", icon: "trending-up" },
+      { id: 4, name: "Pilar 4: Ejecución y Evaluación", icon: "activity" },
+      { id: 5, name: "Pilar 5: Bloques de Órdenes", icon: "box" },
+      { id: 6, name: "Pilar 6: Liquidez Avanzada", icon: "target" },
+      { id: 7, name: "Pilar 7: Vacíos de Liquidez (FVG)", icon: "split" },
+      { id: 8, name: "Pilar 8: Análisis Fractal (HTF/LTF)", icon: "layers" },
+      { id: 9, name: "Pilar 9: Especulación de Fondos", icon: "award" },
+      { id: 10, name: "Pilar 10: Plan de Negocios y Retiros", icon: "check-square" }
+    ];
+
+    // Quizzes for all 10 modules
+    const quizzes = {
+      1: [
+        { q: "¿Cuál es la única realidad objetiva del mercado?", options: ["Las noticias macroeconómicas", "El consenso del precio en tiempo real", "Los indicadores técnicos rezagados"], answer: 1 }
+      ],
+      2: [
+        { q: "¿Qué porcentaje de ganancia necesitas para recuperarte de un drawdown del 50%?", options: ["50%", "75%", "100%"], answer: 2 }
+      ],
+      3: [
+        { q: "¿Qué requiere un BOS (Break of Structure) alcista real?", options: ["Que una vela traspase el nivel con mecha rápida", "Que la vela cierre con su cuerpo por encima del máximo anterior", "Que el RSI esté sobrecomprado"], answer: 1 }
+      ],
+      4: [
+        { q: "¿Cómo actúa la EMA 200 en tu checklist operativo?", options: ["Como oscilador de momentum", "Como brújula de tendencia mayor para filtrar operaciones", "Como nivel de stop loss fijo"], answer: 1 }
+      ],
+      5: [
+        { q: "¿Qué representa un Order Block (OB) institucional?", options: ["La última vela de sentido contrario antes de una expansión impulsiva de volumen", "Una media móvil ponderada", "El volumen de contratos acumulado al cierre de la sesión"], answer: 0 }
+      ],
+      6: [
+        { q: "¿Por qué las instituciones realizan un sweep o barrido de mínimos previos (SSL)?", options: ["Para inducir compras minoristas caras", "Para activar Stop Losses minoristas (órdenes de venta) y absorberlos como contrapartida barata", "Para cerrar la sesión de trading rápidamente"], answer: 1 }
+      ],
+      7: [
+        { q: "¿Qué es un Fair Value Gap (FVG)?", options: ["Un soporte histórico de polaridad", "Un desequilibrio de 3 velas donde el precio se entregó de forma unilateral dejando un vacío", "El volumen transaccionado en el POC"], answer: 1 }
+      ],
+      8: [
+        { q: "¿Qué es la alineación temporal perfecta en SMC?", options: ["Esperar que coincida la apertura de Nueva York y Londres", "Identificar un POI HTF y esperar un CHoCH + FVG local en temporalidad LTF", "Operar a favor de los osciladores en diario"], answer: 1 }
+      ],
+      9: [
+        { q: "¿Qué hace la regla del Trailing Drawdown en una Prop Firm?", options: ["Persigue el saldo máximo de tu cuenta reduciendo tu margen de pérdida permitido", "Permite pérdidas ilimitadas", "Aumenta tus lotes automáticamente"], answer: 0 }
+      ],
+      10: [
+        { q: "¿Cuál es el enfoque correcto para el escalamiento de contratos?", options: ["Aumentar lotes tras una racha de pérdidas para recuperar rápido", "Aumentar lotes gradualmente basados en el crecimiento matemático de tu colchón de drawdown", "Mantener siempre el mismo apalancamiento sin importar el balance"], answer: 1 }
+      ]
+    };
+
+    // State Variables
+    let currentDayId = "day1";
+    let courseData = {};
+    let progressState = {
+      days: {},
+      quizzes: { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false }
+    };
+    let activeAccordion = 1;
+    let selectedQuizAnswers = {};
+
+    function loadEcosystemStats() {
+      // 1. Course progress
+      const savedProgress = localStorage.getItem('vision_70day_progress');
+      let completedDaysCount = 0;
+      const totalDays = 70;
+      
+      if (savedProgress) {
+        try {
+          const parsed = JSON.parse(savedProgress);
+          if (parsed && parsed.days) {
+            Object.keys(parsed.days).forEach(key => {
+              if (parsed.days[key].completed) {
+                completedDaysCount++;
+              }
+            });
+          }
+        } catch (e) {
+          console.error("Error reading course progress:", e);
+        }
+      }
+
+      const statCompleted = document.getElementById('stat-completed-days');
+      if (statCompleted) statCompleted.textContent = `${completedDaysCount} / ${totalDays}`;
+
+      // 2. Bitácora challenges
+      let challengesCount = 0;
+      for (let i = 1; i <= 70; i++) {
+        const response = localStorage.getItem(`vision_challenge_day${i}`);
+        if (response && response.trim() !== '') {
+          challengesCount++;
+        }
+      }
+      const statChallenges = document.getElementById('stat-challenges');
+      if (statChallenges) statChallenges.textContent = challengesCount.toString();
+
+      // 3. Balance Sim
+      const savedBalance = localStorage.getItem('vision_simulator_balance');
+      let balanceVal = 10000.00;
+      if (savedBalance) {
+        const parsed = parseFloat(savedBalance);
+        if (!isNaN(parsed)) {
+          balanceVal = parsed;
+        }
+      }
+      const statBalance = document.getElementById('stat-balance');
+      if (statBalance) {
+        statBalance.textContent = `$${balanceVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+
+      // 4. Acceso al Manifiesto
+      const subscriberEmail = localStorage.getItem('capital_invisible_subscriber');
+      const statManifesto = document.getElementById('stat-manifesto');
+      if (statManifesto) {
+        if (subscriberEmail && subscriberEmail.trim() !== '') {
+          statManifesto.textContent = 'Suscrito (Libre)';
+          statManifesto.style.color = '#10b981';
+        } else {
+          statManifesto.textContent = 'Bloqueado';
+          statManifesto.style.color = '#ef4444';
+        }
+      }
+    }
+
+
+    // Load data from JSON or local script
+    async function init() {
+      try {
+        if (typeof window.courseData !== 'undefined') {
+          courseData = window.courseData;
+        } else {
+          const response = await fetch("cursos_data.json");
+          const json = await response.json();
+          courseData = json.lessons;
+        }
+
+        // Load progress from localStorage
+        const saved = localStorage.getItem("vision_70day_progress");
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved);
+            progressState = parsed;
+            // Backwards compatibility or initialize missing pillars
+            if (!progressState.quizzes) progressState.quizzes = {};
+            for(let i=1; i<=10; i++) {
+              if (progressState.quizzes[i] === undefined) progressState.quizzes[i] = false;
+            }
+          } catch(e) {
+            console.error("Error reading saved progress", e);
+          }
+        } else {
+          // Initialize empty progress for 70 days
+          Object.keys(courseData).forEach((key, index) => {
+            progressState.days[key] = {
+              completed: false,
+              unlocked: index === 0
+            };
+          });
+          localStorage.setItem("vision_70day_progress", JSON.stringify(progressState));
+        }
+
+        // Get day from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const dayParam = urlParams.get("day");
+        if (dayParam && courseData["day" + dayParam]) {
+          currentDayId = "day" + dayParam;
+        } else {
+          // Open latest unlocked day
+          const unlockedDays = Object.keys(courseData).filter(k => progressState.days[k]?.unlocked);
+          if (unlockedDays.length > 0) {
+            currentDayId = unlockedDays[unlockedDays.length - 1];
+          }
+        }
+
+        activeAccordion = courseData[currentDayId].pilar;
+
+        renderSidebarMenu();
+        loadLesson(currentDayId);
+        updateUIProgress();
+        loadEcosystemStats();
+
+      } catch (err) {
+        console.error("Failed to initialize course engine:", err);
+      }
+    }
+
+    // Load dynamic content
+    function loadLesson(dayId) {
+      if (typeof stopAllSpeech === 'function') stopAllSpeech();
+      currentDayId = dayId;
+      const day = courseData[dayId];
+      if (!day) return;
+
+      // Update URL without refreshing
+      const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?day=' + dayId.replace("day", "");
+      window.history.pushState({path:newurl},'',newurl);
+
+      document.getElementById("lesson-module-tag").textContent = `Módulo ${day.pilar} • Día ${dayId.replace("day", "")}`;
+      document.getElementById("lesson-title").textContent = day.title;
+      document.getElementById("lesson-body-content").innerHTML = day.content;
+      document.getElementById("lesson-mindset-text").textContent = day.mindset;
+      document.getElementById("lesson-challenge-desc").textContent = day.challenge;
+
+      // Load saved challenge response
+      const savedResponse = localStorage.getItem(`vision_challenge_${dayId}`) || "";
+      document.getElementById("challenge-response-input").value = savedResponse;
+
+      // Draw SVG support graphic
+      drawSVGGraphic(day.graphic_desc, parseInt(dayId.replace("day", "")));
+
+      // Render Quiz if it is an exam day
+      const dayNum = parseInt(dayId.replace("day", ""));
+      const isExam = (dayNum % 7 === 0);
+      const quizCard = document.getElementById("exam-quiz-card");
+
+      if (isExam) {
+        quizCard.style.display = "block";
+        renderQuiz(day.pilar);
+      } else {
+        quizCard.style.display = "none";
+      }
+
+      // Update buttons text
+      const nextBtn = document.getElementById("btn-next-lesson");
+      if (dayId === "day70") {
+        nextBtn.querySelector("span").textContent = "Finalizar Curso";
+      } else if (isExam && !progressState.quizzes[day.pilar]) {
+        nextBtn.querySelector("span").textContent = "Aprobar Examen";
+      } else {
+        nextBtn.querySelector("span").textContent = "Siguiente Lección";
+      }
+
+      // Update sidebar visual active item
+      document.querySelectorAll(".day-item").forEach(item => {
+        item.classList.remove("active");
+        if (item.getAttribute("data-id") === dayId) {
+          item.classList.add("active");
+        }
+      });
+
+      // Automatically trigger voice narrator for this lesson
+      setTimeout(() => {
+        const btn = document.getElementById("btn-audio-narrate");
+        if (btn && typeof handleNarrateClick === "function") {
+          handleNarrateClick(dayId, btn);
+        }
+      }, 150);
+    }
+
+    // Render 10 Pilares Accordion
+    function renderSidebarMenu() {
+      const container = document.getElementById("sidebar-pillars-menu");
+      if (!container) return;
+
+      let html = "";
+      pilares.forEach(pilar => {
+        const isOpen = activeAccordion === pilar.id;
+        html += `
+          <div class="pilar-group ${isOpen ? 'open' : ''}" id="pilar-group-${pilar.id}">
+            <div class="pilar-header" onclick="toggleAccordion(${pilar.id})" style="padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600;">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="${pilar.icon}" style="width: 14px; height: 14px; color: ${isOpen ? '#00ffff' : '#9ca3af'}"></i>
+                ${pilar.name}
+              </span>
+              <i data-lucide="${isOpen ? 'chevron-down' : 'chevron-right'}" style="width: 14px; height: 14px; color: #6b7280;"></i>
+            </div>
+            <div class="pilar-sub-list" style="display: ${isOpen ? 'flex' : 'none'}; flex-direction: column; gap: 4px; padding: 4px 8px; margin-top: 4px;">
+        `;
+
+        // Render 7 lessons of this pilar
+        for (let i = 1; i <= 7; i++) {
+          const dNum = (pilar.id - 1) * 7 + i;
+          const dId = "day" + dNum;
+          const day = courseData[dId];
+
+          if (day) {
+            const isCompleted = progressState.days[dId]?.completed;
+            const isUnlocked = progressState.days[dId]?.unlocked;
+            const isActive = currentDayId === dId;
+
+            let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
+            if (isCompleted) {
+              statusIcon = '<i data-lucide="check-circle" style="width:12px; height:12px; color:#10b981;"></i>';
+            } else if (isUnlocked) {
+              statusIcon = '<i data-lucide="circle" style="width:12px; height:12px; color:#00ffff;"></i>';
+            }
+
+            html += `
+              <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'};">
+                <span>Día ${dNum}: ${day.title}</span>
+                <span>${statusIcon}</span>
+              </div>
+            `;
+          }
+        }
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    window.toggleAccordion = (pilarId) => {
+      activeAccordion = activeAccordion === pilarId ? null : pilarId;
+      renderSidebarMenu();
+    };
+
+    // Render Pilar Quiz
+    function renderQuiz(pilarId) {
+      const container = document.getElementById("quiz-question-container");
+      if (!container) return;
+
+      const pQuizzes = quizzes[pilarId];
+      if (!pQuizzes || pQuizzes.length === 0) {
+        container.innerHTML = "<p>No hay evaluación disponible para este módulo.</p>";
+        return;
+      }
+
+      let html = "";
+      pQuizzes.forEach((quiz, idx) => {
+        const isPassed = progressState.quizzes[pilarId];
+        html += `
+          <div style="margin-bottom: 20px;">
+            <p style="font-size: 0.95rem; color: #f3f4f6; font-weight: 600; margin-bottom: 12px;">P${idx+1}: ${quiz.q}</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+        `;
+
+        quiz.options.forEach((opt, oIdx) => {
+          const isSelected = selectedQuizAnswers[idx] === oIdx;
+          const isCorrect = oIdx === quiz.answer;
+          let btnStyle = "background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #f3f4f6;";
+          
+          if (isSelected) {
+            btnStyle = "background: rgba(0, 255, 255, 0.1); border: 1px solid #00ffff; color: #00ffff;";
+          }
+          if (isPassed && isCorrect) {
+            btnStyle = "background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #10b981;";
+          }
+
+          html += `
+            <button class="indicator-toggle" onclick="${isPassed ? '' : `selectOption(${idx}, ${oIdx})`}" style="padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; text-align: left; cursor: ${isPassed ? 'default' : 'pointer'}; ${btnStyle}">
+              ${opt}
+            </button>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      if (progressState.quizzes[pilarId]) {
+        html += `
+          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 8px; color: #10b981; font-weight: 600; font-size: 0.85rem;">
+            <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> ¡Evaluación Aprobada! El siguiente módulo está desbloqueado.
+          </div>
+        `;
+      } else {
+        html += `
+          <button onclick="submitQuiz(${pilarId})" class="btn-oro-liquido" style="padding: 10px 24px; border-radius: var(--radius-sm); font-size: 0.85rem;">
+            Enviar Respuestas
+          </button>
+        `;
+      }
+
+      container.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    window.selectOption = (qIdx, oIdx) => {
+      selectedQuizAnswers[qIdx] = oIdx;
+      const day = courseData[currentDayId];
+      renderQuiz(day.pilar);
+    };
+
+    window.submitQuiz = (pilarId) => {
+      const pQuizzes = quizzes[pilarId];
+      let allCorrect = true;
+
+      for (let i = 0; i < pQuizzes.length; i++) {
+        if (selectedQuizAnswers[i] !== pQuizzes[i].answer) {
+          allCorrect = false;
+          break;
+        }
+      }
+
+      if (allCorrect) {
+        progressState.quizzes[pilarId] = true;
+        
+        // Mark current exam day completed
+        progressState.days[currentDayId].completed = true;
+        
+        // Unlock next day
+        const dayNum = parseInt(currentDayId.replace("day", ""));
+        const nextDayNum = dayNum + 1;
+        const nextDayId = "day" + nextDayNum;
+        if (courseData[nextDayId]) {
+          progressState.days[nextDayId].unlocked = true;
+        }
+
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        loadLesson(currentDayId);
+
+        alert("¡Felicidades! Has aprobado el examen y desbloqueado la siguiente etapa del curso.");
+      } else {
+        alert("Algunas respuestas son incorrectas. Repasa los conceptos del pilar e inténtalo de nuevo.");
+      }
+    };
+
+    // Save progress to localStorage
+    function saveProgress() {
+      localStorage.setItem("vision_70day_progress", JSON.stringify(progressState));
+    }
+
+    // Update Progress bar
+    function updateUIProgress() {
+      let completed = 0;
+      const total = 70;
+
+      Object.values(progressState.days).forEach(day => {
+        if (day.completed) completed++;
+      });
+
+      const percentage = Math.round((completed / total) * 100);
+      document.getElementById("progress-text").textContent = `${percentage}%`;
+      document.getElementById("progress-bar").style.width = `${percentage}%`;
+
+      // Set menu badge in header if certificate is unlocked
+      const certAvailable = Object.values(progressState.quizzes).every(val => val === true);
+      const certItem = document.getElementById("menu-item-certificate");
+      if (certItem) certItem.style.display = certAvailable ? "block" : "none";
+
+      loadEcosystemStats();
+    }
+
+    // Handle Challenge bitácora save
+    document.getElementById("btn-save-challenge").addEventListener("click", () => {
+      const response = document.getElementById("challenge-response-input").value;
+      localStorage.setItem(`vision_challenge_${currentDayId}`, response);
+      alert("Desafío guardado exitosamente en tu bitácora.");
+      loadEcosystemStats();
+    });
+
+    // Handle Navigation Previous Lesson
+    document.getElementById("btn-prev-lesson").addEventListener("click", () => {
+      const dNum = parseInt(currentDayId.replace("day", ""));
+      if (dNum > 1) {
+        const prevId = "day" + (dNum - 1);
+        loadLesson(prevId);
+      } else {
+        alert("Ya te encuentras en la primera lección del curso.");
+      }
+    });
+
+    // Handle Navigation Next Lesson
+    document.getElementById("btn-next-lesson").addEventListener("click", () => {
+      const dNum = parseInt(currentDayId.replace("day", ""));
+      const isExam = (dNum % 7 === 0);
+      const day = courseData[currentDayId];
+
+      if (isExam && !progressState.quizzes[day.pilar]) {
+        alert("Debes aprobar la evaluación final de este módulo antes de poder avanzar.");
+        return;
+      }
+
+      // Mark current day completed
+      progressState.days[currentDayId].completed = true;
+
+      if (dNum < 70) {
+        const nextId = "day" + (dNum + 1);
+        progressState.days[nextId].unlocked = true;
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        loadLesson(nextId);
+      } else {
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        alert("¡Felicidades! Has completado las 70 lecciones del Curso de Trading Profesional (Ecosistema AS).");
+      }
+    });
+
+    // Premium Audio Narration with ElevenLabs & Browser Web Speech Fallback
+    const getApiKey = () => {
+      const stored = localStorage.getItem("vision_elevenlabs_api_key");
+      if (!stored || stored === "null" || stored === "undefined" || stored.trim() === "") {
+        return "sk_cf0eff44faa9a9838a53af3850a02dc60c96e883b95570ce";
+      }
+      return stored.trim();
+    };
+
+    const getVoiceId = () => {
+      const stored = localStorage.getItem("vision_elevenlabs_voice_id");
+      if (!stored || stored === "null" || stored === "undefined" || stored.trim() === "") {
+        return "c6rAmJGsdzNWAIVkws45"; // Default voice ID (Visión Trading Pro)
+      }
+      return stored.trim();
+    };
+
+    let activeAudio = null;
+    let activeNarratorButton = null;
+
+    const stopAllSpeech = () => {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+      
+      const btn = document.getElementById("btn-audio-narrate");
+      if (btn) {
+        btn.classList.remove("active");
+        btn.style.background = "";
+        btn.style.color = "";
+        btn.style.borderColor = "";
+        const span = btn.querySelector("span");
+        if (span) span.textContent = "Narrar Lección";
+        const icon = btn.querySelector("i");
+        if (icon) icon.setAttribute("data-lucide", "volume-2");
+      }
+      lucide.createIcons();
+      activeNarratorButton = null;
+    };
+
+    const handleNarrateClick = async (dayId, button) => {
+      if (button === activeNarratorButton) {
+        stopAllSpeech();
+        return;
+      }
+
+      stopAllSpeech();
+
+      const day = courseData[dayId];
+      if (!day) return;
+
+      // Read only the educational content, stripping HTML tags
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = day.content;
+      let textToRead = tempDiv.innerText || tempDiv.textContent || "";
+
+      // Replace $ followed by number with "[number] dólares" and other currency references to avoid TTS pronouncing $ as "pesos"
+      textToRead = textToRead.replace(/\$(\d+(?:[.,]\d+)?)/g, "$1 dólares");
+      textToRead = textToRead.replace(/\$/g, " dólares ");
+      textToRead = textToRead.replace(/USD/gi, " dólares ");
+
+      // Strip Markdown symbols like * or _ to make it read like a natural human voice (no pronouncing "asterisco", etc.)
+      textToRead = textToRead.replace(/[*_#`~]/g, "");
+      textToRead = textToRead.replace(/\s+/g, " "); // collapse whitespace
+      const apiKey = getApiKey();
+      const voiceId = getVoiceId();
+
+      if (apiKey) {
+        try {
+          button.disabled = true;
+          button.classList.add("loading");
+          button.querySelector("span").textContent = "Generando Audio...";
+          
+          console.log(`[Narrador] Enviando petición a ElevenLabs. Voice ID: ${voiceId}`);
+          
+          const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "xi-api-key": apiKey
+            },
+            body: JSON.stringify({
+              text: textToRead.substring(0, 4800), // Safety cap limit
+              model_id: "eleven_multilingual_v2",
+              voice_settings: {
+                stability: 0.75,
+                similarity_boost: 0.85,
+                style: 0.05,
+                use_speaker_boost: true
+              }
+            })
+          });
+
+          if (!response.ok) {
+            let errMsg = `Código ${response.status}`;
+            try {
+              const errJson = await response.json();
+              if (errJson && errJson.detail && errJson.detail.message) {
+                errMsg = errJson.detail.message;
+              }
+            } catch (e) {
+              errMsg = response.statusText || errMsg;
+            }
+            throw new Error(errMsg);
+          }
+
+          const blob = await response.blob();
+          const audioUrl = URL.createObjectURL(blob);
+          activeAudio = new Audio(audioUrl);
+          
+          button.disabled = false;
+          button.classList.remove("loading");
+          button.classList.add("active");
+          button.style.background = "rgba(16, 185, 129, 0.15)";
+          button.style.color = "#10b981";
+          button.style.borderColor = "#10b981";
+          button.querySelector("span").textContent = "Detener Narración";
+          button.querySelector("i").setAttribute("data-lucide", "square");
+          lucide.createIcons();
+          activeNarratorButton = button;
+
+          console.log(`[Narrador] Reproduciendo audio generado por ElevenLabs.`);
+          activeAudio.play();
+          activeAudio.onended = () => {
+            stopAllSpeech();
+          };
+        } catch (err) {
+          button.disabled = false;
+          button.classList.remove("loading");
+          button.querySelector("span").textContent = "Narrar Lección";
+          console.warn(`[Narrador] Error con ElevenLabs: ${err.message}. Usando fallback.`);
+          console.warn(`Error con ElevenLabs: ${err.message}. Usando el narrador gratuito por defecto...`);
+          speakBrowser(textToRead, button);
+        }
+      } else {
+        console.log(`[Narrador] No hay API Key configurada. Usando Web Speech API del navegador.`);
+        speakBrowser(textToRead, button);
+      }
+    };
+
+    const speakBrowser = (text, button) => {
+      if (!window.speechSynthesis) {
+        alert("Tu navegador no soporta síntesis de voz.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const cleanText = text.replace(/\s+/g, " ").trim();
+
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = "es-ES";
+      
+      const voices = window.speechSynthesis.getVoices();
+      // Intentar buscar una voz en español masculina por nombre/palabras clave
+      let esVoice = voices.find(v => {
+        const nameLower = v.name.toLowerCase();
+        const isSpanish = v.lang.startsWith("es-ES") || v.lang.startsWith("es");
+        const isMale = nameLower.includes("male") || 
+                       nameLower.includes("hombre") || 
+                       nameLower.includes("jorge") || 
+                       nameLower.includes("alvaro") || 
+                       nameLower.includes("david") || 
+                       nameLower.includes("julio");
+        return isSpanish && isMale;
+      });
+
+      if (!esVoice) {
+        esVoice = voices.find(v => v.lang.startsWith("es-ES") || v.lang.startsWith("es"));
+      }
+
+      if (esVoice) {
+        utterance.voice = esVoice;
+      }
+
+      utterance.onstart = () => {
+        button.classList.add("active");
+        button.style.background = "rgba(212, 175, 55, 0.2)";
+        button.style.color = "#d4af37";
+        button.style.borderColor = "#d4af37";
+        button.querySelector("span").textContent = "Detener Narración";
+        button.querySelector("i").setAttribute("data-lucide", "square");
+        lucide.createIcons();
+        activeNarratorButton = button;
+      };
+
+      utterance.onend = () => {
+        stopAllSpeech();
+      };
+
+      utterance.onerror = () => {
+        stopAllSpeech();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    };
+
+    // Add button click listener
+    document.getElementById("btn-audio-narrate").addEventListener("click", function() {
+      handleNarrateClick(currentDayId, this);
+    });
+
+    // Audio settings modal setup for lesson page
+    window.addEventListener("DOMContentLoaded", () => {
+      const btnAudioSettings = document.getElementById("btn-audio-settings");
+      const audioSettingsModal = document.getElementById("audio-settings-modal");
+      const btnCloseAudioModal = document.getElementById("btn-close-audio-modal");
+      const btnSaveAudioSettings = document.getElementById("btn-save-audio-settings");
+      const elApiKeyInput = document.getElementById("el-api-key");
+      const elVoiceSelect = document.getElementById("el-voice-select");
+      const elCustomVoiceGroup = document.getElementById("el-custom-voice-group");
+      const elVoiceIdInput = document.getElementById("el-voice-id");
+
+      if (btnAudioSettings && audioSettingsModal) {
+        // Pre-fill fields
+        elApiKeyInput.value = localStorage.getItem("vision_elevenlabs_api_key") || "";
+
+        const savedVoiceId = localStorage.getItem("vision_elevenlabs_voice_id") || "c6rAmJGsdzNWAIVkws45";
+        if (elVoiceSelect) {
+          if (["c6rAmJGsdzNWAIVkws45", "ErXwobaYiN019PkySvjV"].includes(savedVoiceId)) {
+            elVoiceSelect.value = savedVoiceId;
+            if (elCustomVoiceGroup) elCustomVoiceGroup.style.display = "none";
+          } else {
+            elVoiceSelect.value = "custom";
+            if (elCustomVoiceGroup) elCustomVoiceGroup.style.display = "block";
+          }
+          if (elVoiceIdInput) elVoiceIdInput.value = savedVoiceId;
+        }
+
+        if (elVoiceSelect) {
+          elVoiceSelect.addEventListener("change", () => {
+            if (elVoiceSelect.value === "custom") {
+              if (elCustomVoiceGroup) elCustomVoiceGroup.style.display = "block";
+            } else {
+              if (elCustomVoiceGroup) elCustomVoiceGroup.style.display = "none";
+              if (elVoiceIdInput) elVoiceIdInput.value = elVoiceSelect.value;
+            }
+          });
+        }
+
+        btnAudioSettings.addEventListener("click", () => {
+          audioSettingsModal.style.display = "flex";
+        });
+
+        btnCloseAudioModal.addEventListener("click", () => {
+          audioSettingsModal.style.display = "none";
+        });
+
+        btnSaveAudioSettings.addEventListener("click", () => {
+          const apiKey = elApiKeyInput.value.trim();
+          const voiceId = elVoiceIdInput ? elVoiceIdInput.value.trim() : "";
+          
+          if (apiKey) {
+            localStorage.setItem("vision_elevenlabs_api_key", apiKey);
+          } else {
+            localStorage.removeItem("vision_elevenlabs_api_key");
+          }
+
+          if (voiceId) {
+            localStorage.setItem("vision_elevenlabs_voice_id", voiceId);
+          } else {
+            localStorage.removeItem("vision_elevenlabs_voice_id");
+          }
+
+          alert("Configuración de audio guardada correctamente.");
+          audioSettingsModal.style.display = "none";
+        });
+
+        audioSettingsModal.addEventListener("click", (e) => {
+          if (e.target === audioSettingsModal) {
+            audioSettingsModal.style.display = "none";
+          }
+        });
+      }
+    });
+
+    // Technical SVG Drawing library for 70 Days conceptual graphics (Stunning conceptual charts)
+    function addDefs(canvas) {
+      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      
+      // Blue/Cyan Glow filter
+      const glowFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+      glowFilter.setAttribute("id", "glow");
+      glowFilter.setAttribute("x", "-20%");
+      glowFilter.setAttribute("y", "-20%");
+      glowFilter.setAttribute("width", "140%");
+      glowFilter.setAttribute("height", "140%");
+      glowFilter.innerHTML = `
+        <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      `;
+      defs.appendChild(glowFilter);
+
+      // Gold Glow filter
+      const goldGlowFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+      goldGlowFilter.setAttribute("id", "gold-glow");
+      goldGlowFilter.setAttribute("x", "-20%");
+      goldGlowFilter.setAttribute("y", "-20%");
+      goldGlowFilter.setAttribute("width", "140%");
+      goldGlowFilter.setAttribute("height", "140%");
+      goldGlowFilter.innerHTML = `
+        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      `;
+      defs.appendChild(goldGlowFilter);
+
+      // Red Glow filter
+      const redGlowFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+      redGlowFilter.setAttribute("id", "red-glow");
+      redGlowFilter.setAttribute("x", "-20%");
+      redGlowFilter.setAttribute("y", "-20%");
+      redGlowFilter.setAttribute("width", "140%");
+      redGlowFilter.setAttribute("height", "140%");
+      redGlowFilter.innerHTML = `
+        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      `;
+      defs.appendChild(redGlowFilter);
+
+      // Cyan to transparent gradient
+      const cyanGrad = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      cyanGrad.setAttribute("id", "cyan-grad");
+      cyanGrad.setAttribute("x1", "0%");
+      cyanGrad.setAttribute("y1", "0%");
+      cyanGrad.setAttribute("x2", "0%");
+      cyanGrad.setAttribute("y2", "100%");
+      cyanGrad.innerHTML = `
+        <stop offset="0%" stop-color="rgba(0, 255, 255, 0.15)"/>
+        <stop offset="100%" stop-color="rgba(0, 255, 255, 0.0)"/>
+      `;
+      defs.appendChild(cyanGrad);
+
+      // Gold to transparent gradient
+      const goldGrad = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      goldGrad.setAttribute("id", "gold-grad");
+      goldGrad.setAttribute("x1", "0%");
+      goldGrad.setAttribute("y1", "0%");
+      goldGrad.setAttribute("x2", "0%");
+      goldGrad.setAttribute("y2", "100%");
+      goldGrad.innerHTML = `
+        <stop offset="0%" stop-color="rgba(212, 175, 55, 0.2)"/>
+        <stop offset="100%" stop-color="rgba(212, 175, 55, 0.0)"/>
+      `;
+      defs.appendChild(goldGrad);
+
+      // Red to transparent gradient
+      const redGrad = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      redGrad.setAttribute("id", "red-grad");
+      redGrad.setAttribute("x1", "0%");
+      redGrad.setAttribute("y1", "0%");
+      redGrad.setAttribute("x2", "0%");
+      redGrad.setAttribute("y2", "100%");
+      redGrad.innerHTML = `
+        <stop offset="0%" stop-color="rgba(239, 68, 68, 0.2)"/>
+        <stop offset="100%" stop-color="rgba(239, 68, 68, 0.0)"/>
+      `;
+      defs.appendChild(redGrad);
+
+      // Green to transparent gradient
+      const greenGrad = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      greenGrad.setAttribute("id", "green-grad");
+      greenGrad.setAttribute("x1", "0%");
+      greenGrad.setAttribute("y1", "0%");
+      greenGrad.setAttribute("x2", "0%");
+      greenGrad.setAttribute("y2", "100%");
+      greenGrad.innerHTML = `
+        <stop offset="0%" stop-color="rgba(16, 185, 129, 0.2)"/>
+        <stop offset="100%" stop-color="rgba(16, 185, 129, 0.0)"/>
+      `;
+      defs.appendChild(greenGrad);
+
+      // Hatch Gold pattern
+      const hatchGold = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
+      hatchGold.setAttribute("id", "hatch-gold");
+      hatchGold.setAttribute("width", "8");
+      hatchGold.setAttribute("height", "8");
+      hatchGold.setAttribute("patternTransform", "rotate(45 0 0)");
+      hatchGold.setAttribute("patternUnits", "userSpaceOnUse");
+      hatchGold.innerHTML = `<line x1="0" y1="0" x2="0" y2="8" stroke="rgba(212, 175, 55, 0.18)" stroke-width="1"/>`;
+      defs.appendChild(hatchGold);
+
+      // Hatch Cyan pattern
+      const hatchCyan = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
+      hatchCyan.setAttribute("id", "hatch-cyan");
+      hatchCyan.setAttribute("width", "8");
+      hatchCyan.setAttribute("height", "8");
+      hatchCyan.setAttribute("patternTransform", "rotate(45 0 0)");
+      hatchCyan.setAttribute("patternUnits", "userSpaceOnUse");
+      hatchCyan.innerHTML = `<line x1="0" y1="0" x2="0" y2="8" stroke="rgba(0, 255, 255, 0.12)" stroke-width="1"/>`;
+      defs.appendChild(hatchCyan);
+
+      canvas.appendChild(defs);
+    }
+
+    function drawCandle(canvas, x, openY, closeY, highY, lowY, width = 7) {
+      const isBullish = closeY < openY;
+      const color = isBullish ? "#10b981" : "#ef4444";
+      
+      // Wick
+      drawLine(canvas, x, highY, x, lowY, color, 1.2);
+      
+      // Body
+      const bodyY = Math.min(openY, closeY);
+      const bodyH = Math.max(Math.abs(closeY - openY), 1.5);
+      drawRect(canvas, x - width / 2, bodyY, width, bodyH, color, "none", 0, 1);
+    }
+
+    function drawSVGGraphic(type, dayNum) {
+      const canvas = document.getElementById("academic-svg-canvas");
+      if (!canvas) return;
+      canvas.innerHTML = ""; // Clear canvas
+
+      addDefs(canvas);
+
+      // Draw background
+      const bg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      bg.setAttribute("width", "500");
+      bg.setAttribute("height", "220");
+      bg.setAttribute("fill", "#05070a");
+      bg.setAttribute("rx", "10");
+      bg.setAttribute("stroke", "#1e293b");
+      bg.setAttribute("stroke-width", "1.5");
+      canvas.appendChild(bg);
+
+      // Draw grid
+      for (let y = 60; y <= 180; y += 40) {
+        drawLine(canvas, 30, y, 470, y, "rgba(255,255,255,0.015)", 1, "4,4");
+      }
+      for (let x = 60; x <= 440; x += 60) {
+        drawLine(canvas, x, 40, x, 200, "rgba(255,255,255,0.01)", 1);
+      }
+
+      // Title/Label
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", "25");
+      label.setAttribute("y", "28");
+      label.setAttribute("fill", "#475569");
+      label.setAttribute("font-size", "9.5");
+      label.setAttribute("font-family", "Space Grotesk, sans-serif");
+      label.setAttribute("font-weight", "700");
+      label.setAttribute("letter-spacing", "1px");
+      
+      let moduleName = "";
+      if (dayNum <= 7) moduleName = "Pilar 1: Psicología y Mecánica";
+      else if (dayNum <= 14) moduleName = "Pilar 2: Gestión de Capital";
+      else if (dayNum <= 21) moduleName = "Pilar 3: Acción del Precio";
+      else if (dayNum <= 28) moduleName = "Pilar 4: Filtros y Confluencias";
+      else if (dayNum <= 35) moduleName = "Pilar 5: Bloques de Órdenes";
+      else if (dayNum <= 42) moduleName = "Pilar 6: Caza de Liquidez";
+      else if (dayNum <= 49) moduleName = "Pilar 7: Vacíos de Liquidez (FVG)";
+      else if (dayNum <= 56) moduleName = "Pilar 8: Análisis Fractal";
+      else if (dayNum <= 63) moduleName = "Pilar 9: Firmas de Fondeo";
+      else moduleName = "Pilar 10: Plan de Crecimiento";
+
+      label.textContent = `${moduleName} • DÍA ${dayNum} • ${type.replace("chart_", "").toUpperCase()}`;
+      canvas.appendChild(label);
+
+      // Rendering Logic by exact type
+      if (type === "chart_reality") {
+        // Retail noise
+        drawPath(canvas, "M 50,160 L 90,80 L 130,170 L 170,60 L 210,140 L 250,100", "rgba(239, 68, 68, 0.35)", 1.2, "3,3");
+        drawText(canvas, 120, 185, "#ef4444", 8, "Ruido / Indicadores Retail", "middle");
+        
+        // Institutional price path
+        drawPath(canvas, "M 50,155 Q 150,140 250,130 T 450,65", "#00ffff", 2.5, "", "url(#glow)");
+        drawCircle(canvas, 450, 65, 5, "#dfb750", "url(#gold-glow)");
+        drawText(canvas, 450, 52, "#dfb750", 9, "Flujo de Subasta Eficiente", "middle", "bold");
+      }
+      else if (type === "chart_biases") {
+        // Double top structure with "hope" projection vs crash
+        drawPath(canvas, "M 60,160 L 120,80 L 170,120 L 220,80 L 270,180 L 420,180", "rgba(255,255,255,0.15)", 1);
+        
+        // Hope projection
+        drawLine(canvas, 220, 80, 280, 40, "#ef4444", 1.2, "2,2");
+        drawText(canvas, 290, 44, "#ef4444", 8, "Expectativa de rebote (Sesgo)", "left", "bold");
+        
+        // Candles forming double top
+        drawCandle(canvas, 90, 120, 100, 90, 130);
+        drawCandle(canvas, 120, 100, 80, 75, 110); // Peak 1
+        drawCandle(canvas, 150, 80, 110, 75, 115);
+        drawCandle(canvas, 180, 110, 95, 90, 120);
+        drawCandle(canvas, 220, 95, 80, 75, 105);  // Peak 2
+        drawCandle(canvas, 250, 80, 130, 75, 140); // Crash
+        drawCandle(canvas, 280, 130, 180, 120, 185);
+        
+        drawText(canvas, 310, 150, "#94a3b8", 8, "Realidad: Caída violenta", "left");
+      }
+      else if (type === "chart_probability") {
+        drawText(canvas, 250, 52, "#00ffff", 12, "Resultado Neto: +6R (-6R + 12R)", "middle", "bold");
+        drawText(canvas, 250, 72, "#94a3b8", 8.5, "Muestra estadística de 10 trades (Winrate: 40% | R:R 1:3)", "middle");
+        
+        const trades = [
+          { type: 'loss', val: -1 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 }
+        ];
+        
+        drawLine(canvas, 50, 150, 450, 150, "#334155", 1.5); // Baseline
+        
+        trades.forEach((t, i) => {
+          const x = 75 + i * 38;
+          if (t.type === 'loss') {
+            drawRect(canvas, x - 10, 150, 20, 15, "rgba(239, 68, 68, 0.25)", "#ef4444", 1, 2);
+            drawText(canvas, x, 180, "#ef4444", 8, "-1R", "middle");
+          } else {
+            drawRect(canvas, x - 10, 105, 20, 45, "rgba(16, 185, 129, 0.25)", "#10b981", 1, 2);
+            drawText(canvas, x, 92, "#10b981", 8, "+3R", "middle", "bold");
+          }
+          drawText(canvas, x, 140, `#${i+1}`, "#475569", 8, "middle");
+        });
+      }
+      else if (type === "chart_manipulation" || type === "chart_retail_liquidity") {
+        // Retail support line
+        drawLine(canvas, 40, 130, 460, 130, "#ef4444", 1.2, "3,3");
+        drawText(canvas, 45, 122, "Soporte Minorista (Stop Loss Pool)", "#ef4444", 8, "bold");
+        
+        // Consolidation
+        drawCandle(canvas, 90, 110, 118, 105, 125);
+        drawCandle(canvas, 120, 118, 112, 108, 122);
+        drawCandle(canvas, 150, 112, 124, 110, 128);
+        drawCandle(canvas, 180, 124, 120, 115, 128);
+        
+        // Sweep candle (long lower wick)
+        drawCandle(canvas, 210, 120, 125, 115, 180, 8); 
+        drawCircle(canvas, 210, 180, 4.5, "#10b981", "url(#glow)");
+        drawText(canvas, 218, 183, "#10b981", 8.5, "SSL SWEEP (Captura de liquidez)", "left", "bold");
+        
+        // Bullish Expansion
+        drawCandle(canvas, 240, 120, 85, 80, 125, 8);
+        drawCandle(canvas, 270, 85, 55, 50, 90, 8);
+        drawCandle(canvas, 300, 55, 30, 25, 60, 8);
+      }
+      else if (type === "chart_squeeze") {
+        // Trendline
+        drawLine(canvas, 50, 75, 280, 125, "#ef4444", 1.2, "2,2");
+        drawText(canvas, 60, 68, "Línea de Resistencia Tendencial", "#ef4444", 8);
+        
+        drawCandle(canvas, 80, 90, 100, 85, 105);
+        drawCandle(canvas, 110, 100, 95, 90, 105);
+        drawCandle(canvas, 140, 95, 110, 90, 115);
+        drawCandle(canvas, 170, 110, 105, 100, 115);
+        drawCandle(canvas, 200, 105, 120, 100, 125);
+        
+        // Breakout
+        drawCandle(canvas, 230, 120, 95, 90, 125);
+        
+        // Squeeze
+        drawCandle(canvas, 260, 95, 55, 50, 100, 9);
+        drawCandle(canvas, 290, 55, 25, 20, 60, 9);
+        drawCandle(canvas, 320, 25, 10, 5, 30, 9);
+        
+        drawText(canvas, 340, 22, "#10b981", 9, "Short Squeeze (Compras Forzadas)", "left", "bold");
+      }
+      else if (type === "chart_fakeout") {
+        // Resistance
+        drawLine(canvas, 40, 90, 460, 90, "#ef4444", 1.2, "3,3");
+        drawText(canvas, 45, 82, "Resistencia Minorista Fuerte", "#ef4444", 8, "bold");
+        
+        drawCandle(canvas, 120, 130, 110, 105, 140);
+        drawCandle(canvas, 150, 110, 95, 90, 115);
+        
+        // Fakeout candle
+        drawCandle(canvas, 180, 95, 98, 60, 110, 8);
+        drawCircle(canvas, 180, 60, 4.5, "#ef4444", "url(#red-glow)");
+        drawText(canvas, 192, 63, "#ef4444", 8.5, "Fakeout / Inducción Alcista", "left", "bold");
+        
+        // Drop
+        drawCandle(canvas, 210, 98, 125, 95, 130);
+        drawCandle(canvas, 240, 125, 155, 120, 160);
+      }
+      else if (type.includes("exam") || type === "chart_final_diploma" || type === "chart_manifesto") {
+        // Emblem/Badge/Shield
+        drawCircle(canvas, 250, 110, 40, "rgba(212,175,55,0.08)", "url(#gold-glow)");
+        drawCircle(canvas, 250, 110, 45, "none");
+        const circ = canvas.lastChild;
+        circ.setAttribute("stroke", "#d4af37");
+        circ.setAttribute("stroke-width", "1.5");
+        circ.setAttribute("stroke-dasharray", "3,3");
+        
+        drawRect(canvas, 120, 142, 260, 24, "rgba(212,175,55,0.12)", "#d4af37", 1, 3);
+        
+        if (type === "chart_final_diploma") {
+          drawText(canvas, 250, 158, "#d4af37", 9, "DIPLOMA FINAL DE MAESTRÍA DE TRADING", "middle", "bold");
+          drawText(canvas, 250, 50, "#dfb750", 13, "CERTIFICADO ACADÉMICO", "middle", "bold");
+          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#d4af37", 3);
+        } else if (type === "chart_manifesto") {
+          drawText(canvas, 250, 158, "#d4af37", 9, "JURAMENTO DE CONSISTENCIA ESTOICA", "middle", "bold");
+          drawText(canvas, 250, 50, "#dfb750", 13, "MANIFIESTO DEL TRADER", "middle", "bold");
+          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#d4af37", 3);
+        } else {
+          drawText(canvas, 250, 158, "#d4af37", 9.5, "EVALUACIÓN DE CRITERIO APROBADA", "middle", "bold");
+          drawText(canvas, 250, 50, "#dfb750", 13, "MÓDULO COMPLETADO CON ÉXITO", "middle", "bold");
+          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#10b981", 3);
+        }
+      }
+      else if (type === "chart_drawdown") {
+        drawText(canvas, 250, 52, "#f8fafc", 11, "Matemáticas del Control vs Ruina", "middle", "bold");
+        
+        // Stable Curve
+        drawPath(canvas, "M 60,160 L 120,150 L 180,155 L 240,140 L 300,125 L 360,115 L 420,95", "#10b981", 2, "", "url(#glow)");
+        drawText(canvas, 430, 98, "#10b981", 8, "Riesgo 1% (drawdown controlado)", "left", "600");
+        
+        // Crash Curve
+        drawPath(canvas, "M 60,160 L 120,110 L 180,175 L 240,198 L 300,210 L 360,212", "#ef4444", 2, "", "url(#red-glow)");
+        drawText(canvas, 310, 190, "#ef4444", 8, "Riesgo 10% (Ruina Matemática)", "left", "bold");
+      }
+      else if (type === "chart_asymmetry") {
+        drawText(canvas, 250, 50, "#00ffff", 12, "Ratio R:R Asimétrico 1:3", "middle", "bold");
+        drawText(canvas, 250, 70, "#f3f4f6", 8.5, "10 operaciones: 6 perdedoras (-6R) + 4 ganadoras (+12R) = +6R netos", "middle");
+        
+        const trades = [
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 },
+          { type: 'loss', val: -1 },
+          { type: 'loss', val: -1 },
+          { type: 'win', val: 3 }
+        ];
+        
+        drawLine(canvas, 50, 150, 450, 150, "#334155", 1.5);
+        
+        trades.forEach((t, i) => {
+          const x = 75 + i * 38;
+          if (t.type === 'loss') {
+            drawRect(canvas, x - 8, 150, 16, 12, "rgba(239, 68, 68, 0.25)", "#ef4444", 1, 1);
+            drawText(canvas, x, 175, "#ef4444", 8, "-1R", "middle");
+          } else {
+            drawRect(canvas, x - 8, 114, 16, 36, "rgba(16, 185, 129, 0.25)", "#10b981", 1, 1);
+            drawText(canvas, x, 102, "#10b981", 8, "+3R", "middle", "bold");
+          }
+          drawText(canvas, x, 140, `${i+1}`, "#475569", 8, "middle");
+        });
+      }
+      else if (type === "chart_daily_limit") {
+        // Red limit line
+        drawLine(canvas, 40, 160, 460, 160, "#ef4444", 2, "4,4");
+        drawRect(canvas, 40, 160, 420, 40, "rgba(239, 68, 68, 0.04)");
+        drawText(canvas, 250, 178, "#ef4444", 9.5, "LÍMITES MÁXIMO DE DRAWDOWN DIARIO DE SEGURIDAD (2%)", "middle", "bold");
+        
+        drawCandle(canvas, 100, 80, 110, 75, 115);
+        drawCandle(canvas, 140, 110, 135, 105, 140);
+        drawCandle(canvas, 180, 135, 158, 130, 160); 
+        drawCandle(canvas, 220, 158, 160, 158, 160); // Touches limit and stops
+        
+        drawCircle(canvas, 220, 160, 4.5, "#ef4444", "url(#red-glow)");
+        drawText(canvas, 235, 145, "#dfb750", 9, "Alerta: Apagado y bloqueo de terminal", "left", "bold");
+      }
+      else if (type === "chart_journal") {
+        drawText(canvas, 250, 50, "#00ffff", 11, "Bitácora de Seguimiento Diario", "middle", "bold");
+        
+        drawRect(canvas, 40, 65, 420, 120, "rgba(255,255,255,0.01)", "#1e293b", 1, 4);
+        drawLine(canvas, 40, 95, 460, 95, "#1e293b", 1);
+        drawLine(canvas, 40, 125, 460, 125, "#1e293b", 1);
+        drawLine(canvas, 40, 155, 460, 155, "#1e293b", 1);
+        
+        drawLine(canvas, 100, 65, 100, 185, "#1e293b", 1);
+        drawLine(canvas, 200, 65, 200, 185, "#1e293b", 1);
+        drawLine(canvas, 310, 65, 310, 185, "#1e293b", 1);
+        
+        drawText(canvas, 70, 85, "#94a3b8", 8.5, "DÍA/ID", "middle", "700");
+        drawText(canvas, 150, 85, "#94a3b8", 8.5, "SETUP CLAVE", "middle", "700");
+        drawText(canvas, 255, 85, "#94a3b8", 8.5, "R:R OPERATIVO", "middle", "700");
+        drawText(canvas, 385, 85, "#94a3b8", 8.5, "FOCO EMOCIONAL", "middle", "700");
+        
+        drawText(canvas, 70, 115, "#f3f4f6", 8.5, "Día 15", "middle");
+        drawText(canvas, 150, 115, "#00ffff", 8.5, "BOS Breakout", "middle");
+        drawText(canvas, 255, 115, "#10b981", 8.5, "+3.2R (Exitoso)", "middle", "600");
+        drawText(canvas, 385, 115, "#e5e7eb", 8.5, "Neutral / Proceso", "middle");
+        
+        drawText(canvas, 70, 145, "#f3f4f6", 8.5, "Día 16", "middle");
+        drawText(canvas, 150, 145, "#00ffff", 8.5, "SSL Sweep", "middle");
+        drawText(canvas, 255, 145, "#ef4444", 8.5, "-1.0R (Pérdida)", "middle", "600");
+        drawText(canvas, 385, 145, "#e5e7eb", 8.5, "Aceptación neutral", "middle");
+        
+        drawText(canvas, 70, 175, "#f3f4f6", 8.5, "Día 17", "middle");
+        drawText(canvas, 150, 175, "#00ffff", 8.5, "OB Mitigation", "middle");
+        drawText(canvas, 255, 175, "#10b981", 8.5, "+4.0R (Exitoso)", "middle", "600");
+        drawText(canvas, 385, 175, "#e5e7eb", 8.5, "Calma / Sin euforia", "middle");
+      }
+      else if (type === "chart_processes" || type === "chart_routine") {
+        drawText(canvas, 250, 48, "#00ffff", 11, type === "chart_routine" ? "Checklist de Apertura Pre-market" : "Protocolo de Ejecución Sistemático", "middle", "bold");
+        
+        const steps = type === "chart_routine" 
+          ? ["1. Noticias Macro (IPC/FOMC)", "2. Rangos HTF (Diario/4H)", "3. Bloques POI Limpios", "4. Setups & Alarmas"]
+          : ["1. Analizar Bias HTF", "2. Mitigación de POI", "3. CHoCH en LTF", "4. Entrada & Gestión"];
+        
+        steps.forEach((step, i) => {
+          const x = 50 + i * 105;
+          drawRect(canvas, x - 10, 80, 100, 50, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
+          drawText(canvas, x + 40, 98, "#00ffff", 8.5, `Paso ${i+1}`, "middle", "bold");
+          
+          const words = step.substring(3).split(" ");
+          drawText(canvas, x + 40, 112, "#f8fafc", 7.5, words.slice(0,2).join(" "), "middle");
+          if (words.length > 2) {
+            drawText(canvas, x + 40, 122, "#f8fafc", 7.5, words.slice(2).join(" "), "middle");
+          }
+          if (i < 3) {
+            drawLine(canvas, x + 90, 105, x + 95, 105, "#334155", 1.2);
+          }
+        });
+        
+        drawText(canvas, 250, 170, "#10b981", 9, "✓ Adherirse estrictamente al checklist antes de actuar", "middle", "600");
+      }
+      else if (type === "chart_systematic") {
+        drawText(canvas, 250, 50, "#dfb750", 10.5, "Distribución de Resultados (Esperanza Estadística)", "middle", "bold");
+        
+        drawPath(canvas, "M 80,170 Q 180,170 210,110 T 250,70 T 290,110 T 420,170", "#d4af37", 2, "", "url(#gold-glow)");
+        drawLine(canvas, 250, 70, 250, 170, "#475569", 1, "2,2");
+        
+        drawText(canvas, 140, 150, "#ef4444", 8, "Rachas de Pérdidas", "middle");
+        drawText(canvas, 360, 150, "#10b981", 8, "Rachas de Ganancias", "middle");
+        drawText(canvas, 250, 192, "100 Trades: La ventaja matemática neutraliza el azar individual", "#94a3b8", 8.5, "middle");
+      }
+      else if (type === "chart_structure") {
+        drawPath(canvas, "M 80,180 L 160,90 L 240,140 L 320,60 L 400,110 L 460,40", "rgba(0, 255, 255, 0.35)", 1.5, "3,3");
+        
+        drawText(canvas, 80, 195, "#94a3b8", 8.5, "HL", "middle", "bold");
+        drawText(canvas, 160, 75, "#00ffff", 8.5, "HH", "middle", "bold");
+        drawText(canvas, 240, 155, "#94a3b8", 8.5, "HL", "middle", "bold");
+        drawText(canvas, 320, 45, "#00ffff", 8.5, "HH", "middle", "bold");
+        drawText(canvas, 400, 125, "#94a3b8", 8.5, "HL", "middle", "bold");
+        drawText(canvas, 460, 25, "#00ffff", 8.5, "HH (Tendencia Alcista)", "middle", "bold");
+        
+        drawCandle(canvas, 80, 165, 180, 150, 190);
+        drawCandle(canvas, 120, 135, 110, 100, 145);
+        drawCandle(canvas, 160, 110, 90, 85, 120);
+        
+        drawCandle(canvas, 200, 90, 115, 85, 120);
+        drawCandle(canvas, 240, 115, 140, 110, 145);
+        
+        drawCandle(canvas, 280, 140, 90, 85, 145);
+        drawCandle(canvas, 320, 90, 60, 55, 100);
+      }
+      else if (type === "chart_bos") {
+        drawCandle(canvas, 100, 140, 105, 100, 145); 
+        drawCandle(canvas, 140, 105, 130, 100, 135); 
+        drawCandle(canvas, 180, 130, 95, 90, 135);  
+        drawCandle(canvas, 220, 95, 75, 70, 100);   
+        
+        drawLine(canvas, 100, 105, 340, 105, "#00ffff", 1, "2,2");
+        drawCircle(canvas, 180, 105, 4.5, "#00ffff", "url(#glow)");
+        drawText(canvas, 270, 98, "#00ffff", 8.5, "BOS (Cierre de Cuerpo fuera del nivel)", "middle", "bold");
+      }
+      else if (type === "chart_choch") {
+        drawPath(canvas, "M 60,80 L 120,150 L 180,110 L 240,180 L 320,60 L 390,100", "rgba(255,255,255,0.08)", 1);
+        
+        drawCandle(canvas, 180, 130, 110, 105, 135);
+        drawCandle(canvas, 210, 110, 160, 105, 165);
+        drawCandle(canvas, 240, 160, 180, 155, 185); 
+        
+        drawCandle(canvas, 280, 180, 90, 85, 185);  // Breaks LH 110
+        drawCandle(canvas, 320, 90, 60, 55, 95);    
+        
+        drawLine(canvas, 180, 110, 360, 110, "#00ffff", 1.2, "2,2");
+        drawCircle(canvas, 273, 110, 4.5, "#00ffff", "url(#glow)");
+        drawText(canvas, 350, 124, "#00ffff", 9, "CHoCH (Cambio Estructural)", "middle", "bold");
+      }
+      else if (type === "chart_zones" || type === "chart_supply_demand") {
+        drawRect(canvas, 50, 45, 400, 25, "rgba(239, 68, 68, 0.08)", "#ef4444", 0.8, 2);
+        drawText(canvas, 250, 60, "#ef4444", 8.5, "ZONA DE OFERTA (SUPPLY ZONE) - BUSCAR VENTAS", "middle", "bold");
+        
+        drawRect(canvas, 50, 155, 400, 25, "rgba(0, 255, 255, 0.08)", "#00ffff", 0.8, 2);
+        drawText(canvas, 250, 171, "#00ffff", 8.5, "ZONA DE DEMANDA (DEMAND ZONE) - BUSCAR COMPRAS", "middle", "bold");
+        
+        drawCandle(canvas, 100, 155, 90, 80, 165);
+        drawCandle(canvas, 140, 90, 70, 65, 95);  
+        drawCandle(canvas, 180, 70, 110, 65, 115);
+        drawCandle(canvas, 220, 110, 145, 105, 150);
+        drawCandle(canvas, 260, 145, 155, 140, 160); 
+        drawCandle(canvas, 300, 155, 110, 105, 160);
+      }
+      else if (type === "chart_price_action") {
+        drawText(canvas, 250, 50, "#00ffff", 11, "Lectura de Acción del Precio", "middle", "bold");
+        
+        // 1. Hammer
+        drawLine(canvas, 130, 80, 130, 180, "#10b981", 1.5);
+        drawRect(canvas, 124, 85, 12, 20, "#10b981");
+        drawText(canvas, 130, 195, "#10b981", 8, "Martillo (Rechazo)", "middle", "bold");
+        
+        // 2. Doji
+        drawLine(canvas, 250, 80, 250, 180, "#94a3b8", 1.5);
+        drawRect(canvas, 244, 128, 12, 4, "#94a3b8");
+        drawText(canvas, 250, 195, "#94a3b8", 8, "Doji (Indecisión)", "middle");
+        
+        // 3. Engulfing
+        drawLine(canvas, 360, 110, 360, 160, "#ef4444", 1.2);
+        drawRect(canvas, 356, 120, 8, 25, "#ef4444");
+        drawLine(canvas, 385, 90, 385, 175, "#10b981", 1.2);
+        drawRect(canvas, 381, 100, 8, 65, "#10b981");
+        drawText(canvas, 372, 195, "#10b981", 8, "Envolvente (Impulso)", "middle", "bold");
+      }
+      else if (type === "chart_polarity") {
+        drawLine(canvas, 40, 110, 460, 110, "#00ffff", 1.2, "2,2");
+        drawText(canvas, 50, 102, "Resistencia Rota", "#00ffff", 8);
+        drawText(canvas, 370, 124, "Nuevo Soporte (Polaridad)", "#10b981", 8, "bold");
+        
+        drawCandle(canvas, 90, 140, 115, 110, 145);
+        drawCandle(canvas, 130, 115, 120, 110, 130); 
+        drawCandle(canvas, 170, 120, 145, 115, 150);
+        
+        drawCandle(canvas, 210, 145, 80, 75, 150);  
+        drawCandle(canvas, 250, 80, 65, 60, 85);
+        
+        drawCandle(canvas, 290, 65, 108, 60, 112);  
+        drawCandle(canvas, 330, 108, 110, 108, 120); 
+        drawCircle(canvas, 330, 110, 4.5, "#10b981", "url(#glow)");
+        
+        drawCandle(canvas, 370, 110, 75, 70, 115);
+      }
+      else if (type === "chart_ema200") {
+        drawPath(canvas, "M 60,165 Q 200,150 440,85", "#00ffff", 2.2, "", "url(#glow)");
+        drawText(canvas, 410, 75, "#00ffff", 8.5, "EMA 200 (Filtro Tendencial)", "left", "bold");
+        
+        drawCandle(canvas, 100, 130, 158, 120, 162); 
+        drawCandle(canvas, 140, 158, 120, 115, 160); 
+        
+        drawCandle(canvas, 240, 100, 135, 95, 140);
+        drawCandle(canvas, 280, 135, 115, 110, 138); 
+        drawCircle(canvas, 280, 135, 4.5, "#10b981", "url(#glow)");
+        
+        drawCandle(canvas, 320, 115, 85, 80, 120);
+      }
+      else if (type === "chart_rsi") {
+        drawLine(canvas, 30, 125, 470, 125, "rgba(255,255,255,0.06)", 1);
+        drawText(canvas, 35, 118, "Precio", "#475569", 8, "700");
+        drawText(canvas, 35, 138, "RSI (14)", "#475569", 8, "700");
+        
+        drawRect(canvas, 50, 145, 400, 45, "rgba(59,130,246,0.05)", "rgba(59,130,246,0.2)", 0.8);
+        drawLine(canvas, 50, 167, 450, 167, "rgba(255,255,255,0.1)", 0.8, "3,3"); 
+        drawText(canvas, 455, 170, "#475569", 7, "50");
+        
+        drawPath(canvas, "M 50,185 L 120,175 L 180,158 L 220,140 L 290,165 L 360,150", "#10b981", 1.8, "", "url(#glow)");
+        drawCircle(canvas, 220, 140, 4, "#10b981");
+        drawText(canvas, 220, 132, "#10b981", 8, "Cruza > 50 (Impulso)", "middle", "bold");
+      }
+      else if (type === "chart_confluence") {
+        drawText(canvas, 250, 50, "#dfb750", 11, "Confluencia de Alta Probabilidad", "middle", "bold");
+        
+        drawRect(canvas, 50, 120, 400, 18, "rgba(255,255,255,0.02)", "rgba(255,255,255,0.08)", 0.8);
+        drawText(canvas, 55, 132, "Polaridad S/R", "#94a3b8", 7.5);
+        
+        drawPath(canvas, "M 60,150 Q 200,135 440,105", "#00ffff", 1.8, "", "url(#glow)");
+        
+        drawCandle(canvas, 240, 110, 130, 100, 135);
+        drawCircle(canvas, 240, 130, 6, "#dfb750", "url(#gold-glow)");
+        
+        drawText(canvas, 250, 150, "#dfb750", 8.5, "PUNTO DE CONFLUENCIA (EMA + S/R)", "left", "bold");
+      }
+      else if (type === "chart_execution") {
+        drawRect(canvas, 70, 45, 360, 145, "#0a0c14", "#1e293b", 1.5, 6);
+        drawText(canvas, 250, 65, "#f8fafc", 10.5, "BOLETA DE EJECUCIÓN PROFESIONAL", "middle", "bold");
+        
+        drawRect(canvas, 95, 80, 140, 28, "rgba(16,185,129,0.12)", "#10b981", 1, 3);
+        drawText(canvas, 165, 98, "#10b981", 9, "BUY MARKET (COMPRA)", "middle", "bold");
+        
+        drawRect(canvas, 265, 80, 140, 28, "rgba(239,68,68,0.12)", "#ef4444", 1, 3);
+        drawText(canvas, 335, 98, "#ef4444", 9, "SELL MARKET (VENTA)", "middle", "bold");
+        
+        drawRect(canvas, 95, 120, 140, 22, "#05070a", "#334155", 0.8, 2);
+        drawText(canvas, 105, 134, "#94a3b8", 8, "Riesgo: 1.0% ($500 USD)");
+        
+        drawRect(canvas, 265, 120, 140, 22, "#05070a", "#334155", 0.8, 2);
+        drawText(canvas, 275, 134, "#94a3b8", 8, "Contratos: 3.5 Lotes");
+        
+        drawRect(canvas, 95, 150, 310, 22, "#05070a", "#334155", 0.8, 2);
+        drawText(canvas, 105, 164, "#00ffff", 8, "Stop Loss: 1.1240  |  Take Profit: 1.1390 (R:R 1:3)");
+      }
+      else if (type === "chart_ob_intro") {
+        drawCandle(canvas, 130, 110, 130, 95, 140);
+        drawCandle(canvas, 170, 130, 155, 120, 160); // Red OB
+        
+        drawCandle(canvas, 210, 130, 85, 80, 135); 
+        drawCandle(canvas, 250, 85, 45, 40, 90);
+        
+        // Highlight OB candle zone
+        drawRect(canvas, 154, 118, 32, 44, "rgba(0, 255, 255, 0.05)", "#00ffff", 1, 2);
+        drawLine(canvas, 186, 118, 460, 118, "#00ffff", 0.8, "4,4");
+        drawLine(canvas, 186, 162, 460, 162, "#00ffff", 0.8, "4,4");
+        
+        drawText(canvas, 310, 140, "#00ffff", 9, "ORDER BLOCK POI (Zona de Liquidez)", "middle", "bold");
+      }
+      else if (type === "chart_ob_mitigation") {
+        drawRect(canvas, 100, 120, 260, 40, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8, 2);
+        drawText(canvas, 105, 135, "OB NO MITIGADO", "#00ffff", 8);
+        
+        drawCandle(canvas, 120, 110, 130, 95, 140); 
+        drawCandle(canvas, 160, 105, 60, 50, 110);  
+        drawCandle(canvas, 200, 60, 80, 55, 90);   
+        drawCandle(canvas, 240, 80, 110, 75, 115);
+        
+        drawCandle(canvas, 280, 110, 135, 105, 140); 
+        drawCircle(canvas, 280, 135, 4.5, "#dfb750", "url(#gold-glow)");
+        drawText(canvas, 280, 100, "#dfb750", 8.5, "Mitigación del 50% (Entrada)", "middle", "bold");
+        
+        drawCandle(canvas, 320, 135, 70, 65, 140);
+        drawCandle(canvas, 360, 70, 35, 30, 75);
+      }
+      else if (type === "chart_ob_origin_decision") {
+        drawPath(canvas, "M 60,170 L 120,110 L 160,140 L 260,60 L 320,95 L 420,30", "rgba(255,255,255,0.08)", 1);
+        
+        drawRect(canvas, 50, 150, 30, 30, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8);
+        drawText(canvas, 65, 192, "#00ffff", 8, "OB Origen", "middle", "600");
+        
+        drawRect(canvas, 145, 120, 30, 30, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8);
+        drawText(canvas, 160, 162, "#00ffff", 8, "OB Decisivo", "middle", "600");
+        
+        drawCandle(canvas, 60, 150, 165, 145, 175);
+        drawCandle(canvas, 160, 120, 135, 115, 145);
+        drawCandle(canvas, 260, 70, 62, 55, 75);
+      }
+      else if (type === "chart_ob_refinement") {
+        drawLine(canvas, 250, 40, 250, 200, "rgba(255,255,255,0.1)", 1);
+        
+        drawText(canvas, 125, 52, "#94a3b8", 9, "VISTA TEMPORALIDAD H1", "middle", "bold");
+        drawRect(canvas, 40, 90, 170, 60, "rgba(0, 255, 255, 0.06)", "#00ffff", 1, 2);
+        drawText(canvas, 125, 125, "#00ffff", 8.5, "OB H1 (35 Pips Stop Loss)", "middle", "bold");
+        
+        drawText(canvas, 375, 52, "#94a3b8", 9, "VISTA REFINADA M5", "middle", "bold");
+        drawRect(canvas, 290, 115, 170, 15, "rgba(0, 255, 255, 0.12)", "#00ffff", 1, 2);
+        drawText(canvas, 375, 108, "#00ffff", 8, "OB M5 REFINADO (7 Pips SL)", "middle", "bold");
+        drawText(canvas, 375, 152, "#10b981", 8.5, "¡R:R Optimizado x5!", "middle", "bold");
+      }
+      else if (type === "chart_institutional_trail") {
+        drawText(canvas, 250, 50, "#00ffff", 11, "Rastro de Inyección Institucional", "middle", "bold");
+        
+        drawCandle(canvas, 120, 130, 135, 120, 140);
+        drawCandle(canvas, 160, 135, 132, 125, 142);
+        
+        drawCandle(canvas, 200, 132, 70, 65, 140, 8); 
+        drawCandle(canvas, 240, 70, 45, 40, 75);
+        
+        drawRect(canvas, 115, 185, 10, 15, "rgba(255,255,255,0.15)");
+        drawRect(canvas, 155, 185, 10, 18, "rgba(255,255,255,0.15)");
+        drawRect(canvas, 195, 160, 10, 40, "#10b981"); 
+        drawRect(canvas, 235, 170, 10, 30, "#10b981");
+        
+        drawLine(canvas, 180, 165, 192, 165, "#10b981", 1);
+        drawText(canvas, 212, 163, "#10b981", 8, "Volumen Institucional Confirmado", "left", "bold");
+      }
+      else if (type === "chart_ssl_sweep") {
+        drawLine(canvas, 50, 130, 450, 130, "#ef4444", 1, "3,3");
+        drawText(canvas, 60, 122, "Mínimos de la Sesión", "#ef4444", 8);
+        
+        drawCandle(canvas, 100, 115, 125, 110, 130);
+        drawCandle(canvas, 140, 125, 118, 110, 130);
+        
+        drawCandle(canvas, 180, 118, 125, 115, 175, 8);
+        drawCircle(canvas, 180, 175, 5, "#10b981", "url(#glow)");
+        drawText(canvas, 180, 192, "Absorción SSL / Barrido Completo", "#10b981", 8.5, "middle", "bold");
+        
+        drawCandle(canvas, 220, 125, 75, 70, 130, 8);
+        drawCandle(canvas, 260, 75, 40, 35, 80, 8);
+      }
+      else if (type === "chart_bsl_sweep") {
+        drawLine(canvas, 50, 80, 450, 80, "#ef4444", 1, "3,3");
+        drawText(canvas, 60, 72, "Máximos de la Sesión", "#ef4444", 8);
+        
+        drawCandle(canvas, 100, 95, 85, 80, 100);
+        drawCandle(canvas, 140, 85, 90, 80, 95);
+        
+        drawCandle(canvas, 180, 90, 85, 35, 100, 8);
+        drawCircle(canvas, 180, 35, 5, "#ef4444", "url(#red-glow)");
+        drawText(canvas, 180, 24, "Absorción BSL / Captura de Compras", "#ef4444", 8.5, "middle", "bold");
+        
+        drawCandle(canvas, 220, 85, 135, 80, 140, 8);
+        drawCandle(canvas, 260, 135, 170, 130, 175, 8);
+      }
+      else if (type === "chart_internal_external") {
+        drawRect(canvas, 50, 50, 400, 130, "rgba(255,255,255,0.005)", "#1e293b", 1);
+        
+        drawLine(canvas, 50, 50, 450, 50, "#00ffff", 1.2, "3,3");
+        drawLine(canvas, 50, 180, 450, 180, "#00ffff", 1.2, "3,3");
+        
+        drawText(canvas, 250, 42, "#00ffff", 8.5, "Línea de Liquidez Externa (Máximo del Rango)", "middle", "bold");
+        drawText(canvas, 250, 195, "#00ffff", 8.5, "Línea de Liquidez Externa (Mínimo del Rango)", "middle", "bold");
+        
+        drawPath(canvas, "M 60,170 L 120,90 L 160,130 L 220,70 L 260,150 L 320,110 L 380,175", "rgba(212,175,55,0.4)", 1.5);
+        drawText(canvas, 220, 62, "#dfb750", 8, "Liquidez Interna (Trampas)", "middle");
+      }
+      else if (type === "chart_inducement") {
+        drawRect(canvas, 280, 150, 80, 25, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8);
+        drawText(canvas, 320, 165, "ORDER BLOCK", "#00ffff", 8, "middle");
+        
+        drawCandle(canvas, 100, 90, 130, 80, 140);
+        drawCandle(canvas, 140, 130, 110, 105, 135);
+        
+        drawCandle(canvas, 180, 110, 135, 105, 140); 
+        drawCandle(canvas, 220, 135, 110, 100, 140); 
+        drawCircle(canvas, 180, 140, 4, "#ef4444", "url(#red-glow)");
+        drawText(canvas, 180, 155, "IDM (Inducción/Trampa)", "#ef4444", 8, "middle", "bold");
+        
+        drawCandle(canvas, 260, 110, 155, 105, 160);
+        drawCandle(canvas, 300, 155, 130, 130, 160); 
+        drawCircle(canvas, 300, 155, 4, "#10b981");
+        drawText(canvas, 310, 130, "#10b981", 8, "Reacción en OB Real", "left", "bold");
+      }
+      else if (type === "chart_ipda") {
+        drawText(canvas, 250, 48, "#dfb750", 11, "Ciclos del Algoritmo Interbancario IPDA", "middle", "bold");
+        
+        const boxes = ["1. ACUMULACIÓN", "2. MANIPULACIÓN", "3. DISTRIBUCIÓN", "4. REBALANCEO"];
+        
+        boxes.forEach((box, i) => {
+          const x = 40 + i * 110;
+          drawRect(canvas, x, 85, 100, 45, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
+          
+          if (i === 1) {
+            drawRect(canvas, x, 85, 100, 45, "rgba(239,68,68,0.05)", "#ef4444", 1.2, 3);
+          } else if (i === 2) {
+            drawRect(canvas, x, 85, 100, 45, "rgba(16,185,129,0.05)", "#10b981", 1.2, 3);
+          }
+          
+          const parts = box.split(" ");
+          drawText(canvas, x + 50, 104, i === 1 ? "#ef4444" : (i === 2 ? "#10b981" : "#dfb750"), 8, parts[0], "middle", "bold");
+          drawText(canvas, x + 50, 118, "#f3f4f6", 7.5, parts[1], "middle");
+          
+          if (i < 3) {
+            drawLine(canvas, x + 100, 107, x + 110, 107, "#475569", 1);
+          }
+        });
+        
+        drawText(canvas, 250, 175, "IPDA busca entregar precios eficientemente barriendo stops minoristas", "#94a3b8", 8.5, "middle");
+      }
+      else if (type === "chart_fvg_intro") {
+        drawCandle(canvas, 120, 150, 120, 105, 160); 
+        drawCandle(canvas, 160, 120, 65, 55, 125, 9);   
+        drawCandle(canvas, 200, 65, 45, 80, 50);     
+        
+        drawRect(canvas, 120, 80, 240, 25, "rgba(212,175,55,0.06)", "#d4af37", 0.8, 1);
+        drawText(canvas, 240, 96, "FAIR VALUE GAP (VACÍO)", "#d4af37", 8.5, "middle", "bold");
+        
+        drawCandle(canvas, 280, 45, 95, 40, 100);  
+        drawCircle(canvas, 280, 90, 4.5, "#00ffff", "url(#glow)");
+        drawText(canvas, 290, 72, "#00ffff", 8, "Entrada en Retest", "left", "bold");
+      }
+      else if (type === "chart_fvg_anatomy") {
+        drawCandle(canvas, 110, 150, 130, 100, 160); 
+        drawCandle(canvas, 150, 130, 60, 50, 135, 9);   
+        drawCandle(canvas, 190, 60, 40, 75, 35);     
+        
+        drawLine(canvas, 110, 100, 360, 100, "#d4af37", 0.8, "3,3"); 
+        drawLine(canvas, 190, 75, 360, 75, "#d4af37", 0.8, "3,3");  
+        
+        drawRect(canvas, 150, 75, 120, 25, "rgba(212,175,55,0.06)", "none");
+        
+        drawText(canvas, 365, 102, "#d4af37", 8, "Máximo Vela 1", "left");
+        drawText(canvas, 365, 78, "#d4af37", 8, "Mínimo Vela 3", "left");
+        drawText(canvas, 215, 90, "#dfb750", 8, "Vacío (Ineficiencia)", "middle", "bold");
+      }
+      else if (type === "chart_fvg_rebalance") {
+        drawRect(canvas, 100, 80, 280, 30, "rgba(212, 175, 55, 0.06)", "rgba(212, 175, 55, 0.3)", 0.8);
+        drawText(canvas, 105, 98, "FVG", "#d4af37", 8);
+        
+        drawCandle(canvas, 120, 140, 110, 80, 150); 
+        drawCandle(canvas, 160, 110, 60, 50, 115);
+        
+        drawCandle(canvas, 240, 50, 95, 45, 110);
+        drawCandle(canvas, 280, 95, 112, 90, 115); 
+        
+        drawCircle(canvas, 280, 110, 4.5, "#10b981");
+        drawText(canvas, 290, 130, "#10b981", 8.5, "Rebalanceo al 100% Completado", "left", "bold");
+      }
+      else if (type === "chart_fvg_ob_confluence") {
+        drawRect(canvas, 100, 140, 280, 30, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8, 2);
+        drawText(canvas, 105, 158, "ORDER BLOCK", "#00ffff", 8);
+        
+        drawRect(canvas, 100, 100, 280, 40, "rgba(212, 175, 55, 0.06)", "#d4af37", 0.8, 2);
+        drawText(canvas, 105, 122, "FAIR VALUE GAP", "#d4af37", 8);
+        
+        drawCandle(canvas, 310, 50, 115, 45, 145); 
+        drawCircle(canvas, 310, 140, 5, "#dfb750", "url(#gold-glow)");
+        
+        drawText(canvas, 310, 185, "#dfb750", 9, "POI Confluencia FVG + OB", "middle", "bold");
+      }
+      else if (type === "chart_volume_imbalance") {
+        drawCandle(canvas, 120, 150, 125, 100, 160); 
+        drawCandle(canvas, 160, 105, 60, 50, 115);   
+        
+        drawRect(canvas, 110, 105, 100, 20, "rgba(212, 175, 55, 0.12)", "#d4af37", 0.8, 1);
+        drawLine(canvas, 110, 105, 340, 105, "#d4af37", 0.8, "2,2");
+        drawLine(canvas, 110, 125, 340, 125, "#d4af37", 0.8, "2,2");
+        
+        drawText(canvas, 220, 118, "#d4af37", 8.5, "Volume Imbalance (Vacío de Cuerpos)", "left", "bold");
+      }
+      else if (type === "chart_fvg_consequent") {
+        drawRect(canvas, 80, 80, 300, 60, "rgba(212, 175, 55, 0.04)", "#d4af37", 0.8, 2);
+        drawText(canvas, 90, 95, "FAIR VALUE GAP (Grande)", "#d4af37", 8);
+        
+        drawLine(canvas, 80, 110, 380, 110, "#dfb750", 1.2, "3,3");
+        drawText(canvas, 385, 113, "#dfb750", 8, "Consecuent Encroachment (50%)", "left", "bold");
+        
+        drawCandle(canvas, 240, 50, 95, 45, 110); 
+        drawCircle(canvas, 240, 110, 4.5, "#00ffff", "url(#glow)");
+        drawCandle(canvas, 280, 95, 60, 55, 100); 
+      }
+      else if (type === "chart_fractal_intro") {
+        drawText(canvas, 250, 48, "#00ffff", 11, "Análisis Fractal: Velas dentro de Velas", "middle", "bold");
+        
+        drawRect(canvas, 120, 70, 260, 100, "rgba(255,255,255,0.005)", "rgba(59, 130, 246, 0.25)", 1.5, 4);
+        drawLine(canvas, 250, 50, 250, 190, "rgba(59, 130, 246, 0.25)", 1.2, "4,4"); 
+        drawText(canvas, 130, 82, "#3b82f6", 8, "Vela Mayor (HTF H4)", "left", "bold");
+        
+        drawCandle(canvas, 150, 160, 140, 130, 170);
+        drawCandle(canvas, 180, 140, 120, 110, 150);
+        drawCandle(canvas, 210, 120, 135, 115, 140); 
+        drawCandle(canvas, 240, 135, 105, 95, 145);
+        drawCandle(canvas, 270, 105, 80, 75, 110);
+        drawCandle(canvas, 300, 80, 95, 90, 105);   
+        drawCandle(canvas, 330, 95, 75, 70, 100);
+      }
+      else if (type === "chart_htf_bias") {
+        drawPath(canvas, "M 60,170 L 150,110 L 220,140 L 320,80 L 390,110 L 460,50", "rgba(0, 255, 255, 0.2)", 2);
+        
+        drawRect(canvas, 180, 130, 80, 25, "rgba(16, 185, 129, 0.08)", "#10b981", 1, 2);
+        drawText(canvas, 220, 146, "#10b981", 8, "HTF POI Diario", "middle", "bold");
+        
+        drawPath(canvas, "M 320,110 L 320,60 M 320,60 L 310,70 M 320,60 L 330,70", "#00ffff", 3, "", "url(#glow)");
+        drawText(canvas, 340, 75, "#00ffff", 9.5, "SESGO (HTF BIAS): COMPRAS", "left", "bold");
+      }
+      else if (type === "chart_ltf_entry") {
+        drawText(canvas, 250, 48, "#00ffff", 11, "Gatillo de Entrada (LTF M1)", "middle", "bold");
+        
+        drawCandle(canvas, 100, 120, 140, 110, 145); 
+        drawCandle(canvas, 140, 140, 105, 100, 145); 
+        
+        drawLine(canvas, 100, 120, 220, 120, "#ef4444", 1, "2,2"); 
+        drawText(canvas, 145, 115, "CHoCH", "#00ffff", 8);
+        
+        drawRect(canvas, 135, 120, 90, 15, "rgba(212,175,55,0.06)", "#d4af37", 0.8);
+        drawCandle(canvas, 180, 105, 125, 100, 130); 
+        drawCircle(canvas, 180, 125, 4, "#10b981");
+        
+        drawRect(canvas, 220, 50, 40, 75, "rgba(16, 185, 129, 0.15)", "#10b981", 0.8, 1); 
+        drawRect(canvas, 220, 125, 40, 20, "rgba(239, 68, 68, 0.15)", "#ef4444", 0.8, 1);   
+        
+        drawText(canvas, 270, 75, "#10b981", 8.5, "Take Profit (R:R 1:8)", "left", "bold");
+        drawText(canvas, 270, 138, "#ef4444", 8.5, "Stop Loss Ajustado", "left");
+      }
+      else if (type === "chart_alignment") {
+        drawText(canvas, 250, 48, "#dfb750", 11, "Alineación Temporal Perfecta (HTF a LTF)", "middle", "bold");
+        
+        drawRect(canvas, 40, 80, 100, 50, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
+        drawText(canvas, 90, 100, "#94a3b8", 8, "1. POI H1", "middle", "bold");
+        drawText(canvas, 90, 115, "#00ffff", 7.5, "Mitigación Zona", "middle");
+        
+        drawLine(canvas, 140, 105, 170, 105, "#334155", 1.2);
+        
+        drawRect(canvas, 180, 80, 110, 50, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
+        drawText(canvas, 235, 100, "#94a3b8", 8, "2. CHoCH M5", "middle", "bold");
+        drawText(canvas, 235, 115, "#00ffff", 7.5, "Giro Estructural", "middle");
+        
+        drawLine(canvas, 290, 105, 320, 105, "#334155", 1.2);
+        
+        drawRect(canvas, 330, 80, 120, 50, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
+        drawText(canvas, 390, 100, "#94a3b8", 8, "3. FVG RETEST M1", "middle", "bold");
+        drawText(canvas, 390, 115, "#10b981", 7.5, "Entrada Asimétrica", "middle", "bold");
+        
+        drawText(canvas, 250, 170, "✓ Combina la seguridad estructural macro con la precisión micro", "#10b981", 9, "middle", "600");
+      }
+      else if (type === "chart_premium_discount") {
+        drawRect(canvas, 100, 50, 300, 60, "rgba(239, 68, 68, 0.08)", "#ef4444", 0.8);
+        drawText(canvas, 250, 85, "#ef4444", 9, "ZONA PREMIUM (> 50%) - BUSCAR VENTAS", "middle", "bold");
+        
+        drawRect(canvas, 100, 110, 300, 60, "rgba(16, 185, 129, 0.08)", "#10b981", 0.8);
+        drawText(canvas, 250, 145, "#10b981", 9, "ZONA DESCUENTO (< 50%) - BUSCAR COMPRAS", "middle", "bold");
+        
+        drawLine(canvas, 100, 110, 400, 110, "#dfb750", 1.5); 
+        drawText(canvas, 405, 113, "#dfb750", 8, "Equilibrio (50%)", "left", "bold");
+      }
+      else if (type === "chart_breaker") {
+        drawRect(canvas, 100, 110, 280, 30, "rgba(239, 68, 68, 0.05)", "#ef4444", 0.8, 2);
+        drawText(canvas, 105, 128, "OB ANTERIOR ROTO (VENTA)", "#ef4444", 8);
+        
+        drawCandle(canvas, 120, 110, 140, 100, 145); 
+        drawCandle(canvas, 160, 135, 75, 70, 140);   
+        drawCandle(canvas, 200, 75, 55, 50, 80);
+        
+        drawCandle(canvas, 260, 55, 110, 50, 112);  
+        drawCircle(canvas, 260, 110, 4.5, "#dfb750", "url(#gold-glow)");
+        drawText(canvas, 260, 95, "#dfb750", 8.5, "Breaker Block (Test de Compra)", "middle", "bold");
+        
+        drawCandle(canvas, 300, 110, 60, 55, 115);
+      }
+      else if (type === "chart_trailing") {
+        drawText(canvas, 250, 50, "#f8fafc", 11, "Funcionamiento del Trailing Drawdown", "middle", "bold");
+        
+        drawPath(canvas, "M 60,150 L 140,110 L 220,130 L 300,90 L 380,105 L 440,70", "#3b82f6", 2, "", "url(#glow)");
+        drawText(canvas, 440, 58, "#3b82f6", 8, "Balance/Equidad", "right");
+        
+        drawPath(canvas, "M 60,175 L 140,135 L 220,135 L 300,115 L 380,115 L 440,95", "#ef4444", 1.8, "2,2", "url(#red-glow)");
+        drawText(canvas, 440, 110, "#ef4444", 8, "Límite Drawdown", "right");
+        
+        drawText(canvas, 250, 192, "El límite sube con los máximos pero NUNCA baja al retroceder el balance", "#f97316", 8, "middle");
+      }
+      else if (type === "chart_lot_consistency") {
+        drawText(canvas, 250, 50, "#00ffff", 11, "Regla de Consistencia de Lotes", "middle", "bold");
+        
+        drawRect(canvas, 60, 110, 380, 50, "rgba(0, 255, 255, 0.04)", "rgba(0, 255, 255, 0.15)", 0.8);
+        drawText(canvas, 70, 122, "Banda Consistente (1.0 - 2.0 Lotes)", "#00ffff", 7.5);
+        
+        const lots = [1.2, 1.0, 1.5, 1.1, 5.0, 1.3, 1.2, 1.1];
+        lots.forEach((lot, i) => {
+          const x = 90 + i * 45;
+          const h = lot * 20;
+          const isErr = lot > 2.0;
+          
+          drawRect(canvas, x - 10, 160 - h, 20, h, isErr ? "rgba(239,68,68,0.35)" : "rgba(16,185,129,0.35)", isErr ? "#ef4444" : "#10b981", 1, 1);
+          drawText(canvas, x, 155 - h, isErr ? "#ef4444" : "#f3f4f6", 8, `${lot} L`, "middle");
+          drawText(canvas, x, 172, `#${i+1}`, "#475569", 8, "middle");
+          
+          if (isErr) {
+            drawText(canvas, x, 185, "Infracción", "#ef4444", 8, "middle", "bold");
+          }
+        });
+      }
+      else if (type === "chart_patience") {
+        drawText(canvas, 250, 50, "#dfb750", 11, "Consistencia Diaria Geométrica", "middle", "bold");
+        
+        drawPath(canvas, "M 60,160 Q 180,150 280,110 T 440,60", "#d4af37", 2.2, "", "url(#gold-glow)");
+        
+        drawCircle(canvas, 60, 160, 3.5, "#d4af37");
+        drawCircle(canvas, 180, 143, 3.5, "#d4af37");
+        drawCircle(canvas, 280, 110, 3.5, "#d4af37");
+        drawCircle(canvas, 440, 60, 4.5, "#10b981", "url(#glow)");
+        
+        drawText(canvas, 60, 175, "#94a3b8", 8, "Día 1", "middle");
+        drawText(canvas, 180, 160, "#94a3b8", 8, "Día 10", "middle");
+        drawText(canvas, 280, 125, "#94a3b8", 8, "Día 20", "middle");
+        drawText(canvas, 440, 78, "#10b981", 8, "Día 30 (Aprobado)", "middle", "bold");
+        
+        drawText(canvas, 250, 192, "Meta de 0.5% diario = Cuentas aprobadas sin estrés ni sobreapalancamiento", "#10b981", 8.5, "middle");
+      }
+      else if (type === "chart_poc" || type === "chart_lvn") {
+        drawText(canvas, 250, 48, type === "chart_poc" ? "Punto de Control de Sesión (Volume POC)" : "Nodo de Bajo Volumen (LVN Reject)", "middle", "bold");
+        
+        const vBars = [30, 45, 60, 180, 120, 50, 15, 75, 90, 60];
+        vBars.forEach((w, i) => {
+          const y = 65 + i * 12;
+          const isPOC = i === 3;
+          const isLVN = i === 6;
+          let fill = "rgba(59,130,246,0.15)";
+          
+          if (isPOC && type === "chart_poc") fill = "rgba(212,175,55,0.3)";
+          if (isLVN && type === "chart_lvn") fill = "rgba(239,68,68,0.25)";
+          
+          drawRect(canvas, 40, y, w, 10, fill, "none", 0, 1.5);
+        });
+        
+        drawCandle(canvas, 260, 90, 120, 80, 130);
+        drawCandle(canvas, 300, 120, 100, 95, 140);
+        
+        if (type === "chart_poc") {
+          drawLine(canvas, 40, 106, 460, 106, "#d4af37", 1.8, "", "url(#gold-glow)");
+          drawText(canvas, 460, 98, "#d4af37", 8.5, "POC (Precio de Mayor Negociación)", "right", "bold");
+        } else {
+          drawLine(canvas, 40, 142, 460, 142, "#ef4444", 1.2, "3,3");
+          drawCircle(canvas, 300, 142, 4.5, "#ef4444");
+          drawText(canvas, 460, 134, "#ef4444", 8.5, "LVN (Bajo Volumen - Rechazo)", "right", "bold");
+        }
+      }
+      else if (type === "chart_management") {
+        drawLine(canvas, 60, 130, 440, 130, "#94a3b8", 1); 
+        drawText(canvas, 65, 122, "Entrada (Precio)", "#94a3b8", 8);
+        
+        drawLine(canvas, 60, 160, 440, 160, "#ef4444", 1.2, "2,2"); 
+        drawText(canvas, 65, 172, "Stop Loss Original (-1R)", "#ef4444", 8);
+        
+        drawPath(canvas, "M 100,130 L 180,95 L 260,95 L 340,65 L 420,60", "#10b981", 2, "", "url(#glow)");
+        
+        drawCircle(canvas, 180, 95, 4.5, "#dfb750");
+        drawText(canvas, 180, 85, "#dfb750", 8, "Cierre Parcial 50% (+1R)", "middle", "bold");
+        
+        drawLine(canvas, 180, 130, 440, 130, "#10b981", 1.8, "", "url(#glow)");
+        drawText(canvas, 300, 142, "#10b981", 8, "Stop a Breakeven (Riesgo Cero)", "middle", "bold");
+      }
+      else if (type === "chart_payouts") {
+        drawText(canvas, 250, 48, "#dfb750", 11, "Gestión de Payouts (Distribución del Retiro)", "middle", "bold");
+        
+        const splits = [
+          { name: "Capital Invisible (Fondo Seguro)", pct: 40, color: "#d4af37" },
+          { name: "Impuestos / Reserva Local", pct: 30, color: "#ef4444" },
+          { name: "Estilo de Vida / Recompensa", pct: 30, color: "#10b981" }
+        ];
+        
+        let startX = 60;
+        const totalW = 380;
+        
+        splits.forEach((split) => {
+          const w = totalW * (split.pct / 100);
+          drawRect(canvas, startX, 85, w, 35, split.color, "none", 0, 3);
+          drawText(canvas, startX + w/2, 136, split.color, 8, `${split.pct}%`, "middle", "bold");
+          
+          const labelWords = split.name.split(" ");
+          drawText(canvas, startX + w/2, 150, "#94a3b8", 7.5, labelWords.slice(0,2).join(" "), "middle");
+          if (labelWords.length > 2) {
+            drawText(canvas, startX + w/2, 160, "#94a3b8", 7.5, labelWords.slice(2).join(" "), "middle");
+          }
+          startX += w;
+        });
+      }
+      else if (type === "chart_compounding") {
+        drawText(canvas, 250, 50, "#dfb750", 11, "Curva de Escalamiento Geométrico del Capital", "middle", "bold");
+        drawPath(canvas, "M 60,165 Q 160,160 260,125 T 440,55", "#d4af37", 3, "", "url(#gold-glow)");
+        
+        drawRect(canvas, 140, 148, 12, 17, "rgba(59,130,246,0.3)", "none", 0, 1.5);
+        drawRect(canvas, 200, 134, 12, 31, "rgba(59,130,246,0.5)", "none", 0, 1.5);
+        drawRect(canvas, 260, 114, 12, 51, "rgba(59,130,246,0.7)", "none", 0, 1.5);
+        drawRect(canvas, 320, 84, 12, 81, "rgba(59,130,246,0.9)", "none", 0, 1.5);
+        drawRect(canvas, 380, 48, 12, 117, "#d4af37", "none", 0, 1.5);
+        
+        drawText(canvas, 386, 36, "#d4af37", 8.5, "Lotes Escalados", "middle", "bold");
+        drawText(canvas, 250, 192, "Aumentar lotaje basado en ganancias acumuladas, nunca por euforia", "#94a3b8", 8, "middle");
+      }
+      else if (type === "chart_invisible_capital") {
+        drawText(canvas, 250, 48, "#dfb750", 11, "Destino Final: Capital Invisible Sólido", "middle", "bold");
+        
+        drawRect(canvas, 50, 80, 110, 50, "rgba(255,255,255,0.01)", "#d4af37", 1, 3);
+        drawText(canvas, 105, 102, "#d4af37", 8.5, "Bienes Raíces", "middle", "bold");
+        drawText(canvas, 105, 116, "#94a3b8", 7.5, "Protección", "middle");
+        
+        drawRect(canvas, 195, 80, 110, 50, "rgba(255,255,255,0.01)", "#d4af37", 1, 3);
+        drawText(canvas, 250, 102, "#d4af37", 8.5, "Metales Preciosos", "middle", "bold");
+        drawText(canvas, 250, 116, "#94a3b8", 7.5, "Reserva Fuerte", "middle");
+        
+        drawRect(canvas, 340, 80, 110, 50, "rgba(255,255,255,0.01)", "#d4af37", 1, 3);
+        drawText(canvas, 395, 102, "#d4af37", 8.5, "Activos Indexados", "middle", "bold");
+        drawText(canvas, 395, 116, "#94a3b8", 7.5, "Rendimiento Pasivo", "middle");
+        
+        drawText(canvas, 250, 165, "El trading capitaliza; el capital invisible te hace libre de forma silenciosa", "#10b981", 9, "middle", "bold");
+      }
+      else if (type === "chart_checklist") {
+        drawText(canvas, 250, 50, "#00ffff", 11, "Checklist de Alta Probabilidad - Visión Trading Pro", "middle", "bold");
+        
+        const checks = [
+          "✓ Estructura de fondo H4 / Bias Diario Alineado",
+          "✓ Retorno del precio a POI (Order Block) no mitigado",
+          "✓ Cambio de Carácter (CHoCH) en temporalidad de entrada (M1/M5)",
+          "✓ Vacío de Liquidez (FVG) local de entrada definido",
+          "✓ Gestión de riesgo calculada rigurosamente (1.0% máximo)"
+        ];
+        
+        checks.forEach((chk, i) => {
+          const y = 72 + i * 22;
+          drawText(canvas, 60, y, "#10b981", 8.5, chk.substring(0, 1), "left", "bold");
+          drawText(canvas, 75, y, "#f3f4f6", 8.5, chk.substring(2));
+        });
+      }
+      else {
+        // Fallback Premium TradingView Chart
+        drawText(canvas, 250, 48, "#dfb750", 10.5, "Gráfico Técnico Ecosistema-AS", "middle", "bold");
+        
+        drawPath(canvas, "M 60,160 L 120,90 L 180,120 L 260,60 L 320,90 L 400,40 L 450,70", "rgba(59, 130, 246, 0.4)", 1.5);
+        drawPath(canvas, "M 60,165 Q 160,140 260,125 T 440,75", "#00ffff", 2.2, "", "url(#glow)");
+        drawCircle(canvas, 260, 125, 4.5, "#dfb750", "url(#gold-glow)");
+        
+        drawText(canvas, 260, 145, "#dfb750", 8.5, "Zona de Confluencia", "middle", "bold");
+      }
+    }
+
+    // Helper drawing functions
+    function drawPath(canvas, d, color, width, dash = "", filter = "") {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      el.setAttribute("d", d);
+      el.setAttribute("fill", "none");
+      el.setAttribute("stroke", color);
+      el.setAttribute("stroke-width", width);
+      if (dash) el.setAttribute("stroke-dasharray", dash);
+      if (filter) el.setAttribute("filter", filter);
+      canvas.appendChild(el);
+    }
+    function drawLine(canvas, x1, y1, x2, y2, color, width, dash = "") {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      el.setAttribute("x1", x1);
+      el.setAttribute("y1", y1);
+      el.setAttribute("x2", x2);
+      el.setAttribute("y2", y2);
+      el.setAttribute("stroke", color);
+      el.setAttribute("stroke-width", width);
+      if (dash) el.setAttribute("stroke-dasharray", dash);
+      canvas.appendChild(el);
+    }
+    function drawCircle(canvas, cx, cy, r, color, filter = "") {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      el.setAttribute("cx", cx);
+      el.setAttribute("cy", cy);
+      el.setAttribute("r", r);
+      el.setAttribute("fill", color);
+      if (filter) el.setAttribute("filter", filter);
+      canvas.appendChild(el);
+    }
+    function drawRect(canvas, x, y, w, h, fill, stroke = "none", sw = 1, rx = 0) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      el.setAttribute("x", x);
+      el.setAttribute("y", y);
+      el.setAttribute("width", w);
+      el.setAttribute("height", h);
+      el.setAttribute("fill", fill);
+      if (rx) {
+        el.setAttribute("rx", rx);
+      }
+      if (stroke !== "none") {
+        el.setAttribute("stroke", stroke);
+        el.setAttribute("stroke-width", sw);
+      }
+      canvas.appendChild(el);
+    }
+    function drawText(canvas, x, y, fill, size, text, align = "left", weight = "normal", font = "Inter, sans-serif") {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      el.setAttribute("x", x);
+      el.setAttribute("y", y);
+      el.setAttribute("fill", fill);
+      el.setAttribute("font-size", size);
+      el.setAttribute("font-family", font);
+      el.setAttribute("font-weight", weight);
+      el.setAttribute("text-anchor", align === "middle" ? "middle" : (align === "right" ? "end" : "start"));
+      el.textContent = text;
+      canvas.appendChild(el);
+    }    // Launch
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+
+  <!-- Audio settings Modal overlay -->
+  <div id="audio-settings-modal" class="modal-overlay" style="display: none;">
+    <div class="card" style="width: 100%; max-width: 480px; margin: 20px; padding: 24px; position: relative;">
+      <h3 class="card-title" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center;">
+        <span><i data-lucide="settings"></i> Configuración de Voz</span>
+        <button id="btn-close-audio-modal" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px;"><i data-lucide="x"></i></button>
+      </h3>
+      
+      <div class="lesson-body">
+        <p style="font-size: 0.9rem; margin-bottom: 16px;">Configura la síntesis de voz premium de <strong>ElevenLabs</strong> para escuchar las narraciones de las lecciones del curso.</p>
+        
+        <div class="input-group" style="margin-bottom: 14px;">
+          <label class="input-label" style="font-size: 0.75rem;">Voz del Narrador</label>
+          <select id="el-voice-select" class="form-control" style="background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: var(--radius-sm); font-size: 0.85rem; outline: none; width: 100%; cursor: pointer;">
+            <option value="c6rAmJGsdzNWAIVkws45" selected>Visión Trading Pro (Voz de Hombre)</option>
+            <option value="ErXwobaYiN019PkySvjV">Antoni (Hombre Profesional - ElevenLabs)</option>
+            <option value="custom">Personalizada (Ingresar Voice ID abajo)</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="el-custom-voice-group" style="margin-bottom: 14px; display: none;">
+          <label class="input-label" style="font-size: 0.75rem;">ElevenLabs Voice ID Personalizado</label>
+          <input type="text" id="el-voice-id" class="form-control" placeholder="Introduce el Voice ID personalizado..." value="c6rAmJGsdzNWAIVkws45">
+        </div>
+
+        <div class="input-group" style="margin-bottom: 14px;">
+          <label class="input-label" style="font-size: 0.75rem;">ElevenLabs API Key</label>
+          <input type="password" id="el-api-key" class="form-control" placeholder="Introduce tu xi-api-key...">
+        </div>
+
+        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem;">
+          <strong>💡 Información:</strong> Si no tienes una API Key de ElevenLabs, déjala en blanco. El sistema utilizará la <strong>voz nativa en español de tu navegador</strong> de forma totalmente gratuita y automática.
+        </div>
+
+        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem; border-left-color: var(--color-warning); background: rgba(245, 158, 11, 0.03);">
+          <strong>⚠️ Nota de Permisos:</strong> Tu clave API en ElevenLabs debe tener activada la casilla de permisos de <strong>"Text-to-Speech"</strong> (Texto a Voz). De lo contrario, los servidores de ElevenLabs denegarán la llamada para reproducir la voz del narrador.
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button id="btn-save-audio-settings" class="btn-oro-liquido" style="padding: 10px 20px; border-radius: var(--radius-sm);">Guardar Configuración</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Tools Integration -->
+  <script src="calculator.js?v=6"></script>
+  <script src="simulator.js?v=6"></script>
+
+</body>
+</html>

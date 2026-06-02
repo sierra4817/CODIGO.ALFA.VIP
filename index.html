@@ -1,78 +1,463 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Código Alfa | El Capital Invisible</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Ecosistema AS | Albert Sierra - Especulación Técnica y Soberanía Financiera</title>
+  <meta name="description" content="Descubre el Ecosistema AS de Albert Sierra. Domina la especulación profesional de futuros en Visión Trading Pro y blinda tu patrimonio con El Capital Invisible.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Landing Page Custom Stylesheet -->
+  <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-    <nav class="navbar glass">
-        <div class="logo">CÓDIGO ALFA</div>
-        <ul class="nav-links">
-            <li><a href="#filosofia">El Código</a></li>
-            <li><a href="#productos">Arsenal Digital</a></li>
-            <li><a href="#contacto">Inner Circle</a></li>
-        </ul>
+
+  <!-- Background Glow & Grid Overlay -->
+  <div class="bg-blur gold-blur"></div>
+  <div class="bg-blur cyan-blur"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar" id="nav-header">
+    <div class="nav-brand">
+      <div class="brand-logo">AS</div>
+      <div class="brand-info">
+        <span class="brand-name">ECOSISTEMA AS</span>
+        <span class="brand-author">Albert Sierra</span>
+      </div>
+    </div>
+    
+    <nav class="nav-menu">
+      <a href="#filosofia" class="nav-link">El Código</a>
+      <a href="#productos" class="nav-link">Arsenal Digital</a>
+      <a href="#testimonios" class="nav-link">Testimonios</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
+    
+    <div class="nav-actions">
+      <!-- Admin / Dashboard access with visual lock icon -->
+      <a href="dashboard.html" class="btn-dashboard" id="btn-admin-login" title="Acceso al Panel de Control">
+        <i data-lucide="lock"></i>
+        <span>Dashboard</span>
+      </a>
+    </div>
+  </header>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="avatar-container">
-                <div class="avatar-glow"></div>
-                <img src="avatar.jpg" alt="Perfil Alfa" class="avatar">
-            </div>
-            <h1 class="title">DEJA DE COMPETIR.<br><span class="highlight">COMIENZA A DOMINAR.</span></h1>
-            <p class="subtitle">Decodifica la psicología del 1%. Liderazgo. Poder. Mentalidad Financiera Radical.</p>
-            <a href="#productos" class="btn-primary">Acceso Exclusivo</a>
+  <!-- Hero Section -->
+  <section class="hero" id="filosofia">
+    <div class="hero-container">
+      <div class="badge-tag">EL MANIFIESTO DEL 1%</div>
+      
+      <h1 class="hero-headline">
+        DEJA DE COMPETIR.<br>
+        <span class="text-gold-gradient">COMIENZA A DOMINAR.</span>
+      </h1>
+      
+      <p class="hero-subheadline">
+        La estrategia definitiva para especular en futuros con maestría estoica y estructurar tu riqueza en la absoluta soberanía. El dinero visible se devalúa; el verdadero poder opera de forma invisible.
+      </p>
+      
+      <!-- Badges / Features -->
+      <div class="hero-badges">
+        <div class="badge-box">
+          <i data-lucide="shield-check"></i>
+          <span>Sin Indicadores Retrasados</span>
         </div>
-    </header>
-
-    <section id="filosofia" class="section philosophy">
-        <h2 class="section-title">La Psicología del 1%</h2>
-        <div class="grid-3">
-            <div class="card glass animate-on-scroll">
-                <h3>Mentalidad de Dominio</h3>
-                <p>Construye una fortaleza mental impenetrable. El éxito no se negocia, se ejecuta.</p>
-            </div>
-            <div class="card glass animate-on-scroll">
-                <h3>Estructura Financiera</h3>
-                <p>Arquitectura de capital diseñada para escalar. Transforma tu visión en patrimonio real.</p>
-            </div>
-            <div class="card glass animate-on-scroll">
-                <h3>Liderazgo Impasible</h3>
-                <p>Control absoluto del entorno. Domina tus emociones para dominar el tablero.</p>
-            </div>
+        <div class="badge-box">
+          <i data-lucide="trending-up"></i>
+          <span>Lectura de Liquidez Pura</span>
         </div>
-    </section>
-
-    <section id="productos" class="section products">
-        <h2 class="section-title">Arsenal Estratégico</h2>
-        <div class="grid-2">
-            <div class="product-card glass animate-on-scroll">
-                <div class="product-info">
-                    <span class="tag">Obra Principal</span>
-                    <h3>Comprar, Pedir Prestado, Morir</h3>
-                    <p>La hoja de ruta definitiva para la expansión del patrimonio y la elusión estratégica. El manual táctico del capital invisible.</p>
-                    <a href="https://payhip.com/b/tu-enlace" class="btn-secondary" target="_blank">Adquirir Documento</a>
-                </div>
-            </div>
-            <div class="product-card glass animate-on-scroll">
-                <div class="product-info">
-                    <span class="tag">Programa Avanzado</span>
-                    <h3>El Capital Invisible</h3>
-                    <p>Sistema completo de estructuración financiera y operaciones en el mercado de futuros. Herramientas técnicas para el 1%.</p>
-                    <a href="https://payhip.com/b/tu-enlace-2" class="btn-secondary" target="_blank">Inscribirse al Máster</a>
-                </div>
-            </div>
+        <div class="badge-box">
+          <i data-lucide="eye-off"></i>
+          <span>Soberanía Fiscal del 1%</span>
         </div>
-    </section>
+      </div>
+      
+      <!-- Call to Action Section -->
+      <div class="hero-actions">
+        <a href="#productos" class="btn-primary-glow" id="cta-hero-main">
+          <span>Adquirir el Arsenal Digital</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-        <p>&copy; 2026 Ecosistema-AS. Todos los derechos reservados.</p>
-    </footer>
+  <!-- Video Hero Section (Marketing Presentation) -->
+  <section class="video-hero" id="intro-video">
+    <div class="video-container">
+      <div class="video-card" onclick="openVideoModal('MtZXBijAYHs')" id="main-video-trigger">
+        <div class="video-card-glow"></div>
+        <div class="video-thumbnail-placeholder">
+          <!-- Placeholder background design simulating trading chart -->
+          <div class="chart-mockup">
+            <div class="chart-line"></div>
+            <div class="candle bull" style="height: 120px; left: 15%;"></div>
+            <div class="candle bull" style="height: 160px; left: 35%;"></div>
+            <div class="candle bear" style="height: 100px; left: 55%;"></div>
+            <div class="candle bull" style="height: 220px; left: 75%;"></div>
+          </div>
+          <div class="thumbnail-overlay">
+            <div class="play-btn-circle">
+              <i data-lucide="play" fill="currentColor"></i>
+            </div>
+            <span class="video-duration">Ver Presentación de Albert Sierra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="main.js"></script>
+  <!-- Live Counter and Withdrawals Ticker Widget -->
+  <section class="live-ticker-section" id="live-stats">
+    <div class="ticker-container">
+      <div class="ticker-left">
+        <span class="ticker-meta-title">Estadísticas del Ecosistema en Tiempo Real</span>
+        <h2 class="ticker-counter-title">
+          Los miembros del Ecosistema han retirado:<br>
+          <span class="ticker-counter" id="live-total-counter">$5,420,150 USD</span>
+        </h2>
+        <div class="ticker-substats">
+          <div class="substat-item">
+            <span class="substat-label">Desafíos Hoy:</span>
+            <span class="substat-value" id="stats-today">142</span>
+          </div>
+          <div class="substat-item">
+            <span class="substat-label">Miembros Activos:</span>
+            <span class="substat-value" id="stats-active">450</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-right">
+        <!-- Live notification feed for student withdrawals -->
+        <div class="notifications-viewport">
+          <div class="notifications-list" id="withdrawals-feed">
+            <!-- Dynamically populated by landing.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Video Testimonials Carousel -->
+  <section class="carousel-section" id="testimonios">
+    <div class="carousel-title-wrapper">
+      <span class="section-tag">CASOS DE ÉXITO</span>
+      <h2 class="section-heading">Resultados Reales de Miembros del <span class="text-gold-gradient">Inner Circle</span></h2>
+      <p class="section-subheading">Estudiantes que decodificaron el algoritmo operativo y estructuraron su capital.</p>
+    </div>
+    
+    <div class="carousel-wrapper">
+      <!-- Nav Button Left -->
+      <button class="carousel-btn btn-prev" id="carousel-prev-btn" aria-label="Anterior testimonio">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      
+      <!-- Carousel Track -->
+      <div class="carousel-track-container">
+        <div class="carousel-track" id="testimonial-carousel-track">
+          <!-- Cards dynamically initialized or statically listed and controlled via JS -->
+          
+          <div class="carousel-card" data-video="mHNKrQTQbvI">
+            <div class="card-image-wrapper">
+              <div class="card-play-overlay">
+                <i data-lucide="play" fill="currentColor"></i>
+              </div>
+              <div class="card-gradient-bg"></div>
+              <span class="card-badge-withdraw">+$280,000 USD</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-student-name">Alan</h3>
+              <p class="card-student-tagline">"Retiros masivos en solo 9 meses"</p>
+              <p class="card-student-desc">Logró la maestría de la liquidez bancaria operando futuros Nasdaq en menos de un año.</p>
+            </div>
+          </div>
+          
+          <div class="carousel-card" data-video="MtZXBijAYHs">
+            <div class="card-image-wrapper">
+              <div class="card-play-overlay">
+                <i data-lucide="play" fill="currentColor"></i>
+              </div>
+              <div class="card-gradient-bg"></div>
+              <span class="card-badge-withdraw">+$61,000 USD</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-student-name">Nando Ramos</h3>
+              <p class="card-student-tagline">"Consistencia y gestión absoluta"</p>
+              <p class="card-student-desc">Operador de futuros del S&P 500. Dominó el auto-control estoico y la gestión de riesgo.</p>
+            </div>
+          </div>
+
+          <div class="carousel-card" data-video="58e7Wf3tZk8">
+            <div class="card-image-wrapper">
+              <div class="card-play-overlay">
+                <i data-lucide="play" fill="currentColor"></i>
+              </div>
+              <div class="card-gradient-bg"></div>
+              <span class="card-badge-withdraw">+$360,000 USD</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-student-name">Jose David</h3>
+              <p class="card-student-tagline">"El 1% en su máxima expresión"</p>
+              <p class="card-student-desc">Transformó una cuenta de simulación en operativa real escalando contratos de futuros.</p>
+            </div>
+          </div>
+
+          <div class="carousel-card" data-video="JYmJu8NSLrw">
+            <div class="card-image-wrapper">
+              <div class="card-play-overlay">
+                <i data-lucide="play" fill="currentColor"></i>
+              </div>
+              <div class="card-gradient-bg"></div>
+              <span class="card-badge-withdraw">+$253,000 USD</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-student-name">Angi</h3>
+              <p class="card-student-tagline">"Soberanía desde cualquier lugar"</p>
+              <p class="card-student-desc">Logró la elusión legal estructurando sus retiros a través de corporaciones extranjeras.</p>
+            </div>
+          </div>
+
+          <div class="carousel-card" data-video="76BqD--JXLE">
+            <div class="card-image-wrapper">
+              <div class="card-play-overlay">
+                <i data-lucide="play" fill="currentColor"></i>
+              </div>
+              <div class="card-gradient-bg"></div>
+              <span class="card-badge-withdraw">+$75,000 USD</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-student-name">George Henis</h3>
+              <p class="card-student-tagline">"Blindaje patrimonial definitivo"</p>
+              <p class="card-student-desc">Implementó el manual 'Comprar, Pedir Prestado, Morir' para resguardar su capital.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Nav Button Right -->
+      <button class="carousel-btn btn-next" id="carousel-next-btn" aria-label="Siguiente testimonio">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- Products Showcase / Ecosistema AS Core Packages -->
+  <section class="products-section" id="productos">
+    <div class="section-title-wrapper">
+      <span class="section-tag">EL ARSENAL ESTRATÉGICO</span>
+      <h2 class="section-heading">Toma el Control Absoluto de tu Destino Financiero</h2>
+      <p class="section-subheading">Elige la herramienta táctica adaptada a tu nivel de operaciones y necesidades patrimoniales.</p>
+    </div>
+    
+    <div class="products-grid">
+      <!-- Product 1: Visión Trading Pro -->
+      <div class="product-card-premium trading-pkg">
+        <div class="card-border-glow"></div>
+        <div class="card-badge">ESPECULACIÓN TÉCNICA</div>
+        <h3 class="pkg-title">Visión Trading Pro</h3>
+        <p class="pkg-subtitle">Maestría Técnica y Mental en Futuros</p>
+        <div class="pkg-features">
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Curso estructurado de 70 días con enfoque estoico</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Simulador gráfico interactivo de velas en tiempo real</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Calculadora integrada de apalancamiento y riesgo técnico</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Lectura institucional y análisis de bloques de órdenes</span>
+          </div>
+        </div>
+        <div class="pkg-pricing">
+          <span class="price-val">$299 USD</span>
+          <span class="price-meta">Pago único / Acceso vitalicio</span>
+        </div>
+        <div class="pkg-actions">
+          <a href="https://buy.stripe.com/mock_masterclass_pro" class="btn-pkg-primary" target="_blank">
+            <span>Comprar Masterclass Pro</span>
+            <i data-lucide="shopping-cart"></i>
+          </a>
+          <a href="vision-trading/template_leccion.html" class="btn-pkg-secondary" target="_blank">
+            <span>Probar Simulador Gratis</span>
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Product 2: El Capital Invisible -->
+      <div class="product-card-premium capital-pkg">
+        <div class="card-border-glow"></div>
+        <div class="card-badge">SOBERANÍA PATRIMONIAL</div>
+        <h3 class="pkg-title">El Capital Invisible</h3>
+        <p class="pkg-subtitle">Manual y Estructura Financiera del 1%</p>
+        <div class="pkg-features">
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Manifiesto Completo "Comprar, Pedir Prestado, Morir"</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Fórmulas legales de elusión y protección patrimonial</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Manual práctico de estructuración en el extranjero</span>
+          </div>
+          <div class="pkg-feature-item">
+            <i data-lucide="check-circle-2"></i>
+            <span>Guía de inicio y Capítulo 1 de descarga directa</span>
+          </div>
+        </div>
+        <div class="pkg-pricing">
+          <span class="price-val">$49 USD</span>
+          <span class="price-meta">Libro digital + Audiolibro completo</span>
+        </div>
+        <div class="pkg-actions">
+          <a href="https://payhip.com/b/uJHeR" class="btn-pkg-gold" target="_blank">
+            <span>Acceder al Sistema Completo</span>
+            <i data-lucide="book-open"></i>
+          </a>
+          <a href="capital-invisible/index.html" class="btn-pkg-secondary" target="_blank">
+            <span>Descargar Capítulo 1 Gratis</span>
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Testimonials Grid (Additional Proof) -->
+  <section class="testimonials-grid-section" id="grid-testimonios">
+    <div class="section-title-wrapper">
+      <span class="section-tag">GALERÍA DE RESULTADOS</span>
+      <h2 class="section-heading">Más Miembros Dominando los Futuros</h2>
+      <p class="section-subheading">Evidencia real de retiros auditados en cuentas de fondeo y capital propio.</p>
+    </div>
+    
+    <div class="testimonials-grid">
+      
+      <div class="grid-testimonial-card" onclick="openVideoModal('pWEowYXqexk')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">Jesus Gonzales</h4>
+          <span class="grid-student-amount">+$23,500 USD</span>
+        </div>
+      </div>
+
+      <div class="grid-testimonial-card" onclick="openVideoModal('OJ_aTyWLMYk')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">Mauricio</h4>
+          <span class="grid-student-amount">+$243,000 USD</span>
+        </div>
+      </div>
+
+      <div class="grid-testimonial-card" onclick="openVideoModal('RlgwTOdpOAw')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">David</h4>
+          <span class="grid-student-amount">+$12,000 USD</span>
+        </div>
+      </div>
+
+      <div class="grid-testimonial-card" onclick="openVideoModal('u_68v_QBRaU')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">Darian</h4>
+          <span class="grid-student-amount">+$25,000 USD</span>
+        </div>
+      </div>
+
+      <div class="grid-testimonial-card" onclick="openVideoModal('bZxmuIzXD_A')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">Jorge Messina</h4>
+          <span class="grid-student-amount">+$246,000 USD</span>
+        </div>
+      </div>
+
+      <div class="grid-testimonial-card" onclick="openVideoModal('SdbdbiB6Wmo')">
+        <div class="grid-card-overlay"></div>
+        <div class="grid-card-inner">
+          <div class="grid-card-icon"><i data-lucide="play" fill="currentColor"></i></div>
+          <h4 class="grid-student-name">Kenji</h4>
+          <span class="grid-student-amount">+$180,000 USD</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Video Modal Popup -->
+  <div class="video-modal" id="video-overlay-modal" onclick="closeVideoModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="btn-close-modal" onclick="closeVideoModal()" aria-label="Cerrar video">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="video-wrapper">
+        <iframe id="modal-youtube-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="contacto">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="footer-logo-text">AS ECOSISTEMA</span>
+        <p class="footer-tagline">Decodificando la psicología del 1%. Diseñado con Maestría y Autocontrol.</p>
+      </div>
+      
+      <div class="footer-links">
+        <a href="https://instagram.com/vision.trader7" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://tiktok.com/@vision.trader7" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="video"></i>
+          <span>TikTok</span>
+        </a>
+        <a href="https://payhip.com/CapitalInvisible" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="shopping-bag"></i>
+          <span>Payhip Store</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-legal">
+      <p class="legal-disclaimer">
+        <strong>Aviso de Riesgo Relevante:</strong> La especulación financiera y operativa en el mercado de futuros implica un riesgo considerable y no es adecuada para todos los inversores. La rentabilidad histórica obtenida por los alumnos del Ecosistema no es indicativa ni garantiza resultados futuros. No inviertas capital que no puedas permitirte perder por completo. Ningún contenido presentado en este sitio web constituye una recomendación de inversión.
+      </p>
+      <div class="legal-copyright">
+        © 2026 Ecosistema AS • Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="landing.js"></script>
 </body>
 </html>

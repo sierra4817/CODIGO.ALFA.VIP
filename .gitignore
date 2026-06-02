@@ -1,0 +1,45 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de edición de código (VS Code, etc.)
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Carpetas de dependencias (por si usas npm o node en el futuro)
+node_modules/
+jspm_packages/
+.pnp
+.pnp.js
+
+# Archivos de logs y diagnóstico
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de entorno y claves locales (Seguridad)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Archivos temporales y de construcción
+dist/
+build/
+out/
+*.tmp
+*.temp
+
+# Python cache
+__pycache__/
+*.pyc

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visión Trading Pro - Masterclass de Futuros</title>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">
+        <!-- SVG matching the brand logo from the screenshot: 3 candlesticks (Green, Blue, Red) -->
+        <svg width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Green Candle (Left) -->
+          <rect x="8" y="10" width="6" height="15" rx="1" fill="#10b981"/>
+          <line x1="11" y1="4" x2="11" y2="30" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+          
+          <!-- Blue Candle (Center) -->
+          <rect x="17" y="6" width="6" height="20" rx="1" fill="#3b82f6"/>
+          <line x1="20" y1="2" x2="20" y2="32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+          
+          <!-- Red Candle (Right) -->
+          <rect x="26" y="14" width="6" height="12" rx="1" fill="#ef4444"/>
+          <line x1="29" y1="8" x2="29" y2="28" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span>VISIÓN</span>
+        <span class="logo-sub">TRADING PRO</span>
+      </div>
+    </div>
+
+    <!-- Audio & Voice Narrator Settings Button -->
+    <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; margin-right: 12px;">
+      <a href="../dashboard.html" class="indicator-toggle" style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: #00d2ff; text-decoration: none; cursor: pointer; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-family: var(--font-sans); font-weight: 600; transition: 0.2s ease;">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Dashboard
+      </a>
+      <button id="btn-audio-settings" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-family: var(--font-sans);">
+        <i data-lucide="volume-2" style="width: 16px; height: 16px;"></i> Narrador de Voz
+      </button>
+    </div>
+
+    <!-- User Profile Card in header (Albert) -->
+    <div class="user-profile">
+      <div class="user-info">
+        <span class="user-name">Albert</span>
+        <span class="user-handle">@vision.trader7</span>
+      </div>
+      <img src="logo-transp.png" onerror="this.src='LOGO.jpg'; this.onerror=function(){this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=100&auto=format&fit=crop&q=60';}" alt="Albert Profile" class="user-avatar">
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside>
+      <div class="progress-widget">
+        <div class="progress-header">
+          <span class="progress-title">Progreso del Curso</span>
+          <span id="progress-text" class="progress-percentage">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <ul class="menu-list">
+        <li class="menu-item active" data-target="welcome">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="home"></i>
+            <span>Inicio</span>
+          </div>
+          <span class="menu-status"><i data-lucide="chevron-right"></i></span>
+        </li>
+
+        <li class="menu-section-title">Contenido Académico</li>
+        
+        <!-- Accordion container for 42-day syllabus built in JS -->
+        <div id="academic-menu-container" style="display: flex; flex-direction: column; gap: 4px; padding: 0 8px;"></div>
+
+        <li class="menu-section-title">Herramientas Prácticas</li>
+
+        <li class="menu-item" data-target="calculator">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="calculator"></i>
+            <span>Calculadora de Riesgo</span>
+          </div>
+          <span class="menu-status"><i data-lucide="chevron-right"></i></span>
+        </li>
+
+        <li class="menu-item" data-target="simulator">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="play"></i>
+            <span>Simulador de Trading</span>
+          </div>
+          <span class="menu-status"><i data-lucide="chevron-right"></i></span>
+        </li>
+
+        <li class="menu-item" data-target="glossary">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="book"></i>
+            <span>Glosario Técnico</span>
+          </div>
+          <span class="menu-status"><i data-lucide="chevron-right"></i></span>
+        </li>
+
+        <li class="menu-item" data-target="certificate" id="menu-item-certificate" style="display: none;">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="award" style="color: #f59e0b;"></i>
+            <span>Mi Certificado</span>
+          </div>
+          <span class="menu-status"><i data-lucide="chevron-right"></i></span>
+        </li>
+
+        <li class="menu-section-title">Administración</li>
+
+        <li class="menu-item" onclick="window.unlockAllLessons()" style="color: var(--color-accent); border: 1px dashed rgba(59, 130, 246, 0.25); margin-bottom: 8px; margin-top: 4px;">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="unlock" style="color: var(--color-accent);"></i>
+            <span>Desbloquear Curso</span>
+          </div>
+          <span class="menu-status"><i data-lucide="unlock" style="opacity: 0.5; width: 14px; height: 14px;"></i></span>
+        </li>
+
+        <li class="menu-item" onclick="window.lockAllLessons()" style="color: #f59e0b; border: 1px dashed rgba(245, 158, 11, 0.25); margin-bottom: 8px;">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="lock" style="color: #f59e0b;"></i>
+            <span>Bloquear Curso</span>
+          </div>
+          <span class="menu-status"><i data-lucide="lock" style="opacity: 0.5; width: 14px; height: 14px;"></i></span>
+        </li>
+
+        <li class="menu-item" onclick="window.resetAcademyProgress()" style="color: var(--color-bear); border: 1px dashed rgba(239, 68, 68, 0.25); margin-bottom: 8px;">
+          <div class="menu-item-left">
+            <i class="menu-icon" data-lucide="refresh-cw" style="color: var(--color-bear);"></i>
+            <span>Reiniciar Progreso</span>
+          </div>
+          <span class="menu-status"><i data-lucide="refresh-cw" style="opacity: 0.5; width: 14px; height: 14px;"></i></span>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- WELCOME / HOME SECTION -->
+      <section id="welcome" class="content-section active">
+        <div class="welcome-grid">
+          <div class="card">
+            <h2 class="card-title"><i data-lucide="graduation-cap"></i> Bienvenido al Curso de Trading Profesional</h2>
+            <div class="lesson-body">
+              <p>Hola futuro trader profesional. Te damos la bienvenida al <strong>Curso de Trading Profesional: Maestría Técnica y Mental (Enfoque Estoico y Pragmático | 42 Días de Transformación)</strong>. Este programa está diseñado para convertir a un operador aficionado en un trader disciplinado, eliminando promesas de dinero fácil y centrándose en el control del riesgo, la lectura técnica limpia y el dominio emocional.</p>
+              <p>A través de este viaje de 42 días, aprenderás:</p>
+              <ul>
+                <li><strong>Mentalidad Ganadora:</strong> Desmitificando sesgos cognitivos y eliminando falsas expectativas.</li>
+                <li><strong>Gestión y Disciplina:</strong> Las matemáticas del trader, ratios R:R y control estricto del drawdown.</li>
+                <li><strong>Estrategia de Alta Probabilidad:</strong> Estructura real del mercado y acción del precio sin indicadores de ruido.</li>
+                <li><strong>Ejecución y Evaluación:</strong> Rutinas operativas rigurosas y auditoría crítica de errores.</li>
+              </ul>
+              <div class="highlight-box">
+                <strong>💡 Recomendación:</strong> Completa las lecciones de forma ordenada. Cada lección cuenta con un desafío práctico diario para registrar en tu bitácora, y cada semana concluye con una evaluación para avanzar al siguiente módulo.
+              </div>
+              <button class="btn-oro-liquido" onclick="window.openPillar(1)" style="padding: 12px 24px; border-radius: var(--radius-sm); font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                Comenzar Curso <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+          <h3 class="card-title"><i data-lucide="book-open"></i> Pilares de Transformación</h3>
+          <div class="module-card-list">
+            <div class="module-card" onclick="window.openPillar(1)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 1</span>
+                <span class="module-card-title">Fundamentos de la Subasta Financiera (Psicología y Mecánica)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(2)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 2</span>
+                <span class="module-card-title">Matemáticas del Riesgo y Ruina (Gestión de Capital)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(3)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 3</span>
+                <span class="module-card-title">Estructura del Mercado y Tendencias (Acción del Precio)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(4)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 4</span>
+                <span class="module-card-title">Filtros Operativos y Confluencias (EMA 200 y RSI)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(5)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 5</span>
+                <span class="module-card-title">Bloques de Órdenes (Order Blocks Institucionales)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(6)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 6</span>
+                <span class="module-card-title">Liquidez Avanzada (Stops Sweeps y Pools de Liquidez)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(7)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 7</span>
+                <span class="module-card-title">Vacíos de Liquidez (Fair Value Gaps y Rebalanceos)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(8)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 8</span>
+                <span class="module-card-title">Análisis Multitemporal Fractal (Top-Down de H4 a M1)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+            <div class="module-card" onclick="window.openPillar(9)">
+              <div class="module-card-info">
+                <span class="module-card-num">Pilar 9</span>
+                <span class="module-card-title">Especialización de Firmas de Fondeo (Prop Firms y Drawdown)</span>
+              </div>
+              <i data-lucide="chevron-right" class="text-secondary"></i>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ACADEMY DAY SECTION -->
+      <section id="academy-day" class="content-section">
+        <div class="card" style="position: relative;">
+          <h2 class="card-title" style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px;">
+            <span id="academy-day-title" style="display: flex; align-items: center; gap: 10px;"><i data-lucide="book-open"></i> Día 1: El Capital como Inventario</span>
+            <div style="display: flex; gap: 8px;">
+              <button id="btn-toggle-focus" class="indicator-toggle" style="cursor: pointer; font-size: 0.85rem; padding: 6px 12px; background: var(--bg-tertiary);">
+                <i data-lucide="maximize-2" style="width: 14px; height: 14px;"></i> <span>Modo Enfoque</span>
+              </button>
+              <button class="indicator-toggle btn-narrate" id="btn-narrate-day" data-day="1" style="cursor: pointer; font-size: 0.85rem; padding: 6px 12px;">
+                <i data-lucide="volume-2" style="width: 14px; height: 14px;"></i> <span>Narrar Lección</span>
+              </button>
+            </div>
+          </h2>
+          <div id="academy-day-content" class="lesson-body">
+            <!-- Dynamic lesson content loaded from app.js -->
+          </div>
+        </div>
+
+        <!-- Daily Challenge Card -->
+        <div class="card challenge-card" id="academy-challenge-card" style="border-color: rgba(245, 158, 11, 0.2); background: rgba(245, 158, 11, 0.02);">
+          <h3 class="card-title" style="color: var(--color-warning); border-bottom-color: rgba(245, 158, 11, 0.15); font-size: 1.1rem; margin-bottom: 12px; padding-bottom: 8px;">
+            <i data-lucide="compass"></i> Desafío Práctico Diario
+          </h3>
+          <div class="lesson-body">
+            <p id="academy-challenge-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; font-weight: 500; color: var(--text-primary);">
+              Cargando desafío diario...
+            </p>
+            <div class="input-group" style="margin-bottom: 12px;">
+              <label class="input-label" style="font-size: 0.75rem;">Tu respuesta y documentación:</label>
+              <textarea id="challenge-response" class="form-control" rows="4" placeholder="Escribe aquí tu análisis de errores, decisiones tomadas y respuestas al desafío técnico..." style="font-family: var(--font-sans); line-height: 1.5; font-size: 0.9rem; resize: vertical; background: var(--bg-primary);"></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap;">
+              <button id="btn-save-challenge" class="btn-oro-liquido" style="padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px;">
+                <i data-lucide="save" style="width: 16px; height: 16px;"></i> Guardar Desafío en Bitácora
+              </button>
+              <button id="btn-next-lesson-audio" class="btn-oro-liquido" onclick="window.goToNextLesson(true)" style="padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+                Siguiente Lección (Con Audio) <i data-lucide="volume-2" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Weekly Quiz Section -->
+        <div class="card quiz-card" id="academy-quiz-card" style="display: none; border-color: rgba(59, 130, 246, 0.3);">
+          <h3 class="card-title" style="color: var(--color-accent); border-bottom-color: rgba(59, 130, 246, 0.15);"><i data-lucide="help-circle"></i> Evaluación del Pilar Semanal</h3>
+          <div id="academy-quiz-container" class="quiz-container">
+            <!-- Dynamic Quiz -->
+          </div>
+        </div>
+      </section>
+
+      <!-- GLOSSARY SECTION -->
+      <section id="glossary" class="content-section">
+        <div class="card">
+          <h2 class="card-title"><i data-lucide="book"></i> Glosario de Trading Profesional</h2>
+          <div class="lesson-body">
+            <p style="margin-bottom: 20px;">Términos esenciales utilizados por operadores de futuros institucionales y mesas de dinero. Haz clic en cualquier término para ver su definición completa.</p>
+            
+            <div id="glossary-container" class="concept-grid">
+              <!-- Dynamically loaded from app.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATE SECTION -->
+      <section id="certificate" class="content-section">
+        <div class="card" style="text-align: center; padding: 40px 20px; border-color: rgba(245, 158, 11, 0.3); background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(19, 26, 34, 0.6) 100%);">
+          <h2 class="card-title" style="justify-content: center; border-bottom: none; padding-bottom: 0;">
+            <i data-lucide="award" style="color: #f59e0b; width: 32px; height: 32px;"></i> Diploma de Completitud
+          </h2>
+          <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95rem;">¡Felicidades, Trader! Has culminado con éxito los pilares prácticos de maestría estoica.</p>
+          
+          <div id="certificate-print-area" class="certificate-wrapper" style="margin: 0 auto; max-width: 780px;">
+            <!-- Rendered in CSS with premium borders -->
+            <div class="certificate-card">
+              <div class="cert-gold-border">
+                <div class="cert-content">
+                  <div class="cert-brand">
+                    <svg width="40" height="35" viewBox="0 0 40 35" fill="none" style="margin: 0 auto;">
+                      <rect x="8" y="10" width="6" height="15" rx="1" fill="#10b981"/>
+                      <line x1="11" y1="4" x2="11" y2="30" stroke="#10b981" stroke-width="2"/>
+                      <rect x="17" y="6" width="6" height="20" rx="1" fill="#3b82f6"/>
+                      <line x1="20" y1="2" x2="20" y2="32" stroke="#3b82f6" stroke-width="2"/>
+                      <rect x="26" y="14" width="6" height="12" rx="1" fill="#ef4444"/>
+                      <line x1="29" y1="8" x2="29" y2="28" stroke="#ef4444" stroke-width="2"/>
+                    </svg>
+                    <div style="font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; margin-top: 5px;">VISIÓN TRADING PRO</div>
+                  </div>
+                  
+                  <div class="cert-title-diploma">CERTIFICADO DE MAESTRÍA EN FUTUROS</div>
+                  
+                  <div class="cert-recipient-label">Otorgado con honor a:</div>
+                  <div class="cert-recipient-name" id="cert-student-name">Albert</div>
+                  
+                  <p class="cert-text-body">
+                    Por haber completado satisfactoriamente el riguroso programa de entrenamiento, demostrando disciplina inquebrantable en la gestión de riesgo, lectura de precio pura sin indicadores rezagados y control estoico bajo presión en los mercados de futuros de índices.
+                  </p>
+                  
+                  <div class="cert-signatures">
+                    <div class="cert-sig-block">
+                      <div class="cert-signature-draw">Visión Trading Pro</div>
+                      <div class="cert-sig-line"></div>
+                      <div class="cert-sig-role">Visión Trading Pro</div>
+                      <div class="cert-sig-desc">Fundador, Visión Trading Pro</div>
+                    </div>
+                    <div class="cert-sig-block">
+                      <div class="cert-date-display" id="cert-date-str">2026-05-29</div>
+                      <div class="cert-sig-line"></div>
+                      <div class="cert-sig-role">Fecha de Aprobación</div>
+                      <div class="cert-sig-desc">Masterclass de Futuros</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+            <button id="btn-print-cert" class="btn-oro-liquido" style="padding: 10px 24px; border-radius: var(--radius-sm);"><i data-lucide="printer"></i> Imprimir Diploma</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALCULATOR SECTION -->
+      <section id="calculator" class="content-section">
+        <div class="card">
+          <h2 class="card-title"><i data-lucide="calculator"></i> Calculadora de Riesgo y Posición de Futuros</h2>
+          <div class="lesson-body">
+            <p>El primer error del trader principiante es abrir operaciones basándose en corazonadas o apostando tamaños aleatorios de contratos. Un trader institucional calcula su <strong>riesgo exacto en dólares</strong> y calcula su tamaño basándose en el stop loss técnico en puntos del mercado.</p>
+          </div>
+          
+          <div class="calculator-grid">
+            <div>
+              <div class="input-group">
+                <label class="input-label" for="calc-capital">Capital de la Cuenta ($)</label>
+                <div class="input-wrapper">
+                  <span class="input-symbol">$</span>
+                  <input type="number" id="calc-capital" class="form-control form-control-symbol" value="10000" min="100">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="calc-risk-pct">Riesgo por Operación (%)</label>
+                <div class="input-wrapper">
+                  <input type="number" id="calc-risk-pct" class="form-control" value="1" min="0.1" max="10" step="0.1">
+                  <span class="input-symbol" style="left: auto; right: 14px;">%</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="calc-asset">Activo / Contrato de Futuros</label>
+                <div class="input-wrapper">
+                  <select id="calc-asset" class="form-control select-control">
+                    <option value="ES" selected>E-mini S&P 500 (ES) - $50 por punto</option>
+                    <option value="MES">Micro E-mini S&P 500 (MES) - $5 por punto</option>
+                    <option value="NQ">E-mini Nasdaq 100 (NQ) - $20 por punto</option>
+                    <option value="MNQ">Micro E-mini Nasdaq 100 (MNQ) - $2 por punto</option>
+                    <option value="CL">WTI Crude Oil (CL) - $1000 por punto (1c = $10)</option>
+                    <option value="MCL">Micro Crude Oil (MCL) - $100 por punto (1c = $1)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="calc-sl-ticks">Distancia Stop Loss (en Puntos)</label>
+                <div class="input-wrapper">
+                  <input type="number" id="calc-sl-ticks" class="form-control" value="10" min="0.25" step="0.25">
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator-results">
+              <div class="result-row">
+                <span class="result-label">Riesgo Máximo en Dinero:</span>
+                <span id="res-risk-money" class="result-value risk">$100.00</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Valor del Punto del Contrato:</span>
+                <span id="res-point-value" class="result-value">$50.00</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Costo por Contrato por Punto:</span>
+                <span id="res-sl-value-1contract" class="result-value">$500.00</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Tamaño de Posición Óptimo:</span>
+                <span id="res-contracts" class="result-value highlight">0.20 Contratos</span>
+              </div>
+              <div class="highlight-box" style="margin-top: 15px; margin-bottom: 0;">
+                <strong id="res-warning-msg">⚠️ Nota:</strong> Para contratos Mini/Micro estándar, los decimales indican que debes redondear hacia abajo (operar 0 contratos si es menor a 1, o usar el equivalente Micro para mayor precisión).
+              </div>
+              <button id="btn-export-plan" class="btn-oro-borde" style="margin-top: 15px; width: 100%; height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
+                <i data-lucide="file-text" style="width: 16px; height: 16px;"></i> Generar Plan de Trading Personalizado
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIMULATOR SECTION -->
+      <section id="simulator" class="content-section">
+        <div class="simulator-layout">
+          
+          <div class="chart-section">
+            <div class="card" style="padding: 16px; margin-bottom: 0;">
+              <div class="chart-header">
+                <div class="active-asset-info">
+                  <select id="sim-asset-select" class="asset-badge" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); outline: none; cursor: pointer;">
+                    <option value="ES" selected>E-mini S&P 500 (ES)</option>
+                    <option value="NQ">E-mini Nasdaq 100 (NQ)</option>
+                  </select>
+                  <span id="sim-current-price" class="asset-price bullish">4850.50</span>
+                </div>
+
+                <!-- Toggle between Simulated Trading and Real TradingView Live Charts -->
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="chart-view-toggle" style="display: flex; gap: 4px; background: rgba(36, 47, 61, 0.4); padding: 4px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <button id="btn-chart-sim" class="indicator-toggle active" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
+                      Simulador Pro
+                    </button>
+                    <button id="btn-chart-tv" class="indicator-toggle" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
+                      TradingView Real
+                    </button>
+                  </div>
+                  <button id="btn-toggle-size" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; padding: 6px 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-family: var(--font-sans); transition: all 0.2s ease;">
+                    <i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #00ffff;"></i> <span>Agrandar</span>
+                  </button>
+                </div>
+
+                <div class="chart-controls" id="sim-chart-controls">
+                  <button id="toggle-ema" class="indicator-toggle active">
+                    <i data-lucide="line-chart"></i> EMA 200
+                  </button>
+                  <button id="toggle-rsi" class="indicator-toggle active">
+                    <i data-lucide="percent"></i> RSI 14
+                  </button>
+                  
+                  <div class="sim-speed-control" style="margin-top: 0; padding: 4px 10px;">
+                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-right: 8px;">Velocidad:</span>
+                    <select id="sim-speed" style="background: transparent; color: var(--text-primary); border: none; font-family: var(--font-mono); font-size: 0.8rem; cursor: pointer; outline: none;">
+                      <option value="1">1x</option>
+                      <option value="2">2x</option>
+                      <option value="5">5x</option>
+                      <option value="10">10x</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulator Pro Canvas container -->
+            <div class="canvas-container" id="sim-canvas-container">
+              <canvas id="chartCanvas" class="main-chart-canvas"></canvas>
+              <canvas id="rsiCanvas" class="rsi-chart-canvas"></canvas>
+            </div>
+
+            <!-- TradingView Live widget container -->
+            <div class="tradingview-container" id="sim-tv-container" style="display: none; height: 78vh; min-height: 480px; max-height: 800px; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: #131722; width: 100%;">
+              <div id="tradingview_chart" style="height: 100%; width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- Trade Operations Panel -->
+          <div class="control-panel">
+            <div class="balance-widget">
+              <h3 class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0; font-size: 1.05rem;">
+                <i data-lucide="wallet"></i> Mi Cuenta Sim
+              </h3>
+              <div class="balance-row">
+                <span class="balance-label">Balance:</span>
+                <span id="sim-balance" class="balance-val">$10,000.00</span>
+              </div>
+              <div class="balance-row">
+                <span class="balance-label">P&L Operación:</span>
+                <span id="sim-pnl" class="balance-val">$0.00</span>
+              </div>
+              <div class="balance-row">
+                <span class="balance-label">Margen Utilizado:</span>
+                <span id="sim-margin" class="balance-val">$0.00</span>
+              </div>
+            </div>
+
+            <div class="card" style="padding: 16px; margin-bottom: 0;">
+              <h3 class="card-title" style="font-size: 1.05rem; margin-bottom: 12px; padding-bottom: 8px;">
+                <i data-lucide="settings"></i> Configuración Orden
+              </h3>
+              
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Apalancamiento</label>
+                <select id="sim-leverage" class="form-control" style="padding: 8px 10px; font-size: 0.85rem;">
+                  <option value="10">10x (Bajo riesgo)</option>
+                  <option value="20" selected>20x (Estándar)</option>
+                  <option value="50">50x (Alto apalancamiento)</option>
+                  <option value="100">100x (Extremo - Margen bajo)</option>
+                </select>
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Contratos</label>
+                <input type="number" id="sim-contracts" class="form-control" value="1" min="1" max="100" style="padding: 8px 10px; font-size: 0.85rem;">
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Distancia SL (Puntos)</label>
+                <input type="number" id="sim-sl-dist" class="form-control" value="15" min="2" style="padding: 8px 10px; font-size: 0.85rem;">
+              </div>
+
+              <div class="input-group" style="margin-bottom: 12px;">
+                <label class="input-label" style="font-size: 0.75rem;">Distancia TP (Puntos)</label>
+                <input type="number" id="sim-tp-dist" class="form-control" value="30" min="2" style="padding: 8px 10px; font-size: 0.85rem;">
+              </div>
+
+              <div class="order-actions">
+                <button id="btn-buy" class="order-btn order-btn-buy">
+                  <span>COMPRAR (Largo)</span>
+                  <span class="order-btn-sub">Al Mercado</span>
+                </button>
+                <button id="btn-sell" class="order-btn order-btn-sell">
+                  <span>VENDER (Corto)</span>
+                  <span class="order-btn-sub">Al Mercado</span>
+                </button>
+              </div>
+
+              <!-- Live Position Display -->
+              <div id="sim-active-position" style="display: none;">
+                <div class="position-card">
+                  <div class="position-header">
+                    <span id="pos-type-badge" class="position-badge long">Largo 1 MES</span>
+                    <button id="btn-close-position" class="position-close-btn">Cerrar</button>
+                  </div>
+                  <div style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 4px; color: var(--text-secondary);">
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Precio Entrada:</span>
+                      <span id="pos-entry-price" style="font-family: var(--font-mono); color: var(--text-primary);">4850.25</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Stop Loss:</span>
+                      <span id="pos-sl-price" style="font-family: var(--font-mono); color: var(--color-bear);">4835.25</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <span>Take Profit:</span>
+                      <span id="pos-tp-price" style="font-family: var(--font-mono); color: var(--color-bull);">4880.25</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strategy Help Card in Simulator -->
+            <div class="card" style="padding: 16px; margin-bottom: 0; background: rgba(16, 185, 129, 0.03); border-color: rgba(16, 185, 129, 0.1);">
+              <h4 style="font-size: 0.85rem; color: var(--color-bull); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">
+                💡 Guía Estrategia Visión
+              </h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">
+                1. <strong>Identifica Tendencia:</strong> Vela sobre la línea azul (EMA 200) = Tendencia Alcista. Vela bajo la línea azul = Tendencia Bajista.<br><br>
+                2. <strong>Confirma Impulso (RSI):</strong> RSI cruza sobre 50 en tendencia alcista = Compra. RSI cruza bajo 50 en tendencia bajista = Venta.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  </div>
+
+  <!-- Audio settings Modal overlay -->
+  <div id="audio-settings-modal" class="modal-overlay" style="display: none;">
+    <div class="card" style="width: 100%; max-width: 480px; margin: 20px; padding: 24px; position: relative;">
+      <h3 class="card-title" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center;">
+        <span><i data-lucide="settings"></i> Configuración de Voz</span>
+        <button id="btn-close-audio-modal" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px;"><i data-lucide="x"></i></button>
+      </h3>
+      
+      <div class="lesson-body">
+        <p style="font-size: 0.9rem; margin-bottom: 16px;">Configura la síntesis de voz premium de <strong>ElevenLabs</strong> para escuchar las narraciones de las lecciones del curso.</p>
+        
+        <div class="input-group" style="margin-bottom: 14px;">
+          <label class="input-label" style="font-size: 0.75rem;">Voz del Narrador</label>
+          <select id="el-voice-select" class="form-control" style="background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: var(--radius-sm); font-size: 0.85rem; outline: none; width: 100%; cursor: pointer;">
+            <option value="c6rAmJGsdzNWAIVkws45" selected>Visión Trading Pro (Voz de Hombre)</option>
+            <option value="ErXwobaYiN019PkySvjV">Antoni (Hombre Profesional - ElevenLabs)</option>
+            <option value="custom">Personalizada (Ingresar Voice ID abajo)</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="el-custom-voice-group" style="margin-bottom: 14px; display: none;">
+          <label class="input-label" style="font-size: 0.75rem;">ElevenLabs Voice ID Personalizado</label>
+          <input type="text" id="el-voice-id" class="form-control" placeholder="Introduce el Voice ID personalizado..." value="c6rAmJGsdzNWAIVkws45">
+        </div>
+
+        <div class="input-group" style="margin-bottom: 14px;">
+          <label class="input-label" style="font-size: 0.75rem;">ElevenLabs API Key</label>
+          <input type="password" id="el-api-key" class="form-control" placeholder="Introduce tu xi-api-key...">
+        </div>
+
+        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem;">
+          <strong>💡 Información:</strong> Si no tienes una API Key de ElevenLabs, déjala en blanco. El sistema utilizará la <strong>voz nativa en español de tu navegador</strong> de forma totalmente gratuita y automática.
+        </div>
+
+        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem; border-left-color: var(--color-warning); background: rgba(245, 158, 11, 0.03);">
+          <strong>⚠️ Nota de Permisos:</strong> Tu clave API en ElevenLabs debe tener activada la casilla de permisos de <strong>"Text-to-Speech"</strong> (Texto a Voz). De lo contrario, los servidores de ElevenLabs denegarán la llamada para reproducir la voz del narrador.
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button id="btn-save-audio-settings" class="btn-oro-liquido" style="padding: 10px 20px; border-radius: var(--radius-sm);">Guardar Configuración</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Data Database -->
+  <script src="cursos_data.js"></script>
+  <!-- Main App Script -->
+  <script src="app.js?v=5"></script>
+  <!-- Position Calculator Script -->
+  <script src="calculator.js?v=5"></script>
+  <!-- Chart & Order Simulator Script -->
+  <script src="simulator.js?v=5"></script>
+  <script>
+    // Initialize Lucide Icons on DOM load
+    document.addEventListener("DOMContentLoaded", function() {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Capital Invisible | Soberanía Financiera y Psicología del Dinero</title>
+  <meta name="description" content="Aprende las reglas no escritas de la soberanía patrimonial. Descarga el Capítulo 1 del Manifiesto y domina el sistema definitivo para proteger tu capital.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div style="display: flex; align-items: center;">
+        <div class="logo-wrapper">
+          <!-- Logo fallback to text if image not found, styled beautifully -->
+          <img id="logo-image" class="logo-img" src="logo-transp.png" alt="Capital Invisible" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';">
+        </div>
+        <div id="logo-fallback" class="logo-text" style="display: none;">Capital Invisible</div>
+      </div>
+      <div style="margin-left: auto;">
+        <a href="../dashboard.html" style="text-decoration: none; font-size: 0.8rem; font-family: sans-serif; color: #dfb750; border: 1px solid rgba(223, 183, 80, 0.3); padding: 8px 16px; border-radius: 50px; background: rgba(223, 183, 80, 0.05); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s ease;">
+          ← Dashboard
+        </a>
+      </div>
+    </header>
+
+    <!-- FASE 1: CAPTACIÓN (EL GANCHO) -->
+    <main class="hero" id="hero-section">
+      <span class="hero-tagline">El Manifiesto de la Élite</span>
+      
+      <h1 class="hero-title">
+        El dinero que se ve es el dinero que se devalúa. El verdadero poder opera en las <span class="gold-text-gradient">sombras</span>.
+      </h1>
+      
+      <p class="hero-description">
+        La mayoría de las personas juegan un juego financiero cuyas reglas fueron escritas para que pierdan. Existe un capital que no se ve. Un sistema de soberanía que no tributa de la forma en que te enseñaron.
+      </p>
+
+      <!-- Formulario de Suscripción Premium -->
+      <!-- 
+        NOTA PARA EL USUARIO:
+        Si deseas integrar directamente el formulario de suscripción de Payhip, puedes reemplazar este bloque (<form>) 
+        por el código iframe o script de Newsletter que te da Payhip en su panel de administración.
+        
+        Si mantienes este formulario, el archivo script.js controlará la animación y mostrará el enlace de descarga 
+        y el Upsell de conversión automáticamente al hacer clic en enviar.
+      -->
+      <div class="form-container" id="subscription-card">
+        
+        <!-- Formulario Inicial -->
+        <form id="lead-form" class="form-group" onsubmit="handleSubscription(event)">
+          <label class="form-label" for="user-email">
+            Obtén el Capítulo 1 del Manifiesto y la Guía de inicio gratuito
+          </label>
+          <input 
+            type="email" 
+            id="user-email" 
+            name="email" 
+            class="input-field" 
+            placeholder="Introduce tu correo privado..." 
+            required
+            autocomplete="email"
+          >
+          <button type="submit" id="btn-submit-lead" class="btn-gold-minimal">
+            Obtener Capítulo 1 y Guía
+          </button>
+        </form>
+
+        <!-- Estado de Éxito y Descarga Directa (Fase Post-Signup) -->
+        <div id="success-state" class="success-reveal">
+          <div class="success-icon">†</div>
+          <h3 class="gold-text-gradient" style="font-size: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-serif);">Suscripción Confirmada</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-primary);">
+            Has dado el primer paso hacia la soberanía. Tu obsequio está listo para descarga directa.
+          </p>
+          
+          <div class="download-box">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dark);">Documento Reservado</span>
+            <!-- 
+              Enlace de descarga directa. 
+              Apunta a la versión del PDF alojada directamente en tu repositorio.
+            -->
+            <a href="PRUEBA_LIBRO_FINAL_MAQUETADO.pdf" download="Capital_Invisible_Manifiesto.pdf" id="download-gift-btn" class="download-link">
+              Descargar Ebook Gratuito (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FASE 2: CONVERSIÓN (EL SISTEMA) -->
+    <!-- 
+      Esta sección se mantiene visible por debajo de la landing como una continuación estoica natural.
+      Si el usuario se suscribe, la página hace un scroll suave automático y se enfoca en este sistema con mayor iluminación.
+    -->
+    <section class="conversion-section initially-hidden" id="system-section">
+      
+      <div class="transition-tagline">
+        "El conocimiento gratuito te dará una ventaja. El sistema completo te dará la soberanía."
+      </div>
+
+      <div class="product-card">
+        <span class="product-badge">Sistema Definitivo</span>
+        
+        <h2 class="product-title">Comprar, Pedir Prestado, Morir</h2>
+        <span class="product-subtitle">Libro + Audiolibro Completo</span>
+
+        <!-- Libro Visual 3D Minimalista -->
+        <div class="product-preview">
+          <div class="preview-top">Capital Invisible</div>
+          <div class="preview-title">Comprar<br>Pedir Prestado<br>Morir</div>
+          <div class="preview-author">M.D.</div>
+        </div>
+
+        <p style="font-size: 0.9rem; max-width: 90%; margin-bottom: var(--spacing-lg);">
+          La estrategia exacta que permite a las dinastías y a las mentes financieras soberanas acumular activos, apalancarse legalmente y transferir riqueza multigeneracional sin pagar impuestos en el camino.
+        </p>
+
+        <!-- Direct Response Copy Columns / Pillars -->
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <span class="feature-num">I.</span>
+            <div class="feature-content">
+              <h4 class="feature-title">Comprar Activos Inteligentes</h4>
+              <p class="feature-desc">Identifica y adquiere los únicos vehículos de riqueza blindados contra la inflación y la devaluación monetaria.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-num">II.</span>
+            <div class="feature-content">
+              <h4 class="feature-title">Pedir Prestado Contra tu Riqueza</h4>
+              <p class="feature-desc">Aprende a usar la deuda soberana como escudo fiscal. Los ricos no gastan su dinero; gastan el dinero de otros respaldado por sus activos.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-num">III.</span>
+            <div class="feature-content">
+              <h4 class="feature-title">Morir Dejando un Legado Blindado</h4>
+              <p class="feature-desc">El paso final de la elusión legal. La estructura para transferir un imperio completo a tus herederos libre de confiscación estatal.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Botón de conversión principal (Payhip Checkout) -->
+        <!-- Reemplaza el href con el enlace directo del checkout de tu producto en Payhip -->
+        <a href="https://payhip.com/b/uJHeR" target="_blank" rel="noopener noreferrer" id="payhip-buy-btn" class="btn-gold-shimmer">
+          Acceder al Sistema Completo
+        </a>
+        
+        <span class="guarantee-note">Acceso instantáneo • Formato PDF y Audio de Alta Calidad</span>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-logo">Capital Invisible</div>
+      <div class="footer-links">
+        <a href="aviso-legal.html" class="footer-link">Aviso Legal</a> | 
+        <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a> | 
+        <a href="politica-cookies.html" class="footer-link">Política de Cookies</a>
+      </div>
+      <div class="copyright">
+        © 2026 Capital Invisible. Reservados todos los derechos.<br>
+        Esta página no forma parte de Facebook, Google ni ninguna institución financiera centralizada.
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
