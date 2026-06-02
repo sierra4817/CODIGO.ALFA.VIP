@@ -1701,7 +1701,7 @@ const getApiKey = () => {
 const getVoiceId = () => {
   const stored = localStorage.getItem("vision_elevenlabs_voice_id");
   if (!stored || stored === "null" || stored === "undefined" || stored.trim() === "") {
-    return "c6rAmJGsdzNWAIVkws45"; // Default voice ID (Visión Trading Pro)
+    return "ErXwobaYiN019PkySvjV"; // Default voice ID (Antoni - Hombre Humano)
   }
   return stored.trim();
 };
@@ -1903,8 +1903,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("vision_elevenlabs_api_key", defaultKey);
   }
 
-  // Force voice ID to c6rAmJGsdzNWAIVkws45
-  localStorage.setItem("vision_elevenlabs_voice_id", "c6rAmJGsdzNWAIVkws45");
+  // Set default voice ID to ErXwobaYiN019PkySvjV if not already set or if it's the old one
+  const storedVoice = localStorage.getItem("vision_elevenlabs_voice_id");
+  if (!storedVoice || storedVoice === "c6rAmJGsdzNWAIVkws45" || storedVoice === "null" || storedVoice === "undefined") {
+    localStorage.setItem("vision_elevenlabs_voice_id", "ErXwobaYiN019PkySvjV");
+  }
 
   // Navigation Menu Event Listeners
   document.querySelectorAll(".menu-item").forEach(item => {
@@ -2023,7 +2026,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elApiKeyInput.value = getApiKey();
 
     // Initialize voice select from localStorage
-    const savedVoiceId = localStorage.getItem("vision_elevenlabs_voice_id") || "c6rAmJGsdzNWAIVkws45";
+    const savedVoiceId = localStorage.getItem("vision_elevenlabs_voice_id") || "ErXwobaYiN019PkySvjV";
     if (elVoiceSelect) {
       if (["c6rAmJGsdzNWAIVkws45", "ErXwobaYiN019PkySvjV"].includes(savedVoiceId)) {
         elVoiceSelect.value = savedVoiceId;
