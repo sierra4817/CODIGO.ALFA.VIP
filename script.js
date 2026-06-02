@@ -45,9 +45,9 @@ function setDynamicGreeting() {
  */
 function loadEcosystemStats() {
   // 1. Course progress (Visión Trading Pro)
-  const savedProgress = localStorage.getItem('vision_70day_progress') || localStorage.getItem('vision_30day_progress');
+  const savedProgress = localStorage.getItem('vision_7day_progress') || localStorage.getItem('vision_70day_progress') || localStorage.getItem('vision_30day_progress');
   let completedDaysCount = 0;
-  const totalDays = 70;
+  const totalDays = 7;
   let progressPct = 0;
 
   if (savedProgress) {
@@ -78,7 +78,7 @@ function loadEcosystemStats() {
 
   // 2. Count challenges answered in Bitácora
   let challengesCount = 0;
-  for (let i = 1; i <= 70; i++) {
+  for (let i = 1; i <= 7; i++) {
     const response = localStorage.getItem(`vision_challenge_day${i}`);
     if (response && response.trim() !== '') {
       challengesCount++;

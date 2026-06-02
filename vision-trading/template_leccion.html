@@ -18,7 +18,7 @@
 
   <!-- Header Section -->
   <header>
-    <div class="logo-container">
+    <div class="logo-container" onclick="window.location.href='index.html'" style="cursor: pointer;">
       <div class="logo-icon">
         <svg width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="8" y="10" width="6" height="15" rx="1" fill="#10b981"/>
@@ -59,12 +59,11 @@
   </header>
 
   <div class="app-container">
-    
-    <!-- Sidebar Navigation for 10 Pilares -->
+      <!-- Sidebar Navigation -->
     <aside style="background: rgba(10, 10, 10, 0.85); border-right: 1px solid var(--border-color); padding: 20px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; height: 100vh; position: sticky; top: 0; min-width: 280px; max-width: 320px;">
       <div class="progress-widget" style="flex-shrink: 0;">
         <div class="progress-header">
-          <span class="progress-title">Progreso Académico</span>
+          <span class="progress-title">Progreso del Curso</span>
           <span id="progress-text" class="progress-percentage">0%</span>
         </div>
         <div class="progress-bar-bg">
@@ -72,103 +71,73 @@
         </div>
       </div>
 
-      <ul class="menu-list" id="sidebar-pillars-menu" style="display: flex; flex-direction: column; gap: 6px;">
-        <!-- Dynamically rendered by JavaScript -->
+      <ul class="menu-list" style="display: flex; flex-direction: column; gap: 6px; list-style: none; padding: 0; margin: 0;">
+        <li class="menu-item" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-primary); transition: 0.2s ease;">
+          <a href="index.html#welcome" style="display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; width: 100%;">
+            <i data-lucide="home" style="width: 14px; height: 14px;"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+
+        <li class="menu-section-title" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 12px; margin-bottom: 4px; padding-left: 8px; list-style: none;">Contenido Académico</li>
+        
+        <div id="sidebar-pillars-menu" style="display: flex; flex-direction: column; gap: 4px; padding: 0 4px;">
+          <!-- Dynamically rendered by JavaScript -->
+        </div>
+
+        <li class="menu-section-title" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 12px; margin-bottom: 4px; padding-left: 8px; list-style: none;">Herramientas Prácticas</li>
+
+        <li class="menu-item" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-primary); transition: 0.2s ease;">
+          <a href="index.html#calculator" style="display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; width: 100%;">
+            <i data-lucide="calculator" style="width: 14px; height: 14px;"></i>
+            <span>Calculadora de Riesgo</span>
+          </a>
+        </li>
+
+        <li class="menu-item" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-primary); transition: 0.2s ease;">
+          <a href="index.html#simulator" style="display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; width: 100%;">
+            <i data-lucide="play" style="width: 14px; height: 14px;"></i>
+            <span>Simulador de Trading</span>
+          </a>
+        </li>
+
+        <li class="menu-item" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-primary); transition: 0.2s ease;">
+          <a href="index.html#glossary" style="display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; width: 100%;">
+            <i data-lucide="book" style="width: 14px; height: 14px;"></i>
+            <span>Glosario Técnico</span>
+          </a>
+        </li>
+
+        <li class="menu-item" id="menu-item-certificate" style="display: none; padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-primary); transition: 0.2s ease;">
+          <a href="index.html#certificate" style="display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; width: 100%;">
+            <i data-lucide="award" style="width: 14px; height: 14px; color: #f59e0b;"></i>
+            <span>Mi Certificado</span>
+          </a>
+        </li>
+
+        <li class="menu-section-title" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 12px; margin-bottom: 4px; padding-left: 8px; list-style: none;">Administración</li>
+
+        <li class="menu-item" onclick="window.unlockAllLessons()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #00ffff; border: 1px dashed rgba(0, 255, 255, 0.25); margin-bottom: 8px; margin-top: 4px;">
+          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+            <i data-lucide="unlock" style="width: 14px; height: 14px;"></i>
+            <span>Desbloquear Curso</span>
+          </div>
+        </li>
+
+        <li class="menu-item" onclick="window.lockAllLessons()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #f59e0b; border: 1px dashed rgba(245, 158, 11, 0.25); margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+            <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+            <span>Bloquear Curso</span>
+          </div>
+        </li>
+
+        <li class="menu-item" onclick="window.resetAcademyProgress()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #ef4444; border: 1px dashed rgba(239, 68, 68, 0.25); margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+            <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+            <span>Reiniciar Progreso</span>
+          </div>
+        </li>
       </ul>
-
-      <!-- Card: Resumen de Estadísticas -->
-      <div class="glass-panel stats-panel" style="margin-top: 15px; flex-shrink: 0;">
-        <h3 class="panel-title" style="margin-top: 0;">
-          <i data-lucide="layout-dashboard"></i>
-          Resumen Operativo
-        </h3>
-        
-        <div class="stat-rows-container">
-          <div class="stat-row">
-            <span class="stat-label">Balance Sim.</span>
-            <span class="stat-val highlight-gold" id="stat-balance">$10,000.00</span>
-          </div>
-          
-          <div class="stat-row">
-            <span class="stat-label">Lecciones Completadas</span>
-            <span class="stat-val" id="stat-completed-days">0 / 70</span>
-          </div>
-          
-          <div class="stat-row">
-            <span class="stat-label">Desafíos Bitácora</span>
-            <span class="stat-val" id="stat-challenges">0</span>
-          </div>
-
-          <div class="stat-row">
-            <span class="stat-label">Acceso al Manifiesto</span>
-            <span class="stat-val" id="stat-manifesto" style="font-weight: 700;">Bloqueado</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Calculadora de Riesgo Completa (Widget Sidebar) -->
-      <div class="glass-panel calculator-panel" style="flex-shrink: 0; margin-bottom: 20px;">
-        <h3 class="panel-title" style="margin-top: 0; color: #d4af37; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 12px; font-size: 0.95rem;">
-          <i data-lucide="calculator" class="icon-accent" style="color: #d4af37;"></i>
-          Calculadora de Riesgo
-        </h3>
-        
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div class="quick-input-group">
-            <label class="calc-label" for="calc-capital">Capital de Cuenta ($)</label>
-            <input type="number" id="calc-capital" value="10000" min="100" class="calc-input">
-          </div>
-
-          <div class="quick-input-group">
-            <label class="calc-label" for="calc-risk-pct">Riesgo (%)</label>
-            <input type="number" id="calc-risk-pct" value="1" min="0.1" max="10" step="0.1" class="calc-input">
-          </div>
-
-          <div class="quick-input-group">
-            <label class="calc-label" for="calc-asset">Activo</label>
-            <select id="calc-asset" class="calc-select" style="width: 100%; padding: 6px; background: #000; color: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.8rem;">
-              <option value="ES" selected>E-mini S&P 500 (ES)</option>
-              <option value="MES">Micro E-mini S&P 500 (MES)</option>
-              <option value="NQ">E-mini Nasdaq 100 (NQ)</option>
-              <option value="MNQ">Micro E-mini Nasdaq 100 (MNQ)</option>
-              <option value="CL">WTI Crude Oil (CL)</option>
-              <option value="MCL">Micro Crude Oil (MCL)</option>
-            </select>
-          </div>
-
-          <div class="quick-input-group">
-            <label class="calc-label" for="calc-sl-ticks">Stop Loss (Puntos)</label>
-            <input type="number" id="calc-sl-ticks" value="15" min="0.25" step="0.25" class="calc-input">
-          </div>
-
-          <div class="calc-results-widget" style="margin-top: 10px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 6px;">
-            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-              <span class="qc-res-label" style="color: var(--text-secondary);">Riesgo Máximo:</span>
-              <span class="qc-res-val alert-red" id="res-risk-money" style="color: #ef4444; font-weight: bold;">$100.00</span>
-            </div>
-            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-              <span class="qc-res-label" style="color: var(--text-secondary);">Valor Punto:</span>
-              <span class="qc-res-val" id="res-point-value" style="color: var(--text-primary); font-family: var(--font-mono);">$50.00</span>
-            </div>
-            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-              <span class="qc-res-label" style="color: var(--text-secondary);">Riesgo 1 Contrato:</span>
-              <span class="qc-res-val" id="res-sl-value-1contract" style="color: var(--text-primary); font-family: var(--font-mono);">$750.00</span>
-            </div>
-            <div class="qc-res-row" style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 2px;">
-              <span class="qc-res-label" style="color: var(--text-secondary); font-weight: bold;">Contratos Óptimos:</span>
-              <span class="qc-res-val highlight-gold" id="res-contracts" style="color: #d4af37; font-weight: bold;">0.13 Contratos</span>
-            </div>
-          </div>
-
-          <div id="res-warning-msg" style="font-size: 0.7rem; line-height: 1.3; color: var(--text-secondary); background: rgba(245, 158, 11, 0.05); border-left: 2px solid #f59e0b; padding: 6px; border-radius: 2px; margin-top: 6px;">
-            Cargando recomendaciones...
-          </div>
-
-          <button id="btn-export-plan" class="btn-oro-borde" style="margin-top: 8px; width: 100%; height: 32px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; padding: 0;">
-            <i data-lucide="file-text" style="width: 12px; height: 12px;"></i> Exportar Plan de Trading
-          </button>
-        </div>
-      </div>
     </aside>
 
     <!-- Main Content Area -->
@@ -408,51 +377,59 @@
   </div>
 
   <script>
-    // 10 Pilares configuration
+    // 1 Pilar configuration (Module 1 - 7 Days)
     const pilares = window.courseModules || [
-      { id: 1, name: "Pilar 1: Mentalidad Ganadora", icon: "brain" },
-      { id: 2, name: "Pilar 2: Gestión y Disciplina", icon: "shield-check" },
-      { id: 3, name: "Pilar 3: Estrategia de Alta Probabilidad", icon: "trending-up" },
-      { id: 4, name: "Pilar 4: Ejecución y Evaluación", icon: "activity" },
-      { id: 5, name: "Pilar 5: Bloques de Órdenes", icon: "box" },
-      { id: 6, name: "Pilar 6: Liquidez Avanzada", icon: "target" },
-      { id: 7, name: "Pilar 7: Vacíos de Liquidez (FVG)", icon: "split" },
-      { id: 8, name: "Pilar 8: Análisis Fractal (HTF/LTF)", icon: "layers" },
-      { id: 9, name: "Pilar 9: Especulación de Fondos", icon: "award" },
-      { id: 10, name: "Pilar 10: Plan de Negocios y Retiros", icon: "check-square" }
+      { id: 1, name: "Pilar 1: Psicología y Mecánica", icon: "brain" }
     ];
 
-    // Quizzes for all 10 modules
+    // Detailed quizzes for Module 1 (Evaluación Día 7)
     const quizzes = {
       1: [
-        { q: "¿Cuál es la única realidad objetiva del mercado?", options: ["Las noticias macroeconómicas", "El consenso del precio en tiempo real", "Los indicadores técnicos rezagados"], answer: 1 }
-      ],
-      2: [
-        { q: "¿Qué porcentaje de ganancia necesitas para recuperarte de un drawdown del 50%?", options: ["50%", "75%", "100%"], answer: 2 }
-      ],
-      3: [
-        { q: "¿Qué requiere un BOS (Break of Structure) alcista real?", options: ["Que una vela traspase el nivel con mecha rápida", "Que la vela cierre con su cuerpo por encima del máximo anterior", "Que el RSI esté sobrecomprado"], answer: 1 }
-      ],
-      4: [
-        { q: "¿Cómo actúa la EMA 200 en tu checklist operativo?", options: ["Como oscilador de momentum", "Como brújula de tendencia mayor para filtrar operaciones", "Como nivel de stop loss fijo"], answer: 1 }
-      ],
-      5: [
-        { q: "¿Qué representa un Order Block (OB) institucional?", options: ["La última vela de sentido contrario antes de una expansión impulsiva de volumen", "Una media móvil ponderada", "El volumen de contratos acumulado al cierre de la sesión"], answer: 0 }
-      ],
-      6: [
-        { q: "¿Por qué las instituciones realizan un sweep o barrido de mínimos previos (SSL)?", options: ["Para inducir compras minoristas caras", "Para activar Stop Losses minoristas (órdenes de venta) y absorberlos como contrapartida barata", "Para cerrar la sesión de trading rápidamente"], answer: 1 }
-      ],
-      7: [
-        { q: "¿Qué es un Fair Value Gap (FVG)?", options: ["Un soporte histórico de polaridad", "Un desequilibrio de 3 velas donde el precio se entregó de forma unilateral dejando un vacío", "El volumen transaccionado en el POC"], answer: 1 }
-      ],
-      8: [
-        { q: "¿Qué es la alineación temporal perfecta en SMC?", options: ["Esperar que coincida la apertura de Nueva York y Londres", "Identificar un POI HTF y esperar un CHoCH + FVG local en temporalidad LTF", "Operar a favor de los osciladores en diario"], answer: 1 }
-      ],
-      9: [
-        { q: "¿Qué hace la regla del Trailing Drawdown en una Prop Firm?", options: ["Persigue el saldo máximo de tu cuenta reduciendo tu margen de pérdida permitido", "Permite pérdidas ilimitadas", "Aumenta tus lotes automáticamente"], answer: 0 }
-      ],
-      10: [
-        { q: "¿Cuál es el enfoque correcto para el escalamiento de contratos?", options: ["Aumentar lotes tras una racha de pérdidas para recuperar rápido", "Aumentar lotes gradualmente basados en el crecimiento matemático de tu colchón de drawdown", "Mantener siempre el mismo apalancamiento sin importar el balance"], answer: 1 }
+        {
+          q: "¿Cuál es el enfoque estoico principal ante un resultado perdedor en una operación individual?",
+          options: [
+            "Aceptar que el mercado es probabilístico y el resultado de un trade individual no está bajo tu control.",
+            "Buscar la revancha inmediata para recuperar la pérdida antes del cierre.",
+            "Cambiar de estrategia porque el sistema ha fallado."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué es el sesgo de falsas expectativas en el trading de futuros?",
+          options: [
+            "Pensar que puedes obtener dinero fácil y rápido sin un control estricto de riesgo.",
+            "Aceptar que el drawdown es una parte normal del negocio.",
+            "Entender que la consistencia requiere tiempo y disciplina."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cómo se define un Short Squeeze en el mercado de futuros?",
+          options: [
+            "Un aumento acelerado de precio provocado por la liquidación forzosa de posiciones vendedoras.",
+            "Una caída abrupta de precio debido a ventas institucionales.",
+            "Una consolidación lateral del precio con bajo volumen."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué es una trampa técnica o 'fakeout' en la lectura de precios?",
+          options: [
+            "Un rompimiento falso de soporte o resistencia diseñado para atrapar liquidez antes de un giro.",
+            "Una orden de mercado que se ejecuta con deslizamiento.",
+            "El cruce de una media móvil en un gráfico de velas."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cuál es la única variable que un trader controla al 100% en el mercado de futuros?",
+          options: [
+            "El riesgo exacto que asume en cada operación antes de entrar.",
+            "La dirección exacta que tomará el precio en la sesión.",
+            "El balance neto de ganancias al final del mes."
+          ],
+          answer: 0
+        }
       ]
     };
 
@@ -461,16 +438,16 @@
     let courseData = {};
     let progressState = {
       days: {},
-      quizzes: { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false }
+      quizzes: { 1: false }
     };
     let activeAccordion = 1;
     let selectedQuizAnswers = {};
 
     function loadEcosystemStats() {
       // 1. Course progress
-      const savedProgress = localStorage.getItem('vision_70day_progress');
+      const savedProgress = localStorage.getItem('vision_7day_progress');
       let completedDaysCount = 0;
-      const totalDays = 70;
+      const totalDays = 7;
       
       if (savedProgress) {
         try {
@@ -492,7 +469,7 @@
 
       // 2. Bitácora challenges
       let challengesCount = 0;
-      for (let i = 1; i <= 70; i++) {
+      for (let i = 1; i <= 7; i++) {
         const response = localStorage.getItem(`vision_challenge_day${i}`);
         if (response && response.trim() !== '') {
           challengesCount++;
@@ -542,40 +519,54 @@
         }
 
         // Load progress from localStorage
-        const saved = localStorage.getItem("vision_70day_progress");
+        const saved = localStorage.getItem("vision_7day_progress");
         if (saved) {
           try {
             const parsed = JSON.parse(saved);
             progressState = parsed;
             // Backwards compatibility or initialize missing pillars
             if (!progressState.quizzes) progressState.quizzes = {};
-            for(let i=1; i<=10; i++) {
-              if (progressState.quizzes[i] === undefined) progressState.quizzes[i] = false;
+            if (progressState.quizzes[1] === undefined) progressState.quizzes[1] = false;
+            // Ensure first 7 days are initialized
+            for (let i = 1; i <= 7; i++) {
+              const k = "day" + i;
+              if (!progressState.days[k]) {
+                progressState.days[k] = {
+                  completed: false,
+                  unlocked: i === 1
+                };
+              }
             }
           } catch(e) {
             console.error("Error reading saved progress", e);
           }
         } else {
-          // Initialize empty progress for 70 days
-          Object.keys(courseData).forEach((key, index) => {
+          // Initialize empty progress for 7 days
+          for (let i = 1; i <= 7; i++) {
+            const key = "day" + i;
             progressState.days[key] = {
               completed: false,
-              unlocked: index === 0
+              unlocked: i === 1
             };
-          });
-          localStorage.setItem("vision_70day_progress", JSON.stringify(progressState));
+          }
+          localStorage.setItem("vision_7day_progress", JSON.stringify(progressState));
         }
 
         // Get day from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const dayParam = urlParams.get("day");
-        if (dayParam && courseData["day" + dayParam]) {
+        if (dayParam && courseData["day" + dayParam] && parseInt(dayParam) <= 7) {
           currentDayId = "day" + dayParam;
         } else {
-          // Open latest unlocked day
-          const unlockedDays = Object.keys(courseData).filter(k => progressState.days[k]?.unlocked);
+          // Open latest unlocked day (up to day 7)
+          const unlockedDays = Object.keys(courseData).filter(k => {
+            const dNum = parseInt(k.replace("day", ""));
+            return dNum <= 7 && progressState.days[k]?.unlocked;
+          });
           if (unlockedDays.length > 0) {
             currentDayId = unlockedDays[unlockedDays.length - 1];
+          } else {
+            currentDayId = "day1";
           }
         }
 
@@ -629,7 +620,7 @@
 
       // Update buttons text
       const nextBtn = document.getElementById("btn-next-lesson");
-      if (dayId === "day70") {
+      if (dayId === "day7") {
         nextBtn.querySelector("span").textContent = "Finalizar Curso";
       } else if (isExam && !progressState.quizzes[day.pilar]) {
         nextBtn.querySelector("span").textContent = "Aprobar Examen";
@@ -654,66 +645,43 @@
       }, 150);
     }
 
-    // Render 10 Pilares Accordion
+    // Render Sidebar flat day list
     function renderSidebarMenu() {
       const container = document.getElementById("sidebar-pillars-menu");
       if (!container) return;
 
       let html = "";
-      pilares.forEach(pilar => {
-        const isOpen = activeAccordion === pilar.id;
-        html += `
-          <div class="pilar-group ${isOpen ? 'open' : ''}" id="pilar-group-${pilar.id}">
-            <div class="pilar-header" onclick="toggleAccordion(${pilar.id})" style="padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600;">
-              <span style="display: flex; align-items: center; gap: 8px;">
-                <i data-lucide="${pilar.icon}" style="width: 14px; height: 14px; color: ${isOpen ? '#00ffff' : '#9ca3af'}"></i>
-                ${pilar.name}
-              </span>
-              <i data-lucide="${isOpen ? 'chevron-down' : 'chevron-right'}" style="width: 14px; height: 14px; color: #6b7280;"></i>
-            </div>
-            <div class="pilar-sub-list" style="display: ${isOpen ? 'flex' : 'none'}; flex-direction: column; gap: 4px; padding: 4px 8px; margin-top: 4px;">
-        `;
+      for (let i = 1; i <= 7; i++) {
+        const dId = "day" + i;
+        const day = courseData[dId];
 
-        // Render 7 lessons of this pilar
-        for (let i = 1; i <= 7; i++) {
-          const dNum = (pilar.id - 1) * 7 + i;
-          const dId = "day" + dNum;
-          const day = courseData[dId];
+        if (day) {
+          const isCompleted = progressState.days[dId]?.completed;
+          const isUnlocked = progressState.days[dId]?.unlocked;
+          const isActive = currentDayId === dId;
 
-          if (day) {
-            const isCompleted = progressState.days[dId]?.completed;
-            const isUnlocked = progressState.days[dId]?.unlocked;
-            const isActive = currentDayId === dId;
-
-            let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
-            if (isCompleted) {
-              statusIcon = '<i data-lucide="check-circle" style="width:12px; height:12px; color:#10b981;"></i>';
-            } else if (isUnlocked) {
-              statusIcon = '<i data-lucide="circle" style="width:12px; height:12px; color:#00ffff;"></i>';
-            }
-
-            html += `
-              <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'};">
-                <span>Día ${dNum}: ${day.title}</span>
-                <span>${statusIcon}</span>
-              </div>
-            `;
+          let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
+          if (isCompleted) {
+            statusIcon = '<i data-lucide="check-circle" style="width:12px; height:12px; color:#10b981;"></i>';
+          } else if (isUnlocked) {
+            statusIcon = '<i data-lucide="circle" style="width:12px; height:12px; color:#00ffff;"></i>';
           }
-        }
 
-        html += `
+          html += `
+            <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'}; margin-bottom: 4px;">
+              <span>Día ${i}: ${day.title}</span>
+              <span>${statusIcon}</span>
             </div>
-          </div>
-        `;
-      });
+          `;
+        }
+      }
 
       container.innerHTML = html;
       lucide.createIcons();
     }
 
     window.toggleAccordion = (pilarId) => {
-      activeAccordion = activeAccordion === pilarId ? null : pilarId;
-      renderSidebarMenu();
+      // Deprecated in 7-day course
     };
 
     // Render Pilar Quiz
@@ -823,24 +791,83 @@
 
     // Save progress to localStorage
     function saveProgress() {
-      localStorage.setItem("vision_70day_progress", JSON.stringify(progressState));
+      localStorage.setItem("vision_7day_progress", JSON.stringify(progressState));
     }
+
+    // Admin Triggers
+    window.unlockAllLessons = () => {
+      if (confirm("¿Deseas desbloquear todas las lecciones del curso de 7 días y evaluaciones para navegar libremente?")) {
+        for (let i = 1; i <= 7; i++) {
+          const dId = "day" + i;
+          if (!progressState.days[dId]) {
+            progressState.days[dId] = {};
+          }
+          progressState.days[dId].unlocked = true;
+        }
+        progressState.quizzes[1] = true;
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        loadLesson(currentDayId);
+      }
+    };
+
+    window.lockAllLessons = () => {
+      if (confirm("¿Estás seguro de que deseas volver a bloquear todas las lecciones del curso (excepto el Día 1) para rehacer el camino paso a paso?")) {
+        for (let i = 1; i <= 7; i++) {
+          const dId = "day" + i;
+          if (!progressState.days[dId]) {
+            progressState.days[dId] = {};
+          }
+          progressState.days[dId].completed = false;
+          progressState.days[dId].unlocked = (i === 1);
+        }
+        progressState.quizzes[1] = false;
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        loadLesson(currentDayId);
+      }
+    };
+
+    window.resetAcademyProgress = () => {
+      if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 7 días y tu bitácora?")) {
+        localStorage.removeItem("vision_7day_progress");
+        localStorage.removeItem("vision_simulator_balance");
+        for (let i = 1; i <= 7; i++) {
+          const dId = "day" + i;
+          if (!progressState.days[dId]) {
+            progressState.days[dId] = {};
+          }
+          progressState.days[dId].completed = false;
+          progressState.days[dId].unlocked = (i === 1);
+          localStorage.removeItem(`vision_challenge_day${i}`);
+          localStorage.removeItem(`vision_challenge_${dId}`);
+        }
+        progressState.quizzes[1] = false;
+        saveProgress();
+        updateUIProgress();
+        renderSidebarMenu();
+        loadLesson("day1");
+      }
+    };
 
     // Update Progress bar
     function updateUIProgress() {
       let completed = 0;
-      const total = 70;
+      const total = 7;
 
-      Object.values(progressState.days).forEach(day => {
-        if (day.completed) completed++;
-      });
+      for (let i = 1; i <= 7; i++) {
+        const dId = "day" + i;
+        if (progressState.days[dId]?.completed) completed++;
+      }
 
       const percentage = Math.round((completed / total) * 100);
       document.getElementById("progress-text").textContent = `${percentage}%`;
       document.getElementById("progress-bar").style.width = `${percentage}%`;
 
       // Set menu badge in header if certificate is unlocked
-      const certAvailable = Object.values(progressState.quizzes).every(val => val === true);
+      const certAvailable = (progressState.quizzes[1] === true);
       const certItem = document.getElementById("menu-item-certificate");
       if (certItem) certItem.style.display = certAvailable ? "block" : "none";
 
@@ -880,7 +907,7 @@
       // Mark current day completed
       progressState.days[currentDayId].completed = true;
 
-      if (dNum < 70) {
+      if (dNum < 7) {
         const nextId = "day" + (dNum + 1);
         progressState.days[nextId].unlocked = true;
         saveProgress();
@@ -891,7 +918,7 @@
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
-        alert("¡Felicidades! Has completado las 70 lecciones del Curso de Trading Profesional (Ecosistema AS).");
+        alert("¡Felicidades! Has completado las 7 lecciones del Curso de Trading Profesional (Visión Trading Pro).");
       }
     });
 
