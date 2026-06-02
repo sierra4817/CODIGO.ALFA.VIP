@@ -197,11 +197,7 @@ function initTestimonialsCarousel() {
       // Assign positional class
       if (offset === 0) {
         card.classList.add('active');
-        // Re-enable click to play on active card
-        card.onclick = () => {
-          const videoId = card.getAttribute('data-video');
-          if (videoId) openVideoModal(videoId);
-        };
+        card.onclick = null;
       } else if (offset === -1) {
         card.classList.add('prev');
         card.onclick = () => { currentIndex = index; updateCarousel(); };
