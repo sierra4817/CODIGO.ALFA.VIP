@@ -355,7 +355,12 @@ window.openLeadModal = function(action) {
   submitBtn.disabled = false;
   submitBtn.style.opacity = "";
   submitBtn.querySelector('span').textContent = "Desbloquear Acceso Instantáneo";
-  submitBtn.querySelector('i').setAttribute('data-lucide', 'unlock');
+  
+  // Safely reset icon to prevent crash if replaced by Lucide SVG
+  const icon = submitBtn.querySelector('i') || submitBtn.querySelector('svg');
+  if (icon) {
+    icon.setAttribute('data-lucide', 'unlock');
+  }
 
   // Customize layout depending on action
   if (action === 'simulator') {
@@ -432,8 +437,8 @@ window.handleLeadSubmit = function(event) {
 
 window.handleLeadSuccess = function(action) {
   if (action === 'simulator') {
-    // Open simulator in new tab
-    window.open('vision-trading/template_leccion.html', '_blank');
+    // Redirect to simulator in the same tab (immune to browser popup blockers)
+    window.location.href = 'vision-trading/template_leccion.html';
   } else if (action === 'chapter1') {
     // Trigger download of local PDF
     const link = document.createElement('a');
