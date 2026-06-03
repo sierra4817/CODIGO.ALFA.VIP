@@ -25,9 +25,13 @@
   --border-color: rgba(255, 255, 255, 0.05);
   --border-glow: rgba(223, 183, 80, 0.15);
   
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Montserrat', 'Inter', sans-serif;
-  --font-mono: 'Space Grotesk', monospace;
+  --font-title: 'Montserrat', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-data: 'Roboto Mono', monospace; /* Ideal para precios, saldos y tickers de trading */
+
+  --font-serif: var(--font-title);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-data);
   
   --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   --radius-lg: 24px;
