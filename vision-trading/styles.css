@@ -2,33 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap');
 
 :root {
-  --bg-primary: #0D0E12;
-  --bg-secondary: #050608;
-  --bg-tertiary: rgba(20, 22, 28, 0.85);
+  /* Variables solicitadas por el usuario */
+  --bg-main: #0b0c10;
+  --bg-surface: #1f2833;
+  --text-primary: #eaeaea;
+  --text-secondary: #c5a059; /* Oro Institucional */
+  --accent-bullish: #45a29e; /* Cian Algorítmico */
+  --accent-bearish: #991b1b; /* Carmesí de Riesgo */
+
+  /* Mapeo para no romper las clases existentes en styles.css */
+  --bg-primary: var(--bg-main);
+  --bg-secondary: #11141c;
+  --bg-tertiary: rgba(31, 40, 51, 0.85);
   --border-color: rgba(255, 255, 255, 0.05);
-  --border-focus: #dfb750;
+  --border-focus: var(--text-secondary);
   
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
   --text-muted: #64748b;
   
-  --color-bull: #10b981;
-  --color-bull-glow: rgba(16, 185, 129, 0.15);
-  --color-bear: #ef4444;
-  --color-bear-glow: rgba(239, 68, 68, 0.15);
-  --color-accent: #dfb750;
-  --color-accent-glow: rgba(223, 183, 80, 0.25);
-  --color-warning: #f59e0b;
+  --color-bull: var(--accent-bullish);
+  --color-bull-glow: rgba(69, 162, 158, 0.15);
+  --color-bear: var(--accent-bearish);
+  --color-bear-glow: rgba(153, 27, 27, 0.15);
+  --color-accent: var(--text-secondary);
+  --color-accent-glow: rgba(197, 160, 89, 0.25);
+  --color-warning: #c5a059;
   
-  --gold-primary: #dfb750;
-  --gold-light: #f5d47a;
-  --gold-dark: #ab8222;
-  --gold-gradient: linear-gradient(135deg, #f5d47a 0%, #dfb750 50%, #ab8222 100%);
-  --gold-glow: rgba(223, 183, 80, 0.25);
+  --gold-primary: var(--text-secondary);
+  --gold-light: #ebd098;
+  --gold-dark: #8c6e33;
+  --gold-gradient: linear-gradient(135deg, #ebd098 0%, #c5a059 50%, #8c6e33 100%);
+  --gold-glow: rgba(197, 160, 89, 0.25);
   
-  --cyan-primary: #00f5c3;
-  --cyan-gradient: linear-gradient(135deg, #00f5c3 0%, #00d1a0 50%, #00a880 100%);
-  --cyan-glow: rgba(0, 245, 195, 0.25);
+  --cyan-primary: var(--accent-bullish);
+  --cyan-gradient: linear-gradient(135deg, #66c2be 0%, #45a29e 50%, #2f7370 100%);
+  --cyan-glow: rgba(69, 162, 158, 0.25);
   
   --font-sans: 'Montserrat', 'Inter', sans-serif;
   --font-mono: 'Space Grotesk', monospace;
@@ -101,7 +108,7 @@ body::before {
   left: 20%;
   width: 70vw;
   height: 70vw;
-  background: radial-gradient(circle, rgba(223, 183, 80, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
   z-index: -2;
   pointer-events: none;
   filter: blur(140px);
@@ -114,7 +121,7 @@ body::after {
   right: -10%;
   width: 70vw;
   height: 70vw;
-  background: radial-gradient(circle, rgba(0, 245, 195, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(69, 162, 158, 0.07) 0%, transparent 70%);
   z-index: -2;
   pointer-events: none;
   filter: blur(140px);
