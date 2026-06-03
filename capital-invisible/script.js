@@ -113,8 +113,10 @@ function handleSubscription(event) {
  * Example helper code to check if they returned after subscribing:
  */
 window.addEventListener('load', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('subscribed') === 'true') {
+  const forceUnlock = localStorage.getItem('admin_unlock_capital_invisible') === 'true';
+  const subscriberEmail = localStorage.getItem('capital_invisible_subscriber');
+  
+  if (forceUnlock || (subscriberEmail && subscriberEmail.trim() !== '')) {
     const form = document.getElementById('lead-form');
     const successState = document.getElementById('success-state');
     const systemSection = document.getElementById('system-section');
@@ -124,10 +126,24 @@ window.addEventListener('load', () => {
       successState.style.display = "flex";
       systemSection.classList.remove('initially-hidden');
       systemSection.classList.add('revealed');
+    }
+  } else {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('subscribed') === 'true') {
+      const form = document.getElementById('lead-form');
+      const successState = document.getElementById('success-state');
+      const systemSection = document.getElementById('system-section');
       
-      setTimeout(() => {
-        systemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 500);
+      if (form && successState && systemSection) {
+        form.style.display = "none";
+        successState.style.display = "flex";
+        systemSection.classList.remove('initially-hidden');
+        systemSection.classList.add('revealed');
+        
+        setTimeout(() => {
+          systemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 500);
+      }
     }
   }
 });

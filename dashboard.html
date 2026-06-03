@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div style="text-align: center; margin-top: 30px;">
+<div id="masterclass-promo-header" style="text-align: center; margin-top: 30px;">
     <a href="https://payhip.com/b/uJHeR" 
        style="background: linear-gradient(135deg, #D4AF37, #AA7C11); 
               color: #0B0F19; 
@@ -74,7 +74,7 @@
         <!-- MAIN PRODUCTS COLUMN -->
         <div class="products-column">
           <!-- Card 1: Visión Trading Pro -->
-          <div class="app-card trading-card animate-slide-up" style="animation-delay: 0.1s;">
+          <div id="card-vision-trading" class="app-card trading-card animate-slide-up" style="animation-delay: 0.1s;">
             <div class="card-glow"></div>
             <div class="app-card-header">
               <div class="app-icon trading-icon">
@@ -122,7 +122,7 @@
           </div>
 
           <!-- Card 2: Capital Invisible -->
-          <div class="app-card manifesto-card animate-slide-up" style="animation-delay: 0.2s;">
+          <div id="card-capital-invisible" class="app-card manifesto-card animate-slide-up" style="animation-delay: 0.2s;">
             <div class="card-glow"></div>
             <div class="app-card-header">
               <div class="app-icon manifesto-icon">†</div>
@@ -185,6 +185,84 @@
                 <span class="stat-label">Acceso al Manifiesto</span>
                 <span class="stat-val" id="stat-manifesto">Bloqueado</span>
               </div>
+            </div>
+          </div>
+
+          <!-- Card: Control del Mentor (Admin Panel) -->
+          <div class="glass-panel admin-panel" style="margin-top: 20px;">
+            <h3 class="panel-title">
+              <i data-lucide="shield-alert" style="color: #dfb750;"></i>
+              Panel del Mentor
+            </h3>
+            <p style="font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.4; text-align: left;">
+              Centro de control exclusivo para Albert. Activa, bloquea o reinicia el comportamiento del ecosistema en tiempo real.
+            </p>
+
+            <!-- GENERAL GROUP -->
+            <div class="admin-controls-group" style="margin-top: 0; padding-top: 0; border-top: none;">
+              <h4 class="admin-group-title">
+                <i data-lucide="sliders" style="width:12px; height:12px;"></i>
+                Configuración General
+              </h4>
+              <div class="admin-switch-row">
+                <span>Mostrar Masterclass</span>
+                <label class="admin-switch switch-gold">
+                  <input type="checkbox" id="toggle-admin-masterclass" checked>
+                  <span class="admin-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- VISION TRADING PRO GROUP -->
+            <div class="admin-controls-group">
+              <h4 class="admin-group-title" style="color: var(--cyan-primary);">
+                <i data-lucide="trending-up" style="width:12px; height:12px;"></i>
+                Visión Trading Pro
+              </h4>
+              <div class="admin-switch-row">
+                <span>Activar Tarjeta</span>
+                <label class="admin-switch">
+                  <input type="checkbox" id="toggle-admin-vision" checked>
+                  <span class="admin-slider"></span>
+                </label>
+              </div>
+              <div class="admin-switch-row">
+                <span>Desbloquear Todo</span>
+                <label class="admin-switch">
+                  <input type="checkbox" id="toggle-admin-vision-unlock">
+                  <span class="admin-slider"></span>
+                </label>
+              </div>
+              <button onclick="adminResetProgress()" class="btn-admin-action btn-reset">
+                <i data-lucide="rotate-ccw" style="width: 12px; height: 12px;"></i>
+                <span>Reiniciar Progreso</span>
+              </button>
+            </div>
+
+            <!-- CAPITAL INVISIBLE GROUP -->
+            <div class="admin-controls-group">
+              <h4 class="admin-group-title">
+                <i data-lucide="book-open" style="width:12px; height:12px;"></i>
+                Capital Invisible
+              </h4>
+              <div class="admin-switch-row">
+                <span>Activar Tarjeta</span>
+                <label class="admin-switch switch-gold">
+                  <input type="checkbox" id="toggle-admin-capital" checked>
+                  <span class="admin-slider"></span>
+                </label>
+              </div>
+              <div class="admin-switch-row">
+                <span>Forzar Descarga</span>
+                <label class="admin-switch switch-gold">
+                  <input type="checkbox" id="toggle-admin-capital-unlock">
+                  <span class="admin-slider"></span>
+                </label>
+              </div>
+              <button onclick="adminResetCapital()" class="btn-admin-action btn-reset">
+                <i data-lucide="user-x" style="width: 12px; height: 12px;"></i>
+                <span>Reiniciar Registro</span>
+              </button>
             </div>
           </div>
 

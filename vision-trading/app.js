@@ -455,22 +455,29 @@ let pilarPassedStates = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: f
 const loadProgress = () => {
   const savedProgress = localStorage.getItem("vision_63day_progress");
   const daysKeys = Object.keys(courseData).slice(0, 63);
+  
+  // Reset runtime representation
+  daysKeys.forEach((key, index) => {
+    if (courseData[key]) {
+      courseData[key].completed = false;
+      courseData[key].unlocked = index === 0;
+    }
+  });
+  Object.keys(pilarPassedStates).forEach(k => {
+    pilarPassedStates[k] = false;
+  });
+
   if (savedProgress) {
     try {
       const parsed = JSON.parse(savedProgress);
       if (parsed.days) {
         daysKeys.forEach(key => {
           if (courseData[key] && parsed.days[key]) {
-            courseData[key].completed = parsed.days[key].completed;
-            courseData[key].unlocked = parsed.days[key].unlocked;
+            courseData[key].completed = parsed.days[key].completed || false;
+            courseData[key].unlocked = parsed.days[key].unlocked || false;
           }
         });
       }
-      // Make sure first 63 days are initialized
-      daysKeys.forEach((key, index) => {
-        if (courseData[key].completed === undefined) courseData[key].completed = false;
-        if (courseData[key].unlocked === undefined) courseData[key].unlocked = index === 0;
-      });
       if (parsed.quizzes) {
         Object.keys(pilarPassedStates).forEach(k => {
           pilarPassedStates[k] = parsed.quizzes[k] || false;
@@ -479,29 +486,59 @@ const loadProgress = () => {
     } catch (e) {
       console.error("Error parsing progress", e);
     }
-  } else {
-    // Initialize default progress for first 63 days
-    daysKeys.forEach((key, index) => {
-      courseData[key].completed = false;
-      courseData[key].unlocked = index === 0;
+  }
+
+  // Override dynamically in memory if global admin unlock is active
+  const globalUnlock = localStorage.getItem("admin_unlock_course_globally") === "true";
+  if (globalUnlock) {
+    daysKeys.forEach(key => {
+      if (courseData[key]) {
+        courseData[key].unlocked = true;
+      }
+    });
+    Object.keys(pilarPassedStates).forEach(k => {
+      pilarPassedStates[k] = true;
     });
   }
+
   updateUIProgress();
 };
 
 // Save state to localStorage
 const saveProgress = () => {
+  const globalUnlock = localStorage.getItem("admin_unlock_course_globally") === "true";
   const daysState = {};
   const daysKeys = Object.keys(courseData).slice(0, 63);
-  daysKeys.forEach(key => {
+  
+  daysKeys.forEach((key, index) => {
+    let isRealUnlocked = index === 0;
+    if (index > 0) {
+      const prevKey = daysKeys[index - 1];
+      isRealUnlocked = courseData[prevKey] && courseData[prevKey].completed;
+    }
+    
     daysState[key] = {
       completed: courseData[key].completed,
-      unlocked: courseData[key].unlocked
+      unlocked: globalUnlock ? isRealUnlocked : courseData[key].unlocked
     };
   });
+
+  let quizzesState = {};
+  if (globalUnlock) {
+    const saved = localStorage.getItem("vision_63day_progress");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        quizzesState = parsed.quizzes || {};
+      } catch(e) {}
+    }
+  } else {
+    quizzesState = pilarPassedStates;
+  }
+
   const stateToSave = {
     days: daysState,
-    quizzes: pilarPassedStates
+    quizzes: quizzesState
   };
   localStorage.setItem("vision_63day_progress", JSON.stringify(stateToSave));
 };

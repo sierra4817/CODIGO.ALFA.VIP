@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set greeting according to local time
   setDynamicGreeting();
 
+  // Initialize Admin Panel Switches
+  initAdminPanel();
+
   // Load metrics from subprojects (localStorage integration)
   loadEcosystemStats();
 
@@ -102,14 +105,15 @@ function loadEcosystemStats() {
   }
 
   // 4. Manifesto Subscription Status
+  const forceCapitalUnlock = localStorage.getItem('admin_unlock_capital_invisible') === 'true';
   const subscriberEmail = localStorage.getItem('capital_invisible_subscriber');
   const statManifesto = document.getElementById('stat-manifesto');
   const manifestoStatusBox = document.getElementById('manifesto-status-box');
   const statusText = document.getElementById('manifesto-status-text');
 
-  if (subscriberEmail && subscriberEmail.trim() !== '') {
+  if (forceCapitalUnlock || (subscriberEmail && subscriberEmail.trim() !== '')) {
     if (statManifesto) {
-      statManifesto.textContent = 'Suscrito (Libre)';
+      statManifesto.textContent = forceCapitalUnlock ? 'Desbloqueado (Admin)' : 'Suscrito (Libre)';
       statManifesto.style.color = '#10b981';
     }
     if (manifestoStatusBox) {
@@ -122,9 +126,41 @@ function loadEcosystemStats() {
       if (unlockIcon) unlockIcon.style.display = 'inline-block';
     }
     if (statusText) {
-      statusText.innerHTML = `Acceso Desbloqueado <span style="font-size:0.7rem; opacity:0.6;">(${subscriberEmail})</span>`;
+      statusText.innerHTML = forceCapitalUnlock ? 
+        `Acceso Desbloqueado <span style="font-size:0.7rem; opacity:0.6;">(Forzado por Admin)</span>` :
+        `Acceso Desbloqueado <span style="font-size:0.7rem; opacity:0.6;">(${subscriberEmail})</span>`;
+    }
+  } else {
+    if (statManifesto) {
+      statManifesto.textContent = 'Bloqueado';
+      statManifesto.style.color = '';
+    }
+    if (manifestoStatusBox) {
+      manifestoStatusBox.classList.remove('unlocked-state');
+      
+      const lockIcon = manifestoStatusBox.querySelector('.lucide-lock');
+      const unlockIcon = manifestoStatusBox.querySelector('.lucide-unlock');
+      
+      if (lockIcon) lockIcon.style.display = 'inline-block';
+      if (unlockIcon) unlockIcon.style.display = 'none';
+    }
+    if (statusText) {
+      statusText.textContent = 'Contenido Reservado (Requiere Correo)';
     }
   }
+
+  // 5. Visibility Controls
+  const hideMasterclass = localStorage.getItem('admin_hide_masterclass') === 'true';
+  const hideVision = localStorage.getItem('admin_hide_vision_trading') === 'true';
+  const hideCapital = localStorage.getItem('admin_hide_capital_invisible') === 'true';
+
+  const masterclassPromo = document.getElementById('masterclass-promo-header');
+  const cardVision = document.getElementById('card-vision-trading');
+  const cardCapital = document.getElementById('card-capital-invisible');
+
+  if (masterclassPromo) masterclassPromo.style.display = hideMasterclass ? 'none' : 'block';
+  if (cardVision) cardVision.style.display = hideVision ? 'none' : 'block';
+  if (cardCapital) cardCapital.style.display = hideCapital ? 'none' : 'block';
 }
 
 /**
@@ -187,4 +223,94 @@ function initQuickCalculator() {
 
   // Calculate immediately on load
   calculate();
+}
+
+/**
+ * Initializes listeners and values for the admin switches
+ */
+function initAdminPanel() {
+  const toggleMasterclass = document.getElementById('toggle-admin-masterclass');
+  const toggleVision = document.getElementById('toggle-admin-vision');
+  const toggleVisionUnlock = document.getElementById('toggle-admin-vision-unlock');
+  const toggleCapital = document.getElementById('toggle-admin-capital');
+  const toggleCapitalUnlock = document.getElementById('toggle-admin-capital-unlock');
+
+  if (!toggleMasterclass) return; // If we aren't on the dashboard page with admin panel
+
+  // 1. Load initial checkbox states from localStorage (default to checked for visibilities)
+  toggleMasterclass.checked = localStorage.getItem('admin_hide_masterclass') !== 'true';
+  toggleVision.checked = localStorage.getItem('admin_hide_vision_trading') !== 'true';
+  toggleVisionUnlock.checked = localStorage.getItem('admin_unlock_course_globally') === 'true';
+  toggleCapital.checked = localStorage.getItem('admin_hide_capital_invisible') !== 'true';
+  toggleCapitalUnlock.checked = localStorage.getItem('admin_unlock_capital_invisible') === 'true';
+
+  // 2. Set up event listeners
+  toggleMasterclass.addEventListener('change', function() {
+    localStorage.setItem('admin_hide_masterclass', (!this.checked).toString());
+    loadEcosystemStats();
+  });
+
+  toggleVision.addEventListener('change', function() {
+    localStorage.setItem('admin_hide_vision_trading', (!this.checked).toString());
+    loadEcosystemStats();
+  });
+
+  toggleVisionUnlock.addEventListener('change', function() {
+    localStorage.setItem('admin_unlock_course_globally', this.checked.toString());
+    loadEcosystemStats();
+  });
+
+  toggleCapital.addEventListener('change', function() {
+    localStorage.setItem('admin_hide_capital_invisible', (!this.checked).toString());
+    loadEcosystemStats();
+  });
+
+  toggleCapitalUnlock.addEventListener('change', function() {
+    localStorage.setItem('admin_unlock_capital_invisible', this.checked.toString());
+    loadEcosystemStats();
+  });
+}
+
+/**
+ * Admin Action: Reset progress, simulator balance and challenges from the dashboard
+ */
+function adminResetProgress() {
+  if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 63 días, bitácora y balance del simulador?")) {
+    localStorage.removeItem("vision_63day_progress");
+    localStorage.removeItem("vision_simulator_balance");
+    localStorage.setItem("admin_unlock_course_globally", "false");
+    
+    // Uncheck toggle if it exists on page
+    const toggleVisionUnlock = document.getElementById('toggle-admin-vision-unlock');
+    if (toggleVisionUnlock) {
+      toggleVisionUnlock.checked = false;
+    }
+    
+    for (let i = 1; i <= 63; i++) {
+      localStorage.removeItem(`vision_challenge_day${i}`);
+      localStorage.removeItem(`vision_challenge_day_${i}`);
+    }
+    
+    alert("Todo tu progreso en el ecosistema ha sido reiniciado a los valores de fábrica.");
+    loadEcosystemStats(); // Reload metrics in the dashboard
+  }
+}
+
+/**
+ * Admin Action: Reset subscription status of Capital Invisible
+ */
+function adminResetCapital() {
+  if (confirm("¿Estás seguro de que deseas reiniciar el registro de suscriptor de Capital Invisible? Esto volverá a bloquear el acceso al Capítulo 1.")) {
+    localStorage.removeItem("capital_invisible_subscriber");
+    localStorage.setItem("admin_unlock_capital_invisible", "false");
+    
+    // Uncheck toggle if it exists on page
+    const toggleCapitalUnlock = document.getElementById('toggle-admin-capital-unlock');
+    if (toggleCapitalUnlock) {
+      toggleCapitalUnlock.checked = false;
+    }
+    
+    alert("El registro de suscriptor ha sido eliminado.");
+    loadEcosystemStats();
+  }
 }

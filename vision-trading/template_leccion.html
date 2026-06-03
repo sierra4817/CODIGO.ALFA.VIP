@@ -115,28 +115,6 @@
           </a>
         </li>
 
-        <li class="menu-section-title" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 12px; margin-bottom: 4px; padding-left: 8px; list-style: none;">Administración</li>
-
-        <li class="menu-item" onclick="window.unlockAllLessons()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #00ffff; border: 1px dashed rgba(0, 255, 255, 0.25); margin-bottom: 8px; margin-top: 4px;">
-          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-            <i data-lucide="unlock" style="width: 14px; height: 14px;"></i>
-            <span>Desbloquear Curso</span>
-          </div>
-        </li>
-
-        <li class="menu-item" onclick="window.lockAllLessons()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #f59e0b; border: 1px dashed rgba(245, 158, 11, 0.25); margin-bottom: 8px;">
-          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-            <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
-            <span>Bloquear Curso</span>
-          </div>
-        </li>
-
-        <li class="menu-item" onclick="window.resetAcademyProgress()" style="padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #ef4444; border: 1px dashed rgba(239, 68, 68, 0.25); margin-bottom: 8px;">
-          <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-            <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
-            <span>Reiniciar Progreso</span>
-          </div>
-        </li>
       </ul>
     </aside>
 
@@ -884,6 +862,21 @@
           localStorage.setItem("vision_63day_progress", JSON.stringify(progressState));
         }
 
+        // Apply admin global unlock override in memory
+        const globalUnlock = localStorage.getItem("admin_unlock_course_globally") === "true";
+        if (globalUnlock) {
+          for (let i = 1; i <= 63; i++) {
+            const k = "day" + i;
+            if (!progressState.days[k]) {
+              progressState.days[k] = {};
+            }
+            progressState.days[k].unlocked = true;
+          }
+          for (let i = 1; i <= 9; i++) {
+            progressState.quizzes[i] = true;
+          }
+        }
+
         // Get day from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const dayParam = urlParams.get("day");
@@ -1146,7 +1139,36 @@
 
     // Save progress to localStorage
     function saveProgress() {
-      localStorage.setItem("vision_63day_progress", JSON.stringify(progressState));
+      const globalUnlock = localStorage.getItem("admin_unlock_course_globally") === "true";
+      if (globalUnlock) {
+        // Build clean sequential progress state so we don't save virtual unlocks
+        const realState = { days: {}, quizzes: {} };
+        for (let i = 1; i <= 63; i++) {
+          const k = "day" + i;
+          let isRealUnlocked = i === 1;
+          if (i > 1) {
+            const prevK = "day" + (i - 1);
+            isRealUnlocked = progressState.days[prevK] && progressState.days[prevK].completed;
+          }
+          realState.days[k] = {
+            completed: progressState.days[k]?.completed || false,
+            unlocked: isRealUnlocked
+          };
+        }
+        
+        // Recover original quizzes from storage or keep empty
+        const saved = localStorage.getItem("vision_63day_progress");
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved);
+            realState.quizzes = parsed.quizzes || {};
+          } catch(e) {}
+        }
+        
+        localStorage.setItem("vision_63day_progress", JSON.stringify(realState));
+      } else {
+        localStorage.setItem("vision_63day_progress", JSON.stringify(progressState));
+      }
     }
 
     // Admin Triggers
