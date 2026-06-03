@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Smooth scrolling for nav links
   initSmoothScroll();
+
+  // 4. Initialize Mobile Menu
+  initMobileMenu();
 });
 
 /**
@@ -508,4 +511,64 @@ window.handleContactSubmit = function(event) {
     }
   });
 };
+
+/**
+ * Initializes the mobile menu hamburger toggling
+ */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle-btn');
+  const navMenu = document.getElementById('nav-menu-container');
+  
+  if (!toggleBtn || !navMenu) return;
+  
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isActive = navMenu.classList.toggle('active');
+    toggleBtn.setAttribute('aria-expanded', isActive);
+    
+    // Switch icon between menu and x
+    const icon = toggleBtn.querySelector('i');
+    if (icon) {
+      if (isActive) {
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navMenu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) {
+        icon.setAttribute('data-lucide', 'menu');
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }
+    }
+  });
+
+  // Close menu when clicking any nav link
+  const navLinks = navMenu.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) {
+        icon.setAttribute('data-lucide', 'menu');
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }
+    });
+  });
+}
 
