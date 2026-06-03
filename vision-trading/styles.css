@@ -35,9 +35,9 @@
   
   --sidebar-width: 320px;
   --header-height: 70px;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -80,29 +80,44 @@ body {
   position: relative;
 }
 
-/* Background Blurs for Premium Aesthetics */
+.bg-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -3;
+  pointer-events: none;
+}
+
 body::before {
   content: "";
   position: fixed;
-  top: -150px;
-  right: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(223, 183, 80, 0.05) 0%, transparent 70%);
-  z-index: -1;
+  top: -10%;
+  left: 20%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(223, 183, 80, 0.08) 0%, transparent 70%);
+  z-index: -2;
   pointer-events: none;
+  filter: blur(140px);
 }
 
 body::after {
   content: "";
   position: fixed;
-  bottom: -150px;
-  left: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.04) 0%, transparent 70%);
-  z-index: -1;
+  bottom: -10%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  z-index: -2;
   pointer-events: none;
+  filter: blur(140px);
 }
 
 /* Main Container Layout */
@@ -197,7 +212,7 @@ header {
 /* Sidebar Styling */
 aside {
   width: var(--sidebar-width);
-  background: rgba(10, 10, 12, 0.6);
+  background: rgba(10, 10, 12, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-color);
@@ -282,9 +297,10 @@ aside {
 }
 
 .menu-item.active {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.2);
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.25);
   color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.05);
 }
 
 .menu-item-left {
@@ -343,7 +359,7 @@ main {
 
 /* Cards & Containers */
 .card {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 24px;
@@ -351,6 +367,32 @@ main {
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 0;
+  background: radial-gradient(circle at 10% 10%, rgba(223, 183, 80, 0.03) 0%, transparent 60%);
+}
+
+.card:hover {
+  border-color: rgba(223, 183, 80, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card-title {
