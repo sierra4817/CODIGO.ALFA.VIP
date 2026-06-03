@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const yLow = priceToY(c.low);
       
       const isBull = c.close >= c.open;
-      const color = isBull ? "#10b981" : "#ef4444";
+      const color = isBull ? "#00f5c3" : "#ef4444";
       
       // 1. Draw wick
       ctxMain.strokeStyle = color;
@@ -435,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 3. Draw Strategy signals (Buy/Sell flags)
       if (c.buySignal) {
-        ctxMain.fillStyle = "#10b981";
+        ctxMain.fillStyle = "#00f5c3";
         ctxMain.beginPath();
         // Green Triangle pointing up below candle
         ctxMain.moveTo(x, yLow + 8);
@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Draw EMA 200 Line
     if (showEma) {
-      ctxMain.strokeStyle = "#3b82f6";
+      ctxMain.strokeStyle = "#dfb750";
       ctxMain.lineWidth = 2;
       ctxMain.beginPath();
       let firstEma = true;
@@ -500,14 +500,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxMain.fillText(text, chartCanvas.width - paddingRight + (paddingRight / 2), y + 3);
       };
 
-      const posColor = pos.type === "BUY" ? "#10b981" : "#ef4444";
+      const posColor = pos.type === "BUY" ? "#00f5c3" : "#ef4444";
       drawHorizontalLine(pos.entryPrice, posColor, [4, 4], `${pos.type === "BUY" ? "L" : "S"} @ ${pos.entryPrice}`);
       
       if (pos.sl) {
         drawHorizontalLine(pos.sl, "#ef4444", [2, 2], `SL: ${pos.sl}`);
       }
       if (pos.tp) {
-        drawHorizontalLine(pos.tp, "#10b981", [2, 2], `TP: ${pos.tp}`);
+        drawHorizontalLine(pos.tp, "#00f5c3", [2, 2], `TP: ${pos.tp}`);
       }
     }
 
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const y = rsiToY(lvl);
         
         if (lvl === 50) {
-          ctxRsi.strokeStyle = "rgba(59, 130, 246, 0.4)"; // highlight center line
+          ctxRsi.strokeStyle = "rgba(0, 245, 195, 0.4)"; // highlight center line
           ctxRsi.setLineDash([2, 4]);
         } else {
           ctxRsi.strokeStyle = "#1e293b";
@@ -545,14 +545,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxRsi.stroke();
         ctxRsi.setLineDash([]);
 
-        ctxRsi.fillStyle = lvl === 50 ? "#3b82f6" : "#4b5563";
+        ctxRsi.fillStyle = lvl === 50 ? "#00f5c3" : "#4b5563";
         ctxRsi.font = "9px Space Grotesk";
         ctxRsi.textAlign = "left";
         ctxRsi.fillText(lvl.toString(), rsiCanvas.width - paddingRight + 8, y + 3);
       });
 
       // Draw RSI line
-      ctxRsi.strokeStyle = "#a855f7"; // purple rsi
+      ctxRsi.strokeStyle = "#00f5c3"; // Vibrant Cyan Green
       ctxRsi.lineWidth = 1.5;
       ctxRsi.beginPath();
       
