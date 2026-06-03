@@ -441,7 +441,7 @@ window.handleLeadSubmit = function(event) {
 window.handleLeadSuccess = function(action) {
   if (action === 'simulator') {
     // Redirect to simulator in the same tab (immune to browser popup blockers)
-    window.location.href = 'vision-trading/template_leccion.html?day=57';
+    window.location.href = 'vision-trading/index.html';
   } else if (action === 'chapter1') {
     // Trigger download of local PDF
     const link = document.createElement('a');
