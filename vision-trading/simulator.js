@@ -921,7 +921,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (simMtContainer) simMtContainer.style.display = "block";
         // Lazy load MT4 WebTerminal on demand
         if (mt5Iframe && !mt5Iframe.src) {
-          mt5Iframe.src = "https://metatraderweb.app/trade?theme=dark&startup_version=4&lang=es";
+          mt5Iframe.src = "https://web.metatrader.app/terminal?theme=dark&startup_version=4&lang=es";
         }
       }
     } else {
