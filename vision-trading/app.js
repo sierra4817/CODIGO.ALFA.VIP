@@ -450,11 +450,11 @@ let activeSection = "welcome";
 let activeDayId = "day1";
 let activePilarAccordion = 1;
 let activeQuizAnswers = {}; // { questionIndex: selectedOptionIndex }
-let pilarPassedStates = { 1: false };
+let pilarPassedStates = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false };
 
 const loadProgress = () => {
-  const savedProgress = localStorage.getItem("vision_7day_progress");
-  const daysKeys = Object.keys(courseData).slice(0, 7);
+  const savedProgress = localStorage.getItem("vision_63day_progress");
+  const daysKeys = Object.keys(courseData).slice(0, 63);
   if (savedProgress) {
     try {
       const parsed = JSON.parse(savedProgress);
@@ -466,19 +466,21 @@ const loadProgress = () => {
           }
         });
       }
-      // Make sure first 7 days are initialized
+      // Make sure first 63 days are initialized
       daysKeys.forEach((key, index) => {
         if (courseData[key].completed === undefined) courseData[key].completed = false;
         if (courseData[key].unlocked === undefined) courseData[key].unlocked = index === 0;
       });
       if (parsed.quizzes) {
-        pilarPassedStates[1] = parsed.quizzes[1] || false;
+        Object.keys(pilarPassedStates).forEach(k => {
+          pilarPassedStates[k] = parsed.quizzes[k] || false;
+        });
       }
     } catch (e) {
       console.error("Error parsing progress", e);
     }
   } else {
-    // Initialize default progress for first 7 days
+    // Initialize default progress for first 63 days
     daysKeys.forEach((key, index) => {
       courseData[key].completed = false;
       courseData[key].unlocked = index === 0;
@@ -490,7 +492,7 @@ const loadProgress = () => {
 // Save state to localStorage
 const saveProgress = () => {
   const daysState = {};
-  const daysKeys = Object.keys(courseData).slice(0, 7);
+  const daysKeys = Object.keys(courseData).slice(0, 63);
   daysKeys.forEach(key => {
     daysState[key] = {
       completed: courseData[key].completed,
@@ -499,16 +501,16 @@ const saveProgress = () => {
   });
   const stateToSave = {
     days: daysState,
-    quizzes: { 1: pilarPassedStates[1] }
+    quizzes: pilarPassedStates
   };
-  localStorage.setItem("vision_7day_progress", JSON.stringify(stateToSave));
+  localStorage.setItem("vision_63day_progress", JSON.stringify(stateToSave));
 };
 
 // Update progress bar and unlock states
 const updateUIProgress = () => {
   let completedCount = 0;
-  const totalDays = 7;
-  const daysKeys = Object.keys(courseData).slice(0, 7);
+  const totalDays = 63;
+  const daysKeys = Object.keys(courseData).slice(0, 63);
 
   daysKeys.forEach(key => {
     if (courseData[key] && courseData[key].completed) completedCount++;
@@ -524,7 +526,7 @@ const updateUIProgress = () => {
   // Toggle Certificate tab in sidebar if course is completed
   const certMenuItem = document.getElementById("menu-item-certificate");
   if (certMenuItem) {
-    const allPassed = pilarPassedStates[1] === true;
+    const allPassed = Object.values(pilarPassedStates).every(val => val === true);
     certMenuItem.style.display = allPassed ? "block" : "none";
   }
 
@@ -533,10 +535,10 @@ const updateUIProgress = () => {
 
 // Reset academy progress
 window.resetAcademyProgress = () => {
-  if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 7 días y tu bitácora?")) {
-    localStorage.removeItem("vision_7day_progress");
+  if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 63 días y tu bitácora?")) {
+    localStorage.removeItem("vision_63day_progress");
     localStorage.removeItem("vision_simulator_balance");
-    const daysKeys = Object.keys(courseData).slice(0, 7);
+    const daysKeys = Object.keys(courseData).slice(0, 63);
     daysKeys.forEach((key, index) => {
       if (courseData[key]) {
         courseData[key].completed = false;
@@ -544,7 +546,7 @@ window.resetAcademyProgress = () => {
       }
       localStorage.removeItem(`vision_challenge_${key}`);
     });
-    pilarPassedStates = { 1: false };
+    pilarPassedStates = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false };
     saveProgress();
     updateUIProgress();
     renderAcademicMenu();
@@ -554,14 +556,14 @@ window.resetAcademyProgress = () => {
 
 // Unlock all lessons and quizzes
 window.unlockAllLessons = () => {
-  if (confirm("¿Deseas desbloquear todas las lecciones del curso de 7 días y evaluaciones para navegar libremente?")) {
-    const daysKeys = Object.keys(courseData).slice(0, 7);
+  if (confirm("¿Deseas desbloquear todas las lecciones del curso y evaluaciones para navegar libremente?")) {
+    const daysKeys = Object.keys(courseData).slice(0, 63);
     daysKeys.forEach(key => {
       if (courseData[key]) {
         courseData[key].unlocked = true;
       }
     });
-    pilarPassedStates = { 1: true };
+    pilarPassedStates = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true };
     saveProgress();
     updateUIProgress();
     renderAcademicMenu();
@@ -572,14 +574,14 @@ window.unlockAllLessons = () => {
 // Lock all lessons (except Day 1)
 window.lockAllLessons = () => {
   if (confirm("¿Estás seguro de que deseas volver a bloquear todas las lecciones del curso (excepto el Día 1) para rehacer el camino paso a paso?")) {
-    const daysKeys = Object.keys(courseData).slice(0, 7);
+    const daysKeys = Object.keys(courseData).slice(0, 63);
     daysKeys.forEach((key, index) => {
       if (courseData[key]) {
         courseData[key].completed = false;
         courseData[key].unlocked = index === 0;
       }
     });
-    pilarPassedStates = { 1: false };
+    pilarPassedStates = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false };
     saveProgress();
     updateUIProgress();
     renderAcademicMenu();
@@ -624,11 +626,36 @@ const renderAcademicMenu = () => {
   if (!container) return;
 
   let html = "";
-  for (let i = 1; i <= 7; i++) {
-    const dId = "day" + i;
-    const day = courseData[dId];
-    if (day) {
-      const isActive = activeSection === "academy-day" && activeDayId === dId;
+  const pilares = window.courseModules || [
+    { id: 1, name: "Pilar 1: Fundamentos de la Subasta Financiera (Psicología y Mecánica)", icon: "brain" },
+    { id: 2, name: "Pilar 2: Matemáticas del Riesgo y Ruina (Gestión de Capital)", icon: "shield-check" },
+    { id: 3, name: "Pilar 3: Estructura del Mercado y Tendencias (Acción del Precio)", icon: "trending-up" },
+    { id: 4, name: "Pilar 4: Filtros Operativos y Confluencias (EMA 200 y RSI)", icon: "activity" },
+    { id: 5, name: "Pilar 5: Bloques de Órdenes (Order Blocks Institucionales)", icon: "box" },
+    { id: 6, name: "Pilar 6: Liquidez Avanzada (Stops Sweeps y Pools de Liquidez)", icon: "target" },
+    { id: 7, name: "Pilar 7: Vacíos de Liquidez (Fair Value Gaps y Rebalanceos)", icon: "split" },
+    { id: 8, name: "Pilar 8: Análisis Multitemporal Fractal (Top-Down de H4 a M1)", icon: "layers" },
+    { id: 9, name: "Pilar 9: Especialización de Firmas de Fondeo (Prop Firms y Drawdown)", icon: "award" }
+  ];
+
+  pilares.forEach(pilar => {
+    const pilarDays = Object.values(courseData).filter(d => d.pilar === pilar.id);
+    const isOpen = activePilarAccordion === pilar.id;
+    
+    html += `
+      <div class="pilar-group ${isOpen ? 'open' : ''}" id="pilar-group-${pilar.id}">
+        <div class="pilar-header" onclick="window.togglePilarAccordion(${pilar.id})">
+          <span style="display:flex; align-items:center; gap:8px;">
+            <i data-lucide="${pilar.icon}" style="width:14px; height:14px; color: ${isOpen ? 'var(--color-accent)' : 'var(--text-secondary)'}"></i>
+            ${pilar.name}
+          </span>
+          <i data-lucide="${isOpen ? 'chevron-down' : 'chevron-right'}" style="width: 14px; height: 14px; color: var(--text-muted);"></i>
+        </div>
+        <div class="pilar-sub-list">
+    `;
+    
+    pilarDays.forEach(day => {
+      const isActive = activeSection === "academy-day" && activeDayId === day.id;
       const isLocked = !day.unlocked;
       
       let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px;"></i>';
@@ -639,20 +666,26 @@ const renderAcademicMenu = () => {
       }
 
       html += `
-        <div class="day-item ${isActive ? 'active' : ''} ${isLocked ? 'locked' : ''}" onclick="${isLocked ? '' : `window.loadDay('${dId}')`}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isLocked ? 'not-allowed' : 'pointer'}; opacity: ${isLocked ? 0.45 : 1}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid var(--color-accent)' : 'none'}; margin-bottom: 4px;">
-          <span>Día ${i}: ${day.title}</span>
+        <div class="day-item ${isActive ? 'active' : ''} ${isLocked ? 'locked' : ''}" onclick="${isLocked ? '' : `window.loadDay('${day.id}')`}">
+          <span>Día ${day.id.replace("day", "")}: ${day.title}</span>
           <span class="menu-status">${statusIcon}</span>
         </div>
       `;
-    }
-  }
+    });
+
+    html += `
+        </div>
+      </div>
+    `;
+  });
 
   container.innerHTML = html;
   lucide.createIcons();
 };
 
 window.togglePilarAccordion = (pilarId) => {
-  // Deprecated in 7-day course
+  activePilarAccordion = activePilarAccordion === pilarId ? null : pilarId;
+  renderAcademicMenu();
 };
 
 const getGraphicForDay = (dayNum) => {
@@ -2081,7 +2114,7 @@ window.goToNextLesson = (autoPlayAudio) => {
   const currentDayNum = parseInt(activeDayId.replace("day", ""));
   const nextDayId = `day${currentDayNum + 1}`;
 
-  if (currentDayNum >= 7) {
+  if (currentDayNum >= 63) {
     alert("Has completado todo el curso. ¡Felicidades, Trader Soberano!");
     return;
   }

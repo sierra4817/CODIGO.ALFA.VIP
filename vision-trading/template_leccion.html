@@ -377,12 +377,20 @@
   </div>
 
   <script>
-    // 1 Pilar configuration (Module 1 - 7 Days)
+    // 9 Pilares configuration (63 Days)
     const pilares = window.courseModules || [
-      { id: 1, name: "Pilar 1: Psicología y Mecánica", icon: "brain" }
+      { id: 1, name: "Pilar 1: Fundamentos de la Subasta Financiera (Psicología y Mecánica)", icon: "brain" },
+      { id: 2, name: "Pilar 2: Matemáticas del Riesgo y Ruina (Gestión de Capital)", icon: "shield-check" },
+      { id: 3, name: "Pilar 3: Estructura del Mercado y Tendencias (Acción del Precio)", icon: "trending-up" },
+      { id: 4, name: "Pilar 4: Filtros Operativos y Confluencias (EMA 200 y RSI)", icon: "activity" },
+      { id: 5, name: "Pilar 5: Bloques de Órdenes (Order Blocks Institucionales)", icon: "box" },
+      { id: 6, name: "Pilar 6: Liquidez Avanzada (Stops Sweeps y Pools de Liquidez)", icon: "target" },
+      { id: 7, name: "Pilar 7: Vacíos de Liquidez (Fair Value Gaps y Rebalanceos)", icon: "split" },
+      { id: 8, name: "Pilar 8: Análisis Multitemporal Fractal (Top-Down de H4 a M1)", icon: "layers" },
+      { id: 9, name: "Pilar 9: Especialización de Firmas de Fondeo (Prop Firms y Drawdown)", icon: "award" }
     ];
 
-    // Detailed quizzes for Module 1 (Evaluación Día 7)
+    // Detailed quizzes matching app.js
     const quizzes = {
       1: [
         {
@@ -430,6 +438,328 @@
           ],
           answer: 0
         }
+      ],
+      2: [
+        {
+          q: "Si pierdes el 50% de tu cuenta de trading, ¿qué porcentaje de rentabilidad necesitas ganar sobre el saldo restante solo para volver al punto inicial (breakeven)?",
+          options: [
+            "50%",
+            "75%",
+            "100% (Duplicar el capital restante)"
+          ],
+          answer: 2
+        },
+        {
+          q: "Con un Ratio Riesgo/Beneficio (R:R) de 1:2, ¿cuál es la tasa mínima de acierto requerida para estar en ganancias netas (sin contar comisiones)?",
+          options: [
+            "Aproximadamente 34% o más",
+            "Exactamente 50%",
+            "Por encima de 60%"
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué dicta el protocolo estoico ante el secuestro emocional provocado por pérdidas consecutivas?",
+          options: [
+            "Apagar el ordenador e irse inmediatamente, aceptando el límite de pérdida diaria programado.",
+            "Aumentar el tamaño de la posición para recuperar lo perdido rápidamente.",
+            "Cambiar de activo a uno más volátil como el Nasdaq para compensar."
+          ],
+          answer: 0
+        },
+        {
+          q: "En la bitácora técnica de procesos, ¿cómo se califica un trade ganador que violó las reglas del plan?",
+          options: [
+            "Como un excelente trade que demuestra intuición de mercado.",
+            "Como un mal trade con resultado fortuito que pone en peligro la consistencia futura.",
+            "Como un trade neutral que no requiere análisis."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Cómo calculas el tamaño de posición (contratos) si tu Stop Loss técnico está situado a mayor distancia de lo habitual?",
+          options: [
+            "Mantienes el mismo número de contratos y aceptas mayor pérdida.",
+            "Reduces proporcionalmente el número de contratos para que el riesgo en dólares siga siendo el mismo.",
+            "Aumentas los contratos para compensar la distancia."
+          ],
+          answer: 1
+        }
+      ],
+      3: [
+        {
+          q: "En una tendencia alcista estructural, ¿cómo se denominan los puntos clave de mínimos?",
+          options: [
+            "Mínimos más Bajos (LL)",
+            "Mínimos más Altos (HL)",
+            "Máximos más Altos (HH)"
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Qué confirmación técnica es obligatoria para validar un Quiebre de Estructura (BOS)?",
+          options: [
+            "Que una mecha de vela cruce el nivel y regrese rápido.",
+            "Que el cuerpo de una vela cierre por fuera del último nivel estructural.",
+            "Que el oscilador RSI esté en sobrecompra."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Cuál es la diferencia entre un soporte minorista clásico y una zona de demanda de valor?",
+          options: [
+            "El soporte minorista es una zona de acumulación de medias móviles.",
+            "La zona de demanda se localiza en el origen de un fuerte movimiento impulsivo previo que rompió estructura.",
+            "No existe ninguna diferencia, son términos idénticos."
+          ],
+          answer: 1
+        },
+        {
+          q: "En el Setup de Confluencia Visión Pro, ¿cuál es la función de la EMA 200?",
+          options: [
+            "Indicar el nivel exacto de toma de beneficios.",
+            "Actuar como filtro direccional inquebrantable (compras sobre ella, cortos bajo ella).",
+            "Medir la sobrecompra del oscilador."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Cómo confirmamos la confluencia de momentum utilizando el oscilador RSI 14?",
+          options: [
+            "Cuando el RSI cruza la línea central de 50 en la misma dirección de la tendencia de la EMA 200.",
+            "Cuando el RSI entra en la zona extrema de sobreventa.",
+            "Cuando el RSI permanece plano cerca de cero."
+          ],
+          answer: 0
+        }
+      ],
+      4: [
+        {
+          q: "¿Qué propósito principal persigue la checklist pre-market de 5 puntos del operador?",
+          options: [
+            "Aumentar el número de operaciones ejecutadas por sesión.",
+            "Actuar como un filtro objetivo para eliminar la aleatoriedad y la ejecución emocional.",
+            "Predecir con exactitud hacia dónde irá el precio en la apertura."
+          ],
+          answer: 1
+        },
+        {
+          q: "Al auditar semanalmente tus estadísticas, ¿qué representa un 'Profit Factor' de 1.5?",
+          options: [
+            "Que tus ganancias brutas equivalen a 1.5 veces tus pérdidas brutas (operativa saludable).",
+            "Que has perdido el 50% de la cuenta.",
+            "Que tienes una tasa de acierto del 15%."
+          ],
+          answer: 0
+        },
+        {
+          q: "En el diario de errores, ¿cómo se clasifica el acto de entrar tarde a un trade debido al miedo a perder la oportunidad?",
+          options: [
+            "Error Técnico de trazado.",
+            "Error Emocional de disciplina (FOMO).",
+            "Ejecución perfecta del plan."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Cuál es la regla de oro estoica del protocolo de cierre de sesión?",
+          options: [
+            "Mantener la plataforma abierta todo el día para vigilar el precio.",
+            "Guardar capturas, registrar los datos en la bitácora y apagar por completo las pantallas.",
+            "Seguir operando si la sesión fue perdedora."
+          ],
+          answer: 1
+        },
+        {
+          q: "En el ciclo de mejora Kaizen, ¿cuál es el paso posterior a identificar un error recurrente en tu bitácora?",
+          options: [
+            "Lamentar el capital perdido y dudar de la estrategia.",
+            "Diseñar e implementar una medida correctiva específica y obligatoria en tu comportamiento.",
+            "Ignorar el error y esperar que no se repita en la siguiente sesión."
+          ],
+          answer: 1
+        }
+      ],
+      5: [
+        {
+          q: "¿Qué representa un Order Block (OB) válido en el trading institucional?",
+          options: [
+            "Cualquier vela de consolidación en el centro de un rango operativo lateral.",
+            "La última vela en sentido opuesto previa a una expansión impulsiva de fuerte volumen que genera un BOS.",
+            "El cruce de las bandas de Bollinger con alto volumen de contratos."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Por qué las instituciones financieras buscan cazar la liquidez de los soportes y resistencias minoristas (sweeps)?",
+          options: [
+            "Para inyectar volatilidad al mercado sin un fin transaccional.",
+            "Para activar los Stop Losses minoristas (ventas/compras a mercado) y usarlos como contrapartida para llenar sus órdenes gigantes a precio de descuento.",
+            "Para cerrar sus plataformas de negociación antes del fin de semana."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Qué define a un Fair Value Gap (FVG) o ineficiencia de precios?",
+          options: [
+            "Una secuencia de 3 velas donde la mecha de la primera y de la tercera no se solapan, dejando un vacío transaccional.",
+            "Un gap de apertura de mercado de futuros el domingo por la tarde.",
+            "Una consolidación estrecha que dura más de dos horas sin volumen."
+          ],
+          answer: 0
+        },
+        {
+          q: "En el análisis top-down fractal, ¿cuál es la combinación ideal de marcos temporales?",
+          options: [
+            "Buscar el sesgo direccional y las zonas de interés en HTF (1H/4H), y esperar el gatillo y confirmación BOS en LTF (1m/5m).",
+            "Operar en 1 minuto sin mirar gráficos mayores.",
+            "Analizar en mensual para operar contratos de scalping rápido en segundos."
+          ],
+          answer: 0
+        },
+        {
+          q: "Si trazamos un rango operativo desde el origen del impulso hasta su fin, ¿dónde debemos situar las compras?",
+          options: [
+            "En la Zona Premium (por encima del 50% del rango) porque el precio sube rápido.",
+            "En la Zona de Descuento (por debajo del 50% del rango) para comprar a precios baratos.",
+            "En el precio de equilibrio exacto del 50% sin importar confluencias."
+          ],
+          answer: 1
+        }
+      ],
+      6: [
+        {
+          q: "En la subasta de Volumen, ¿qué es el POC (Point of Control) y qué utilidad tiene?",
+          options: [
+            "El precio con mayor volumen de contratos negociados; actúa como imán del precio y punto de equilibrio dinámico.",
+            "El nivel de precio más alto alcanzado en la sesión de futuros.",
+            "Una señal de cruce de medias móviles en el perfil de volumen."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cuál es la regla de oro para evitar la cancelación inmediata de una cuenta financiada (Prop Firm)?",
+          options: [
+            "Operar el máximo tamaño de contratos permitido desde el primer día.",
+            "Respetar de forma inquebrantable el límite de pérdida diaria (drawdown) y no dejarse llevar por la frustración.",
+            "Aumentar el riesgo tras cada operación fallida para recuperar rápido."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Qué beneficio psicológico y matemático aporta la toma de parciales a R:R 1:1 y mover el Stop Loss a Breakeven?",
+          options: [
+            "Elimina las pérdidas futuras asegurando ganancias y transformando el trade en una operación libre de riesgo.",
+            "Garantiza que siempre ganarás el 100% de las operaciones.",
+            "Te obliga a pasar más horas mirando los gráficos."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué porcentaje de riesgo monetario máximo por operación dicta el checklist definitivo de Visión Trading Pro?",
+          options: [
+            "El 5% de la cuenta.",
+            "Exactamente el 1% del capital (o menos), calculado de forma estricta según la distancia del stop loss.",
+            "Un número de contratos fijo sin importar la volatilidad."
+          ],
+          answer: 1
+        },
+        {
+          q: "Para tratar el trading como un negocio consistente a largo plazo, ¿cómo debes gestionar tus retiros (payouts)?",
+          options: [
+            "Gastar todo el beneficio en bienes de consumo de inmediato.",
+            "Asignar capital de forma inteligente a impuestos, colchón de drawdown operativo, y transferir a tu cuenta de capital propio (Capital Invisible).",
+            "Dejar todo el beneficio en la cuenta de fondeo para operar con el máximo tamaño de contratos."
+          ],
+          answer: 1
+        }
+      ],
+      7: [
+        {
+          q: "¿Qué es un Fair Value Gap (FVG)?",
+          options: [
+            "Un soporte histórico de polaridad.",
+            "Un desequilibrio de 3 velas donde el precio se entregó de forma unilateral dejando un vacío.",
+            "El volumen transaccionado en el POC."
+          ],
+          answer: 1
+        },
+        {
+          q: "¿Cómo se compone la estructura de 3 velas de un FVG alcista?",
+          options: [
+            "La mecha de la vela 1 y la mecha de la vela 3 no se solapan, dejando un vacío.",
+            "La vela 2 tiene que ser roja.",
+            "Las tres velas cierran al mismo precio exacto."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué representa el consecuent encroachment (CE) de un FVG?",
+          options: [
+            "El 50% de la ineficiencia, que actúa como nivel de reacción sensible.",
+            "El cierre de la vela 3.",
+            "El máximo de la vela 1."
+          ],
+          answer: 0
+        }
+      ],
+      8: [
+        {
+          q: "¿Qué significa la fractalidad del mercado?",
+          options: [
+            "Que los patrones se repiten de forma idéntica en cualquier escala temporal.",
+            "Que el mercado solo sube en temporalidades de 1 minuto.",
+            "Que las noticias macro son fractales."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cuál es el Bias en el análisis multitemporal?",
+          options: [
+            "La dirección dominante del rango de temporalidad mayor (HTF).",
+            "El quiebre de medias móviles en temporalidad menor.",
+            "El número de contratos operados."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Qué es la alineación temporal perfecta en SMC?",
+          options: [
+            "Identificar un POI HTF y esperar un CHoCH + FVG local en temporalidad LTF.",
+            "Que la sesión de Nueva York y Londres coincidan.",
+            "Operar a favor de los osciladores en diario."
+          ],
+          answer: 0
+        }
+      ],
+      9: [
+        {
+          q: "¿Qué hace la regla del Trailing Drawdown en una Prop Firm?",
+          options: [
+            "Persigue el saldo máximo de tu cuenta en tiempo real, limitando tu pérdida máxima.",
+            "Permite pérdidas ilimitadas.",
+            "Aumenta tus lotes automáticamente."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cuál es el objetivo principal de una Prop Firm al evaluarte?",
+          options: [
+            "Comprobar que eres disciplinado y respetas el control de riesgo contratado.",
+            "Que ganes el 100% de la cuenta en un solo trade.",
+            "Que uses el máximo apalancamiento."
+          ],
+          answer: 0
+        },
+        {
+          q: "¿Cómo se debe gestionar una cuenta financiada?",
+          options: [
+            "Con metas diarias pequeñas (0.5% - 1% diario) y gestión estricta del riesgo.",
+            "Duplicando los lotes tras cada ganancia.",
+            "Ignorando el límite de pérdida diaria."
+          ],
+          answer: 0
+        }
       ]
     };
 
@@ -438,16 +768,16 @@
     let courseData = {};
     let progressState = {
       days: {},
-      quizzes: { 1: false }
+      quizzes: { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false }
     };
     let activeAccordion = 1;
     let selectedQuizAnswers = {};
 
     function loadEcosystemStats() {
       // 1. Course progress
-      const savedProgress = localStorage.getItem('vision_7day_progress');
+      const savedProgress = localStorage.getItem('vision_63day_progress');
       let completedDaysCount = 0;
-      const totalDays = 7;
+      const totalDays = 63;
       
       if (savedProgress) {
         try {
@@ -469,7 +799,7 @@
 
       // 2. Bitácora challenges
       let challengesCount = 0;
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 63; i++) {
         const response = localStorage.getItem(`vision_challenge_day${i}`);
         if (response && response.trim() !== '') {
           challengesCount++;
@@ -519,16 +849,18 @@
         }
 
         // Load progress from localStorage
-        const saved = localStorage.getItem("vision_7day_progress");
+        const saved = localStorage.getItem("vision_63day_progress");
         if (saved) {
           try {
             const parsed = JSON.parse(saved);
             progressState = parsed;
             // Backwards compatibility or initialize missing pillars
             if (!progressState.quizzes) progressState.quizzes = {};
-            if (progressState.quizzes[1] === undefined) progressState.quizzes[1] = false;
-            // Ensure first 7 days are initialized
-            for (let i = 1; i <= 7; i++) {
+            for (let i = 1; i <= 9; i++) {
+              if (progressState.quizzes[i] === undefined) progressState.quizzes[i] = false;
+            }
+            // Ensure first 63 days are initialized
+            for (let i = 1; i <= 63; i++) {
               const k = "day" + i;
               if (!progressState.days[k]) {
                 progressState.days[k] = {
@@ -541,27 +873,27 @@
             console.error("Error reading saved progress", e);
           }
         } else {
-          // Initialize empty progress for 7 days
-          for (let i = 1; i <= 7; i++) {
+          // Initialize empty progress for 63 days
+          for (let i = 1; i <= 63; i++) {
             const key = "day" + i;
             progressState.days[key] = {
               completed: false,
               unlocked: i === 1
             };
           }
-          localStorage.setItem("vision_7day_progress", JSON.stringify(progressState));
+          localStorage.setItem("vision_63day_progress", JSON.stringify(progressState));
         }
 
         // Get day from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const dayParam = urlParams.get("day");
-        if (dayParam && courseData["day" + dayParam] && parseInt(dayParam) <= 7) {
+        if (dayParam && courseData["day" + dayParam] && parseInt(dayParam) <= 63) {
           currentDayId = "day" + dayParam;
         } else {
-          // Open latest unlocked day (up to day 7)
+          // Open latest unlocked day (up to day 63)
           const unlockedDays = Object.keys(courseData).filter(k => {
             const dNum = parseInt(k.replace("day", ""));
-            return dNum <= 7 && progressState.days[k]?.unlocked;
+            return dNum <= 63 && progressState.days[k]?.unlocked;
           });
           if (unlockedDays.length > 0) {
             currentDayId = unlockedDays[unlockedDays.length - 1];
@@ -620,7 +952,7 @@
 
       // Update buttons text
       const nextBtn = document.getElementById("btn-next-lesson");
-      if (dayId === "day7") {
+      if (dayId === "day63") {
         nextBtn.querySelector("span").textContent = "Finalizar Curso";
       } else if (isExam && !progressState.quizzes[day.pilar]) {
         nextBtn.querySelector("span").textContent = "Aprobar Examen";
@@ -645,43 +977,66 @@
       }, 150);
     }
 
-    // Render Sidebar flat day list
+    // Render Sidebar 9 Pilares Accordion
     function renderSidebarMenu() {
       const container = document.getElementById("sidebar-pillars-menu");
       if (!container) return;
 
       let html = "";
-      for (let i = 1; i <= 7; i++) {
-        const dId = "day" + i;
-        const day = courseData[dId];
-
-        if (day) {
-          const isCompleted = progressState.days[dId]?.completed;
-          const isUnlocked = progressState.days[dId]?.unlocked;
-          const isActive = currentDayId === dId;
-
-          let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
-          if (isCompleted) {
-            statusIcon = '<i data-lucide="check-circle" style="width:12px; height:12px; color:#10b981;"></i>';
-          } else if (isUnlocked) {
-            statusIcon = '<i data-lucide="circle" style="width:12px; height:12px; color:#00ffff;"></i>';
-          }
-
-          html += `
-            <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'}; margin-bottom: 4px;">
-              <span>Día ${i}: ${day.title}</span>
-              <span>${statusIcon}</span>
+      pilares.forEach(pilar => {
+        const isOpen = activeAccordion === pilar.id;
+        html += `
+          <div class="pilar-group ${isOpen ? 'open' : ''}" id="pilar-group-${pilar.id}">
+            <div class="pilar-header" onclick="toggleAccordion(${pilar.id})" style="padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600;">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="${pilar.icon}" style="width: 14px; height: 14px; color: ${isOpen ? '#00ffff' : '#9ca3af'}"></i>
+                ${pilar.name}
+              </span>
+              <i data-lucide="${isOpen ? 'chevron-down' : 'chevron-right'}" style="width: 14px; height: 14px; color: #6b7280;"></i>
             </div>
-          `;
+            <div class="pilar-sub-list" style="display: ${isOpen ? 'flex' : 'none'}; flex-direction: column; gap: 4px; padding: 4px 8px; margin-top: 4px;">
+        `;
+
+        // Render 7 lessons of this pilar
+        for (let i = 1; i <= 7; i++) {
+          const dNum = (pilar.id - 1) * 7 + i;
+          const dId = "day" + dNum;
+          const day = courseData[dId];
+
+          if (day) {
+            const isCompleted = progressState.days[dId]?.completed;
+            const isUnlocked = progressState.days[dId]?.unlocked;
+            const isActive = currentDayId === dId;
+
+            let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
+            if (isCompleted) {
+              statusIcon = '<i data-lucide="check-circle" style="width:12px; height:12px; color:#10b981;"></i>';
+            } else if (isUnlocked) {
+              statusIcon = '<i data-lucide="circle" style="width:12px; height:12px; color:#00ffff;"></i>';
+            }
+
+            html += `
+              <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'}; margin-bottom: 4px;">
+                <span>Día ${dNum}: ${day.title}</span>
+                <span>${statusIcon}</span>
+              </div>
+            `;
+          }
         }
-      }
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
 
       container.innerHTML = html;
       lucide.createIcons();
     }
 
     window.toggleAccordion = (pilarId) => {
-      // Deprecated in 7-day course
+      activeAccordion = activeAccordion === pilarId ? null : pilarId;
+      renderSidebarMenu();
     };
 
     // Render Pilar Quiz
@@ -791,20 +1146,22 @@
 
     // Save progress to localStorage
     function saveProgress() {
-      localStorage.setItem("vision_7day_progress", JSON.stringify(progressState));
+      localStorage.setItem("vision_63day_progress", JSON.stringify(progressState));
     }
 
     // Admin Triggers
     window.unlockAllLessons = () => {
-      if (confirm("¿Deseas desbloquear todas las lecciones del curso de 7 días y evaluaciones para navegar libremente?")) {
-        for (let i = 1; i <= 7; i++) {
+      if (confirm("¿Deseas desbloquear todas las lecciones del curso y evaluaciones para navegar libremente?")) {
+        for (let i = 1; i <= 63; i++) {
           const dId = "day" + i;
           if (!progressState.days[dId]) {
             progressState.days[dId] = {};
           }
           progressState.days[dId].unlocked = true;
         }
-        progressState.quizzes[1] = true;
+        for (let i = 1; i <= 9; i++) {
+          progressState.quizzes[i] = true;
+        }
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
@@ -814,7 +1171,7 @@
 
     window.lockAllLessons = () => {
       if (confirm("¿Estás seguro de que deseas volver a bloquear todas las lecciones del curso (excepto el Día 1) para rehacer el camino paso a paso?")) {
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 63; i++) {
           const dId = "day" + i;
           if (!progressState.days[dId]) {
             progressState.days[dId] = {};
@@ -822,7 +1179,9 @@
           progressState.days[dId].completed = false;
           progressState.days[dId].unlocked = (i === 1);
         }
-        progressState.quizzes[1] = false;
+        for (let i = 1; i <= 9; i++) {
+          progressState.quizzes[i] = false;
+        }
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
@@ -831,10 +1190,10 @@
     };
 
     window.resetAcademyProgress = () => {
-      if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 7 días y tu bitácora?")) {
-        localStorage.removeItem("vision_7day_progress");
+      if (confirm("¿Estás seguro de que deseas reiniciar todo tu progreso del curso de 63 días y tu bitácora?")) {
+        localStorage.removeItem("vision_63day_progress");
         localStorage.removeItem("vision_simulator_balance");
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 63; i++) {
           const dId = "day" + i;
           if (!progressState.days[dId]) {
             progressState.days[dId] = {};
@@ -844,7 +1203,9 @@
           localStorage.removeItem(`vision_challenge_day${i}`);
           localStorage.removeItem(`vision_challenge_${dId}`);
         }
-        progressState.quizzes[1] = false;
+        for (let i = 1; i <= 9; i++) {
+          progressState.quizzes[i] = false;
+        }
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
@@ -855,9 +1216,9 @@
     // Update Progress bar
     function updateUIProgress() {
       let completed = 0;
-      const total = 7;
+      const total = 63;
 
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 63; i++) {
         const dId = "day" + i;
         if (progressState.days[dId]?.completed) completed++;
       }
@@ -866,8 +1227,14 @@
       document.getElementById("progress-text").textContent = `${percentage}%`;
       document.getElementById("progress-bar").style.width = `${percentage}%`;
 
-      // Set menu badge in header if certificate is unlocked
-      const certAvailable = (progressState.quizzes[1] === true);
+      // Set menu badge in header if certificate is unlocked (all 9 quizzes passed)
+      let certAvailable = true;
+      for (let i = 1; i <= 9; i++) {
+        if (progressState.quizzes[i] !== true) {
+          certAvailable = false;
+          break;
+        }
+      }
       const certItem = document.getElementById("menu-item-certificate");
       if (certItem) certItem.style.display = certAvailable ? "block" : "none";
 
@@ -900,14 +1267,14 @@
       const day = courseData[currentDayId];
 
       if (isExam && !progressState.quizzes[day.pilar]) {
-        alert("Debes aprobar la evaluación final de este módulo antes de poder avanzar.");
+        alert("Debes aprobar la evaluación final de este pilar antes de poder avanzar.");
         return;
       }
 
       // Mark current day completed
       progressState.days[currentDayId].completed = true;
 
-      if (dNum < 7) {
+      if (dNum < 63) {
         const nextId = "day" + (dNum + 1);
         progressState.days[nextId].unlocked = true;
         saveProgress();
@@ -918,7 +1285,7 @@
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
-        alert("¡Felicidades! Has completado las 7 lecciones del Curso de Trading Profesional (Visión Trading Pro).");
+        alert("¡Felicidades! Has completado las 63 lecciones del Curso de Trading Profesional (Visión Trading Pro).");
       }
     });
 
