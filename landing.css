@@ -1476,8 +1476,8 @@ body {
   }
   
   .carousel-card {
-    width: 260px;
-    height: 380px;
+    width: 270px;
+    height: 410px;
     padding: 16px;
   }
   
@@ -1502,6 +1502,92 @@ body {
   .footer-container {
     flex-direction: column;
     gap: 30px;
+  }
+  
+  /* Prevent text overlapping and overflow on mobile */
+  .chat-text {
+    font-size: 0.78rem !important;
+    line-height: 1.45 !important;
+  }
+  
+  .chat-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+    gap: 10px !important;
+  }
+  
+  .chat-avatar {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .chat-user-name {
+    font-size: 0.82rem !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+  
+  .badge-vip {
+    font-size: 0.55rem !important;
+    padding: 1px 6px !important;
+  }
+  
+  .chat-time {
+    font-size: 0.62rem !important;
+  }
+  
+  .chat-metrics {
+    margin-top: 12px !important;
+    padding-top: 8px !important;
+    gap: 6px !important;
+  }
+  
+  .metric-badge {
+    font-size: 0.65rem !important;
+    padding: 4px 8px !important;
+  }
+  
+  .footer-legal-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 12px !important;
+  }
+  
+  .footer-legal-links span {
+    display: none !important;
+  }
+  
+  .withdrawal-card {
+    padding: 12px 16px !important;
+  }
+  
+  .withdrawal-student {
+    font-size: 0.82rem !important;
+  }
+  
+  .withdrawal-status {
+    font-size: 0.65rem !important;
+  }
+  
+  .withdrawal-amount {
+    font-size: 0.88rem !important;
+  }
+  
+  .withdrawal-time {
+    font-size: 0.65rem !important;
+  }
+  
+  .lead-modal-content {
+    padding: 30px 20px !important;
+  }
+  
+  .lead-modal-title {
+    font-size: 1.4rem !important;
+  }
+  
+  .lead-modal-desc {
+    font-size: 0.85rem !important;
+    margin-bottom: 20px !important;
   }
 }
 
