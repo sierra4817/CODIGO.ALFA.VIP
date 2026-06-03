@@ -822,13 +822,21 @@ document.addEventListener("DOMContentLoaded", () => {
   simAssetSelect.addEventListener("change", handleAssetChange);
 
   // ==========================================================================
-  // TradingView Widget Integration & View Toggling Lobe
+  // TradingView & MT5 Widget Integration & View Toggling Lobe
   // ==========================================================================
   const btnChartSim = document.getElementById("btn-chart-sim");
   const btnChartTv = document.getElementById("btn-chart-tv");
+  const btnChartMt = document.getElementById("btn-chart-mt");
   const simCanvasContainer = document.getElementById("sim-canvas-container");
   const simTvContainer = document.getElementById("sim-tv-container");
+  const simMtContainer = document.getElementById("sim-mt-container");
+  const mt5Iframe = document.getElementById("mt5_iframe");
   const simChartControls = document.getElementById("sim-chart-controls");
+
+  // Real chart state helpers
+  const realChartInfoCard = document.getElementById("real-chart-info-card");
+  const simBalanceCard = document.getElementById("sim-balance-card");
+  const simOrderCard = document.getElementById("sim-order-card");
 
   window.currentViewMode = "sim"; // Global tracking
 
@@ -875,34 +883,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const switchViewMode = (mode) => {
     window.currentViewMode = mode;
-    if (mode === "tv") {
-      btnChartSim.classList.remove("active");
-      btnChartTv.classList.add("active");
-      simCanvasContainer.style.display = "none";
-      simTvContainer.style.display = "block";
+    
+    // Toggle active state classes
+    btnChartSim?.classList.toggle("active", mode === "sim");
+    btnChartTv?.classList.toggle("active", mode === "tv");
+    btnChartMt?.classList.toggle("active", mode === "mt");
+
+    // Hide all containers
+    if (simCanvasContainer) simCanvasContainer.style.display = "none";
+    if (simTvContainer) simTvContainer.style.display = "none";
+    if (simMtContainer) simMtContainer.style.display = "none";
+
+    if (mode === "tv" || mode === "mt") {
+      // Show info card explaining real charting
+      if (realChartInfoCard) realChartInfoCard.style.display = "block";
       
-      // Dim speed controls and filters since TV handles its own indicators
-      simChartControls.style.opacity = "0.3";
-      simChartControls.style.pointerEvents = "none";
-      
-      loadTradingViewScriptAndWidget(activeAsset);
+      // Dim and disable the simulated balance and order placing controls
+      if (simBalanceCard) {
+        simBalanceCard.style.opacity = "0.35";
+        simBalanceCard.style.pointerEvents = "none";
+      }
+      if (simOrderCard) {
+        simOrderCard.style.opacity = "0.35";
+        simOrderCard.style.pointerEvents = "none";
+      }
+
+      // Dim speed controls and filters
+      if (simChartControls) {
+        simChartControls.style.opacity = "0.3";
+        simChartControls.style.pointerEvents = "none";
+      }
+
+      if (mode === "tv") {
+        if (simTvContainer) simTvContainer.style.display = "block";
+        loadTradingViewScriptAndWidget(activeAsset);
+      } else {
+        if (simMtContainer) simMtContainer.style.display = "block";
+        // Lazy load MT4 WebTerminal on demand
+        if (mt5Iframe && !mt5Iframe.src) {
+          mt5Iframe.src = "https://metatraderweb.app/trade?theme=dark&startup_version=4&lang=es";
+        }
+      }
     } else {
-      btnChartTv.classList.remove("active");
-      btnChartSim.classList.add("active");
-      simTvContainer.style.display = "none";
-      simCanvasContainer.style.display = "block";
+      // Simulador Pro Mode
+      if (simCanvasContainer) simCanvasContainer.style.display = "block";
       
-      simChartControls.style.opacity = "1";
-      simChartControls.style.pointerEvents = "auto";
+      // Hide real chart warning card
+      if (realChartInfoCard) realChartInfoCard.style.display = "none";
+
+      // Re-enable and restore full opacities for simulated order panel
+      if (simBalanceCard) {
+        simBalanceCard.style.opacity = "1";
+        simBalanceCard.style.pointerEvents = "auto";
+      }
+      if (simOrderCard) {
+        simOrderCard.style.opacity = "1";
+        simOrderCard.style.pointerEvents = "auto";
+      }
+
+      if (simChartControls) {
+        simChartControls.style.opacity = "1";
+        simChartControls.style.pointerEvents = "auto";
+      }
       
       setTimeout(resizeCanvases, 80);
     }
   };
 
-  if (btnChartSim && btnChartTv) {
-    btnChartSim.addEventListener("click", () => switchViewMode("sim"));
-    btnChartTv.addEventListener("click", () => switchViewMode("tv"));
-  }
+  if (btnChartSim) btnChartSim.addEventListener("click", () => switchViewMode("sim"));
+  if (btnChartTv) btnChartTv.addEventListener("click", () => switchViewMode("tv"));
+  if (btnChartMt) btnChartMt.addEventListener("click", () => switchViewMode("mt"));
 
   // Toggle Chart Height/Size Listener
   const btnToggleSize = document.getElementById("btn-toggle-size");
@@ -910,6 +960,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnToggleSize.addEventListener("click", () => {
       const isLarge = simCanvasContainer.classList.toggle("large-chart");
       if (simTvContainer) simTvContainer.classList.toggle("large-chart");
+      if (simMtContainer) simMtContainer.classList.toggle("large-chart");
       
       const chartCanvas = document.getElementById("chartCanvas");
       
@@ -921,7 +972,12 @@ document.addEventListener("DOMContentLoaded", () => {
           simTvContainer.style.minHeight = "750px";
           simTvContainer.style.maxHeight = "1200px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #00ffff;"></i> <span>Reducir</span>`;
+        if (simMtContainer) {
+          simMtContainer.style.height = "750px";
+          simMtContainer.style.minHeight = "750px";
+          simMtContainer.style.maxHeight = "1200px";
+        }
+        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #ffd700;"></i> <span>Reducir</span>`;
       } else {
         simCanvasContainer.style.minHeight = "500px";
         if (chartCanvas) chartCanvas.style.height = "500px";
@@ -930,7 +986,12 @@ document.addEventListener("DOMContentLoaded", () => {
           simTvContainer.style.minHeight = "480px";
           simTvContainer.style.maxHeight = "800px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #00ffff;"></i> <span>Agrandar</span>`;
+        if (simMtContainer) {
+          simMtContainer.style.height = "500px";
+          simMtContainer.style.minHeight = "480px";
+          simMtContainer.style.maxHeight = "800px";
+        }
+        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #ffd700;"></i> <span>Agrandar</span>`;
       }
       
       if (typeof lucide !== "undefined") {

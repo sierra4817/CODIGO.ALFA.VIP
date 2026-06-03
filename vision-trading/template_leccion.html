@@ -29,7 +29,7 @@
 
     <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; margin-right: 12px;">
       <a href="index.html" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; cursor: pointer; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-family: var(--font-sans); transition: 0.2s ease;">
-        <i data-lucide="home" style="width: 16px; height: 16px; color: #00ffff;"></i> <span class="btn-text">Inicio del Curso</span>
+        <i data-lucide="home" style="width: 16px; height: 16px; color: #ffd700;"></i> <span class="btn-text">Inicio del Curso</span>
       </a>
       <button id="btn-audio-narrate" class="btn-oro-liquido" style="padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
         <i data-lucide="volume-2" style="width: 16px; height: 16px;"></i> <span>Narrar Lección</span>
@@ -141,13 +141,13 @@
 
       <!-- Challenge / Bitácora Input Area -->
       <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px;">
-        <h3 style="font-family: var(--font-sans); color: #00ffff; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <h3 style="font-family: var(--font-sans); color: #ffd700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="book-open"></i> Desafío Práctico de Bitácora
         </h3>
         <p id="lesson-challenge-desc" style="color: #9ca3af; font-size: 0.9rem; margin-bottom: 16px;">
           <!-- Loaded dynamically -->
         </p>
-        <textarea id="challenge-response-input" placeholder="Escribe aquí tu análisis, observaciones técnicas o compromiso de mentalidad..." style="width: 100%; height: 100px; background: rgba(5, 5, 5, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #f3f4f6; padding: 12px; font-family: inherit; font-size: 0.9rem; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='rgba(0, 255, 255, 0.5)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+        <textarea id="challenge-response-input" placeholder="Escribe aquí tu análisis, observaciones técnicas o compromiso de mentalidad..." style="width: 100%; height: 100px; background: rgba(5, 5, 5, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #f3f4f6; padding: 12px; font-family: inherit; font-size: 0.9rem; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='rgba(255, 215, 0, 0.5)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
         <button id="btn-save-challenge" class="btn-oro-liquido" style="padding: 10px 18px; border-radius: var(--radius-sm); margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
           <i data-lucide="save" style="width: 15px; height: 15px;"></i> Guardar en Bitácora
         </button>
@@ -199,9 +199,12 @@
                     <button id="btn-chart-tv" class="indicator-toggle" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
                       TradingView Real
                     </button>
+                    <button id="btn-chart-mt" class="indicator-toggle" style="padding: 6px 12px; font-size: 0.8rem; border: none; cursor: pointer; background: transparent; color: white;">
+                      MT4 Real
+                    </button>
                   </div>
                   <button id="btn-toggle-size" class="indicator-toggle" style="background: rgba(36, 47, 61, 0.4); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; padding: 6px 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-family: var(--font-sans); transition: all 0.2s ease;">
-                    <i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #00ffff;"></i> <span>Agrandar</span>
+                    <i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #ffd700;"></i> <span>Agrandar</span>
                   </button>
                 </div>
 
@@ -236,11 +239,27 @@
             <div class="tradingview-container" id="sim-tv-container" style="display: none; height: 500px; min-height: 480px; max-height: 800px; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: #131722; width: 100%;">
               <div id="tradingview_chart" style="height: 100%; width: 100%;"></div>
             </div>
+
+            <!-- MT4 Live widget container -->
+            <div class="mt5-container" id="sim-mt-container" style="display: none; height: 500px; min-height: 480px; max-height: 800px; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: #000000; width: 100%;">
+              <iframe id="mt5_iframe" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen="allowfullscreen"></iframe>
+            </div>
           </div>
 
           <!-- Trade Operations Panel -->
           <div class="control-panel">
-            <div class="balance-widget" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md);">
+            <!-- Info card for Real Charts (TV/MT4) -->
+            <div id="real-chart-info-card" style="display: none; background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.2); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0; box-shadow: var(--shadow-sm);">
+              <h4 style="font-size: 0.85rem; color: var(--color-warning); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="info" style="width: 16px; height: 16px;"></i> Controles Inactivos
+              </h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin: 0;">
+                Estás visualizando un gráfico real. Los controles superiores (EMA, RSI, Velocidad) y los botones de compra/venta laterales aplican <strong>únicamente al Simulador Pro</strong>.<br><br>
+                Para añadir indicadores o colocar órdenes en <strong>MT4 / TradingView</strong>, utiliza las herramientas y menús del propio gráfico.
+              </p>
+            </div>
+
+            <div class="balance-widget" id="sim-balance-card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md);">
               <h3 class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0; font-size: 1.05rem; color: #d4af37;">
                 <i data-lucide="wallet"></i> Mi Cuenta Sim
               </h3>
@@ -258,7 +277,7 @@
               </div>
             </div>
 
-            <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0;">
+            <div class="card" id="sim-order-card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0;">
               <h3 class="card-title" style="font-size: 1.05rem; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
                 <i data-lucide="settings"></i> Configuración Orden
               </h3>
