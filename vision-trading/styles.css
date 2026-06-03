@@ -2120,3 +2120,35 @@ main {
   color: var(--text-primary);
   transform: translateX(4px);
 }
+
+/* Locked Pilar Card overrides */
+.locked-pilar {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  filter: grayscale(0.5);
+  pointer-events: auto !important;
+}
+
+.locked-pilar:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: var(--border-color) !important;
+}
+
+.locked-pilar .pilar-icon-wrapper {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+.locked-pilar:hover .pilar-icon-wrapper {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: var(--text-muted) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.locked-pilar:hover .module-card-arrow {
+  color: var(--text-muted) !important;
+  transform: none !important;
+}

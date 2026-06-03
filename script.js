@@ -244,6 +244,18 @@ function initAdminPanel() {
   toggleCapital.checked = localStorage.getItem('admin_hide_capital_invisible') !== 'true';
   toggleCapitalUnlock.checked = localStorage.getItem('admin_unlock_capital_invisible') === 'true';
 
+  // 1.1 Load and attach event listeners for the 9 Pilares
+  for (let i = 1; i <= 9; i++) {
+    const togglePilar = document.getElementById('toggle-admin-pilar-' + i);
+    if (togglePilar) {
+      togglePilar.checked = localStorage.getItem('admin_pilar_' + i + '_active') !== 'false';
+      togglePilar.addEventListener('change', function() {
+        localStorage.setItem('admin_pilar_' + i + '_active', this.checked.toString());
+        loadEcosystemStats();
+      });
+    }
+  }
+
   // 2. Set up event listeners
   toggleMasterclass.addEventListener('change', function() {
     localStorage.setItem('admin_hide_masterclass', (!this.checked).toString());
@@ -284,6 +296,15 @@ function adminResetProgress() {
     const toggleVisionUnlock = document.getElementById('toggle-admin-vision-unlock');
     if (toggleVisionUnlock) {
       toggleVisionUnlock.checked = false;
+    }
+
+    // Reset all pilar locks to active/unlocked
+    for (let i = 1; i <= 9; i++) {
+      localStorage.removeItem(`admin_pilar_${i}_active`);
+      const togglePilar = document.getElementById('toggle-admin-pilar-' + i);
+      if (togglePilar) {
+        togglePilar.checked = true;
+      }
     }
     
     for (let i = 1; i <= 63; i++) {

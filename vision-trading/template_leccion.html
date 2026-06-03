@@ -739,6 +739,11 @@
     let activeAccordion = 1;
     let selectedQuizAnswers = {};
 
+    const isPilarQuizPassed = (pilarId) => {
+      const isPilarActive = localStorage.getItem("admin_pilar_" + pilarId + "_active") !== "false";
+      return isPilarActive && progressState.quizzes[pilarId];
+    };
+
     function loadEcosystemStats() {
       // 1. Course progress
       const savedProgress = localStorage.getItem('vision_63day_progress');
@@ -865,10 +870,35 @@
           }
         }
 
+        // Apply admin pilar locks override in memory
+        for (let i = 1; i <= 63; i++) {
+          const pilarId = Math.floor((i - 1) / 7) + 1;
+          const isPilarActive = localStorage.getItem("admin_pilar_" + pilarId + "_active") !== "false";
+          if (!isPilarActive) {
+            const k = "day" + i;
+            if (!progressState.days[k]) {
+              progressState.days[k] = {};
+            }
+            progressState.days[k].unlocked = false;
+          }
+        }
+        for (let i = 1; i <= 9; i++) {
+          const isPilarActive = localStorage.getItem("admin_pilar_" + i + "_active") !== "false";
+          if (!isPilarActive) {
+            progressState.quizzes[i] = false;
+          }
+        }
+
         // Get day from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const dayParam = urlParams.get("day");
-        if (dayParam && courseData["day" + dayParam] && parseInt(dayParam) <= 63) {
+        let isParamDayUnlocked = true;
+        if (dayParam) {
+          const dayKey = "day" + dayParam;
+          isParamDayUnlocked = progressState.days[dayKey]?.unlocked;
+        }
+
+        if (dayParam && courseData["day" + dayParam] && parseInt(dayParam) <= 63 && isParamDayUnlocked) {
           currentDayId = "day" + dayParam;
         } else {
           // Open latest unlocked day (up to day 63)
@@ -935,7 +965,7 @@
       const nextBtn = document.getElementById("btn-next-lesson");
       if (dayId === "day63") {
         nextBtn.querySelector("span").textContent = "Finalizar Curso";
-      } else if (isExam && !progressState.quizzes[day.pilar]) {
+      } else if (isExam && !isPilarQuizPassed(day.pilar)) {
         nextBtn.querySelector("span").textContent = "Aprobar Examen";
       } else {
         nextBtn.querySelector("span").textContent = "Siguiente Lección";
@@ -986,7 +1016,8 @@
 
           if (day) {
             const isCompleted = progressState.days[dId]?.completed;
-            const isUnlocked = progressState.days[dId]?.unlocked;
+            const isPilarActive = localStorage.getItem("admin_pilar_" + pilar.id + "_active") !== "false";
+            const isUnlocked = isPilarActive && progressState.days[dId]?.unlocked;
             const isActive = currentDayId === dId;
 
             let statusIcon = '<i data-lucide="lock" class="status-locked" style="width:12px; height:12px; opacity: 0.5;"></i>';
@@ -997,7 +1028,7 @@
             }
 
             html += `
-              <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : 'alert(\'Esta lección está bloqueada. Debes completar las anteriores.\')'}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'}; margin-bottom: 4px;">
+              <div class="day-item ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${dId}" onclick="${isUnlocked ? `loadLesson('${dId}')` : `alert(localStorage.getItem('admin_pilar_${pilar.id}_active') === 'false' ? 'Este pilar ha sido bloqueado temporalmente por el mentor.' : 'Esta lección está bloqueada. Debes completar las anteriores.')`}" style="padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; cursor: ${isUnlocked ? 'pointer' : 'not-allowed'}; opacity: ${isUnlocked ? 1 : 0.45}; background: ${isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent'}; border-left: ${isActive ? '2px solid #00ffff' : 'none'}; margin-bottom: 4px;">
                 <span>Día ${dNum}: ${day.title}</span>
                 <span>${statusIcon}</span>
               </div>
@@ -1033,7 +1064,7 @@
 
       let html = "";
       pQuizzes.forEach((quiz, idx) => {
-        const isPassed = progressState.quizzes[pilarId];
+        const isPassed = isPilarQuizPassed(pilarId);
         html += `
           <div style="margin-bottom: 20px;">
             <p style="font-size: 0.95rem; color: #f3f4f6; font-weight: 600; margin-bottom: 12px;">P${idx+1}: ${quiz.q}</p>
@@ -1065,7 +1096,7 @@
         `;
       });
 
-      if (progressState.quizzes[pilarId]) {
+      if (isPassed) {
         html += `
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 8px; color: #10b981; font-weight: 600; font-size: 0.85rem;">
             <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> ¡Evaluación Aprobada! El siguiente módulo está desbloqueado.
@@ -1240,7 +1271,7 @@
       // Set menu badge in header if certificate is unlocked (all 9 quizzes passed)
       let certAvailable = true;
       for (let i = 1; i <= 9; i++) {
-        if (progressState.quizzes[i] !== true) {
+        if (!isPilarQuizPassed(i)) {
           certAvailable = false;
           break;
         }
@@ -1276,7 +1307,7 @@
       const isExam = (dNum % 7 === 0);
       const day = courseData[currentDayId];
 
-      if (isExam && !progressState.quizzes[day.pilar]) {
+      if (isExam && !isPilarQuizPassed(day.pilar)) {
         alert("Debes aprobar la evaluación final de este pilar antes de poder avanzar.");
         return;
       }
@@ -1286,11 +1317,20 @@
 
       if (dNum < 63) {
         const nextId = "day" + (dNum + 1);
+        const nextPilarId = Math.floor((dNum) / 7) + 1;
+        const isNextPilarActive = localStorage.getItem("admin_pilar_" + nextPilarId + "_active") !== "false";
+        
         progressState.days[nextId].unlocked = true;
         saveProgress();
         updateUIProgress();
         renderSidebarMenu();
-        loadLesson(nextId);
+
+        if (!isNextPilarActive) {
+          alert("El siguiente pilar está temporalmente bloqueado por el mentor.");
+          loadLesson(currentDayId);
+        } else {
+          loadLesson(nextId);
+        }
       } else {
         saveProgress();
         updateUIProgress();

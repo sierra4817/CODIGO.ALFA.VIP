@@ -501,6 +501,24 @@ const loadProgress = () => {
     });
   }
 
+  // Override dynamically in memory if a pilar is blocked by admin
+  daysKeys.forEach(key => {
+    if (courseData[key]) {
+      const dayNum = parseInt(key.replace("day", ""));
+      const pilarId = Math.floor((dayNum - 1) / 7) + 1;
+      const isPilarActive = localStorage.getItem("admin_pilar_" + pilarId + "_active") !== "false";
+      if (!isPilarActive) {
+        courseData[key].unlocked = false;
+      }
+    }
+  });
+  Object.keys(pilarPassedStates).forEach(k => {
+    const isPilarActive = localStorage.getItem("admin_pilar_" + k + "_active") !== "false";
+    if (!isPilarActive) {
+      pilarPassedStates[k] = false;
+    }
+  });
+
   updateUIProgress();
 };
 
@@ -653,6 +671,11 @@ const showSection = (sectionId) => {
 
 // Open Specific Pilar from Welcome Screen
 window.openPillar = (pilarId) => {
+  const isPilarActive = localStorage.getItem("admin_pilar_" + pilarId + "_active") !== "false";
+  if (!isPilarActive) {
+    alert("Este pilar ha sido bloqueado temporalmente por el mentor.");
+    return;
+  }
   const startDayNum = (pilarId - 1) * 7 + 1;
   window.location.href = `template_leccion.html?day=${startDayNum}`;
 };
@@ -2132,10 +2155,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Apply pilar locks to the welcome index page cards
+  const applyWelcomePilarLocks = () => {
+    const cards = document.querySelectorAll(".module-card-list .module-card");
+    if (!cards || cards.length === 0) return;
+    cards.forEach((card, index) => {
+      const pilarId = index + 1;
+      const isPilarActive = localStorage.getItem("admin_pilar_" + pilarId + "_active") !== "false";
+      if (!isPilarActive) {
+        card.classList.add("locked-pilar");
+        card.removeAttribute("onclick");
+        card.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          alert("Este pilar ha sido bloqueado temporalmente por el mentor.");
+        });
+        const arrowIcon = card.querySelector(".module-card-arrow");
+        if (arrowIcon) {
+          arrowIcon.setAttribute("data-lucide", "lock");
+          arrowIcon.style.opacity = "0.5";
+        }
+      }
+    });
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  };
+
   // Load progress, render accordions, render glossary
   loadProgress();
   renderAcademicMenu();
   renderGlossary();
+  applyWelcomePilarLocks();
 
   // Hash routing support
   const hash = window.location.hash.replace("#", "");
