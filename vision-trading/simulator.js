@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Draw EMA 200 Line
     if (showEma) {
-      ctxMain.strokeStyle = "#E9BA3A";
+      ctxMain.strokeStyle = "#2962ff";
       ctxMain.lineWidth = 2;
       ctxMain.beginPath();
       let firstEma = true;
@@ -977,7 +977,7 @@ document.addEventListener("DOMContentLoaded", () => {
           simMtContainer.style.minHeight = "750px";
           simMtContainer.style.maxHeight = "1200px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #E9BA3A;"></i> <span>Reducir</span>`;
+        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #2962ff;"></i> <span>Reducir</span>`;
       } else {
         simCanvasContainer.style.minHeight = "500px";
         if (chartCanvas) chartCanvas.style.height = "500px";
@@ -991,7 +991,7 @@ document.addEventListener("DOMContentLoaded", () => {
           simMtContainer.style.minHeight = "480px";
           simMtContainer.style.maxHeight = "800px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #E9BA3A;"></i> <span>Agrandar</span>`;
+        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #2962ff;"></i> <span>Agrandar</span>`;
       }
       
       if (typeof lucide !== "undefined") {

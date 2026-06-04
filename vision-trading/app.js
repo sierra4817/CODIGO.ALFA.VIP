@@ -1406,8 +1406,8 @@ const getGraphicForDay = (dayNum) => {
     case 38:
       title = "El Checklist de Visión Trading Pro";
       elementsHtml += `
-        <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#E9BA3A" stroke-width="1.5" rx="8" />
-        <text x="250" y="48" fill="#E9BA3A" font-size="11.5" font-weight="bold" text-anchor="middle">Checklist Institucional de Confluencias</text>
+        <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#00d2ff" stroke-width="1.5" rx="8" />
+        <text x="250" y="48" fill="#00d2ff" font-size="11.5" font-weight="bold" text-anchor="middle">Checklist Institucional de Confluencias</text>
       `;
       const finalRules = [
         "1. Contexto HTF: ¿Identificamos Order Block / FVG de 1H?",
@@ -1418,8 +1418,8 @@ const getGraphicForDay = (dayNum) => {
       finalRules.forEach((str, i) => {
         const y = 66 + i * 26;
         elementsHtml += `
-          <circle cx="75" cy="${y}" r="8" fill="rgba(233,186,58,0.1)" stroke="#E9BA3A" stroke-width="1.5" />
-          <polyline points="72 ${y}, 74 ${y+3}, 78 ${y-3}" fill="none" stroke="#E9BA3A" stroke-width="2" />
+          <circle cx="75" cy="${y}" r="8" fill="rgba(0, 210, 255,0.1)" stroke="#00d2ff" stroke-width="1.5" />
+          <polyline points="72 ${y}, 74 ${y+3}, 78 ${y-3}" fill="none" stroke="#00d2ff" stroke-width="2" />
           <text x="95" y="${y + 3}" fill="#f3f4f6" font-size="9.5" font-weight="bold">${str}</text>
         `;
       });
@@ -1479,22 +1479,22 @@ const getGraphicForDay = (dayNum) => {
         <text x="255" y="165" fill="#9ca3af" font-size="8" text-anchor="middle">Mes 6</text>
         
         <!-- Bar 4 (Gold) -->
-        <rect x="310" y="45" width="30" height="105" fill="#E9BA3A" rx="2" />
-        <text x="325" y="165" fill="#E9BA3A" font-size="8" font-weight="bold" text-anchor="middle">Mes 12</text>
+        <rect x="310" y="45" width="30" height="105" fill="#00d2ff" rx="2" />
+        <text x="325" y="165" fill="#00d2ff" font-size="8" font-weight="bold" text-anchor="middle">Mes 12</text>
       `;
       break;
 
     case 42:
       title = "Diploma de Certificación Final";
       elementsHtml += `
-        <rect x="80" y="30" width="340" height="150" fill="#131a22" stroke="#E9BA3A" stroke-width="3" rx="4" />
-        <rect x="88" y="38" width="324" height="134" fill="none" stroke="rgba(233,186,58,0.2)" stroke-width="1.2" />
+        <rect x="80" y="30" width="340" height="150" fill="#131a22" stroke="#00d2ff" stroke-width="3" rx="4" />
+        <rect x="88" y="38" width="324" height="134" fill="none" stroke="rgba(0, 210, 255,0.2)" stroke-width="1.2" />
         
-        <text x="250" y="65" fill="#E9BA3A" font-size="13" font-weight="bold" text-anchor="middle" letter-spacing="2">DIPLOMA DE CERTIFICACIÓN</text>
+        <text x="250" y="65" fill="#00d2ff" font-size="13" font-weight="bold" text-anchor="middle" letter-spacing="2">DIPLOMA DE CERTIFICACIÓN</text>
         <text x="250" y="85" fill="#9ca3af" font-size="7.5" text-anchor="middle">OTORGADO POR COMPLETAR EXPOSITIVAMENTE LA MASTERCLASS</text>
         <text x="250" y="110" fill="#f3f4f6" font-size="14" font-weight="bold" text-anchor="middle">MAESTRÍA EN TRADING PROFESIONAL</text>
         
-        <text x="350" y="142" fill="#E9BA3A" font-size="7" font-weight="bold" text-anchor="middle">Firma: Visión Trading Pro</text>
+        <text x="350" y="142" fill="#00d2ff" font-size="7" font-weight="bold" text-anchor="middle">Firma: Visión Trading Pro</text>
       `;
       break;
 
