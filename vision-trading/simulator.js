@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const yLow = priceToY(c.low);
       
       const isBull = c.close >= c.open;
-      const color = isBull ? "#45a29e" : "#991b1b";
+      const color = isBull ? "#089981" : "#f23645";
       
       // 1. Draw wick
       ctxMain.strokeStyle = color;
@@ -435,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 3. Draw Strategy signals (Buy/Sell flags)
       if (c.buySignal) {
-        ctxMain.fillStyle = "#45a29e";
+        ctxMain.fillStyle = "#089981";
         ctxMain.beginPath();
         // Green Triangle pointing up below candle
         ctxMain.moveTo(x, yLow + 8);
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxMain.fill();
       }
       if (c.sellSignal) {
-        ctxMain.fillStyle = "#991b1b";
+        ctxMain.fillStyle = "#f23645";
         ctxMain.beginPath();
         // Red Triangle pointing down above candle
         ctxMain.moveTo(x, yHigh - 8);
@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Draw EMA 200 Line
     if (showEma) {
-      ctxMain.strokeStyle = "#c5a059";
+      ctxMain.strokeStyle = "#2962ff";
       ctxMain.lineWidth = 2;
       ctxMain.beginPath();
       let firstEma = true;
@@ -500,14 +500,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxMain.fillText(text, chartCanvas.width - paddingRight + (paddingRight / 2), y + 3);
       };
 
-      const posColor = pos.type === "BUY" ? "#45a29e" : "#991b1b";
+      const posColor = pos.type === "BUY" ? "#089981" : "#f23645";
       drawHorizontalLine(pos.entryPrice, posColor, [4, 4], `${pos.type === "BUY" ? "L" : "S"} @ ${pos.entryPrice}`);
       
       if (pos.sl) {
-        drawHorizontalLine(pos.sl, "#991b1b", [2, 2], `SL: ${pos.sl}`);
+        drawHorizontalLine(pos.sl, "#f23645", [2, 2], `SL: ${pos.sl}`);
       }
       if (pos.tp) {
-        drawHorizontalLine(pos.tp, "#45a29e", [2, 2], `TP: ${pos.tp}`);
+        drawHorizontalLine(pos.tp, "#089981", [2, 2], `TP: ${pos.tp}`);
       }
     }
 
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const y = rsiToY(lvl);
         
         if (lvl === 50) {
-          ctxRsi.strokeStyle = "rgba(69, 162, 158, 0.4)"; // highlight center line
+          ctxRsi.strokeStyle = "rgba(8, 153, 129, 0.4)"; // highlight center line
           ctxRsi.setLineDash([2, 4]);
         } else {
           ctxRsi.strokeStyle = "#1e293b";
@@ -545,14 +545,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxRsi.stroke();
         ctxRsi.setLineDash([]);
 
-        ctxRsi.fillStyle = lvl === 50 ? "#45a29e" : "#4b5563";
+        ctxRsi.fillStyle = lvl === 50 ? "#089981" : "#4b5563";
         ctxRsi.font = "9px Space Grotesk";
         ctxRsi.textAlign = "left";
         ctxRsi.fillText(lvl.toString(), rsiCanvas.width - paddingRight + 8, y + 3);
       });
 
       // Draw RSI line
-      ctxRsi.strokeStyle = "#45a29e"; // Cian Algorítmico
+      ctxRsi.strokeStyle = "#089981"; // Cian Algorítmico
       ctxRsi.lineWidth = 1.5;
       ctxRsi.beginPath();
       
@@ -977,7 +977,7 @@ document.addEventListener("DOMContentLoaded", () => {
           simMtContainer.style.minHeight = "750px";
           simMtContainer.style.maxHeight = "1200px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #ffd700;"></i> <span>Reducir</span>`;
+        btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #2962ff;"></i> <span>Reducir</span>`;
       } else {
         simCanvasContainer.style.minHeight = "500px";
         if (chartCanvas) chartCanvas.style.height = "500px";
@@ -991,7 +991,7 @@ document.addEventListener("DOMContentLoaded", () => {
           simMtContainer.style.minHeight = "480px";
           simMtContainer.style.maxHeight = "800px";
         }
-        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #ffd700;"></i> <span>Agrandar</span>`;
+        btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #2962ff;"></i> <span>Agrandar</span>`;
       }
       
       if (typeof lucide !== "undefined") {
