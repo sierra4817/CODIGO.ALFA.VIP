@@ -877,17 +877,17 @@ main {
 .main-chart-canvas {
   display: block;
   width: 100%;
-  height: 60vh;
-  min-height: 350px;
-  max-height: 650px;
+  height: 65vh;
+  min-height: 450px;
+  max-height: 1000px;
 }
 
 .rsi-chart-canvas {
   display: block;
   width: 100%;
   height: 20vh;
-  min-height: 100px;
-  max-height: 180px;
+  min-height: 120px;
+  max-height: 250px;
   border-top: 1px solid var(--border-color);
 }
 

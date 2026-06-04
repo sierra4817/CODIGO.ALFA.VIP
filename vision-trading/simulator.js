@@ -132,9 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const resizeCanvases = () => {
     // Set internal resolution based on CSS size
     chartCanvas.width = chartCanvas.parentElement.clientWidth;
-    chartCanvas.height = chartCanvas.clientHeight || 500;
+    chartCanvas.height = chartCanvas.clientHeight || 650;
     rsiCanvas.width = rsiCanvas.parentElement.clientWidth;
-    rsiCanvas.height = rsiCanvas.clientHeight || 120;
+    rsiCanvas.height = rsiCanvas.clientHeight || 140;
     drawChart();
   };
 
@@ -965,31 +965,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const chartCanvas = document.getElementById("chartCanvas");
       
       if (isLarge) {
-        simCanvasContainer.style.minHeight = "750px";
-        if (chartCanvas) chartCanvas.style.height = "750px";
+        simCanvasContainer.style.minHeight = "900px";
+        if (chartCanvas) chartCanvas.style.height = "900px";
         if (simTvContainer) {
-          simTvContainer.style.height = "750px";
-          simTvContainer.style.minHeight = "750px";
-          simTvContainer.style.maxHeight = "1200px";
+          simTvContainer.style.height = "900px";
+          simTvContainer.style.minHeight = "900px";
+          simTvContainer.style.maxHeight = "1500px";
         }
         if (simMtContainer) {
-          simMtContainer.style.height = "750px";
-          simMtContainer.style.minHeight = "750px";
-          simMtContainer.style.maxHeight = "1200px";
+          simMtContainer.style.height = "900px";
+          simMtContainer.style.minHeight = "900px";
+          simMtContainer.style.maxHeight = "1500px";
         }
         btnToggleSize.innerHTML = `<i data-lucide="minimize-2" style="width: 14px; height: 14px; color: #cbd5e1;"></i> <span>Reducir</span>`;
       } else {
-        simCanvasContainer.style.minHeight = "500px";
-        if (chartCanvas) chartCanvas.style.height = "500px";
+        simCanvasContainer.style.minHeight = "650px";
+        if (chartCanvas) chartCanvas.style.height = "650px";
         if (simTvContainer) {
-          simTvContainer.style.height = "500px";
-          simTvContainer.style.minHeight = "480px";
-          simTvContainer.style.maxHeight = "800px";
+          simTvContainer.style.height = "650px";
+          simTvContainer.style.minHeight = "600px";
+          simTvContainer.style.maxHeight = "1200px";
         }
         if (simMtContainer) {
-          simMtContainer.style.height = "500px";
-          simMtContainer.style.minHeight = "480px";
-          simMtContainer.style.maxHeight = "800px";
+          simMtContainer.style.height = "650px";
+          simMtContainer.style.minHeight = "600px";
+          simMtContainer.style.maxHeight = "1200px";
         }
         btnToggleSize.innerHTML = `<i data-lucide="maximize-2" style="width: 14px; height: 14px; color: #cbd5e1;"></i> <span>Agrandar</span>`;
       }
