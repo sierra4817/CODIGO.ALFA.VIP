@@ -24,7 +24,7 @@
   --color-bear-glow: rgba(242, 54, 69, 0.15);
   --color-accent: #2962ff;
   --color-accent-glow: rgba(41, 98, 255, 0.15);
-  --color-warning: #f59e0b;
+  --color-warning: #00d2ff;
   
   --gold-primary: var(--text-secondary);
   --gold-light: #4c82ff;
@@ -481,7 +481,7 @@ main {
 }
 
 .alert-box {
-  background: rgba(245, 158, 11, 0.03);
+  background: rgba(0, 210, 255, 0.03);
   border-left: 4px solid var(--color-warning);
   padding: 16px;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;

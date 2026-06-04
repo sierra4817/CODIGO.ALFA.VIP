@@ -775,7 +775,7 @@ const getGraphicForDay = (dayNum) => {
     <circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />
   `;
 
-  const arrow = (x1, y1, x2, y2, color = "#f59e0b", w = 2) => `
+  const arrow = (x1, y1, x2, y2, color = "#00d2ff", w = 2) => `
     <defs>
       <marker id="arr-${dayNum}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
         <polygon points="0 0, 6 3, 0 6" fill="${color}" />
@@ -805,8 +805,8 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += line(360, 60, 460, 60, "#10b981", 1.5, "3,3");
       elementsHtml += text(420, 52, "Precio Actual", 9, "#10b981", "middle", "bold");
       
-      elementsHtml += arrow(330, 130, 355, 75, "#f59e0b");
-      elementsHtml += rect(220, 130, 210, 26, "#1b222c", "#f59e0b", 1);
+      elementsHtml += arrow(330, 130, 355, 75, "#00d2ff");
+      elementsHtml += rect(220, 130, 210, 26, "#1b222c", "#00d2ff", 1);
       elementsHtml += text(325, 146, "Aceptación Objetiva del Precio", 9.5, "#f3f4f6", "middle", "bold");
       break;
 
@@ -1015,7 +1015,7 @@ const getGraphicForDay = (dayNum) => {
         <text x="365" y="72" fill="#f3f4f6" font-size="9.5" font-weight="bold" text-anchor="middle">Stop Loss Amplio (20 pts)</text>
         <text x="365" y="92" fill="#ef4444" font-size="11.5" font-weight="bold" text-anchor="middle">1 Contrato MES</text>
 
-        <path d="M 220,80 L 280,80" stroke="#f59e0b" stroke-dasharray="2,2" stroke-width="1.2" marker-end="url(#arr-14)" />
+        <path d="M 220,80 L 280,80" stroke="#00d2ff" stroke-dasharray="2,2" stroke-width="1.2" marker-end="url(#arr-14)" />
         <text x="250" y="135" fill="#f3f4f6" font-size="10" font-weight="bold" text-anchor="middle">El riesgo monetario total es el mismo en ambos setups ($100)</text>
       `;
       break;
@@ -1066,8 +1066,8 @@ const getGraphicForDay = (dayNum) => {
 
     case 19:
       title = "La Ley de Polaridad";
-      elementsHtml += line(40, 110, 460, 110, "#f59e0b", 2);
-      elementsHtml += text(45, 100, "Resistencia Antigua", 9, "#f59e0b");
+      elementsHtml += line(40, 110, 460, 110, "#00d2ff", 2);
+      elementsHtml += text(45, 100, "Resistencia Antigua", 9, "#00d2ff");
       elementsHtml += text(45, 125, "Soporte Nuevo (Polaridad)", 9, "#10b981", "start", "bold");
       
       elementsHtml += wave([[60, 160], [130, 130], [200, 140], [270, 80], [330, 110], [410, 50]], "#3b82f6", 3);
@@ -1077,8 +1077,8 @@ const getGraphicForDay = (dayNum) => {
     case 20:
       title = "EMA 200 y Momentum RSI";
       elementsHtml += wave([[40, 80], [120, 110], [200, 90], [280, 60], [360, 80], [440, 40]], "#3b82f6", 3.5);
-      elementsHtml += wave([[40, 120], [120, 115], [200, 105], [280, 95], [360, 90], [440, 80]], "#f59e0b", 2);
-      elementsHtml += text(440, 70, "EMA 200 (Filtro)", 9, "#f59e0b", "end");
+      elementsHtml += wave([[40, 120], [120, 115], [200, 105], [280, 95], [360, 90], [440, 80]], "#00d2ff", 2);
+      elementsHtml += text(440, 70, "EMA 200 (Filtro)", 9, "#00d2ff", "end");
       
       // RSI panel
       elementsHtml += `
@@ -1095,9 +1095,9 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += `
         <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#242f3d" rx="8" />
         <path d="M 235,160 L 245,65 L 255,65 L 265,160 Z" fill="#1b222c" stroke="#3b82f6" stroke-width="2" />
-        <rect x="242" y="52" width="16" height="13" fill="#f59e0b" rx="1.5" />
-        <polygon points="250,58 100,20 100,120" fill="rgba(245, 158, 11, 0.05)" />
-        <polygon points="250,58 400,20 400,120" fill="rgba(245, 158, 11, 0.05)" />
+        <rect x="242" y="52" width="16" height="13" fill="#00d2ff" rx="1.5" />
+        <polygon points="250,58 100,20 100,120" fill="rgba(0, 210, 255, 0.05)" />
+        <polygon points="250,58 400,20 400,120" fill="rgba(0, 210, 255, 0.05)" />
         <text x="250" y="45" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">ESTRUCTURA = EL FARO DE DIRECCIÓN</text>
       `;
       break;
@@ -1116,7 +1116,7 @@ const getGraphicForDay = (dayNum) => {
         <text x="250" y="85" fill="#f3f4f6" font-size="7.5" font-weight="bold" text-anchor="middle">09:30 AM</text>
         <text x="250" y="120" fill="#10b981" font-size="8.5" font-weight="bold" text-anchor="middle">Sesión Abierta</text>
 
-        <circle cx="400" cy="100" r="8" fill="#f59e0b" />
+        <circle cx="400" cy="100" r="8" fill="#00d2ff" />
         <text x="400" y="85" fill="#f3f4f6" font-size="7.5" font-weight="bold" text-anchor="middle">12:00 PM</text>
         <text x="400" y="120" fill="#9ca3af" font-size="8.5" text-anchor="middle">Cierre & Bitácora</text>
       `;
@@ -1196,7 +1196,7 @@ const getGraphicForDay = (dayNum) => {
         
         <circle cx="160" cy="105" r="50" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="20" />
         <circle cx="160" cy="105" r="30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="15" />
-        <circle cx="160" cy="105" r="10" fill="#f59e0b" />
+        <circle cx="160" cy="105" r="10" fill="#00d2ff" />
         
         <circle cx="150" cy="100" r="4" fill="#3b82f6" />
         <circle cx="162" cy="112" r="4" fill="#3b82f6" />
@@ -1215,11 +1215,11 @@ const getGraphicForDay = (dayNum) => {
         
         <path d="M 250,55 A 45,45 0 1,1 205,100" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arr-28)" />
         <path d="M 205,100 A 45,45 0 0,1 250,145" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arr-28)" />
-        <path d="M 250,145 A 45,45 0 0,1 250,55" fill="none" stroke="#f59e0b" stroke-width="3" marker-end="url(#arr-28)" />
+        <path d="M 250,145 A 45,45 0 0,1 250,55" fill="none" stroke="#00d2ff" stroke-width="3" marker-end="url(#arr-28)" />
         
         <text x="250" y="80" fill="#3b82f6" font-size="8.5" font-weight="bold" text-anchor="middle">1. AUDITAR</text>
         <text x="180" y="115" fill="#10b981" font-size="8.5" font-weight="bold" text-anchor="middle">2. MEDIR</text>
-        <text x="320" y="115" fill="#f59e0b" font-size="8.5" font-weight="bold" text-anchor="middle">3. CORREGIR</text>
+        <text x="320" y="115" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">3. CORREGIR</text>
       `;
       break;
 
@@ -1277,8 +1277,8 @@ const getGraphicForDay = (dayNum) => {
         <line x1="209" y1="10" x2="209" y2="80" stroke="#10b981" />
 
         <!-- FVG box between C1 high and C3 low -->
-        <rect x="89" y="80" width="120" height="20" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3,3" />
-        <text x="149" y="93" fill="#f59e0b" font-size="8.5" font-weight="bold" text-anchor="middle">Fair Value Gap (FVG)</text>
+        <rect x="89" y="80" width="120" height="20" fill="rgba(0, 210, 255, 0.08)" stroke="#00d2ff" stroke-width="1.2" stroke-dasharray="3,3" />
+        <text x="149" y="93" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">Fair Value Gap (FVG)</text>
       `;
       break;
 
@@ -1289,7 +1289,7 @@ const getGraphicForDay = (dayNum) => {
         <rect x="35" y="40" width="180" height="130" fill="#131a22" stroke="#242f3d" stroke-width="1.5" rx="6" />
         <text x="125" y="55" fill="#3b82f6" font-size="9" font-weight="bold" text-anchor="middle">HTF BIAS (Marco 1H)</text>
         <path d="M 50,150 L 100,110 L 140,120 L 200,60" fill="none" stroke="#3b82f6" stroke-width="2.5" />
-        <circle cx="200" cy="60" r="4.5" fill="#f59e0b" />
+        <circle cx="200" cy="60" r="4.5" fill="#00d2ff" />
 
         <!-- Right Panel: LTF Gatillo -->
         <rect x="285" y="40" width="180" height="130" fill="#131a22" stroke="#242f3d" stroke-width="1.5" rx="6" />
@@ -1297,7 +1297,7 @@ const getGraphicForDay = (dayNum) => {
         <path d="M 295,130 L 320,110 L 335,118 L 365,90 L 380,98 L 420,55" fill="none" stroke="#10b981" stroke-width="1.8" />
         
         <!-- Connection Arrow -->
-        <path d="M 225,105 L 275,105" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-32)" />
+        <path d="M 225,105 L 275,105" stroke="#00d2ff" stroke-width="1.5" marker-end="url(#arr-32)" />
       `;
       break;
 
@@ -1305,8 +1305,8 @@ const getGraphicForDay = (dayNum) => {
       title = "Zonas Premium y Descuento";
       elementsHtml += `
         <!-- Equilibrium line -->
-        <line x1="40" y1="100" x2="460" y2="100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" />
-        <text x="450" y="93" fill="#f59e0b" font-size="8.5" text-anchor="end">Precio de Equilibrio (50%)</text>
+        <line x1="40" y1="100" x2="460" y2="100" stroke="#00d2ff" stroke-width="2" stroke-dasharray="4,4" />
+        <text x="450" y="93" fill="#00d2ff" font-size="8.5" text-anchor="end">Precio de Equilibrio (50%)</text>
         
         <!-- Premium Box (Red) -->
         <rect x="40" y="30" width="420" height="70" fill="rgba(239, 68, 68, 0.04)" stroke="#ef4444" stroke-width="0.8" />
@@ -1330,8 +1330,8 @@ const getGraphicForDay = (dayNum) => {
         <path d="M 40,150 L 140,80 L 180,95 L 260,40 L 320,110 L 380,50" fill="none" stroke="#f3f4f6" stroke-width="3" />
         
         <!-- Retest circle and label -->
-        <circle cx="320" cy="110" r="6" fill="#f59e0b" />
-        <text x="320" y="135" fill="#f59e0b" font-size="9.5" font-weight="bold" text-anchor="middle">Breaker Block (Test de Soporte)</text>
+        <circle cx="320" cy="110" r="6" fill="#00d2ff" />
+        <text x="320" y="135" fill="#00d2ff" font-size="9.5" font-weight="bold" text-anchor="middle">Breaker Block (Test de Soporte)</text>
       `;
       break;
 
@@ -1433,8 +1433,8 @@ const getGraphicForDay = (dayNum) => {
         <line x1="60" y1="60" x2="60" y2="160" stroke="#242f3d" stroke-width="1.5" />
         
         <path d="M 60,160 Q 180,150 260,100 T 420,60" fill="none" stroke="#10b981" stroke-width="3" />
-        <circle cx="260" cy="100" r="5" fill="#f59e0b" />
-        <text x="260" y="85" fill="#f59e0b" font-size="8.5" font-weight="bold" text-anchor="middle">Retiro Seguro ($2,500)</text>
+        <circle cx="260" cy="100" r="5" fill="#00d2ff" />
+        <text x="260" y="85" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">Retiro Seguro ($2,500)</text>
         
         <circle cx="420" cy="60" r="5" fill="#10b981" />
         <text x="425" y="52" fill="#10b981" font-size="8.5" font-weight="bold">Cuenta Duplicada / Escalamiento</text>
@@ -1455,7 +1455,7 @@ const getGraphicForDay = (dayNum) => {
           <text x="180" y="24" fill="#3b82f6" font-weight="bold">Mantener reserva de seguridad</text>
           
           <text x="0" y="48">3. CAPITAL INVISIBLE:</text>
-          <text x="180" y="48" fill="#f59e0b" font-weight="bold">Invertir en cuenta de fondos propios</text>
+          <text x="180" y="48" fill="#00d2ff" font-weight="bold">Invertir en cuenta de fondos propios</text>
         </g>
       `;
       break;
