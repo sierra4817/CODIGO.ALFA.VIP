@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Draw EMA 200 Line
     if (showEma) {
-      ctxMain.strokeStyle = "#FF9900";
+      ctxMain.strokeStyle = "#ffce12";
       ctxMain.lineWidth = 2;
       ctxMain.beginPath();
       let firstEma = true;
