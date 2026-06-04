@@ -828,17 +828,17 @@ body {
   font-family: var(--font-sans) !important;
 }
 
-/* Red Creatina Glow Buttons */
+/* Premium Gold Glow Buttons */
 .btn-gold-minimal,
 .btn-gold-shimmer {
-  background: linear-gradient(to bottom, #f13636 0%, #d12020 50%, #c01818 100%) !important;
+  background: linear-gradient(to bottom, #F8C22D 0%, #D8A21B 50%, #A07409 100%) !important;
   border-radius: 12px !important;
-  border: 1px solid rgba(139, 0, 0, 0.4) !important;
-  box-shadow: 0 0 25px 3px rgba(241, 54, 54, 0.5), 
-              0 0 40px 8px rgba(241, 54, 54, 0.3), 
-              0 6px 12px rgba(0, 0, 0, 0.3), 
+  border: 1px solid rgba(160, 116, 9, 0.4) !important;
+  box-shadow: 0 0 25px 3px rgba(248, 194, 45, 0.35), 
+              0 0 40px 8px rgba(248, 194, 45, 0.15), 
+              0 6px 12px rgba(0, 0, 0, 0.35), 
               inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   font-family: var(--font-sans) !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -846,14 +846,14 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
-  animation: pulse-creatina-glow 3s infinite !important;
+  animation: pulse-gold-glow 3s infinite !important;
 }
 
 .btn-gold-minimal:hover,
 .btn-gold-shimmer:hover {
-  background: linear-gradient(to bottom, #ff4444 0%, #e62828 50%, #d12020 100%) !important;
-  box-shadow: 0 0 30px 5px rgba(241, 54, 54, 0.6), 
-              0 0 50px 10px rgba(241, 54, 54, 0.4), 
+  background: linear-gradient(to bottom, #FFD043 0%, #F8C22D 50%, #D8A21B 100%) !important;
+  box-shadow: 0 0 30px 5px rgba(248, 194, 45, 0.5), 
+              0 0 50px 10px rgba(248, 194, 45, 0.25), 
               0 8px 15px rgba(0, 0, 0, 0.35), 
               inset 0 2px 15px rgba(255, 255, 255, 0.3) !important;
   transform: translateY(-2px) !important;
@@ -862,8 +862,8 @@ body {
 .btn-gold-minimal:active,
 .btn-gold-shimmer:active {
   transform: translateY(1px) !important;
-  box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 
-              0 0 35px 6px rgba(241, 54, 54, 0.25), 
+  box-shadow: 0 0 20px 2px rgba(248, 194, 45, 0.25), 
+              0 0 35px 6px rgba(248, 194, 45, 0.15), 
               inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
 }
 
@@ -871,10 +871,10 @@ body {
   display: none !important;
 }
 
-@keyframes pulse-creatina-glow {
-  0% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
-  50% { box-shadow: 0 0 35px 6px rgba(241, 54, 54, 0.6), 0 6px 12px rgba(0, 0, 0, 0.3); }
-  100% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
+@keyframes pulse-gold-glow {
+  0% { box-shadow: 0 0 20px 2px rgba(248, 194, 45, 0.3), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 35px 6px rgba(248, 194, 45, 0.5), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 0 20px 2px rgba(248, 194, 45, 0.3), 0 6px 12px rgba(0, 0, 0, 0.3); }
 }
 
 .special-serif-italic {
