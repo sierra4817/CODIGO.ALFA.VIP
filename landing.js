@@ -371,11 +371,13 @@ window.openLeadModal = function(action) {
     titleEl.textContent = 'Desbloquear Simulador Gratis';
     descEl.textContent = 'Introduce tu correo electrónico privado para acceder de inmediato al simulador interactivo de futuros Nasdaq y S&P 500.';
     submitBtn.querySelector('span').textContent = "Acceder al Simulador Gratis";
+    emailInput.placeholder = "Tu correo electrónico privado...";
   } else if (action === 'chapter1') {
     modalContent.className = 'lead-modal-content glow-gold';
-    titleEl.textContent = 'Descargar Capítulo 1 Gratis';
-    descEl.textContent = 'Introduce tu correo electrónico privado para iniciar la descarga del Capítulo 1 del Manifiesto "Comprar, Pedir Prestado, Morir".';
-    submitBtn.querySelector('span').textContent = "Descargar Capítulo 1 Gratis";
+    titleEl.textContent = 'Obtén el Capítulo 1 del Manifiesto y la Guía de inicio gratuito';
+    descEl.textContent = 'Introduce tu correo privado para iniciar la descarga inmediata del documento.';
+    submitBtn.querySelector('span').textContent = "Obtener Capítulo 1 y Guía";
+    emailInput.placeholder = "Introduce tu correo privado...";
   }
 
   // Open modal
