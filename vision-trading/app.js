@@ -771,11 +771,11 @@ const getGraphicForDay = (dayNum) => {
     <rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" ${dash ? `stroke-dasharray="${dash}"` : ""} rx="4" />
   `;
 
-  const circle = (x, y, r, fill = "#3b82f6", stroke = "none", strokeW = 1) => `
+  const circle = (x, y, r, fill = "#94a3b8", stroke = "none", strokeW = 1) => `
     <circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />
   `;
 
-  const arrow = (x1, y1, x2, y2, color = "#00d2ff", w = 2) => `
+  const arrow = (x1, y1, x2, y2, color = "#F8C22D", w = 2) => `
     <defs>
       <marker id="arr-${dayNum}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
         <polygon points="0 0, 6 3, 0 6" fill="${color}" />
@@ -784,7 +784,7 @@ const getGraphicForDay = (dayNum) => {
     <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${w}" marker-end="url(#arr-${dayNum})" />
   `;
 
-  const wave = (points, color = "#3b82f6", w = 3) => {
+  const wave = (points, color = "#94a3b8", w = 3) => {
     let d = "";
     points.forEach((p, idx) => {
       d += (idx === 0 ? "M " : "L ") + `${p[0]},${p[1]}`;
@@ -798,21 +798,21 @@ const getGraphicForDay = (dayNum) => {
   switch (dayNum) {
     case 1:
       title = "El Precio es la Única Realidad";
-      elementsHtml += wave([[40, 160], [100, 120], [160, 140], [220, 90], [280, 110], [360, 60], [420, 80]], "rgba(59, 130, 246, 0.4)", 2);
-      elementsHtml += wave([[40, 160], [100, 120], [160, 140], [220, 90], [280, 110], [360, 60]], "#3b82f6", 3.5);
+      elementsHtml += wave([[40, 160], [100, 120], [160, 140], [220, 90], [280, 110], [360, 60], [420, 80]], "rgba(148, 163, 184, 0.4)", 2);
+      elementsHtml += wave([[40, 160], [100, 120], [160, 140], [220, 90], [280, 110], [360, 60]], "#94a3b8", 3.5);
       
       elementsHtml += circle(360, 60, 6, "#10b981");
       elementsHtml += line(360, 60, 460, 60, "#10b981", 1.5, "3,3");
       elementsHtml += text(420, 52, "Precio Actual", 9, "#10b981", "middle", "bold");
       
-      elementsHtml += arrow(330, 130, 355, 75, "#00d2ff");
-      elementsHtml += rect(220, 130, 210, 26, "#1b222c", "#00d2ff", 1);
+      elementsHtml += arrow(330, 130, 355, 75, "#F8C22D");
+      elementsHtml += rect(220, 130, 210, 26, "#1b222c", "#F8C22D", 1);
       elementsHtml += text(325, 146, "Aceptación Objetiva del Precio", 9.5, "#f3f4f6", "middle", "bold");
       break;
 
     case 2:
       title = "FOMO y Pánico en la Curva de Precios";
-      elementsHtml += wave([[40, 150], [100, 140], [180, 60], [220, 45], [260, 120], [320, 165], [380, 175], [440, 110]], "#3b82f6", 3);
+      elementsHtml += wave([[40, 150], [100, 140], [180, 60], [220, 45], [260, 120], [320, 165], [380, 175], [440, 110]], "#94a3b8", 3);
       
       // Peak FOMO
       elementsHtml += circle(220, 45, 6, "#ef4444");
@@ -847,7 +847,7 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += line(40, 120, 460, 120, "#ef4444", 1.5, "4,4");
       elementsHtml += text(50, 112, "Soporte Obvio Minorista (Zonas de Stops acumulados)", 9.5, "#ef4444");
       
-      elementsHtml += wave([[40, 90], [120, 110], [200, 90], [280, 120], [300, 150], [330, 80], [420, 60]], "#3b82f6", 3.5);
+      elementsHtml += wave([[40, 90], [120, 110], [200, 90], [280, 120], [300, 150], [330, 80], [420, 60]], "#94a3b8", 3.5);
       
       // Sweep indicator
       elementsHtml += circle(300, 150, 6, "#10b981");
@@ -860,7 +860,7 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += line(40, 110, 460, 110, "#ef4444", 1.5, "4,4");
       elementsHtml += text(50, 102, "Resistencia Minorista (Buy Stops de vendedores)", 9.5, "#ef4444");
       
-      elementsHtml += wave([[40, 130], [120, 120], [200, 125], [260, 110], [280, 45], [340, 35]], "#3b82f6", 3.5);
+      elementsHtml += wave([[40, 130], [120, 120], [200, 125], [260, 110], [280, 45], [340, 35]], "#94a3b8", 3.5);
       
       // Breakout arrow
       elementsHtml += circle(280, 45, 5, "#10b981");
@@ -892,8 +892,8 @@ const getGraphicForDay = (dayNum) => {
     case 7:
       title = "Escudo de Control Mental Estoico";
       elementsHtml += `
-        <path d="M 250,45 C 280,45 305,55 305,90 C 305,135 250,165 250,165 C 250,165 195,135 195,90 C 195,55 220,45 250,45 Z" fill="rgba(59, 130, 246, 0.08)" stroke="#3b82f6" stroke-width="3" />
-        <path d="M 250,60 L 250,145 M 220,90 L 280,90" stroke="#3b82f6" stroke-width="2.5" />
+        <path d="M 250,45 C 280,45 305,55 305,90 C 305,135 250,165 250,165 C 250,165 195,135 195,90 C 195,55 220,45 250,45 Z" fill="rgba(148, 163, 184, 0.08)" stroke="#94a3b8" stroke-width="3" />
+        <path d="M 250,60 L 250,145 M 220,90 L 280,90" stroke="#94a3b8" stroke-width="2.5" />
         <text x="250" y="32" fill="#f3f4f6" font-size="12" font-weight="bold" text-anchor="middle">MANIFIESTO ESTOICO</text>
         <text x="120" y="95" fill="#ef4444" font-size="9.5" font-weight="bold" text-anchor="end">EMOCIÓN / FOMO</text>
         <text x="380" y="95" fill="#10b981" font-size="9.5" font-weight="bold" text-anchor="start">DISCIPLINA / RIESGO</text>
@@ -926,8 +926,8 @@ const getGraphicForDay = (dayNum) => {
 
     case 9:
       title = "Asimetría Matemática R:R 1:2";
-      elementsHtml += line(60, 110, 440, 110, "#3b82f6", 2);
-      elementsHtml += text(70, 100, "Nivel de Entrada", 9.5, "#3b82f6", "start", "bold");
+      elementsHtml += line(60, 110, 440, 110, "#94a3b8", 2);
+      elementsHtml += text(70, 100, "Nivel de Entrada", 9.5, "#94a3b8", "start", "bold");
       
       // TP and SL boxes
       elementsHtml += `
@@ -960,7 +960,7 @@ const getGraphicForDay = (dayNum) => {
           <text x="0" y="0">1. SETUP OPERADO:</text>
           <text x="140" y="0" fill="#f3f4f6">Confluencia Visión Pro</text>
           <text x="0" y="22">2. CAPITAL EXPUESTO:</text>
-          <text x="140" y="22" fill="#3b82f6" font-weight="bold">1% de la Cuenta ($100)</text>
+          <text x="140" y="22" fill="#94a3b8" font-weight="bold">1% de la Cuenta ($100)</text>
           <text x="0" y="44">3. ESTADO MENTAL:</text>
           <text x="140" y="44" fill="#10b981" font-weight="bold">Cuidado y Enfoque Estoico</text>
         </g>
@@ -991,16 +991,16 @@ const getGraphicForDay = (dayNum) => {
         <g font-weight="bold" font-size="10" text-anchor="middle">
           <rect x="40" y="85" width="80" height="35" fill="#131a22" stroke="#242f3d" rx="4" />
           <text x="80" y="106" fill="#f3f4f6">1. Reglas</text>
-          <rect x="150" y="85" width="90" height="35" fill="rgba(59, 130, 246, 0.08)" stroke="#3b82f6" rx="4" />
-          <text x="195" y="106" fill="#3b82f6">2. Ejecución</text>
+          <rect x="150" y="85" width="90" height="35" fill="rgba(148, 163, 184, 0.08)" stroke="#94a3b8" rx="4" />
+          <text x="195" y="106" fill="#94a3b8">2. Ejecución</text>
           <rect x="270" y="85" width="85" height="35" fill="#131a22" stroke="#242f3d" rx="4" />
           <text x="312.5" y="106" fill="#f3f4f6">3. Muestra 100</text>
           <rect x="380" y="85" width="80" height="35" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" rx="4" />
           <text x="420" y="106" fill="#10b981">4. Esperanza</text>
         </g>
       `;
-      elementsHtml += arrow(120, 102, 150, 102, "#3b82f6");
-      elementsHtml += arrow(240, 102, 270, 102, "#3b82f6");
+      elementsHtml += arrow(120, 102, 150, 102, "#94a3b8");
+      elementsHtml += arrow(240, 102, 270, 102, "#94a3b8");
       elementsHtml += arrow(355, 102, 380, 102, "#10b981");
       break;
 
@@ -1015,18 +1015,18 @@ const getGraphicForDay = (dayNum) => {
         <text x="365" y="72" fill="#f3f4f6" font-size="9.5" font-weight="bold" text-anchor="middle">Stop Loss Amplio (20 pts)</text>
         <text x="365" y="92" fill="#ef4444" font-size="11.5" font-weight="bold" text-anchor="middle">1 Contrato MES</text>
 
-        <path d="M 220,80 L 280,80" stroke="#00d2ff" stroke-dasharray="2,2" stroke-width="1.2" marker-end="url(#arr-14)" />
+        <path d="M 220,80 L 280,80" stroke="#F8C22D" stroke-dasharray="2,2" stroke-width="1.2" marker-end="url(#arr-14)" />
         <text x="250" y="135" fill="#f3f4f6" font-size="10" font-weight="bold" text-anchor="middle">El riesgo monetario total es el mismo en ambos setups ($100)</text>
       `;
       break;
 
     case 15:
       title = "Estructura de Mercado (Tendencia Alcista)";
-      elementsHtml += wave([[40, 160], [100, 100], [140, 120], [210, 60], [250, 85], [320, 30], [360, 50], [420, 15]], "#3b82f6", 3.5);
+      elementsHtml += wave([[40, 160], [100, 100], [140, 120], [210, 60], [250, 85], [320, 30], [360, 50], [420, 15]], "#94a3b8", 3.5);
       
-      elementsHtml += circle(100, 100, 4, "#3b82f6"); elementsHtml += text(100, 85, "HH", 9.5, "#3b82f6", "middle", "bold");
-      elementsHtml += circle(210, 60, 4, "#3b82f6"); elementsHtml += text(210, 45, "HH", 9.5, "#3b82f6", "middle", "bold");
-      elementsHtml += circle(320, 30, 4, "#3b82f6"); elementsHtml += text(320, 15, "HH", 9.5, "#3b82f6", "middle", "bold");
+      elementsHtml += circle(100, 100, 4, "#94a3b8"); elementsHtml += text(100, 85, "HH", 9.5, "#94a3b8", "middle", "bold");
+      elementsHtml += circle(210, 60, 4, "#94a3b8"); elementsHtml += text(210, 45, "HH", 9.5, "#94a3b8", "middle", "bold");
+      elementsHtml += circle(320, 30, 4, "#94a3b8"); elementsHtml += text(320, 15, "HH", 9.5, "#94a3b8", "middle", "bold");
       
       elementsHtml += circle(140, 120, 4, "#10b981"); elementsHtml += text(140, 136, "HL", 9.5, "#10b981", "middle", "bold");
       elementsHtml += circle(250, 85, 4, "#10b981"); elementsHtml += text(250, 101, "HL", 9.5, "#10b981", "middle", "bold");
@@ -1035,7 +1035,7 @@ const getGraphicForDay = (dayNum) => {
 
     case 16:
       title = "Quiebre de Estructura (BOS Bajista)";
-      elementsHtml += wave([[40, 140], [100, 80], [160, 110], [220, 50], [280, 125], [320, 140]], "#3b82f6", 3.5);
+      elementsHtml += wave([[40, 140], [100, 80], [160, 110], [220, 50], [280, 125], [320, 140]], "#94a3b8", 3.5);
       
       elementsHtml += line(160, 110, 340, 110, "#ef4444", 1.2, "3,3");
       elementsHtml += circle(280, 125, 5, "#ef4444");
@@ -1066,19 +1066,19 @@ const getGraphicForDay = (dayNum) => {
 
     case 19:
       title = "La Ley de Polaridad";
-      elementsHtml += line(40, 110, 460, 110, "#00d2ff", 2);
-      elementsHtml += text(45, 100, "Resistencia Antigua", 9, "#00d2ff");
+      elementsHtml += line(40, 110, 460, 110, "#F8C22D", 2);
+      elementsHtml += text(45, 100, "Resistencia Antigua", 9, "#F8C22D");
       elementsHtml += text(45, 125, "Soporte Nuevo (Polaridad)", 9, "#10b981", "start", "bold");
       
-      elementsHtml += wave([[60, 160], [130, 130], [200, 140], [270, 80], [330, 110], [410, 50]], "#3b82f6", 3);
+      elementsHtml += wave([[60, 160], [130, 130], [200, 140], [270, 80], [330, 110], [410, 50]], "#94a3b8", 3);
       elementsHtml += circle(330, 110, 6, "#10b981");
       break;
 
     case 20:
       title = "EMA 200 y Momentum RSI";
-      elementsHtml += wave([[40, 80], [120, 110], [200, 90], [280, 60], [360, 80], [440, 40]], "#3b82f6", 3.5);
-      elementsHtml += wave([[40, 120], [120, 115], [200, 105], [280, 95], [360, 90], [440, 80]], "#00d2ff", 2);
-      elementsHtml += text(440, 70, "EMA 200 (Filtro)", 9, "#00d2ff", "end");
+      elementsHtml += wave([[40, 80], [120, 110], [200, 90], [280, 60], [360, 80], [440, 40]], "#94a3b8", 3.5);
+      elementsHtml += wave([[40, 120], [120, 115], [200, 105], [280, 95], [360, 90], [440, 80]], "#F8C22D", 2);
+      elementsHtml += text(440, 70, "EMA 200 (Filtro)", 9, "#F8C22D", "end");
       
       // RSI panel
       elementsHtml += `
@@ -1094,10 +1094,10 @@ const getGraphicForDay = (dayNum) => {
       title = "Faro de Dirección";
       elementsHtml += `
         <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#242f3d" rx="8" />
-        <path d="M 235,160 L 245,65 L 255,65 L 265,160 Z" fill="#1b222c" stroke="#3b82f6" stroke-width="2" />
-        <rect x="242" y="52" width="16" height="13" fill="#00d2ff" rx="1.5" />
-        <polygon points="250,58 100,20 100,120" fill="rgba(0, 210, 255, 0.05)" />
-        <polygon points="250,58 400,20 400,120" fill="rgba(0, 210, 255, 0.05)" />
+        <path d="M 235,160 L 245,65 L 255,65 L 265,160 Z" fill="#1b222c" stroke="#94a3b8" stroke-width="2" />
+        <rect x="242" y="52" width="16" height="13" fill="#F8C22D" rx="1.5" />
+        <polygon points="250,58 100,20 100,120" fill="rgba(248, 194, 45, 0.05)" />
+        <polygon points="250,58 400,20 400,120" fill="rgba(248, 194, 45, 0.05)" />
         <text x="250" y="45" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">ESTRUCTURA = EL FARO DE DIRECCIÓN</text>
       `;
       break;
@@ -1108,7 +1108,7 @@ const getGraphicForDay = (dayNum) => {
         <rect x="40" y="40" width="420" height="135" fill="#131a22" stroke="#242f3d" rx="8" />
         <line x1="60" y1="100" x2="440" y2="100" stroke="#242f3d" stroke-width="4" />
         
-        <circle cx="100" cy="100" r="8" fill="#3b82f6" />
+        <circle cx="100" cy="100" r="8" fill="#94a3b8" />
         <text x="100" y="85" fill="#f3f4f6" font-size="7.5" font-weight="bold" text-anchor="middle">08:00 AM</text>
         <text x="100" y="120" fill="#9ca3af" font-size="8.5" text-anchor="middle">Pre-market</text>
 
@@ -1116,7 +1116,7 @@ const getGraphicForDay = (dayNum) => {
         <text x="250" y="85" fill="#f3f4f6" font-size="7.5" font-weight="bold" text-anchor="middle">09:30 AM</text>
         <text x="250" y="120" fill="#10b981" font-size="8.5" font-weight="bold" text-anchor="middle">Sesión Abierta</text>
 
-        <circle cx="400" cy="100" r="8" fill="#00d2ff" />
+        <circle cx="400" cy="100" r="8" fill="#F8C22D" />
         <text x="400" y="85" fill="#f3f4f6" font-size="7.5" font-weight="bold" text-anchor="middle">12:00 PM</text>
         <text x="400" y="120" fill="#9ca3af" font-size="8.5" text-anchor="middle">Cierre & Bitácora</text>
       `;
@@ -1174,16 +1174,16 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += `
         <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#242f3d" rx="8" />
         
-        <rect x="320" y="48" width="10" height="10" fill="#3b82f6" />
+        <rect x="320" y="48" width="10" height="10" fill="#94a3b8" />
         <text x="335" y="56" fill="#9ca3af" font-size="8.5" font-family="Arial">Objetivo</text>
         <rect x="380" y="48" width="10" height="10" fill="#10b981" />
         <text x="395" y="56" fill="#9ca3af" font-size="8.5" font-family="Arial">Logrado</text>
 
-        <rect x="90" y="70" width="20" height="70" fill="#3b82f6" />
+        <rect x="90" y="70" width="20" height="70" fill="#94a3b8" />
         <rect x="112" y="80" width="20" height="60" fill="#10b981" />
         <text x="111" y="152" fill="#f3f4f6" font-size="8.5" text-anchor="middle">Acierto (50% vs 43%)</text>
 
-        <rect x="230" y="80" width="20" height="60" fill="#3b82f6" />
+        <rect x="230" y="80" width="20" height="60" fill="#94a3b8" />
         <rect x="252" y="60" width="20" height="80" fill="#10b981" />
         <text x="251" y="152" fill="#f3f4f6" font-size="8.5" text-anchor="middle">Ratio R:R (1:2 vs 1:2.4)</text>
       `;
@@ -1196,11 +1196,11 @@ const getGraphicForDay = (dayNum) => {
         
         <circle cx="160" cy="105" r="50" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="20" />
         <circle cx="160" cy="105" r="30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="15" />
-        <circle cx="160" cy="105" r="10" fill="#00d2ff" />
+        <circle cx="160" cy="105" r="10" fill="#F8C22D" />
         
-        <circle cx="150" cy="100" r="4" fill="#3b82f6" />
-        <circle cx="162" cy="112" r="4" fill="#3b82f6" />
-        <text x="230" y="85" fill="#3b82f6" font-size="9.5" font-weight="bold">Errores Técnicos (En el setup)</text>
+        <circle cx="150" cy="100" r="4" fill="#94a3b8" />
+        <circle cx="162" cy="112" r="4" fill="#94a3b8" />
+        <text x="230" y="85" fill="#94a3b8" font-size="9.5" font-weight="bold">Errores Técnicos (En el setup)</text>
 
         <circle cx="130" cy="75" r="4" fill="#ef4444" />
         <circle cx="190" cy="130" r="4" fill="#ef4444" />
@@ -1213,13 +1213,13 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += `
         <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#242f3d" rx="8" />
         
-        <path d="M 250,55 A 45,45 0 1,1 205,100" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arr-28)" />
+        <path d="M 250,55 A 45,45 0 1,1 205,100" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arr-28)" />
         <path d="M 205,100 A 45,45 0 0,1 250,145" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arr-28)" />
-        <path d="M 250,145 A 45,45 0 0,1 250,55" fill="none" stroke="#00d2ff" stroke-width="3" marker-end="url(#arr-28)" />
+        <path d="M 250,145 A 45,45 0 0,1 250,55" fill="none" stroke="#F8C22D" stroke-width="3" marker-end="url(#arr-28)" />
         
-        <text x="250" y="80" fill="#3b82f6" font-size="8.5" font-weight="bold" text-anchor="middle">1. AUDITAR</text>
+        <text x="250" y="80" fill="#94a3b8" font-size="8.5" font-weight="bold" text-anchor="middle">1. AUDITAR</text>
         <text x="180" y="115" fill="#10b981" font-size="8.5" font-weight="bold" text-anchor="middle">2. MEDIR</text>
-        <text x="320" y="115" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">3. CORREGIR</text>
+        <text x="320" y="115" fill="#F8C22D" font-size="8.5" font-weight="bold" text-anchor="middle">3. CORREGIR</text>
       `;
       break;
 
@@ -1254,7 +1254,7 @@ const getGraphicForDay = (dayNum) => {
         <text x="50" y="112" fill="#ef4444" font-size="9">Sell Stops Pool (Soporte Obvio Minorista)</text>
 
         <!-- Wave sweeping -->
-        <path d="M 60,80 L 150,120 L 220,90 L 290,120 L 310,155 L 350,60" fill="none" stroke="#3b82f6" stroke-width="3" />
+        <path d="M 60,80 L 150,120 L 220,90 L 290,120 L 310,155 L 350,60" fill="none" stroke="#94a3b8" stroke-width="3" />
         
         <circle cx="310" cy="155" r="5" fill="#10b981" />
         <text x="310" y="202" fill="#10b981" font-size="9" font-weight="bold" text-anchor="middle">Barrido de Stops (SSL Sweep)</text>
@@ -1277,8 +1277,8 @@ const getGraphicForDay = (dayNum) => {
         <line x1="209" y1="10" x2="209" y2="80" stroke="#10b981" />
 
         <!-- FVG box between C1 high and C3 low -->
-        <rect x="89" y="80" width="120" height="20" fill="rgba(0, 210, 255, 0.08)" stroke="#00d2ff" stroke-width="1.2" stroke-dasharray="3,3" />
-        <text x="149" y="93" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">Fair Value Gap (FVG)</text>
+        <rect x="89" y="80" width="120" height="20" fill="rgba(248, 194, 45, 0.08)" stroke="#F8C22D" stroke-width="1.2" stroke-dasharray="3,3" />
+        <text x="149" y="93" fill="#F8C22D" font-size="8.5" font-weight="bold" text-anchor="middle">Fair Value Gap (FVG)</text>
       `;
       break;
 
@@ -1287,9 +1287,9 @@ const getGraphicForDay = (dayNum) => {
       elementsHtml += `
         <!-- Left Panel: HTF Bias -->
         <rect x="35" y="40" width="180" height="130" fill="#131a22" stroke="#242f3d" stroke-width="1.5" rx="6" />
-        <text x="125" y="55" fill="#3b82f6" font-size="9" font-weight="bold" text-anchor="middle">HTF BIAS (Marco 1H)</text>
-        <path d="M 50,150 L 100,110 L 140,120 L 200,60" fill="none" stroke="#3b82f6" stroke-width="2.5" />
-        <circle cx="200" cy="60" r="4.5" fill="#00d2ff" />
+        <text x="125" y="55" fill="#94a3b8" font-size="9" font-weight="bold" text-anchor="middle">HTF BIAS (Marco 1H)</text>
+        <path d="M 50,150 L 100,110 L 140,120 L 200,60" fill="none" stroke="#94a3b8" stroke-width="2.5" />
+        <circle cx="200" cy="60" r="4.5" fill="#F8C22D" />
 
         <!-- Right Panel: LTF Gatillo -->
         <rect x="285" y="40" width="180" height="130" fill="#131a22" stroke="#242f3d" stroke-width="1.5" rx="6" />
@@ -1297,7 +1297,7 @@ const getGraphicForDay = (dayNum) => {
         <path d="M 295,130 L 320,110 L 335,118 L 365,90 L 380,98 L 420,55" fill="none" stroke="#10b981" stroke-width="1.8" />
         
         <!-- Connection Arrow -->
-        <path d="M 225,105 L 275,105" stroke="#00d2ff" stroke-width="1.5" marker-end="url(#arr-32)" />
+        <path d="M 225,105 L 275,105" stroke="#F8C22D" stroke-width="1.5" marker-end="url(#arr-32)" />
       `;
       break;
 
@@ -1305,8 +1305,8 @@ const getGraphicForDay = (dayNum) => {
       title = "Zonas Premium y Descuento";
       elementsHtml += `
         <!-- Equilibrium line -->
-        <line x1="40" y1="100" x2="460" y2="100" stroke="#00d2ff" stroke-width="2" stroke-dasharray="4,4" />
-        <text x="450" y="93" fill="#00d2ff" font-size="8.5" text-anchor="end">Precio de Equilibrio (50%)</text>
+        <line x1="40" y1="100" x2="460" y2="100" stroke="#F8C22D" stroke-width="2" stroke-dasharray="4,4" />
+        <text x="450" y="93" fill="#F8C22D" font-size="8.5" text-anchor="end">Precio de Equilibrio (50%)</text>
         
         <!-- Premium Box (Red) -->
         <rect x="40" y="30" width="420" height="70" fill="rgba(239, 68, 68, 0.04)" stroke="#ef4444" stroke-width="0.8" />
@@ -1323,22 +1323,22 @@ const getGraphicForDay = (dayNum) => {
       const brY = 110;
       elementsHtml += `
         <!-- Original OB box that was broken -->
-        <rect x="60" y="${brY}" width="160" height="40" fill="rgba(59, 130, 246, 0.05)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,3" />
-        <text x="70" y="${brY + 15}" fill="#3b82f6" font-size="8" font-weight="bold">OB Bajista Roto</text>
+        <rect x="60" y="${brY}" width="160" height="40" fill="rgba(148, 163, 184, 0.05)" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" />
+        <text x="70" y="${brY + 15}" fill="#94a3b8" font-size="8" font-weight="bold">OB Bajista Roto</text>
         
         <!-- Wave retest -->
         <path d="M 40,150 L 140,80 L 180,95 L 260,40 L 320,110 L 380,50" fill="none" stroke="#f3f4f6" stroke-width="3" />
         
         <!-- Retest circle and label -->
-        <circle cx="320" cy="110" r="6" fill="#00d2ff" />
-        <text x="320" y="135" fill="#00d2ff" font-size="9.5" font-weight="bold" text-anchor="middle">Breaker Block (Test de Soporte)</text>
+        <circle cx="320" cy="110" r="6" fill="#F8C22D" />
+        <text x="320" y="135" fill="#F8C22D" font-size="9.5" font-weight="bold" text-anchor="middle">Breaker Block (Test de Soporte)</text>
       `;
       break;
 
     case 35:
       title = "POC y Subasta de Perfil de Volumen";
       const drawHorizontalVolumeBar = (y, w, isPOC) => {
-        const color = isPOC ? "#ef4444" : "#3b82f6";
+        const color = isPOC ? "#ef4444" : "#94a3b8";
         return `
           <rect x="${440 - w}" y="${y}" width="${w}" height="8" fill="${color}" fill-opacity="${isPOC ? 0.35 : 0.15}" stroke="${color}" stroke-opacity="0.3" stroke-width="0.5" rx="1" />
         `;
@@ -1390,8 +1390,8 @@ const getGraphicForDay = (dayNum) => {
       
       elementsHtml += `
         <!-- Entry line -->
-        <line x1="40" y1="${entryY}" x2="440" y2="${entryY}" stroke="#3b82f6" stroke-width="1.5" />
-        <text x="45" y="${entryY - 5}" fill="#3b82f6" font-size="8.5">Nivel de Entrada (2 Contratos)</text>
+        <line x1="40" y1="${entryY}" x2="440" y2="${entryY}" stroke="#94a3b8" stroke-width="1.5" />
+        <text x="45" y="${entryY - 5}" fill="#94a3b8" font-size="8.5">Nivel de Entrada (2 Contratos)</text>
 
         <!-- SL line original -->
         <line x1="40" y1="${stopY}" x2="440" y2="${stopY}" stroke="#ef4444" stroke-dasharray="2,2" stroke-width="1" opacity="0.5" />
@@ -1406,8 +1406,8 @@ const getGraphicForDay = (dayNum) => {
     case 38:
       title = "El Checklist de Visión Trading Pro";
       elementsHtml += `
-        <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#00d2ff" stroke-width="1.5" rx="8" />
-        <text x="250" y="48" fill="#00d2ff" font-size="11.5" font-weight="bold" text-anchor="middle">Checklist Institucional de Confluencias</text>
+        <rect x="50" y="30" width="400" height="150" fill="#131a22" stroke="#F8C22D" stroke-width="1.5" rx="8" />
+        <text x="250" y="48" fill="#F8C22D" font-size="11.5" font-weight="bold" text-anchor="middle">Checklist Institucional de Confluencias</text>
       `;
       const finalRules = [
         "1. Contexto HTF: ¿Identificamos Order Block / FVG de 1H?",
@@ -1418,8 +1418,8 @@ const getGraphicForDay = (dayNum) => {
       finalRules.forEach((str, i) => {
         const y = 66 + i * 26;
         elementsHtml += `
-          <circle cx="75" cy="${y}" r="8" fill="rgba(0, 210, 255,0.1)" stroke="#00d2ff" stroke-width="1.5" />
-          <polyline points="72 ${y}, 74 ${y+3}, 78 ${y-3}" fill="none" stroke="#00d2ff" stroke-width="2" />
+          <circle cx="75" cy="${y}" r="8" fill="rgba(248, 194, 45,0.1)" stroke="#F8C22D" stroke-width="1.5" />
+          <polyline points="72 ${y}, 74 ${y+3}, 78 ${y-3}" fill="none" stroke="#F8C22D" stroke-width="2" />
           <text x="95" y="${y + 3}" fill="#f3f4f6" font-size="9.5" font-weight="bold">${str}</text>
         `;
       });
@@ -1433,8 +1433,8 @@ const getGraphicForDay = (dayNum) => {
         <line x1="60" y1="60" x2="60" y2="160" stroke="#242f3d" stroke-width="1.5" />
         
         <path d="M 60,160 Q 180,150 260,100 T 420,60" fill="none" stroke="#10b981" stroke-width="3" />
-        <circle cx="260" cy="100" r="5" fill="#00d2ff" />
-        <text x="260" y="85" fill="#00d2ff" font-size="8.5" font-weight="bold" text-anchor="middle">Retiro Seguro ($2,500)</text>
+        <circle cx="260" cy="100" r="5" fill="#F8C22D" />
+        <text x="260" y="85" fill="#F8C22D" font-size="8.5" font-weight="bold" text-anchor="middle">Retiro Seguro ($2,500)</text>
         
         <circle cx="420" cy="60" r="5" fill="#10b981" />
         <text x="425" y="52" fill="#10b981" font-size="8.5" font-weight="bold">Cuenta Duplicada / Escalamiento</text>
@@ -1452,10 +1452,10 @@ const getGraphicForDay = (dayNum) => {
           <text x="180" y="0" fill="#10b981" font-weight="bold">80% / 90% para el Trader</text>
           
           <text x="0" y="24">2. COLCHÓN DE DRAWDOWN:</text>
-          <text x="180" y="24" fill="#3b82f6" font-weight="bold">Mantener reserva de seguridad</text>
+          <text x="180" y="24" fill="#94a3b8" font-weight="bold">Mantener reserva de seguridad</text>
           
           <text x="0" y="48">3. CAPITAL INVISIBLE:</text>
-          <text x="180" y="48" fill="#00d2ff" font-weight="bold">Invertir en cuenta de fondos propios</text>
+          <text x="180" y="48" fill="#F8C22D" font-weight="bold">Invertir en cuenta de fondos propios</text>
         </g>
       `;
       break;
@@ -1467,34 +1467,34 @@ const getGraphicForDay = (dayNum) => {
         <text x="250" y="52" fill="#f3f4f6" font-size="10" font-weight="bold" text-anchor="middle">CRECIMIENTO ANUAL DE CAPITAL INVISIBLE</text>
         
         <!-- Bar 1 -->
-        <rect x="100" y="110" width="30" height="40" fill="#3b82f6" rx="2" />
+        <rect x="100" y="110" width="30" height="40" fill="#94a3b8" rx="2" />
         <text x="115" y="165" fill="#9ca3af" font-size="8" text-anchor="middle">Mes 1</text>
         
         <!-- Bar 2 -->
-        <rect x="170" y="90" width="30" height="60" fill="#3b82f6" rx="2" />
+        <rect x="170" y="90" width="30" height="60" fill="#94a3b8" rx="2" />
         <text x="185" y="165" fill="#9ca3af" font-size="8" text-anchor="middle">Mes 3</text>
         
         <!-- Bar 3 -->
-        <rect x="240" y="70" width="30" height="80" fill="#3b82f6" rx="2" />
+        <rect x="240" y="70" width="30" height="80" fill="#94a3b8" rx="2" />
         <text x="255" y="165" fill="#9ca3af" font-size="8" text-anchor="middle">Mes 6</text>
         
         <!-- Bar 4 (Gold) -->
-        <rect x="310" y="45" width="30" height="105" fill="#00d2ff" rx="2" />
-        <text x="325" y="165" fill="#00d2ff" font-size="8" font-weight="bold" text-anchor="middle">Mes 12</text>
+        <rect x="310" y="45" width="30" height="105" fill="#F8C22D" rx="2" />
+        <text x="325" y="165" fill="#F8C22D" font-size="8" font-weight="bold" text-anchor="middle">Mes 12</text>
       `;
       break;
 
     case 42:
       title = "Diploma de Certificación Final";
       elementsHtml += `
-        <rect x="80" y="30" width="340" height="150" fill="#131a22" stroke="#00d2ff" stroke-width="3" rx="4" />
-        <rect x="88" y="38" width="324" height="134" fill="none" stroke="rgba(0, 210, 255,0.2)" stroke-width="1.2" />
+        <rect x="80" y="30" width="340" height="150" fill="#131a22" stroke="#F8C22D" stroke-width="3" rx="4" />
+        <rect x="88" y="38" width="324" height="134" fill="none" stroke="rgba(248, 194, 45,0.2)" stroke-width="1.2" />
         
-        <text x="250" y="65" fill="#00d2ff" font-size="13" font-weight="bold" text-anchor="middle" letter-spacing="2">DIPLOMA DE CERTIFICACIÓN</text>
+        <text x="250" y="65" fill="#F8C22D" font-size="13" font-weight="bold" text-anchor="middle" letter-spacing="2">DIPLOMA DE CERTIFICACIÓN</text>
         <text x="250" y="85" fill="#9ca3af" font-size="7.5" text-anchor="middle">OTORGADO POR COMPLETAR EXPOSITIVAMENTE LA MASTERCLASS</text>
         <text x="250" y="110" fill="#f3f4f6" font-size="14" font-weight="bold" text-anchor="middle">MAESTRÍA EN TRADING PROFESIONAL</text>
         
-        <text x="350" y="142" fill="#00d2ff" font-size="7" font-weight="bold" text-anchor="middle">Firma: Visión Trading Pro</text>
+        <text x="350" y="142" fill="#F8C22D" font-size="7" font-weight="bold" text-anchor="middle">Firma: Visión Trading Pro</text>
       `;
       break;
 
@@ -1631,7 +1631,7 @@ window.handleSelectOption = (pilarId, qIndex, optIndex, buttonElement) => {
   });
 
   buttonElement.style.borderColor = "var(--color-accent)";
-  buttonElement.style.background = "rgba(59, 130, 246, 0.08)";
+  buttonElement.style.background = "rgba(148, 163, 184, 0.08)";
 
   activeQuizAnswers[qIndex] = optIndex;
 
@@ -1941,7 +1941,7 @@ const speakBrowser = (text, button) => {
 
   utterance.onstart = () => {
     button.classList.add("active");
-    button.style.background = "rgba(59, 130, 246, 0.15)";
+    button.style.background = "rgba(148, 163, 184, 0.15)";
     button.style.color = "var(--color-accent)";
     button.style.borderColor = "var(--color-accent)";
     button.querySelector("span").textContent = "Detener";

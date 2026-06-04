@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="item">
               <div class="label">Tamaño de Posición Óptimo</div>
-              <div class="value" style="color: #3b82f6;">${contracts}</div>
+              <div class="value" style="color: #cbd5e1;">${contracts}</div>
             </div>
           </div>
         </div>
