@@ -2123,15 +2123,15 @@ body {
   --bg-surface: #141414 !important;
   --bg-tertiary: rgba(20, 20, 20, 0.9) !important;
 
-  --gold-primary: #E9BA3A !important;
+  --gold-primary: #F8C22D !important;
   --gold-light: #F3DA94 !important;
-  --gold-dark: #D4A534 !important;
+  --gold-dark: #ab8222 !important;
   --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
-  --gold-glow: rgba(233, 186, 58, 0.25) !important;
+  --gold-glow: rgba(248, 194, 45, 0.25) !important;
 
-  --cyan-primary: #E9BA3A !important;
+  --cyan-primary: #F8C22D !important;
   --cyan-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
-  --cyan-glow: rgba(233, 186, 58, 0.25) !important;
+  --cyan-glow: rgba(248, 194, 45, 0.25) !important;
 
   --accent-bullish: #37ca37 !important;
   --accent-bearish: #e93d3d !important;
@@ -2143,7 +2143,7 @@ body {
   --text-muted: #718096 !important;
 
   --border-color: rgba(255, 255, 255, 0.08) !important;
-  --border-glow: rgba(233, 186, 58, 0.2) !important;
+  --border-glow: rgba(248, 194, 45, 0.2) !important;
 
   --font-title: 'Montserrat', sans-serif !important;
   --font-body: 'Inter', sans-serif !important;
@@ -2156,6 +2156,25 @@ body {
 body {
   background-color: #000000 !important;
   font-family: var(--font-body) !important;
+  background-image: url('https://assets.cdn.filesafe.space/SaI7joPoZFYWm6JBeJBo/media/68fc2eb254fb62402484015e.webp') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url('https://storage.googleapis.com/msgsndr/SaI7joPoZFYWm6JBeJBo/media/6901cbb88cdf0348a8ba4b35.webp') !important;
+  }
+}
+
+/* Specific background image for Hero section */
+.hero {
+  background-image: url('https://storage.googleapis.com/msgsndr/htmWE3xvnGovNM13x2xt/media/690e66465542ae22985396c0.webp') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2270,6 +2289,9 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic !important;
   font-weight: 400 !important;
   text-transform: none !important;
+  font-size: 1.25em !important;
+  line-height: 0.8 !important;
+  display: inline-block !important;
 }
 
 /* Gold background blur adjustments */
@@ -2281,19 +2303,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Golden boxes from Wealthy Trades */
+.gbx-golden-boxes-container {
+  display: flex !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  padding: 10px 20px 25px !important;
+  margin-bottom: 15px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .gbx-golden-boxes-container {
+    gap: 12px !important;
+  }
+}
+
 .gbx-golden-box {
   background: var(--gold-gradient) !important;
   border-radius: 12px !important;
-  padding: 8px 16px !important;
+  width: 175px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-family: var(--font-title) !important;
   font-weight: 700 !important;
   font-size: 12px !important;
   color: #000000 !important;
   text-align: center !important;
   box-shadow: 0 4px 15px rgba(248, 194, 45, 0.3) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 30px !important;
   border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+@media (max-width: 768px) {
+  .gbx-golden-box {
+    width: auto !important;
+    min-width: 140px !important;
+    padding: 8px 16px !important;
+    font-size: 11px !important;
+    height: 32px !important;
+  }
+}
+
+/* Text Gradient animated */
+.text-gold-gradient {
+  background: linear-gradient(90deg, #F8C22D 0%, #FFF 25%, #F8C22D 50%, #FFF 75%, #F8C22D 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: shine-gold-text 6s linear infinite !important;
+}
+
+@keyframes shine-gold-text {
+  to { background-position: 200% center !important; }
 }

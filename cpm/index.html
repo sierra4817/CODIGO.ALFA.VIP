@@ -23,10 +23,10 @@
             --card-bg: rgba(20, 20, 20, 0.95);
             --text-primary: #FFFFFF;
             --text-secondary: #cbd5e0;
-            --accent-gold: #E9BA3A;
+            --accent-gold: #F8C22D;
             --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%);
             --accent-green: #37ca37;
-            --border-color: rgba(233, 186, 58, 0.25);
+            --border-color: rgba(248, 194, 45, 0.25);
             --safe-top: env(safe-area-inset-top, 20px);
             --safe-bottom: env(safe-area-inset-bottom, 20px);
             --font-serif: 'Things', 'Lora', Georgia, serif;
@@ -70,6 +70,19 @@
             display: flex;
             flex-direction: column;
             transition: background-color 0.3s, color 0.3s;
+        }
+
+        body:not(.cream-mode):not(.light-mode) {
+            background-image: url('https://assets.cdn.filesafe.space/SaI7joPoZFYWm6JBeJBo/media/68fc2eb254fb62402484015e.webp') !important;
+            background-size: cover !important;
+            background-position: center top !important;
+            background-repeat: no-repeat !important;
+        }
+
+        @media (max-width: 768px) {
+            body:not(.cream-mode):not(.light-mode) {
+                background-image: url('https://storage.googleapis.com/msgsndr/SaI7joPoZFYWm6JBeJBo/media/6901cbb88cdf0348a8ba4b35.webp') !important;
+            }
         }
 
         #app-container {

@@ -936,15 +936,15 @@ h2 {
   --bg-surface: #141414 !important;
   --bg-tertiary: rgba(20, 20, 20, 0.9) !important;
 
-  --gold-primary: #E9BA3A !important;
+  --gold-primary: #F8C22D !important;
   --gold-light: #F3DA94 !important;
-  --gold-dark: #D4A534 !important;
+  --gold-dark: #ab8222 !important;
   --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
-  --gold-glow: rgba(233, 186, 58, 0.25) !important;
+  --gold-glow: rgba(248, 194, 45, 0.25) !important;
 
-  --cyan-primary: #E9BA3A !important;
+  --cyan-primary: #F8C22D !important;
   --cyan-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
-  --cyan-glow: rgba(233, 186, 58, 0.25) !important;
+  --cyan-glow: rgba(248, 194, 45, 0.25) !important;
 
   --accent-bullish: #37ca37 !important;
   --accent-bearish: #e93d3d !important;
@@ -956,7 +956,7 @@ h2 {
   --text-muted: #718096 !important;
 
   --border-color: rgba(255, 255, 255, 0.08) !important;
-  --border-glow: rgba(233, 186, 58, 0.2) !important;
+  --border-glow: rgba(248, 194, 45, 0.2) !important;
 
   --font-title: 'Montserrat', sans-serif !important;
   --font-body: 'Inter', sans-serif !important;
@@ -969,6 +969,17 @@ h2 {
 body {
   background-color: #000000 !important;
   font-family: var(--font-body) !important;
+  background-image: url('https://assets.cdn.filesafe.space/SaI7joPoZFYWm6JBeJBo/media/68fc2eb254fb62402484015e.webp') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url('https://storage.googleapis.com/msgsndr/SaI7joPoZFYWm6JBeJBo/media/6901cbb88cdf0348a8ba4b35.webp') !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1083,6 +1094,9 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic !important;
   font-weight: 400 !important;
   text-transform: none !important;
+  font-size: 1.25em !important;
+  line-height: 0.8 !important;
+  display: inline-block !important;
 }
 
 /* Gold background blur adjustments */
