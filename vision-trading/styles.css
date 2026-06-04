@@ -2470,3 +2470,61 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 30px !important;
   border: none !important;
 }
+
+/* Welcome Hero Title Custom overrides to match reference site styling */
+.welcome-hero-title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 34.8px !important;
+  line-height: 44px !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.welcome-hero-title .gradient-text-gold {
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.welcome-hero-title .subtitle-text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 4px !important;
+  margin-top: 8px !important;
+}
+
+/* Lesson Title Custom overrides to match reference site styling */
+#lesson-title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 34.8px !important;
+  line-height: 44px !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+  margin-bottom: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .welcome-hero-title {
+    font-size: 26px !important;
+    line-height: 31px !important;
+  }
+  .welcome-hero-title .subtitle-text {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 2px !important;
+  }
+  #lesson-title {
+    font-size: 26px !important;
+    line-height: 31px !important;
+  }
+}
