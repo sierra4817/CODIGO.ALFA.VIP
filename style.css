@@ -915,3 +915,198 @@ h2 {
   border-color: rgba(239, 68, 68, 0.45);
 }
 
+
+/* ==========================================================================
+   INSTITUTO DEL TRADING (WEALTHY TRADES) THEME OVERRIDES
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Things';
+  src: url('https://storage.googleapis.com/msgsndr/htmWE3xvnGovNM13x2xt/media/690e64c027678eee28efdd92.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  --bg-dark: #000000 !important;
+  --bg-black: #000000 !important;
+  --bg-main: #000000 !important;
+  --bg-primary: #000000 !important;
+  --bg-secondary: #0a0a0a !important;
+  --bg-panel: rgba(20, 20, 20, 0.95) !important;
+  --bg-surface: #141414 !important;
+  --bg-tertiary: rgba(20, 20, 20, 0.9) !important;
+
+  --gold-primary: #E9BA3A !important;
+  --gold-light: #F3DA94 !important;
+  --gold-dark: #D4A534 !important;
+  --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
+  --gold-glow: rgba(233, 186, 58, 0.25) !important;
+
+  --cyan-primary: #E9BA3A !important;
+  --cyan-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
+  --cyan-glow: rgba(233, 186, 58, 0.25) !important;
+
+  --accent-bullish: #37ca37 !important;
+  --accent-bearish: #e93d3d !important;
+  --color-bull: #37ca37 !important;
+  --color-bear: #e93d3d !important;
+
+  --text-primary: #ffffff !important;
+  --text-secondary: #cbd5e0 !important;
+  --text-muted: #718096 !important;
+
+  --border-color: rgba(255, 255, 255, 0.08) !important;
+  --border-glow: rgba(233, 186, 58, 0.2) !important;
+
+  --font-title: 'Montserrat', sans-serif !important;
+  --font-body: 'Inter', sans-serif !important;
+  --font-data: 'Roboto Mono', monospace !important;
+  --font-serif: 'Things', 'Playfair Display', 'Georgia', serif !important;
+  --font-sans: 'Inter', sans-serif !important;
+  --font-mono: 'Roboto Mono', monospace !important;
+}
+
+body {
+  background-color: #000000 !important;
+  font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title) !important;
+}
+
+/* Red Creatina Glow Buttons */
+.btn-primary-glow,
+.btn-pkg-primary,
+.btn-pkg-gold,
+.btn-contact-submit,
+.btn-lead-submit,
+.btn-cyan,
+.btn-gold,
+.btn-pago-dorado,
+.btn-oro-liquido,
+.btn-oro-borde,
+.btn-contact-submit,
+#btn-submit-lead-funnel,
+#btn-submit-contact,
+#btn-save-challenge,
+#btn-next-lesson-audio,
+#btn-print-cert,
+#btn-save-audio-settings,
+#btn-audio-narrate,
+#btn-next-lesson {
+  background: linear-gradient(to bottom, #f13636 0%, #d12020 50%, #c01818 100%) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(139, 0, 0, 0.4) !important;
+  box-shadow: 0 0 25px 3px rgba(241, 54, 54, 0.5), 
+              0 0 40px 8px rgba(241, 54, 54, 0.3), 
+              0 6px 12px rgba(0, 0, 0, 0.3), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-family: var(--font-title) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  animation: pulse-creatina-glow 3s infinite !important;
+}
+
+.btn-primary-glow:hover,
+.btn-pkg-primary:hover,
+.btn-pkg-gold:hover,
+.btn-contact-submit:hover,
+.btn-lead-submit:hover,
+.btn-cyan:hover,
+.btn-gold:hover,
+.btn-pago-dorado:hover,
+.btn-oro-liquido:hover,
+.btn-oro-borde:hover,
+.btn-contact-submit:hover,
+#btn-submit-lead-funnel:hover,
+#btn-submit-contact:hover,
+#btn-save-challenge:hover,
+#btn-next-lesson-audio:hover,
+#btn-print-cert:hover,
+#btn-save-audio-settings:hover,
+#btn-audio-narrate:hover,
+#btn-next-lesson:hover {
+  background: linear-gradient(to bottom, #ff4444 0%, #e62828 50%, #d12020 100%) !important;
+  box-shadow: 0 0 30px 5px rgba(241, 54, 54, 0.6), 
+              0 0 50px 10px rgba(241, 54, 54, 0.4), 
+              0 8px 15px rgba(0, 0, 0, 0.35), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-primary-glow:active,
+.btn-pkg-primary:active,
+.btn-pkg-gold:active,
+.btn-contact-submit:active,
+.btn-lead-submit:active,
+.btn-cyan:active,
+.btn-gold:active,
+.btn-pago-dorado:active,
+.btn-oro-liquido:active,
+.btn-oro-borde:active,
+.btn-contact-submit:active,
+#btn-submit-lead-funnel:active,
+#btn-submit-contact:active,
+#btn-save-challenge:active,
+#btn-next-lesson-audio:active,
+#btn-print-cert:active,
+#btn-save-audio-settings:active,
+#btn-audio-narrate:active,
+#btn-next-lesson:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 
+              0 0 35px 6px rgba(241, 54, 54, 0.25), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Remove slide-in glimmers that break style */
+.btn-primary-glow::before {
+  display: none !important;
+}
+
+@keyframes pulse-creatina-glow {
+  0% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 35px 6px rgba(241, 54, 54, 0.6), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
+}
+
+/* Style for text emphasis using Things font */
+.brand-script-accent,
+.special-serif-italic {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+}
+
+/* Gold background blur adjustments */
+.gold-blur {
+  background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%) !important;
+}
+.cyan-blur {
+  background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%) !important;
+}
+
+/* Golden boxes from Wealthy Trades */
+.gbx-golden-box {
+  background: var(--gold-gradient) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  font-family: var(--font-title) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  color: #000000 !important;
+  text-align: center !important;
+  box-shadow: 0 4px 15px rgba(248, 194, 45, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 30px !important;
+  border: none !important;
+}
