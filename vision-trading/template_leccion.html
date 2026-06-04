@@ -130,8 +130,8 @@
       </div>
 
       <!-- Mentalidad Estoica Card -->
-      <div class="card" id="mindset-card-container" style="background: linear-gradient(135deg, rgba(255, 206, 18, 0.03) 0%, rgba(10, 10, 10, 0.8) 100%); border: 1px solid rgba(255, 206, 18, 0.25); border-radius: var(--radius-lg); padding: 24px;">
-        <h3 style="font-family: var(--font-sans); color: #ffce12; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+      <div class="card" id="mindset-card-container" style="background: linear-gradient(135deg, rgba(223, 186, 115, 0.03) 0%, rgba(10, 10, 10, 0.8) 100%); border: 1px solid rgba(223, 186, 115, 0.25); border-radius: var(--radius-lg); padding: 24px;">
+        <h3 style="font-family: var(--font-sans); color: #DFBA73; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="shield" style="width: 16px; height: 16px;"></i> Mentalidad Operativa (Foco Estoico)
         </h3>
         <p id="lesson-mindset-text" style="font-style: italic; color: #e5e7eb; font-size: 0.95rem; line-height: 1.6; padding-left: 12px; border-left: 2px solid #cbd5e1;">
@@ -141,21 +141,21 @@
 
       <!-- Challenge / Bitácora Input Area -->
       <div class="card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px;">
-        <h3 style="font-family: var(--font-sans); color: #ffce12; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <h3 style="font-family: var(--font-sans); color: #DFBA73; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="book-open"></i> Desafío Práctico de Bitácora
         </h3>
         <p id="lesson-challenge-desc" style="color: #9ca3af; font-size: 0.9rem; margin-bottom: 16px;">
           <!-- Loaded dynamically -->
         </p>
-        <textarea id="challenge-response-input" placeholder="Escribe aquí tu análisis, observaciones técnicas o compromiso de mentalidad..." style="width: 100%; height: 100px; background: rgba(5, 5, 5, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #f3f4f6; padding: 12px; font-family: inherit; font-size: 0.9rem; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='rgba(255, 206, 18, 0.5)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+        <textarea id="challenge-response-input" placeholder="Escribe aquí tu análisis, observaciones técnicas o compromiso de mentalidad..." style="width: 100%; height: 100px; background: rgba(5, 5, 5, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #f3f4f6; padding: 12px; font-family: inherit; font-size: 0.9rem; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='rgba(223, 186, 115, 0.5)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
         <button id="btn-save-challenge" class="btn-oro-liquido" style="padding: 10px 18px; border-radius: var(--radius-sm); margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
           <i data-lucide="save" style="width: 15px; height: 15px;"></i> Guardar en Bitácora
         </button>
       </div>
 
       <!-- Quiz Card (Displayed on Exam Days: 7, 14, 21, 28, 35, 42, 49, 56, 63, 70) -->
-      <div class="card" id="exam-quiz-card" style="background: rgba(13, 10, 6, 0.85); border: 1px solid rgba(255, 206, 18, 0.35); border-radius: var(--radius-lg); padding: 28px; display: none;">
-        <h3 style="color: #ffce12; font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <div class="card" id="exam-quiz-card" style="background: rgba(13, 10, 6, 0.85); border: 1px solid rgba(223, 186, 115, 0.35); border-radius: var(--radius-lg); padding: 28px; display: none;">
+        <h3 style="color: #DFBA73; font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="award"></i> Evaluación Semanal de Módulo
         </h3>
         <div id="quiz-question-container">
@@ -249,7 +249,7 @@
           <!-- Trade Operations Panel -->
           <div class="control-panel">
             <!-- Info card for Real Charts (TV/MT4) -->
-            <div id="real-chart-info-card" style="display: none; background: rgba(255, 206, 18, 0.04); border: 1px solid rgba(255, 206, 18, 0.2); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0; box-shadow: var(--shadow-sm);">
+            <div id="real-chart-info-card" style="display: none; background: rgba(223, 186, 115, 0.04); border: 1px solid rgba(223, 186, 115, 0.2); padding: 16px; border-radius: var(--radius-md); margin-bottom: 0; box-shadow: var(--shadow-sm);">
               <h4 style="font-size: 0.85rem; color: var(--color-warning); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
                 <i data-lucide="info" style="width: 16px; height: 16px;"></i> Controles Inactivos
               </h4>
@@ -260,7 +260,7 @@
             </div>
 
             <div class="balance-widget" id="sim-balance-card" style="background: rgba(10, 10, 10, 0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md);">
-              <h3 class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0; font-size: 1.05rem; color: #ffce12;">
+              <h3 class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0; font-size: 1.05rem; color: #DFBA73;">
                 <i data-lucide="wallet"></i> Mi Cuenta Sim
               </h3>
               <div class="balance-row" style="display: flex; justify-content: space-between; margin-top: 10px;">
@@ -319,7 +319,7 @@
               </div>
 
               <!-- Live Position Display -->
-              <div id="sim-active-position" style="display: none; margin-top: 15px; background: rgba(255, 206, 18, 0.1); border: 1px solid rgba(203, 213, 225, 0.25); padding: 12px; border-radius: var(--radius-sm);">
+              <div id="sim-active-position" style="display: none; margin-top: 15px; background: rgba(223, 186, 115, 0.1); border: 1px solid rgba(203, 213, 225, 0.25); padding: 12px; border-radius: var(--radius-sm);">
                 <div class="position-card">
                   <div class="position-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                     <span id="pos-type-badge" class="position-badge long" style="background: #10b981; color: white; padding: 2px 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: bold;">Largo 1 MES</span>
@@ -1538,9 +1538,9 @@
 
       utterance.onstart = () => {
         button.classList.add("active");
-        button.style.background = "rgba(255, 206, 18, 0.2)";
-        button.style.color = "#ffce12";
-        button.style.borderColor = "#ffce12";
+        button.style.background = "rgba(223, 186, 115, 0.2)";
+        button.style.color = "#DFBA73";
+        button.style.borderColor = "#DFBA73";
         button.querySelector("span").textContent = "Detener Narración";
         button.querySelector("i").setAttribute("data-lucide", "square");
         lucide.createIcons();
@@ -1711,8 +1711,8 @@
       goldGrad.setAttribute("x2", "0%");
       goldGrad.setAttribute("y2", "100%");
       goldGrad.innerHTML = `
-        <stop offset="0%" stop-color="rgba(255, 206, 18, 0.2)"/>
-        <stop offset="100%" stop-color="rgba(255, 206, 18, 0.0)"/>
+        <stop offset="0%" stop-color="rgba(223, 186, 115, 0.2)"/>
+        <stop offset="100%" stop-color="rgba(223, 186, 115, 0.0)"/>
       `;
       defs.appendChild(goldGrad);
 
@@ -1749,7 +1749,7 @@
       hatchGold.setAttribute("height", "8");
       hatchGold.setAttribute("patternTransform", "rotate(45 0 0)");
       hatchGold.setAttribute("patternUnits", "userSpaceOnUse");
-      hatchGold.innerHTML = `<line x1="0" y1="0" x2="0" y2="8" stroke="rgba(255, 206, 18, 0.18)" stroke-width="1"/>`;
+      hatchGold.innerHTML = `<line x1="0" y1="0" x2="0" y2="8" stroke="rgba(223, 186, 115, 0.18)" stroke-width="1"/>`;
       defs.appendChild(hatchGold);
 
       // Hatch Cyan pattern
@@ -1836,8 +1836,8 @@
         
         // Institutional price path
         drawPath(canvas, "M 50,155 Q 150,140 250,130 T 450,65", "#00ffff", 2.5, "", "url(#glow)");
-        drawCircle(canvas, 450, 65, 5, "#ffce12", "url(#glow)");
-        drawText(canvas, 450, 52, "#ffce12", 9, "Flujo de Subasta Eficiente", "middle", "bold");
+        drawCircle(canvas, 450, 65, 5, "#DFBA73", "url(#glow)");
+        drawText(canvas, 450, 52, "#DFBA73", 9, "Flujo de Subasta Eficiente", "middle", "bold");
       }
       else if (type === "chart_biases") {
         // Double top structure with "hope" projection vs crash
@@ -1950,26 +1950,26 @@
       }
       else if (type.includes("exam") || type === "chart_final_diploma" || type === "chart_manifesto") {
         // Emblem/Badge/Shield
-        drawCircle(canvas, 250, 110, 40, "rgba(255, 206, 18,0.08)", "url(#glow)");
+        drawCircle(canvas, 250, 110, 40, "rgba(223, 186, 115,0.08)", "url(#glow)");
         drawCircle(canvas, 250, 110, 45, "none");
         const circ = canvas.lastChild;
-        circ.setAttribute("stroke", "#ffce12");
+        circ.setAttribute("stroke", "#DFBA73");
         circ.setAttribute("stroke-width", "1.5");
         circ.setAttribute("stroke-dasharray", "3,3");
         
-        drawRect(canvas, 120, 142, 260, 24, "rgba(255, 206, 18,0.12)", "#ffce12", 1, 3);
+        drawRect(canvas, 120, 142, 260, 24, "rgba(223, 186, 115,0.12)", "#DFBA73", 1, 3);
         
         if (type === "chart_final_diploma") {
-          drawText(canvas, 250, 158, "#ffce12", 9, "DIPLOMA FINAL DE MAESTRÍA DE TRADING", "middle", "bold");
-          drawText(canvas, 250, 50, "#ffce12", 13, "CERTIFICADO ACADÉMICO", "middle", "bold");
-          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#ffce12", 3);
+          drawText(canvas, 250, 158, "#DFBA73", 9, "DIPLOMA FINAL DE MAESTRÍA DE TRADING", "middle", "bold");
+          drawText(canvas, 250, 50, "#DFBA73", 13, "CERTIFICADO ACADÉMICO", "middle", "bold");
+          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#DFBA73", 3);
         } else if (type === "chart_manifesto") {
-          drawText(canvas, 250, 158, "#ffce12", 9, "JURAMENTO DE CONSISTENCIA ESTOICA", "middle", "bold");
-          drawText(canvas, 250, 50, "#ffce12", 13, "MANIFIESTO DEL TRADER", "middle", "bold");
-          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#ffce12", 3);
+          drawText(canvas, 250, 158, "#DFBA73", 9, "JURAMENTO DE CONSISTENCIA ESTOICA", "middle", "bold");
+          drawText(canvas, 250, 50, "#DFBA73", 13, "MANIFIESTO DEL TRADER", "middle", "bold");
+          drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#DFBA73", 3);
         } else {
-          drawText(canvas, 250, 158, "#ffce12", 9.5, "EVALUACIÓN DE CRITERIO APROBADA", "middle", "bold");
-          drawText(canvas, 250, 50, "#ffce12", 13, "MÓDULO COMPLETADO CON ÉXITO", "middle", "bold");
+          drawText(canvas, 250, 158, "#DFBA73", 9.5, "EVALUACIÓN DE CRITERIO APROBADA", "middle", "bold");
+          drawText(canvas, 250, 50, "#DFBA73", 13, "MÓDULO COMPLETADO CON ÉXITO", "middle", "bold");
           drawPath(canvas, "M 238,110 L 246,118 L 262,98", "#10b981", 3);
         }
       }
@@ -2027,7 +2027,7 @@
         drawCandle(canvas, 220, 158, 160, 158, 160); // Touches limit and stops
         
         drawCircle(canvas, 220, 160, 4.5, "#ef4444", "url(#red-glow)");
-        drawText(canvas, 235, 145, "#ffce12", 9, "Alerta: Apagado y bloqueo de terminal", "left", "bold");
+        drawText(canvas, 235, 145, "#DFBA73", 9, "Alerta: Apagado y bloqueo de terminal", "left", "bold");
       }
       else if (type === "chart_journal") {
         drawText(canvas, 250, 50, "#00ffff", 11, "Bitácora de Seguimiento Diario", "middle", "bold");
@@ -2086,9 +2086,9 @@
         drawText(canvas, 250, 170, "#10b981", 9, "✓ Adherirse estrictamente al checklist antes de actuar", "middle", "600");
       }
       else if (type === "chart_systematic") {
-        drawText(canvas, 250, 50, "#ffce12", 10.5, "Distribución de Resultados (Esperanza Estadística)", "middle", "bold");
+        drawText(canvas, 250, 50, "#DFBA73", 10.5, "Distribución de Resultados (Esperanza Estadística)", "middle", "bold");
         
-        drawPath(canvas, "M 80,170 Q 180,170 210,110 T 250,70 T 290,110 T 420,170", "#ffce12", 2, "", "url(#glow)");
+        drawPath(canvas, "M 80,170 Q 180,170 210,110 T 250,70 T 290,110 T 420,170", "#DFBA73", 2, "", "url(#glow)");
         drawLine(canvas, 250, 70, 250, 170, "#475569", 1, "2,2");
         
         drawText(canvas, 140, 150, "#ef4444", 8, "Rachas de Pérdidas", "middle");
@@ -2218,7 +2218,7 @@
         drawText(canvas, 220, 132, "#10b981", 8, "Cruza > 50 (Impulso)", "middle", "bold");
       }
       else if (type === "chart_confluence") {
-        drawText(canvas, 250, 50, "#ffce12", 11, "Confluencia de Alta Probabilidad", "middle", "bold");
+        drawText(canvas, 250, 50, "#DFBA73", 11, "Confluencia de Alta Probabilidad", "middle", "bold");
         
         drawRect(canvas, 50, 120, 400, 18, "rgba(255,255,255,0.02)", "rgba(255,255,255,0.08)", 0.8);
         drawText(canvas, 55, 132, "Polaridad S/R", "#94a3b8", 7.5);
@@ -2226,9 +2226,9 @@
         drawPath(canvas, "M 60,150 Q 200,135 440,105", "#00ffff", 1.8, "", "url(#glow)");
         
         drawCandle(canvas, 240, 110, 130, 100, 135);
-        drawCircle(canvas, 240, 130, 6, "#ffce12", "url(#glow)");
+        drawCircle(canvas, 240, 130, 6, "#DFBA73", "url(#glow)");
         
-        drawText(canvas, 250, 150, "#ffce12", 8.5, "PUNTO DE CONFLUENCIA (EMA + S/R)", "left", "bold");
+        drawText(canvas, 250, 150, "#DFBA73", 8.5, "PUNTO DE CONFLUENCIA (EMA + S/R)", "left", "bold");
       }
       else if (type === "chart_execution") {
         drawRect(canvas, 70, 45, 360, 145, "#0a0c14", "#1e293b", 1.5, 6);
@@ -2273,8 +2273,8 @@
         drawCandle(canvas, 240, 80, 110, 75, 115);
         
         drawCandle(canvas, 280, 110, 135, 105, 140); 
-        drawCircle(canvas, 280, 135, 4.5, "#ffce12", "url(#glow)");
-        drawText(canvas, 280, 100, "#ffce12", 8.5, "Mitigación del 50% (Entrada)", "middle", "bold");
+        drawCircle(canvas, 280, 135, 4.5, "#DFBA73", "url(#glow)");
+        drawText(canvas, 280, 100, "#DFBA73", 8.5, "Mitigación del 50% (Entrada)", "middle", "bold");
         
         drawCandle(canvas, 320, 135, 70, 65, 140);
         drawCandle(canvas, 360, 70, 35, 30, 75);
@@ -2358,8 +2358,8 @@
         drawText(canvas, 250, 42, "#00ffff", 8.5, "Línea de Liquidez Externa (Máximo del Rango)", "middle", "bold");
         drawText(canvas, 250, 195, "#00ffff", 8.5, "Línea de Liquidez Externa (Mínimo del Rango)", "middle", "bold");
         
-        drawPath(canvas, "M 60,170 L 120,90 L 160,130 L 220,70 L 260,150 L 320,110 L 380,175", "rgba(255, 206, 18,0.4)", 1.5);
-        drawText(canvas, 220, 62, "#ffce12", 8, "Liquidez Interna (Trampas)", "middle");
+        drawPath(canvas, "M 60,170 L 120,90 L 160,130 L 220,70 L 260,150 L 320,110 L 380,175", "rgba(223, 186, 115,0.4)", 1.5);
+        drawText(canvas, 220, 62, "#DFBA73", 8, "Liquidez Interna (Trampas)", "middle");
       }
       else if (type === "chart_inducement") {
         drawRect(canvas, 280, 150, 80, 25, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8);
@@ -2379,7 +2379,7 @@
         drawText(canvas, 310, 130, "#10b981", 8, "Reacción en OB Real", "left", "bold");
       }
       else if (type === "chart_ipda") {
-        drawText(canvas, 250, 48, "#ffce12", 11, "Ciclos del Algoritmo Interbancario IPDA", "middle", "bold");
+        drawText(canvas, 250, 48, "#DFBA73", 11, "Ciclos del Algoritmo Interbancario IPDA", "middle", "bold");
         
         const boxes = ["1. ACUMULACIÓN", "2. MANIPULACIÓN", "3. DISTRIBUCIÓN", "4. REBALANCEO"];
         
@@ -2394,7 +2394,7 @@
           }
           
           const parts = box.split(" ");
-          drawText(canvas, x + 50, 104, i === 1 ? "#ef4444" : (i === 2 ? "#10b981" : "#ffce12"), 8, parts[0], "middle", "bold");
+          drawText(canvas, x + 50, 104, i === 1 ? "#ef4444" : (i === 2 ? "#10b981" : "#DFBA73"), 8, parts[0], "middle", "bold");
           drawText(canvas, x + 50, 118, "#f3f4f6", 7.5, parts[1], "middle");
           
           if (i < 3) {
@@ -2409,8 +2409,8 @@
         drawCandle(canvas, 160, 120, 65, 55, 125, 9);   
         drawCandle(canvas, 200, 65, 45, 80, 50);     
         
-        drawRect(canvas, 120, 80, 240, 25, "rgba(255, 206, 18,0.06)", "#ffce12", 0.8, 1);
-        drawText(canvas, 240, 96, "FAIR VALUE GAP (VACÍO)", "#ffce12", 8.5, "middle", "bold");
+        drawRect(canvas, 120, 80, 240, 25, "rgba(223, 186, 115,0.06)", "#DFBA73", 0.8, 1);
+        drawText(canvas, 240, 96, "FAIR VALUE GAP (VACÍO)", "#DFBA73", 8.5, "middle", "bold");
         
         drawCandle(canvas, 280, 45, 95, 40, 100);  
         drawCircle(canvas, 280, 90, 4.5, "#00ffff", "url(#glow)");
@@ -2421,18 +2421,18 @@
         drawCandle(canvas, 150, 130, 60, 50, 135, 9);   
         drawCandle(canvas, 190, 60, 40, 75, 35);     
         
-        drawLine(canvas, 110, 100, 360, 100, "#ffce12", 0.8, "3,3"); 
-        drawLine(canvas, 190, 75, 360, 75, "#ffce12", 0.8, "3,3");  
+        drawLine(canvas, 110, 100, 360, 100, "#DFBA73", 0.8, "3,3"); 
+        drawLine(canvas, 190, 75, 360, 75, "#DFBA73", 0.8, "3,3");  
         
-        drawRect(canvas, 150, 75, 120, 25, "rgba(255, 206, 18,0.06)", "none");
+        drawRect(canvas, 150, 75, 120, 25, "rgba(223, 186, 115,0.06)", "none");
         
-        drawText(canvas, 365, 102, "#ffce12", 8, "Máximo Vela 1", "left");
-        drawText(canvas, 365, 78, "#ffce12", 8, "Mínimo Vela 3", "left");
-        drawText(canvas, 215, 90, "#ffce12", 8, "Vacío (Ineficiencia)", "middle", "bold");
+        drawText(canvas, 365, 102, "#DFBA73", 8, "Máximo Vela 1", "left");
+        drawText(canvas, 365, 78, "#DFBA73", 8, "Mínimo Vela 3", "left");
+        drawText(canvas, 215, 90, "#DFBA73", 8, "Vacío (Ineficiencia)", "middle", "bold");
       }
       else if (type === "chart_fvg_rebalance") {
-        drawRect(canvas, 100, 80, 280, 30, "rgba(255, 206, 18, 0.06)", "rgba(255, 206, 18, 0.3)", 0.8);
-        drawText(canvas, 105, 98, "FVG", "#ffce12", 8);
+        drawRect(canvas, 100, 80, 280, 30, "rgba(223, 186, 115, 0.06)", "rgba(223, 186, 115, 0.3)", 0.8);
+        drawText(canvas, 105, 98, "FVG", "#DFBA73", 8);
         
         drawCandle(canvas, 120, 140, 110, 80, 150); 
         drawCandle(canvas, 160, 110, 60, 50, 115);
@@ -2447,30 +2447,30 @@
         drawRect(canvas, 100, 140, 280, 30, "rgba(0, 255, 255, 0.05)", "#00ffff", 0.8, 2);
         drawText(canvas, 105, 158, "ORDER BLOCK", "#00ffff", 8);
         
-        drawRect(canvas, 100, 100, 280, 40, "rgba(255, 206, 18, 0.06)", "#ffce12", 0.8, 2);
-        drawText(canvas, 105, 122, "FAIR VALUE GAP", "#ffce12", 8);
+        drawRect(canvas, 100, 100, 280, 40, "rgba(223, 186, 115, 0.06)", "#DFBA73", 0.8, 2);
+        drawText(canvas, 105, 122, "FAIR VALUE GAP", "#DFBA73", 8);
         
         drawCandle(canvas, 310, 50, 115, 45, 145); 
-        drawCircle(canvas, 310, 140, 5, "#ffce12", "url(#glow)");
+        drawCircle(canvas, 310, 140, 5, "#DFBA73", "url(#glow)");
         
-        drawText(canvas, 310, 185, "#ffce12", 9, "POI Confluencia FVG + OB", "middle", "bold");
+        drawText(canvas, 310, 185, "#DFBA73", 9, "POI Confluencia FVG + OB", "middle", "bold");
       }
       else if (type === "chart_volume_imbalance") {
         drawCandle(canvas, 120, 150, 125, 100, 160); 
         drawCandle(canvas, 160, 105, 60, 50, 115);   
         
-        drawRect(canvas, 110, 105, 100, 20, "rgba(255, 206, 18, 0.12)", "#ffce12", 0.8, 1);
-        drawLine(canvas, 110, 105, 340, 105, "#ffce12", 0.8, "2,2");
-        drawLine(canvas, 110, 125, 340, 125, "#ffce12", 0.8, "2,2");
+        drawRect(canvas, 110, 105, 100, 20, "rgba(223, 186, 115, 0.12)", "#DFBA73", 0.8, 1);
+        drawLine(canvas, 110, 105, 340, 105, "#DFBA73", 0.8, "2,2");
+        drawLine(canvas, 110, 125, 340, 125, "#DFBA73", 0.8, "2,2");
         
-        drawText(canvas, 220, 118, "#ffce12", 8.5, "Volume Imbalance (Vacío de Cuerpos)", "left", "bold");
+        drawText(canvas, 220, 118, "#DFBA73", 8.5, "Volume Imbalance (Vacío de Cuerpos)", "left", "bold");
       }
       else if (type === "chart_fvg_consequent") {
-        drawRect(canvas, 80, 80, 300, 60, "rgba(255, 206, 18, 0.04)", "#ffce12", 0.8, 2);
-        drawText(canvas, 90, 95, "FAIR VALUE GAP (Grande)", "#ffce12", 8);
+        drawRect(canvas, 80, 80, 300, 60, "rgba(223, 186, 115, 0.04)", "#DFBA73", 0.8, 2);
+        drawText(canvas, 90, 95, "FAIR VALUE GAP (Grande)", "#DFBA73", 8);
         
-        drawLine(canvas, 80, 110, 380, 110, "#ffce12", 1.2, "3,3");
-        drawText(canvas, 385, 113, "#ffce12", 8, "Consecuent Encroachment (50%)", "left", "bold");
+        drawLine(canvas, 80, 110, 380, 110, "#DFBA73", 1.2, "3,3");
+        drawText(canvas, 385, 113, "#DFBA73", 8, "Consecuent Encroachment (50%)", "left", "bold");
         
         drawCandle(canvas, 240, 50, 95, 45, 110); 
         drawCircle(canvas, 240, 110, 4.5, "#00ffff", "url(#glow)");
@@ -2509,7 +2509,7 @@
         drawLine(canvas, 100, 120, 220, 120, "#ef4444", 1, "2,2"); 
         drawText(canvas, 145, 115, "CHoCH", "#00ffff", 8);
         
-        drawRect(canvas, 135, 120, 90, 15, "rgba(255, 206, 18,0.06)", "#ffce12", 0.8);
+        drawRect(canvas, 135, 120, 90, 15, "rgba(223, 186, 115,0.06)", "#DFBA73", 0.8);
         drawCandle(canvas, 180, 105, 125, 100, 130); 
         drawCircle(canvas, 180, 125, 4, "#10b981");
         
@@ -2520,7 +2520,7 @@
         drawText(canvas, 270, 138, "#ef4444", 8.5, "Stop Loss Ajustado", "left");
       }
       else if (type === "chart_alignment") {
-        drawText(canvas, 250, 48, "#ffce12", 11, "Alineación Temporal Perfecta (HTF a LTF)", "middle", "bold");
+        drawText(canvas, 250, 48, "#DFBA73", 11, "Alineación Temporal Perfecta (HTF a LTF)", "middle", "bold");
         
         drawRect(canvas, 40, 80, 100, 50, "rgba(255,255,255,0.01)", "#1e293b", 1, 3);
         drawText(canvas, 90, 100, "#94a3b8", 8, "1. POI H1", "middle", "bold");
@@ -2547,8 +2547,8 @@
         drawRect(canvas, 100, 110, 300, 60, "rgba(16, 185, 129, 0.08)", "#10b981", 0.8);
         drawText(canvas, 250, 145, "#10b981", 9, "ZONA DESCUENTO (< 50%) - BUSCAR COMPRAS", "middle", "bold");
         
-        drawLine(canvas, 100, 110, 400, 110, "#ffce12", 1.5); 
-        drawText(canvas, 405, 113, "#ffce12", 8, "Equilibrio (50%)", "left", "bold");
+        drawLine(canvas, 100, 110, 400, 110, "#DFBA73", 1.5); 
+        drawText(canvas, 405, 113, "#DFBA73", 8, "Equilibrio (50%)", "left", "bold");
       }
       else if (type === "chart_breaker") {
         drawRect(canvas, 100, 110, 280, 30, "rgba(239, 68, 68, 0.05)", "#ef4444", 0.8, 2);
@@ -2559,8 +2559,8 @@
         drawCandle(canvas, 200, 75, 55, 50, 80);
         
         drawCandle(canvas, 260, 55, 110, 50, 112);  
-        drawCircle(canvas, 260, 110, 4.5, "#ffce12", "url(#glow)");
-        drawText(canvas, 260, 95, "#ffce12", 8.5, "Breaker Block (Test de Compra)", "middle", "bold");
+        drawCircle(canvas, 260, 110, 4.5, "#DFBA73", "url(#glow)");
+        drawText(canvas, 260, 95, "#DFBA73", 8.5, "Breaker Block (Test de Compra)", "middle", "bold");
         
         drawCandle(canvas, 300, 110, 60, 55, 115);
       }
@@ -2597,13 +2597,13 @@
         });
       }
       else if (type === "chart_patience") {
-        drawText(canvas, 250, 50, "#ffce12", 11, "Consistencia Diaria Geométrica", "middle", "bold");
+        drawText(canvas, 250, 50, "#DFBA73", 11, "Consistencia Diaria Geométrica", "middle", "bold");
         
-        drawPath(canvas, "M 60,160 Q 180,150 280,110 T 440,60", "#ffce12", 2.2, "", "url(#glow)");
+        drawPath(canvas, "M 60,160 Q 180,150 280,110 T 440,60", "#DFBA73", 2.2, "", "url(#glow)");
         
-        drawCircle(canvas, 60, 160, 3.5, "#ffce12");
-        drawCircle(canvas, 180, 143, 3.5, "#ffce12");
-        drawCircle(canvas, 280, 110, 3.5, "#ffce12");
+        drawCircle(canvas, 60, 160, 3.5, "#DFBA73");
+        drawCircle(canvas, 180, 143, 3.5, "#DFBA73");
+        drawCircle(canvas, 280, 110, 3.5, "#DFBA73");
         drawCircle(canvas, 440, 60, 4.5, "#10b981", "url(#glow)");
         
         drawText(canvas, 60, 175, "#94a3b8", 8, "Día 1", "middle");
@@ -2623,7 +2623,7 @@
           const isLVN = i === 6;
           let fill = "rgba(59,130,246,0.15)";
           
-          if (isPOC && type === "chart_poc") fill = "rgba(255, 206, 18,0.3)";
+          if (isPOC && type === "chart_poc") fill = "rgba(223, 186, 115,0.3)";
           if (isLVN && type === "chart_lvn") fill = "rgba(239,68,68,0.25)";
           
           drawRect(canvas, 40, y, w, 10, fill, "none", 0, 1.5);
@@ -2633,8 +2633,8 @@
         drawCandle(canvas, 300, 120, 100, 95, 140);
         
         if (type === "chart_poc") {
-          drawLine(canvas, 40, 106, 460, 106, "#ffce12", 1.8, "", "url(#glow)");
-          drawText(canvas, 460, 98, "#ffce12", 8.5, "POC (Precio de Mayor Negociación)", "right", "bold");
+          drawLine(canvas, 40, 106, 460, 106, "#DFBA73", 1.8, "", "url(#glow)");
+          drawText(canvas, 460, 98, "#DFBA73", 8.5, "POC (Precio de Mayor Negociación)", "right", "bold");
         } else {
           drawLine(canvas, 40, 142, 460, 142, "#ef4444", 1.2, "3,3");
           drawCircle(canvas, 300, 142, 4.5, "#ef4444");
@@ -2650,17 +2650,17 @@
         
         drawPath(canvas, "M 100,130 L 180,95 L 260,95 L 340,65 L 420,60", "#10b981", 2, "", "url(#glow)");
         
-        drawCircle(canvas, 180, 95, 4.5, "#ffce12");
-        drawText(canvas, 180, 85, "#ffce12", 8, "Cierre Parcial 50% (+1R)", "middle", "bold");
+        drawCircle(canvas, 180, 95, 4.5, "#DFBA73");
+        drawText(canvas, 180, 85, "#DFBA73", 8, "Cierre Parcial 50% (+1R)", "middle", "bold");
         
         drawLine(canvas, 180, 130, 440, 130, "#10b981", 1.8, "", "url(#glow)");
         drawText(canvas, 300, 142, "#10b981", 8, "Stop a Breakeven (Riesgo Cero)", "middle", "bold");
       }
       else if (type === "chart_payouts") {
-        drawText(canvas, 250, 48, "#ffce12", 11, "Gestión de Payouts (Distribución del Retiro)", "middle", "bold");
+        drawText(canvas, 250, 48, "#DFBA73", 11, "Gestión de Payouts (Distribución del Retiro)", "middle", "bold");
         
         const splits = [
-          { name: "Capital Invisible (Fondo Seguro)", pct: 40, color: "#ffce12" },
+          { name: "Capital Invisible (Fondo Seguro)", pct: 40, color: "#DFBA73" },
           { name: "Impuestos / Reserva Local", pct: 30, color: "#ef4444" },
           { name: "Estilo de Vida / Recompensa", pct: 30, color: "#10b981" }
         ];
@@ -2682,31 +2682,31 @@
         });
       }
       else if (type === "chart_compounding") {
-        drawText(canvas, 250, 50, "#ffce12", 11, "Curva de Escalamiento Geométrico del Capital", "middle", "bold");
-        drawPath(canvas, "M 60,165 Q 160,160 260,125 T 440,55", "#ffce12", 3, "", "url(#glow)");
+        drawText(canvas, 250, 50, "#DFBA73", 11, "Curva de Escalamiento Geométrico del Capital", "middle", "bold");
+        drawPath(canvas, "M 60,165 Q 160,160 260,125 T 440,55", "#DFBA73", 3, "", "url(#glow)");
         
         drawRect(canvas, 140, 148, 12, 17, "rgba(59,130,246,0.3)", "none", 0, 1.5);
         drawRect(canvas, 200, 134, 12, 31, "rgba(59,130,246,0.5)", "none", 0, 1.5);
         drawRect(canvas, 260, 114, 12, 51, "rgba(59,130,246,0.7)", "none", 0, 1.5);
         drawRect(canvas, 320, 84, 12, 81, "rgba(59,130,246,0.9)", "none", 0, 1.5);
-        drawRect(canvas, 380, 48, 12, 117, "#ffce12", "none", 0, 1.5);
+        drawRect(canvas, 380, 48, 12, 117, "#DFBA73", "none", 0, 1.5);
         
-        drawText(canvas, 386, 36, "#ffce12", 8.5, "Lotes Escalados", "middle", "bold");
+        drawText(canvas, 386, 36, "#DFBA73", 8.5, "Lotes Escalados", "middle", "bold");
         drawText(canvas, 250, 192, "Aumentar lotaje basado en ganancias acumuladas, nunca por euforia", "#94a3b8", 8, "middle");
       }
       else if (type === "chart_invisible_capital") {
-        drawText(canvas, 250, 48, "#ffce12", 11, "Destino Final: Capital Invisible Sólido", "middle", "bold");
+        drawText(canvas, 250, 48, "#DFBA73", 11, "Destino Final: Capital Invisible Sólido", "middle", "bold");
         
-        drawRect(canvas, 50, 80, 110, 50, "rgba(255,255,255,0.01)", "#ffce12", 1, 3);
-        drawText(canvas, 105, 102, "#ffce12", 8.5, "Bienes Raíces", "middle", "bold");
+        drawRect(canvas, 50, 80, 110, 50, "rgba(255,255,255,0.01)", "#DFBA73", 1, 3);
+        drawText(canvas, 105, 102, "#DFBA73", 8.5, "Bienes Raíces", "middle", "bold");
         drawText(canvas, 105, 116, "#94a3b8", 7.5, "Protección", "middle");
         
-        drawRect(canvas, 195, 80, 110, 50, "rgba(255,255,255,0.01)", "#ffce12", 1, 3);
-        drawText(canvas, 250, 102, "#ffce12", 8.5, "Metales Preciosos", "middle", "bold");
+        drawRect(canvas, 195, 80, 110, 50, "rgba(255,255,255,0.01)", "#DFBA73", 1, 3);
+        drawText(canvas, 250, 102, "#DFBA73", 8.5, "Metales Preciosos", "middle", "bold");
         drawText(canvas, 250, 116, "#94a3b8", 7.5, "Reserva Fuerte", "middle");
         
-        drawRect(canvas, 340, 80, 110, 50, "rgba(255,255,255,0.01)", "#ffce12", 1, 3);
-        drawText(canvas, 395, 102, "#ffce12", 8.5, "Activos Indexados", "middle", "bold");
+        drawRect(canvas, 340, 80, 110, 50, "rgba(255,255,255,0.01)", "#DFBA73", 1, 3);
+        drawText(canvas, 395, 102, "#DFBA73", 8.5, "Activos Indexados", "middle", "bold");
         drawText(canvas, 395, 116, "#94a3b8", 7.5, "Rendimiento Pasivo", "middle");
         
         drawText(canvas, 250, 165, "El trading capitaliza; el capital invisible te hace libre de forma silenciosa", "#10b981", 9, "middle", "bold");
@@ -2730,13 +2730,13 @@
       }
       else {
         // Fallback Premium TradingView Chart
-        drawText(canvas, 250, 48, "#ffce12", 10.5, "Gráfico Técnico Ecosistema-AS", "middle", "bold");
+        drawText(canvas, 250, 48, "#DFBA73", 10.5, "Gráfico Técnico Ecosistema-AS", "middle", "bold");
         
         drawPath(canvas, "M 60,160 L 120,90 L 180,120 L 260,60 L 320,90 L 400,40 L 450,70", "rgba(203, 213, 225, 0.4)", 1.5);
         drawPath(canvas, "M 60,165 Q 160,140 260,125 T 440,75", "#00ffff", 2.2, "", "url(#glow)");
-        drawCircle(canvas, 260, 125, 4.5, "#ffce12", "url(#glow)");
+        drawCircle(canvas, 260, 125, 4.5, "#DFBA73", "url(#glow)");
         
-        drawText(canvas, 260, 145, "#ffce12", 8.5, "Zona de Confluencia", "middle", "bold");
+        drawText(canvas, 260, 145, "#DFBA73", 8.5, "Zona de Confluencia", "middle", "bold");
       }
     }
 
@@ -2836,7 +2836,7 @@
           <strong>💡 Información:</strong> Si no tienes una API Key de ElevenLabs, déjala en blanco. El sistema utilizará la <strong>voz nativa en español de tu navegador</strong> de forma totalmente gratuita y automática.
         </div>
 
-        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem; border-left-color: var(--color-warning); background: rgba(255, 206, 18, 0.03);">
+        <div class="highlight-box" style="margin: 12px 0 20px 0; padding: 12px; font-size: 0.8rem; border-left-color: var(--color-warning); background: rgba(223, 186, 115, 0.03);">
           <strong>⚠️ Nota de Permisos:</strong> Tu clave API en ElevenLabs debe tener activada la casilla de permisos de <strong>"Text-to-Speech"</strong> (Texto a Voz). De lo contrario, los servidores de ElevenLabs denegarán la llamada para reproducir la voz del narrador.
         </div>
 
