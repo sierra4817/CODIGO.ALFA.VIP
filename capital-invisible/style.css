@@ -781,3 +781,101 @@ footer {
   border: none !important;
   background: transparent !important;
 }
+
+/* ==========================================================================
+   INSTITUTO DEL TRADING (WEALTHY TRADES) THEME OVERRIDES
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Things';
+  src: url('https://storage.googleapis.com/msgsndr/htmWE3xvnGovNM13x2xt/media/690e64c027678eee28efdd92.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  --bg-color: #000000 !important;
+  --bg-card: rgba(20, 20, 20, 0.95) !important;
+  --bg-card-hover: #161616 !important;
+
+  --gold-primary: #E9BA3A !important;
+  --gold-light: #F3DA94 !important;
+  --gold-dark: #D4A534 !important;
+  --gold-medium: #b38728 !important;
+  --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%) !important;
+  --gold-glow: rgba(233, 186, 58, 0.25) !important;
+  --gold-border: rgba(233, 186, 58, 0.25) !important;
+  --gold-border-focus: rgba(233, 186, 58, 0.6) !important;
+
+  --text-primary: #ffffff !important;
+  --text-muted: #cbd5e0 !important;
+  --text-dark: #718096 !important;
+
+  --font-serif: 'Things', 'Cormorant Garamond', 'Playfair Display', serif !important;
+  --font-sans: 'Inter', sans-serif !important;
+}
+
+/* Red Creatina Glow Buttons */
+.btn-gold-minimal,
+.btn-gold-shimmer {
+  background: linear-gradient(to bottom, #f13636 0%, #d12020 50%, #c01818 100%) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(139, 0, 0, 0.4) !important;
+  box-shadow: 0 0 25px 3px rgba(241, 54, 54, 0.5), 
+              0 0 40px 8px rgba(241, 54, 54, 0.3), 
+              0 6px 12px rgba(0, 0, 0, 0.3), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  animation: pulse-creatina-glow 3s infinite !important;
+}
+
+.btn-gold-minimal:hover,
+.btn-gold-shimmer:hover {
+  background: linear-gradient(to bottom, #ff4444 0%, #e62828 50%, #d12020 100%) !important;
+  box-shadow: 0 0 30px 5px rgba(241, 54, 54, 0.6), 
+              0 0 50px 10px rgba(241, 54, 54, 0.4), 
+              0 8px 15px rgba(0, 0, 0, 0.35), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-gold-minimal:active,
+.btn-gold-shimmer:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 
+              0 0 35px 6px rgba(241, 54, 54, 0.25), 
+              inset 0 2px 15px rgba(255, 255, 255, 0.25) !important;
+}
+
+.btn-gold-shimmer::before {
+  display: none !important;
+}
+
+@keyframes pulse-creatina-glow {
+  0% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 35px 6px rgba(241, 54, 54, 0.6), 0 6px 12px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3); }
+}
+
+.special-serif-italic {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+}
+
+/* Ambient Backlight (Cinematic Backdrop) */
+body::before {
+  background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%) !important;
+  opacity: 0.12 !important;
+}
+body::after {
+  background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%) !important;
+  opacity: 0.08 !important;
+}

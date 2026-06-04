@@ -13,17 +13,23 @@
     <link rel="manifest" href="manifest.json?v=4">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Things';
+            src: url('https://storage.googleapis.com/msgsndr/htmWE3xvnGovNM13x2xt/media/690e64c027678eee28efdd92.woff') format('woff');
+            font-display: swap;
+        }
         :root {
-            --bg-color: #030407;
-            --card-bg: rgba(13, 16, 24, 0.85);
+            --bg-color: #000000;
+            --card-bg: rgba(20, 20, 20, 0.95);
             --text-primary: #FFFFFF;
-            --text-secondary: #A0AEC0;
-            --accent-gold: #FDF0A6;
-            --gold-gradient: linear-gradient(135deg, #A57E25 0%, #E6C575 25%, #8C6615 50%, #FAF1B4 75%, #7C5807 100%);
-            --accent-green: #10B981;
-            --border-color: rgba(212, 175, 55, 0.35);
+            --text-secondary: #cbd5e0;
+            --accent-gold: #E9BA3A;
+            --gold-gradient: linear-gradient(135deg, #F8C22D 0%, #F3DA94 100%);
+            --accent-green: #37ca37;
+            --border-color: rgba(233, 186, 58, 0.25);
             --safe-top: env(safe-area-inset-top, 20px);
             --safe-bottom: env(safe-area-inset-bottom, 20px);
+            --font-serif: 'Things', 'Lora', Georgia, serif;
         }
         
         body.cream-mode {
@@ -341,12 +347,13 @@
         }
 
         #reader-text h2 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-serif) !important;
+            font-style: italic;
+            text-transform: none !important;
             font-size: 1.5rem;
             text-align: center;
             margin-top: 1.2em;
             margin-bottom: 1.8em;
-            text-transform: uppercase;
             letter-spacing: 1.5px;
             line-height: 1.3;
             background: var(--gold-gradient);
@@ -451,25 +458,25 @@
         }
 
         .play-btn {
-            background: var(--gold-gradient);
-            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            background: linear-gradient(to bottom, #f13636 0%, #d12020 50%, #c01818 100%) !important;
+            border: 1px solid rgba(139, 0, 0, 0.4) !important;
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            color: #000;
+            color: #fff !important;
             font-size: 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 15px rgba(241, 54, 54, 0.4), inset 0 1.5px 4px rgba(255, 255, 255, 0.25) !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
             transition: all 0.2s ease;
         }
 
         .play-btn:active {
             transform: scale(0.95);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 0 10px rgba(241, 54, 54, 0.3), inset 0 1.5px 3px rgba(0,0,0,0.4) !important;
         }
 
         .audio-slider {
@@ -565,24 +572,24 @@
         .mark-done-btn {
             display: block;
             width: 100%;
-            background: var(--gold-gradient);
-            color: #000;
-            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            background: linear-gradient(to bottom, #f13636 0%, #d12020 50%, #c01818 100%) !important;
+            color: #fff !important;
+            border: 1px solid rgba(139, 0, 0, 0.4) !important;
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
             margin-top: 25px;
             cursor: pointer;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 20px 2px rgba(241, 54, 54, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
             transition: all 0.2s ease;
         }
 
         .mark-done-btn:active {
             transform: scale(0.97);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 0 10px rgba(241, 54, 54, 0.3), inset 0 1px 1.5px rgba(0, 0, 0, 0.4) !important;
         }
 
         .sync-paragraph {
@@ -618,7 +625,7 @@
         <div id="header">
             <div style="display:flex; align-items:center; gap:8px;">
                 <img src="logo.png" alt="Logo" style="height:34px; width:auto; border-radius:3px;" id="header-logo">
-                <span id="header-title">CPM Curso</span>
+                <span id="header-title" style="font-family: var(--font-serif); font-style: italic; font-weight: 400; text-transform: none; font-size: 1.15rem;">CPM Curso</span>
             </div>
             <div style="display:flex; align-items:center; gap:10px;">
                 <a href="https://payhip.com/b/uJHeR" target="_blank" style="text-decoration:none; background:var(--gold-gradient); color:#000; padding:4px 8px; border-radius:4px; font-size:0.7rem; font-weight:700; font-family:'Montserrat',sans-serif;">
