@@ -926,6 +926,15 @@ h2 {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
 :root {
   --bg-dark: #000000 !important;
   --bg-black: #000000 !important;
@@ -969,17 +978,6 @@ h2 {
 body {
   background-color: #000000 !important;
   font-family: var(--font-body) !important;
-  background-image: url('https://assets.cdn.filesafe.space/SaI7joPoZFYWm6JBeJBo/media/68fc2eb254fb62402484015e.webp') !important;
-  background-size: cover !important;
-  background-position: center top !important;
-  background-repeat: no-repeat !important;
-  background-attachment: scroll !important;
-}
-
-@media (max-width: 768px) {
-  body {
-    background-image: url('https://storage.googleapis.com/msgsndr/SaI7joPoZFYWm6JBeJBo/media/6901cbb88cdf0348a8ba4b35.webp') !important;
-  }
 }
 
 h1, h2, h3, h4, h5, h6 {
