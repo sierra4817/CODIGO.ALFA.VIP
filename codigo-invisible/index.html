@@ -38,6 +38,19 @@
       #38424a 100%
     );
 
+    --color-gold: #c9a961;
+    --color-gold-light: #e8d4a0;
+    --color-gold-border: rgba(201, 169, 97, 0.35);
+
+    --gold-gradient: linear-gradient(
+      135deg,
+      #9c7d3f 0%,
+      #e8d4a0 30%,
+      #b8934f 70%,
+      #f0dfae 85%,
+      #8a6d33 100%
+    );
+
     --font-headings: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
@@ -134,11 +147,11 @@
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.2em;
-    color: var(--color-steel-primary);
-    border: 1px solid var(--color-steel-border);
+    color: var(--color-gold-light);
+    border: 1px solid var(--color-gold-border);
     padding: 6px 14px;
     border-radius: 50px;
-    background: rgba(138, 151, 161, 0.04);
+    background: rgba(201, 169, 97, 0.06);
     text-transform: uppercase;
   }
 
@@ -159,7 +172,7 @@
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--color-steel-primary);
+    color: var(--color-gold);
     margin-bottom: 1.25rem;
     display: inline-block;
   }
@@ -330,7 +343,7 @@
 
   .pillar-num {
     font-family: var(--font-headings); font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.15em; color: var(--color-steel-primary); text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--color-gold); text-transform: uppercase;
     margin-bottom: 0.5rem; display: block;
   }
   .pillar-title { font-family: var(--font-headings); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-text-primary); }
@@ -350,7 +363,7 @@
     padding: 0.4rem 0.9rem;
     white-space: nowrap;
   }
-  .law-chip b { color: var(--color-steel-primary); font-weight: 600; margin-right: 0.35rem; }
+  .law-chip b { color: var(--color-gold); font-weight: 600; margin-right: 0.35rem; }
 
   .footer {
     width: 100%; margin-top: 5rem; padding-top: 2rem;
