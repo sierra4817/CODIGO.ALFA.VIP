@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Código Invisible</title>
+<meta name="description" content="Las reglas no escritas del dinero real. El libro de Albert Sierra sobre las señales silenciosas que separan el patrimonio real del aparente.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="El Código Invisible: Las reglas no escritas del dinero real">
+<meta property="og:description" content="Qué comunica una comida, un teléfono sobre la mesa, un reloj o un silencio. Cómo se lee y se entra en los círculos donde el dinero real se mueve sin hacer ruido.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://codigoalfavip.com/codigo-invisible/cover.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --color-bg: #060608;
+    --color-card-bg: rgba(13, 13, 16, 0.65);
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0ab;
+    --color-text-muted: #6e6e73;
+
+    --color-steel-primary: #8a97a1;
+    --color-steel-light: #e4e9ec;
+    --color-steel-dark: #4c5760;
+    --color-steel-border: rgba(138, 151, 161, 0.18);
+    --color-steel-border-focus: rgba(138, 151, 161, 0.6);
+
+    --steel-gradient: linear-gradient(
+      135deg,
+      #6e7b85 0%,
+      #cdd6db 30%,
+      #4c5760 70%,
+      #b9c4ca 85%,
+      #38424a 100%
+    );
+
+    --font-headings: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image:
+      radial-gradient(circle at 50% 20%, rgba(138, 151, 161, 0.08) 0%, transparent 55%),
+      radial-gradient(circle at 10% 75%, rgba(76, 87, 96, 0.04) 0%, transparent 40%),
+      linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .landing-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+    z-index: 1;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .logo {
+    font-family: var(--font-headings);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .logo span {
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .badge-confidential {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-steel-primary);
+    border: 1px solid var(--color-steel-border);
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(138, 151, 161, 0.04);
+    text-transform: uppercase;
+  }
+
+  .main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-copy { max-width: 750px; text-align: center; }
+
+  .pre-title {
+    font-family: var(--font-headings);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-steel-primary);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+  }
+
+  .h1-title {
+    font-family: var(--font-headings);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .steel-gradient-text {
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .squeeze-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--color-card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--color-steel-border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(138, 151, 161, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    margin-bottom: 2rem;
+  }
+
+  .squeeze-card:hover {
+    border-color: rgba(138, 151, 161, 0.4);
+    box-shadow:
+      0 30px 60px -10px rgba(0, 0, 0, 0.7),
+      0 0 50px rgba(138, 151, 161, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .squeeze-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%; width: 150%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(138,151,161,0.03) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    animation: ambientShine 12s infinite linear;
+  }
+
+  .cta-heading {
+    font-family: var(--font-headings);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-text-primary);
+    margin-bottom: 1.75rem;
+  }
+
+  .cover-mockup {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+    border-radius: 4px;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+    transition: transform 0.4s ease;
+  }
+  .cover-mockup:hover { transform: scale(1.03) translateY(-3px); }
+
+  .price-box { text-align: center; margin-bottom: 1.5rem; }
+  .price-amount {
+    font-family: var(--font-headings);
+    font-size: clamp(2.4rem, 6vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .price-desc { font-size: 0.85rem; color: var(--color-text-secondary); }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--steel-gradient);
+    background-size: 200% auto;
+    background-position: left center;
+    border: none;
+    border-radius: 8px;
+    color: #050505;
+    font-family: var(--font-headings);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(76, 87, 96, 0.3);
+    transition: var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .btn-submit:hover {
+    background-position: right center;
+    box-shadow: 0 8px 25px rgba(138, 151, 161, 0.5);
+    transform: translateY(-1px);
+  }
+  .btn-submit:active { transform: translateY(1px); box-shadow: 0 4px 10px rgba(138, 151, 161, 0.2); }
+
+  .btn-submit::before {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+  }
+  .btn-submit:hover::before { animation: buttonShimmer 1.5s infinite ease-in-out; }
+
+  .security-note {
+    display: flex; justify-content: center; align-items: center; gap: 6px;
+    font-size: 0.72rem; color: var(--color-text-muted); margin-top: 1.25rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .security-note svg { width: 12px; height: 12px; fill: var(--color-text-muted); }
+
+  .authority-pillars {
+    width: 100%; max-width: 900px;
+    display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem;
+  }
+  @media (min-width: 768px) { .authority-pillars { grid-template-columns: repeat(3, 1fr); } }
+
+  .pillar-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition-fast);
+  }
+  .pillar-card:hover { background: rgba(255, 255, 255, 0.02); border-color: rgba(138, 151, 161, 0.12); }
+
+  .pillar-num {
+    font-family: var(--font-headings); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.15em; color: var(--color-steel-primary); text-transform: uppercase;
+    margin-bottom: 0.5rem; display: block;
+  }
+  .pillar-title { font-family: var(--font-headings); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-text-primary); }
+  .pillar-desc { font-size: 0.8rem; line-height: 1.5; color: var(--color-text-secondary); }
+
+  .laws-strip {
+    width: 100%; max-width: 900px; margin-top: 1rem;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.9rem;
+  }
+  .law-chip {
+    font-family: var(--font-headings);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50px;
+    padding: 0.4rem 0.9rem;
+    white-space: nowrap;
+  }
+  .law-chip b { color: var(--color-steel-primary); font-weight: 600; margin-right: 0.35rem; }
+
+  .footer {
+    width: 100%; margin-top: 5rem; padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--color-text-muted); text-decoration: none; font-size: 0.75rem; transition: var(--transition-fast); letter-spacing: 0.05em; }
+  .footer-links a:hover { color: var(--color-steel-primary); }
+  .disclaimer { max-width: 800px; font-size: 0.68rem; line-height: 1.6; color: var(--color-text-muted); }
+  .copyright { font-size: 0.68rem; color: var(--color-text-muted); letter-spacing: 0.05em; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes buttonShimmer { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
+  @keyframes ambientShine { 0% { left: -150%; } 100% { left: 150%; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .header, .main-content, .squeeze-card::after, .btn-submit:hover::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="landing-wrapper">
+
+  <header class="header">
+    <div class="logo">CÓDIGO <span>ALFA</span></div>
+    <div class="badge-confidential">Disponible ahora</div>
+  </header>
+
+  <main class="main-content">
+
+    <section class="hero-copy">
+      <span class="pre-title">Comportamiento y patrimonio</span>
+      <h1 class="h1-title">El Código Invisible:<br><span class="steel-gradient-text">Las reglas no escritas del dinero real</span></h1>
+      <p class="subtitle">Hay una comida que no aparece en ningún manual de etiqueta. Te sientan a la mesa de alguien con patrimonio real —no aparente, real— y en los primeros cinco minutos ya sabe todo lo que necesita saber de ti. Este libro es el mapa de esas señales.</p>
+    </section>
+
+    <div class="squeeze-card">
+      <h2 class="cta-heading">Libro digital + Audiolibro completo</h2>
+
+      <img src="cover.jpg" alt="Portada El Código Invisible" class="cover-mockup">
+
+      <div class="price-box">
+        <div class="price-amount">9,99 $</div>
+        <div class="price-desc">Libro digital (PDF, 34 págs.) + Audiolibro (39,8 min, 15 pistas)</div>
+      </div>
+
+      <a href="https://payhip.com/b/Wo1hb" target="_blank" rel="noopener noreferrer" class="btn-submit">
+        <svg style="width: 16px; height: 16px; fill: #050505;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        Acceder al libro completo
+      </a>
+
+      <div class="security-note">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        Pago seguro &middot; Garantía de reembolso de 14 días
+      </div>
+    </div>
+
+    <section class="authority-pillars">
+      <div class="pillar-card">
+        <span class="pillar-num">El código</span>
+        <h3 class="pillar-title">Señales, no teoría</h3>
+        <p class="pillar-desc">El teléfono sobre la mesa, el ritmo al hablar, el reloj que delata en vez de confirmar. Cada capítulo desmonta una señal concreta del comportamiento patrimonial.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">La aplicación</span>
+        <h3 class="pillar-title">Un ejercicio por capítulo</h3>
+        <p class="pillar-desc">Once capítulos, cada uno con un bloque "Cómo aplicarlo" — nada se queda solo en el plano conceptual.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">La autoevaluación</span>
+        <h3 class="pillar-title">Checklist de 20 reglas</h3>
+        <p class="pillar-desc">El libro cierra con un checklist de autoevaluación de 20 puntos para medir cuánto de este código ya dominas — y dónde te delatas sin darte cuenta.</p>
+      </div>
+    </section>
+
+    <div class="laws-strip">
+      <span class="law-chip"><b>01</b>La comida</span>
+      <span class="law-chip"><b>02</b>El silencio</span>
+      <span class="law-chip"><b>03</b>El teléfono</span>
+      <span class="law-chip"><b>04</b>El ritmo</span>
+      <span class="law-chip"><b>05</b>La ropa y el reloj</span>
+      <span class="law-chip"><b>06</b>Construido vs. heredado</span>
+      <span class="law-chip"><b>07</b>Lo transmitido en silencio</span>
+      <span class="law-chip"><b>08</b>Por qué no llegan</span>
+      <span class="law-chip"><b>09</b>Leer la habitación</span>
+      <span class="law-chip"><b>10</b>Los círculos</span>
+      <span class="law-chip"><b>11</b>El código aplicado</span>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../aviso-legal.html">Aviso Legal</a>
+      <a href="../politica-privacidad.html">Política de Privacidad</a>
+      <a href="../politica-cookies.html">Política de Cookies</a>
+    </div>
+    <p class="disclaimer">
+      El Código Invisible es una obra de carácter educativo y de entretenimiento sobre comportamiento y patrimonio. No constituye asesoramiento financiero, legal ni profesional individualizado. Los patrones descritos son observaciones de carácter cultural y social que varían según el país, la región y la situación personal de cada lector.
+    </p>
+    <p class="copyright">&copy; 2026 Albert Sierra &middot; Capital Invisible. Todos los derechos reservados.</p>
+  </footer>
+
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6a8d08772d9b4fb88cf8344fa4ecbe2f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
