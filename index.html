@@ -1,643 +1,476 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>Ecosistema AS | Albert Sierra - Especulación Técnica y Soberanía Financiera</title>
-  <meta name="description" content="Descubre el Ecosistema AS de Albert Sierra. Domina la especulación profesional de futuros en Visión Trading Pro y blinda tu patrimonio con El Capital Invisible.">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Landing Page Custom Stylesheet -->
-  <link rel="stylesheet" href="landing.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Código Invisible</title>
+<meta name="description" content="Las reglas no escritas del dinero real. El libro de Albert Sierra sobre las señales silenciosas que separan el patrimonio real del aparente.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="El Código Invisible: Las reglas no escritas del dinero real">
+<meta property="og:description" content="Qué comunica una comida, un teléfono sobre la mesa, un reloj o un silencio. Cómo se lee y se entra en los círculos donde el dinero real se mueve sin hacer ruido.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://codigoalfavip.com/cover.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --color-bg: #060608;
+    --color-card-bg: rgba(13, 13, 16, 0.65);
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0ab;
+    --color-text-muted: #6e6e73;
+
+    --color-steel-primary: #8a97a1;
+    --color-steel-light: #e4e9ec;
+    --color-steel-dark: #4c5760;
+    --color-steel-border: rgba(138, 151, 161, 0.18);
+    --color-steel-border-focus: rgba(138, 151, 161, 0.6);
+
+    --steel-gradient: linear-gradient(
+      135deg,
+      #6e7b85 0%,
+      #cdd6db 30%,
+      #4c5760 70%,
+      #b9c4ca 85%,
+      #38424a 100%
+    );
+
+    --color-gold: #c9a961;
+    --color-gold-light: #e8d4a0;
+    --color-gold-border: rgba(201, 169, 97, 0.35);
+
+    --gold-gradient: linear-gradient(
+      135deg,
+      #9c7d3f 0%,
+      #e8d4a0 30%,
+      #b8934f 70%,
+      #f0dfae 85%,
+      #8a6d33 100%
+    );
+
+    --font-headings: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image:
+      radial-gradient(circle at 50% 20%, rgba(138, 151, 161, 0.08) 0%, transparent 55%),
+      radial-gradient(circle at 10% 75%, rgba(76, 87, 96, 0.04) 0%, transparent 40%),
+      linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .landing-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+    z-index: 1;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-headings);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .logo span {
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .badge-confidential {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-gold-light);
+    border: 1px solid var(--color-gold-border);
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(201, 169, 97, 0.06);
+    text-transform: uppercase;
+  }
+
+  .main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-copy { max-width: 750px; text-align: center; }
+
+  .pre-title {
+    font-family: var(--font-headings);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+  }
+
+  .h1-title {
+    font-family: var(--font-headings);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .steel-gradient-text {
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .squeeze-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--color-card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--color-steel-border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(138, 151, 161, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    margin-bottom: 2rem;
+  }
+
+  .squeeze-card:hover {
+    border-color: rgba(138, 151, 161, 0.4);
+    box-shadow:
+      0 30px 60px -10px rgba(0, 0, 0, 0.7),
+      0 0 50px rgba(138, 151, 161, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .squeeze-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%; width: 150%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(138,151,161,0.03) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    animation: ambientShine 12s infinite linear;
+  }
+
+  .cta-heading {
+    font-family: var(--font-headings);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-text-primary);
+    margin-bottom: 1.75rem;
+  }
+
+  .cover-mockup {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+    border-radius: 4px;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+    transition: transform 0.4s ease;
+  }
+  .cover-mockup:hover { transform: scale(1.03) translateY(-3px); }
+
+  .price-box { text-align: center; margin-bottom: 1.5rem; }
+  .price-amount {
+    font-family: var(--font-headings);
+    font-size: clamp(2.4rem, 6vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+    background: var(--steel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .price-desc { font-size: 0.85rem; color: var(--color-text-secondary); }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--gold-gradient);
+    background-size: 200% auto;
+    background-position: left center;
+    border: none;
+    border-radius: 8px;
+    color: #050505;
+    font-family: var(--font-headings);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(154, 122, 56, 0.3);
+    transition: var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .btn-submit:hover {
+    background-position: right center;
+    box-shadow: 0 8px 25px rgba(201, 169, 97, 0.5);
+    transform: translateY(-1px);
+  }
+  .btn-submit:active { transform: translateY(1px); box-shadow: 0 4px 10px rgba(201, 169, 97, 0.2); }
+
+  .btn-submit::before {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+  }
+  .btn-submit:hover::before { animation: buttonShimmer 1.5s infinite ease-in-out; }
+
+  .security-note {
+    display: flex; justify-content: center; align-items: center; gap: 6px;
+    font-size: 0.72rem; color: var(--color-text-muted); margin-top: 1.25rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .security-note svg { width: 12px; height: 12px; fill: var(--color-text-muted); }
+
+  .authority-pillars {
+    width: 100%; max-width: 900px;
+    display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem;
+  }
+  @media (min-width: 768px) { .authority-pillars { grid-template-columns: repeat(3, 1fr); } }
+
+  .pillar-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition-fast);
+  }
+  .pillar-card:hover { background: rgba(255, 255, 255, 0.02); border-color: rgba(138, 151, 161, 0.12); }
+
+  .pillar-num {
+    font-family: var(--font-headings); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.15em; color: var(--color-gold); text-transform: uppercase;
+    margin-bottom: 0.5rem; display: block;
+  }
+  .pillar-title { font-family: var(--font-headings); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-text-primary); }
+  .pillar-desc { font-size: 0.8rem; line-height: 1.5; color: var(--color-text-secondary); }
+
+  .laws-strip {
+    width: 100%; max-width: 900px; margin-top: 1rem;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.9rem;
+  }
+  .law-chip {
+    font-family: var(--font-headings);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50px;
+    padding: 0.4rem 0.9rem;
+    white-space: nowrap;
+  }
+  .law-chip b { color: var(--color-gold); font-weight: 600; margin-right: 0.35rem; }
+
+  .footer {
+    width: 100%; margin-top: 5rem; padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--color-text-muted); text-decoration: none; font-size: 0.75rem; transition: var(--transition-fast); letter-spacing: 0.05em; }
+  .footer-links a:hover { color: var(--color-steel-primary); }
+  .disclaimer { max-width: 800px; font-size: 0.68rem; line-height: 1.6; color: var(--color-text-muted); }
+  .copyright { font-size: 0.68rem; color: var(--color-text-muted); letter-spacing: 0.05em; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes buttonShimmer { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
+  @keyframes ambientShine { 0% { left: -150%; } 100% { left: 150%; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .header, .main-content, .squeeze-card::after, .btn-submit:hover::before { animation: none; }
+  }
+</style>
 </head>
 <body>
+<div class="landing-wrapper">
 
-  <!-- Background Glow & Grid Overlay -->
-  <div class="bg-blur gold-blur"></div>
-  <div class="bg-blur cyan-blur"></div>
-  <div class="bg-grid-overlay"></div>
-
-  <!-- Header / Navigation Bar -->
-  <header class="navbar" id="nav-header">
-    <a href="#" class="nav-brand" style="text-decoration: none;">
-      <img src="logo-transp.png" class="brand-logo" alt="AS Logo" style="object-fit: contain; background: transparent; padding: 2px; box-shadow: none;">
-      <div class="brand-info">
-        <span class="brand-name">ECOSISTEMA AS</span>
-      </div>
-    </a>
-    
-    <button class="mobile-menu-toggle" id="mobile-menu-toggle-btn" aria-label="Abrir menú" aria-expanded="false">
-      <i data-lucide="menu"></i>
-    </button>
-    
-    <nav class="nav-menu" id="nav-menu-container">
-      <a href="#filosofia" class="nav-link">El Código</a>
-      <a href="#productos" class="nav-link">Arsenal Digital</a>
-      <a href="#testimonios" class="nav-link">Testimonios</a>
-      <a href="#contacto" class="nav-link">Contacto</a>
-    </nav>
-
+  <header class="header">
+    <div class="logo"><img src="logo-as.png" alt="Logo AS">CÓDIGO <span>ALFA</span></div>
+    <div class="badge-confidential">Disponible ahora</div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="filosofia">
-    <div class="hero-container">
-      <div class="badge-tag">EL MANIFIESTO DEL 1%</div>
-      
-      <h1 class="hero-headline">
-        La <strong class="hero-bold">Nueva</strong> <em class="hero-italic">estrategia</em> para generar <strong class="hero-bold">(mínimo)</strong><br>
-        <span class="text-gold-gradient"><span class="special-serif-italic">$2938/mes</span> <strong class="hero-bold">haciendo trading</strong></span> en 90 días
-      </h1>
-      
-      <p class="hero-subheadline">
-        La estrategia definitiva para especular en futuros con maestría estoica y estructurar tu riqueza en la absoluta soberanía. El dinero que se ve es el dinero que se devalúa. El verdadero poder opera en las sombras.
-      </p>
-      
-      <!-- Badges / Features (Golden Boxes) -->
-      <div class="gbx-golden-boxes-container">
-        <div class="gbx-golden-box">Sin tener experiencia</div>
-        <div class="gbx-golden-box">Sin tener un gran capital</div>
-        <div class="gbx-golden-box">Dedicando solo 2h al día</div>
-      </div>
-      
-      <!-- Call to Action Section -->
-      <div class="hero-actions">
-        <a href="#productos" class="btn-primary-glow" id="cta-hero-main">
-          <span>Adquirir el Arsenal Digital</span>
-          <i data-lucide="arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+  <main class="main-content">
 
-  <!-- Video Hero Section (Marketing Presentation) -->
-  <section class="video-hero" id="intro-video">
-    <div class="video-container">
-      <div class="video-card" onclick="openVideoModal('lQ9qg86J6sY')" id="main-video-trigger">
-        <div class="video-card-glow"></div>
-        <div class="video-thumbnail-placeholder">
-          <!-- Placeholder background design simulating trading chart -->
-          <div class="chart-mockup">
-            <div class="chart-line"></div>
-            <div class="candle bull" style="height: 120px; left: 15%;"></div>
-            <div class="candle bull" style="height: 160px; left: 35%;"></div>
-            <div class="candle bear" style="height: 100px; left: 55%;"></div>
-            <div class="candle bull" style="height: 220px; left: 75%;"></div>
-          </div>
-          <div class="thumbnail-overlay">
-            <div class="play-btn-circle">
-              <i data-lucide="play" fill="currentColor"></i>
-            </div>
-            <span class="video-duration">Ver Presentación de Albert Sierra</span>
-          </div>
-        </div>
+    <section class="hero-copy">
+      <span class="pre-title">Comportamiento y patrimonio</span>
+      <h1 class="h1-title">El Código Invisible:<br><span class="steel-gradient-text">Las reglas no escritas del dinero real</span></h1>
+      <p class="subtitle">Hay una comida que no aparece en ningún manual de etiqueta. Te sientan a la mesa de alguien con patrimonio real —no aparente, real— y en los primeros cinco minutos ya sabe todo lo que necesita saber de ti. Este libro es el mapa de esas señales.</p>
+    </section>
+
+    <div class="squeeze-card">
+      <h2 class="cta-heading">Libro digital + Audiolibro completo</h2>
+
+      <img src="cover.jpg" alt="Portada El Código Invisible" class="cover-mockup">
+
+      <div class="price-box">
+        <div class="price-amount">9,99 $</div>
+        <div class="price-desc">Libro digital (PDF, 34 págs.) + Audiolibro (39,8 min, 15 pistas)</div>
+      </div>
+
+      <a href="https://payhip.com/b/Wo1hb" target="_blank" rel="noopener noreferrer" class="btn-submit">
+        <svg style="width: 16px; height: 16px; fill: #050505;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        Acceder al libro completo
+      </a>
+
+      <div class="security-note">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        Pago seguro &middot; Garantía de reembolso de 14 días
       </div>
     </div>
-  </section>
 
-  <!-- Live Counter and Withdrawals Ticker Widget -->
-  <section class="live-ticker-section" id="live-stats">
-    <div class="ticker-container">
-      <div class="ticker-left">
-        <span class="ticker-meta-title">Estadísticas del Ecosistema en Tiempo Real</span>
-        <h2 class="ticker-counter-title">
-          Los miembros del Ecosistema han retirado:<br>
-          <span class="ticker-counter" id="live-total-counter">$5,420,150 USD</span>
-        </h2>
-        <div class="ticker-substats">
-          <div class="substat-item">
-            <span class="substat-label">Desafíos Hoy:</span>
-            <span class="substat-value" id="stats-today">142</span>
-          </div>
-          <div class="substat-item">
-            <span class="substat-label">Miembros Activos:</span>
-            <span class="substat-value" id="stats-active">450</span>
-          </div>
-        </div>
+    <section class="authority-pillars">
+      <div class="pillar-card">
+        <span class="pillar-num">El código</span>
+        <h3 class="pillar-title">Señales, no teoría</h3>
+        <p class="pillar-desc">El teléfono sobre la mesa, el ritmo al hablar, el reloj que delata en vez de confirmar. Cada capítulo desmonta una señal concreta del comportamiento patrimonial.</p>
       </div>
-      <div class="ticker-right">
-        <!-- Live notification feed for student withdrawals -->
-        <div class="notifications-viewport">
-          <div class="notifications-list" id="withdrawals-feed">
-            <!-- Dynamically populated by landing.js -->
-          </div>
-        </div>
+      <div class="pillar-card">
+        <span class="pillar-num">La aplicación</span>
+        <h3 class="pillar-title">Un ejercicio por capítulo</h3>
+        <p class="pillar-desc">Once capítulos, cada uno con un bloque "Cómo aplicarlo" — nada se queda solo en el plano conceptual.</p>
       </div>
+      <div class="pillar-card">
+        <span class="pillar-num">La autoevaluación</span>
+        <h3 class="pillar-title">Checklist de 20 reglas</h3>
+        <p class="pillar-desc">El libro cierra con un checklist de autoevaluación de 20 puntos para medir cuánto de este código ya dominas — y dónde te delatas sin darte cuenta.</p>
+      </div>
+    </section>
+
+    <div class="laws-strip">
+      <span class="law-chip"><b>01</b>La comida</span>
+      <span class="law-chip"><b>02</b>El silencio</span>
+      <span class="law-chip"><b>03</b>El teléfono</span>
+      <span class="law-chip"><b>04</b>El ritmo</span>
+      <span class="law-chip"><b>05</b>La ropa y el reloj</span>
+      <span class="law-chip"><b>06</b>Construido vs. heredado</span>
+      <span class="law-chip"><b>07</b>Lo transmitido en silencio</span>
+      <span class="law-chip"><b>08</b>Por qué no llegan</span>
+      <span class="law-chip"><b>09</b>Leer la habitación</span>
+      <span class="law-chip"><b>10</b>Los círculos</span>
+      <span class="law-chip"><b>11</b>El código aplicado</span>
     </div>
-  </section>
 
-  <!-- 3D Video Testimonials Carousel -->
-  <section class="carousel-section" id="testimonios">
-    <div class="carousel-title-wrapper">
-      <span class="section-tag">CASOS DE ÉXITO</span>
-      <h2 class="section-heading">Resultados Reales de Miembros del <span class="text-gold-gradient"><span class="special-serif-italic">Inner Circle</span></span></h2>
-      <p class="section-subheading">Estudiantes que decodificaron el algoritmo operativo y estructuraron su capital.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="aviso-legal.html">Aviso Legal</a>
+      <a href="politica-privacidad.html">Política de Privacidad</a>
+      <a href="politica-cookies.html">Política de Cookies</a>
     </div>
-    
-    <div class="carousel-wrapper">
-      <!-- Nav Button Left -->
-      <button class="carousel-btn btn-prev" id="carousel-prev-btn" aria-label="Anterior testimonio">
-        <i data-lucide="chevron-left"></i>
-      </button>
-      
-      <!-- Carousel Track -->
-      <div class="carousel-track-container">
-        <div class="carousel-track" id="testimonial-carousel-track">
-          <!-- Cards dynamically initialized or statically listed and controlled via JS -->
-          
-          <div class="carousel-card chat-testimonial-card">
-            <div class="chat-header">
-              <img class="chat-avatar" src="avatars/avatar_alan.png" alt="Alan S." style="object-fit: cover;">
-              <div class="chat-user-meta">
-                <span class="chat-user-name">Alan S. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-                <span class="chat-user-handle">@alan_futures</span>
-              </div>
-              <span class="chat-time">10:42 AM</span>
-            </div>
-            <div class="chat-bubble">
-              <p class="chat-text">"La lectura de la liquidez interbancaria es limpia. Operaba con pánico, pero la bitácora estoica del curso me dio el auto-control. Ya no uso indicadores de ruido. 3 meses de retiros consistentes."</p>
-            </div>
-            <div class="chat-metrics">
-              <div class="metric-badge cyan-glow">
-                <i data-lucide="trending-up"></i>
-                <span>+$280,000 Payout</span>
-              </div>
-              <div class="metric-badge gold-glow">
-                <i data-lucide="shield"></i>
-                <span>Max DD: 1.2%</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-card chat-testimonial-card">
-            <div class="chat-header">
-              <img class="chat-avatar" src="avatars/avatar_nando.png" alt="Nando R." style="object-fit: cover;">
-              <div class="chat-user-meta">
-                <span class="chat-user-name">Nando R. <span class="badge-vip vip-gold">Soberano 1%</span></span>
-                <span class="chat-user-handle">@nando_swing</span>
-              </div>
-              <span class="chat-time">11:15 AM</span>
-            </div>
-            <div class="chat-bubble">
-              <p class="chat-text">"El módulo de gestión de riesgo me salvó la cuenta. Aprender a tratar el capital como inventario comercial y aplicar la regla del 1% cambió todo. Consistencia absoluta en el S&P 500."</p>
-            </div>
-            <div class="chat-metrics">
-              <div class="metric-badge gold-glow">
-                <i data-lucide="trending-up"></i>
-                <span>+$61,000 Payout</span>
-              </div>
-              <div class="metric-badge cyan-glow">
-                <i data-lucide="shield"></i>
-                <span>R:R 1:3 Promedio</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-card chat-testimonial-card">
-            <div class="chat-header">
-              <img class="chat-avatar" src="avatars/avatar_jose.png" alt="Jose D." style="object-fit: cover;">
-              <div class="chat-user-meta">
-                <span class="chat-user-name">Jose D. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-                <span class="chat-user-handle">@josedavid_scalp</span>
-              </div>
-              <span class="chat-time">02:30 PM</span>
-            </div>
-            <div class="chat-bubble">
-              <p class="chat-text">"Pasar de simulación a real escalando contratos micro fue la clave. Sin falsas expectativas, solo disciplina estoica diaria. Los Order Blocks institucionales funcionan."</p>
-            </div>
-            <div class="chat-metrics">
-              <div class="metric-badge cyan-glow">
-                <i data-lucide="trending-up"></i>
-                <span>+$360,000 Payout</span>
-              </div>
-              <div class="metric-badge gold-glow">
-                <i data-lucide="shield"></i>
-                <span>Consistencia 87%</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-card chat-testimonial-card">
-            <div class="chat-header">
-              <img class="chat-avatar" src="avatars/avatar_angi.png" alt="Angi M." style="object-fit: cover;">
-              <div class="chat-user-meta">
-                <span class="chat-user-name">Angi M. <span class="badge-vip vip-gold">Soberano 1%</span></span>
-                <span class="chat-user-handle">@angi_sovereign</span>
-              </div>
-              <span class="chat-time">04:18 PM</span>
-            </div>
-            <div class="chat-bubble">
-              <p class="chat-text">"El manifiesto me abrió los ojos. No es solo especular, es blindar el capital. La estructuración internacional me permitió resguardar mis ganancias de prop firms legítimamente."</p>
-            </div>
-            <div class="chat-metrics">
-              <div class="metric-badge gold-glow">
-                <i data-lucide="trending-up"></i>
-                <span>+$253,000 Payout</span>
-              </div>
-              <div class="metric-badge cyan-glow">
-                <i data-lucide="shield"></i>
-                <span>Elusión 0% Tax</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-card chat-testimonial-card">
-            <div class="chat-header">
-              <img class="chat-avatar" src="avatars/avatar_george.png" alt="George H." style="object-fit: cover;">
-              <div class="chat-user-meta">
-                <span class="chat-user-name">George H. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-                <span class="chat-user-handle">@george_henis</span>
-              </div>
-              <span class="chat-time">06:05 PM</span>
-            </div>
-            <div class="chat-bubble">
-              <p class="chat-text">"Operando bajo la estructura del 1%. Apliqué los créditos Lombard contra mi cartera de activos tal como enseña el libro. Liquidez libre de impuestos y protección patrimonial total."</p>
-            </div>
-            <div class="chat-metrics">
-              <div class="metric-badge cyan-glow">
-                <i data-lucide="trending-up"></i>
-                <span>+$75,000 Payout</span>
-              </div>
-              <div class="metric-badge gold-glow">
-                <i data-lucide="shield"></i>
-                <span>LTV Seguro 32%</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      
-      <!-- Nav Button Right -->
-      <button class="carousel-btn btn-next" id="carousel-next-btn" aria-label="Siguiente testimonio">
-        <i data-lucide="chevron-right"></i>
-      </button>
-    </div>
-  </section>
-
-  <!-- Products Showcase / Ecosistema AS Core Packages -->
-  <section class="products-section" id="productos">
-    <div class="section-title-wrapper">
-      <span class="section-tag">EL ARSENAL ESTRATÉGICO</span>
-      <h2 class="section-heading">Toma el Control Absoluto de tu <span class="text-gold-gradient"><span class="special-serif-italic">Destino Financiero</span></span></h2>
-      <p class="section-subheading">Elige la herramienta táctica adaptada a tu nivel de operaciones y necesidades patrimoniales.</p>
-    </div>
-    
-    <div class="products-grid">
-      <!-- Product 1: Visión Trading Pro -->
-      <div class="product-card-premium trading-pkg">
-        <div class="card-border-glow"></div>
-        <div class="card-badge">ESPECULACIÓN TÉCNICA</div>
-        <h3 class="pkg-title">Visión Trading Pro</h3>
-        <p class="pkg-subtitle">Maestría Técnica y Mental en Futuros</p>
-        <div class="pkg-features">
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Curso estructurado de 63 días con enfoque estoico</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Simulador gráfico interactivo de velas en tiempo real</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Calculadora integrada de apalancamiento y riesgo técnico</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Lectura institucional y análisis de bloques de órdenes</span>
-          </div>
-        </div>
-        <div class="pkg-pricing">
-          <span class="price-val">$299 USD</span>
-          <span class="price-meta">Pago único / Acceso vitalicio</span>
-        </div>
-        <div class="pkg-actions">
-          <a href="https://payhip.com/b/uJHeR" class="btn-pkg-primary" target="_blank">
-            <span>Comprar Masterclass Pro</span>
-            <i data-lucide="shopping-cart"></i>
-          </a>
-          <a href="javascript:void(0)" onclick="openLeadModal('simulator')" class="btn-pkg-secondary">
-            <span>Probar Simulador Gratis</span>
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Product 2: El Capital Invisible -->
-      <div class="product-card-premium capital-pkg">
-        <div class="card-border-glow"></div>
-        <div class="card-badge">SOBERANÍA PATRIMONIAL</div>
-        <h3 class="pkg-title">El Capital Invisible</h3>
-        <p class="pkg-subtitle">Manual y Estructura Financiera del 1%</p>
-        <div class="pkg-features">
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Manifiesto Completo "Comprar, Pedir Prestado, Morir"</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Fórmulas legales de elusión y protección patrimonial</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Manual práctico de estructuración en el extranjero</span>
-          </div>
-          <div class="pkg-feature-item">
-            <i data-lucide="check-circle-2"></i>
-            <span>Guía de inicio y Capítulo 1 de descarga directa</span>
-          </div>
-        </div>
-        <div class="pkg-pricing">
-          <span class="price-val">$49 USD</span>
-          <span class="price-meta">Libro digital + Audiolibro completo</span>
-        </div>
-        <div class="pkg-actions">
-          <a href="https://payhip.com/b/uJHeR" class="btn-pkg-gold" target="_blank">
-            <span>Acceder al Sistema Completo</span>
-            <i data-lucide="book-open"></i>
-          </a>
-          <a href="javascript:void(0)" onclick="openLeadModal('chapter1')" class="btn-pkg-secondary">
-            <span>Descargar Capítulo 1 Gratis</span>
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Video Testimonials Grid (Additional Proof) -->
-  <section class="testimonials-grid-section" id="grid-testimonios">
-    <div class="section-title-wrapper">
-      <span class="section-tag">GALERÍA DE RESULTADOS</span>
-      <h2 class="section-heading">Más Miembros Dominando los <span class="text-gold-gradient"><span class="special-serif-italic">Futuros</span></span></h2>
-      <p class="section-subheading">Evidencia real de retiros auditados en cuentas de fondeo y capital propio.</p>
-    </div>
-    
-    <div class="testimonials-grid">
-      
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_jesus.png" alt="Jesus G." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">Jesus G. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-            <span class="chat-user-handle">@jesus_gonzales</span>
-          </div>
-          <span class="chat-time">Ayer</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"La Matriz de Alineación Fractal me quitó la ansiedad por completo. Ya no improviso frente a la pantalla. Espero el POI macro y ejecuto."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge cyan-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$23,500 Payout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_mauricio.png" alt="Mauricio V." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">Mauricio V. <span class="badge-vip vip-gold">Soberano 1%</span></span>
-            <span class="chat-user-handle">@mau_volatility</span>
-          </div>
-          <span class="chat-time">Ayer</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"El control del drawdown en las cuentas de fondeo es otro nivel desde que incorporé el enfoque estoico. Mi bitácora de errores es mi activo más valioso."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge gold-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$243,000 Payout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_david.png" alt="David L." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">David L. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-            <span class="chat-user-handle">@david_logic</span>
-          </div>
-          <span class="chat-time">2 días</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"Por fin entiendo los vacíos de liquidez (FVG) y los stops sweeps. Dejé de ser la liquidez de las instituciones y ahora opero a favor del algoritmo."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge cyan-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$12,000 Payout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_darian.png" alt="Darian K." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">Darian K. <span class="badge-vip vip-gold">Soberano 1%</span></span>
-            <span class="chat-user-handle">@darian_keep</span>
-          </div>
-          <span class="chat-time">3 días</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"El enfoque estoico no es solo para el gráfico de velas. Rediseñó mi vida financiera, mi paciencia y mi autocontrol en el día a día."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge gold-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$25,000 Payout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_jorge.png" alt="Jorge M." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">Jorge M. <span class="badge-vip vip-cyan">Inner Circle</span></span>
-            <span class="chat-user-handle">@jorge_messina</span>
-          </div>
-          <span class="chat-time">4 días</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"Aplicar las fórmulas de elusión legal y el uso de fideicomisos me ahorró miles de dólares en retiros de prop firms. Imprescindible para capitalizarse."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge cyan-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$246,000 Payout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-testimonial-card chat-testimonial-card">
-        <div class="chat-header">
-          <img class="chat-avatar" src="avatars/avatar_kenji.png" alt="Kenji T." style="object-fit: cover;">
-          <div class="chat-user-meta">
-            <span class="chat-user-name">Kenji T. <span class="badge-vip vip-gold">Soberano 1%</span></span>
-            <span class="chat-user-handle">@kenji_trader</span>
-          </div>
-          <span class="chat-time">5 días</span>
-        </div>
-        <div class="chat-bubble">
-          <p class="chat-text">"La combinación de la calculadora de riesgo en tu plataforma y la paciencia estoica de esperar el POI macro es la única ventaja estadística real."</p>
-        </div>
-        <div class="chat-metrics">
-          <div class="metric-badge gold-glow">
-            <i data-lucide="trending-up"></i>
-            <span>+$180,000 Payout</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section" id="contacto">
-    <div class="contact-container">
-      <div class="contact-card">
-        <div class="section-title-wrapper" style="margin-bottom: 30px;">
-          <span class="section-tag" style="color: var(--gold-primary);">CONTACTO PRIVADO</span>
-          <h2 class="section-heading" style="font-family: var(--font-serif); color: #fff; font-size: 2rem; margin-top: 10px; margin-bottom: 10px;">¿Tienes alguna <span class="text-gold-gradient"><span class="special-serif-italic">consulta?</span></span></h2>
-          <p class="section-subheading" style="color: var(--text-secondary); max-width: 600px; margin: 10px auto 0 auto; font-size: 0.95rem;">
-            Envía tu mensaje directamente al equipo del Ecosistema. Nos pondremos en contacto contigo de forma confidencial.
-          </p>
-        </div>
-
-        <!-- Contact Form -->
-        <form id="contact-form-el" class="contact-form" onsubmit="handleContactSubmit(event)">
-          <div class="input-row-group">
-            <div class="form-group-contact">
-              <label for="contact-name">Nombre Completo</label>
-              <input type="text" id="contact-name" name="name" placeholder="Tu nombre..." required autocomplete="name">
-            </div>
-            <div class="form-group-contact">
-              <label for="contact-email">Correo Electrónico</label>
-              <input type="email" id="contact-email" name="email" placeholder="Tu correo electrónico..." required autocomplete="email">
-            </div>
-          </div>
-          <div class="form-group-contact">
-            <label for="contact-message">Mensaje / Consulta</label>
-            <textarea id="contact-message" name="message" placeholder="Escribe tu mensaje detalladamente aquí..." required></textarea>
-          </div>
-          <button type="submit" id="btn-submit-contact" class="btn-contact-submit">
-            <span>Enviar Mensaje</span>
-            <i data-lucide="send" style="width: 15px; height: 15px;"></i>
-          </button>
-        </form>
-
-        <!-- Success State -->
-        <div id="contact-success-state" class="contact-success-state">
-          <div class="contact-success-icon">
-            <i data-lucide="check" style="width: 28px; height: 28px;"></i>
-          </div>
-          <h3 style="font-family: var(--font-serif); color: #dfb750; font-size: 1.5rem; margin-bottom: 10px; text-align: center;">¡Mensaje Enviado con Éxito!</h3>
-          <p style="color: var(--text-secondary); max-width: 500px; font-size: 0.9rem; margin-bottom: 0; text-align: center;">
-            Hemos recibido tu consulta técnica o patrimonial. Un miembro del equipo te responderá por correo electrónico lo antes posible.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Video Modal Popup -->
-  <div class="video-modal" id="video-overlay-modal" onclick="closeVideoModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="btn-close-modal" onclick="closeVideoModal()" aria-label="Cerrar video">
-        <i data-lucide="x"></i>
-      </button>
-      <div class="video-wrapper">
-        <iframe id="modal-youtube-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer Section -->
-  <footer class="footer" id="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand" style="display: flex; align-items: center; gap: 15px;">
-        <img src="logo-transp.png" alt="AS Logo" style="width: 50px; height: 50px; object-fit: contain;">
-        <div>
-          <span class="footer-logo-text" style="display: block;">AS ECOSISTEMA</span>
-          <p class="footer-tagline" style="margin-top: 5px; margin-bottom: 0;">Decodificando la psicología del 1%. Diseñado con Maestría y Autocontrol.</p>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <a href="https://instagram.com/vision.trader7" class="social-link" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="instagram"></i>
-          <span>Instagram</span>
-        </a>
-        <a href="https://tiktok.com/@vision.trader7" class="social-link" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="video"></i>
-          <span>TikTok</span>
-        </a>
-        <a href="https://payhip.com/CapitalInvisible" class="social-link" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="shopping-bag"></i>
-          <span>Payhip Store</span>
-        </a>
-      </div>
-    </div>
-    
-    <div class="footer-legal">
-      <p class="legal-disclaimer">
-        <strong>Aviso de Riesgo Relevante:</strong> La especulación financiera y operativa en el mercado de futuros implica un riesgo considerable y no es adecuada para todos los inversores. La rentabilidad histórica obtenida por los alumnos del Ecosistema no es indicativa ni garantiza resultados futuros. No inviertas capital que no puedas permitirte perder por completo. Ningún contenido presentado en este sitio web constituye una recomendación de inversión.
-      </p>
-      <div class="footer-legal-links" style="margin-top: 15px; margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem;">
-        <a href="aviso-legal.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--gold-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Aviso Legal</a>
-        <span style="color: rgba(255,255,255,0.1);">|</span>
-        <a href="politica-privacidad.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--gold-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Política de Privacidad</a>
-        <span style="color: rgba(255,255,255,0.1);">|</span>
-        <a href="politica-cookies.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--gold-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Política de Cookies</a>
-      </div>
-      <div class="legal-copyright">
-        © 2026 Ecosistema AS • Todos los derechos reservados.
-      </div>
-    </div>
+    <p class="disclaimer">
+      El Código Invisible es una obra de carácter educativo y de entretenimiento sobre comportamiento y patrimonio. No constituye asesoramiento financiero, legal ni profesional individualizado. Los patrones descritos son observaciones de carácter cultural y social que varían según el país, la región y la situación personal de cada lector.
+    </p>
+    <p class="copyright">&copy; 2026 Albert Sierra &middot; Capital Invisible. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Lead Capture Modal (Unified Funnel) -->
-  <div class="lead-modal" id="lead-capture-modal" onclick="closeLeadModal()">
-    <div class="lead-modal-content" onclick="event.stopPropagation()">
-      <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Cerrar modal">
-        <i data-lucide="x"></i>
-      </button>
-      <img src="logo-transp.png" alt="AS Logo" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 20px;">
-      <h3 class="lead-modal-title" id="lead-modal-title">Desbloquear Acceso</h3>
-      <p class="lead-modal-desc" id="lead-modal-desc">
-        Introduce tu correo electrónico privado para acceder de inmediato y registrar tu progreso.
-      </p>
-      
-      <form id="lead-capture-form" onsubmit="handleLeadSubmit(event)">
-        <div class="input-group-lead">
-          <input type="email" id="lead-email" placeholder="Tu correo electrónico privado..." required>
-        </div>
-        <button type="submit" id="btn-submit-lead-funnel" class="btn-lead-submit">
-          <span>Desbloquear Acceso Instantáneo</span>
-          <i data-lucide="unlock"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Main JavaScript File -->
-  <script src="landing.js"></script>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6a8d08772d9b4fb88cf8344fa4ecbe2f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
