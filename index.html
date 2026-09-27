@@ -328,6 +328,45 @@
   }
   .btn-submit:hover::before { animation: buttonShimmer 1.5s infinite ease-in-out; }
 
+  .policy-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .policy-check input {
+    margin-top: 3px;
+    width: 15px;
+    height: 15px;
+    accent-color: var(--color-gold);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .policy-check span {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+  .policy-check a {
+    color: var(--color-gold);
+    text-decoration: underline;
+  }
+  .policy-check a:hover { color: var(--color-gold-light); }
+
+  .btn-submit[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.6);
+  }
+  .btn-submit[aria-disabled="true"]:hover {
+    background-position: left center;
+    box-shadow: 0 4px 15px rgba(154, 122, 56, 0.3);
+    transform: none;
+  }
+  .btn-submit[aria-disabled="true"]:hover::before { animation: none; }
+
   .security-note {
     display: flex; justify-content: center; align-items: center; gap: 6px;
     font-size: 0.72rem; color: var(--color-text-muted); margin-top: 1.25rem;
@@ -422,7 +461,12 @@
         <div class="price-desc">Libro digital (PDF, 34 págs.) + Audiolibro (39,8 min, 15 pistas)</div>
       </div>
 
-      <a href="https://payhip.com/b/Wo1hb" target="_blank" rel="noopener noreferrer" class="btn-submit">
+      <label class="policy-check">
+        <input type="checkbox" id="policy-consent">
+        <span>He leído y acepto el <a href="aviso-legal.html" target="_blank" rel="noopener noreferrer">Aviso Legal</a> y la <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.</span>
+      </label>
+
+      <a href="https://payhip.com/b/Wo1hb" target="_blank" rel="noopener noreferrer" class="btn-submit" id="btn-cta" aria-disabled="true">
         <svg style="width: 16px; height: 16px; fill: #050505;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         Acceder al libro completo
       </a>
@@ -476,10 +520,29 @@
     <p class="disclaimer">
       El Código Invisible es una obra de carácter educativo y de entretenimiento sobre comportamiento y patrimonio. No constituye asesoramiento financiero, legal ni profesional individualizado. Los patrones descritos son observaciones de carácter cultural y social que varían según el país, la región y la situación personal de cada lector.
     </p>
-    <p class="copyright">&copy; 2026 Albert Sierra &middot; Capital Invisible. Todos los derechos reservados.</p>
+    <p class="copyright">&copy; 2026 Albert Sierra &middot; Código Alfa. Todos los derechos reservados.</p>
   </footer>
 
 </div>
+<script>
+  const consent = document.getElementById('policy-consent');
+  const cta = document.getElementById('btn-cta');
+  function syncCta() {
+    if (consent.checked) {
+      cta.removeAttribute('aria-disabled');
+    } else {
+      cta.setAttribute('aria-disabled', 'true');
+    }
+  }
+  consent.addEventListener('change', syncCta);
+  cta.addEventListener('click', function (e) {
+    if (cta.getAttribute('aria-disabled') === 'true') {
+      e.preventDefault();
+      consent.focus();
+    }
+  });
+  syncCta();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6a8d08772d9b4fb88cf8344fa4ecbe2f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
