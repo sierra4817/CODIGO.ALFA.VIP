@@ -151,8 +151,10 @@
   .header {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 0.75rem 1rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     margin-bottom: 3rem;
@@ -464,6 +466,13 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .header, .main-content, .squeeze-card::after, .btn-submit:hover::before { animation: none; }
+  }
+
+  @media (max-width: 480px) {
+    .header { justify-content: center; text-align: center; }
+    .logo { font-size: 0.95rem; letter-spacing: 0.15em; flex-shrink: 0; }
+    .logo img { height: 26px; }
+    .badge-confidential { font-size: 0.6rem; padding: 5px 11px; flex-shrink: 0; }
   }
 </style>
 </head>
