@@ -105,12 +105,21 @@
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-family: var(--font-headings);
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-text-primary);
+  }
+
+  .logo img {
+    height: 32px;
+    width: auto;
+    display: block;
   }
 
   .logo span {
@@ -369,7 +378,7 @@
 <div class="landing-wrapper">
 
   <header class="header">
-    <div class="logo">CÓDIGO <span>ALFA</span></div>
+    <div class="logo"><img src="logo-as.png" alt="Logo AS">CÓDIGO <span>ALFA</span></div>
     <div class="badge-confidential">Disponible ahora</div>
   </header>
 
